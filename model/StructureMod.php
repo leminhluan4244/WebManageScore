@@ -5,8 +5,7 @@
  * Date: 5/8/2017
  * Time: 5:43 PM
  */
-require_once 'ConnectToSQL.php';
-require_once 'StructureObj.php';
+
 
 class StructureMod {
 	private $connSQL;

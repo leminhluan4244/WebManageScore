@@ -6,8 +6,7 @@
  * Time: 13:55 CH
 
  */
-require_once("ConnectToSQL.php");
-require_once("PermissionObj.php");
+
 class PermissionMod
 {
     private $connSql;

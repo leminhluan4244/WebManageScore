@@ -5,9 +5,6 @@
  * Date: 06/08/2017
  * Time: 9:55 SA
  */
-require_once ("ConnectToSQL.php");
-require_once ("ScoresAddObj.php");
-
 
 class ScoresAddMod
 {

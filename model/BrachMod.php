@@ -273,53 +273,53 @@ class BranchMod
 
 }
 
-//test từng gái trị hàm ở đây
-$obj = new BranchObj();
-$obj->setBranchObj('CTDT', 'Châu Thành Đông Tháp','Đồng Tháp');
-$mod = new BranchMod();
-echo '<br>';
-$mod->addBranch($obj);
-echo '<br>';
-$obj->setBranchObj('CTDT', 'Châu Thành Đồng Tháp','ĐT');
-$mod->updateBranch($obj);
-echo '<br>';
-
-$id = array();
-$id = $mod->findBranchByID($obj);
-foreach ($id as $key => $value) {
-    echo $key . "->" . $value->getIdBranch() . " vs" . $value->getBranchName()." vs ".$value->getCity();
-}
-echo '<br>';
-$name = array();
-$name = $mod->findBranchByName($obj);
-foreach ($name as $key => $value) {
-    echo $key . "->" . $value->getIdBranch() . " vs" . $value->getBranchName()." vs ".$value->getCity();
-}
-echo '<br>';
-$getlist = array();
-$getlist = $mod->getBranch();
-foreach ($getlist as $key => $value) {
-    echo $key . "->" . $value->getIdBranch() . " vs" . $value->getBranchName()." vs ".$value->getCity();
-}
-$obj->setBranchObj('ABC', 'aaaaa','adasdasd');
-echo '<br>Đếm số học sinh trong chi hội';
-$mod->countStudent($obj);
-echo '<br> Danh sách tài khoản của chi hội';
-$getlistaccount = $mod->getListAccount($obj);
-foreach ($getlistaccount as $key => $account) {
-    echo $key . "->" . $account->getIdAccount() . ' - ' .
-        $account->getAccountName() . ' - ' .
-        $account->getBirthday() . ' - ' .
-        $account->getAddress() . ' - ' .
-        $account->getSex() . ' - ' .
-        $account->getPhone() . ' - ' .
-        $account->getEmail() . ' - ' .
-        $account->getPermission_position() . ' - ' .
-        $account->getAcademy_idAcademy() . '<br>';
-}
-echo "<br> Xóa một chi hội";
-$obj->setBranchObj('CTDT', 'Châu Thành Đồng Tháp','ĐT');
-$mod->deleteBranch($obj);
+////test từng gái trị hàm ở đây
+//$obj = new BranchObj();
+//$obj->setBranchObj('CTDT', 'Châu Thành Đông Tháp','Đồng Tháp');
+//$mod = new BranchMod();
+//echo '<br>';
+//$mod->addBranch($obj);
+//echo '<br>';
+//$obj->setBranchObj('CTDT', 'Châu Thành Đồng Tháp','ĐT');
+//$mod->updateBranch($obj);
+//echo '<br>';
+//
+//$id = array();
+//$id = $mod->findBranchByID($obj);
+//foreach ($id as $key => $value) {
+//    echo $key . "->" . $value->getIdBranch() . " vs" . $value->getBranchName()." vs ".$value->getCity();
+//}
+//echo '<br>';
+//$name = array();
+//$name = $mod->findBranchByName($obj);
+//foreach ($name as $key => $value) {
+//    echo $key . "->" . $value->getIdBranch() . " vs" . $value->getBranchName()." vs ".$value->getCity();
+//}
+//echo '<br>';
+//$getlist = array();
+//$getlist = $mod->getBranch();
+//foreach ($getlist as $key => $value) {
+//    echo $key . "->" . $value->getIdBranch() . " vs" . $value->getBranchName()." vs ".$value->getCity();
+//}
+//$obj->setBranchObj('ABC', 'aaaaa','adasdasd');
+//echo '<br>Đếm số học sinh trong chi hội';
+//$mod->countStudent($obj);
+//echo '<br> Danh sách tài khoản của chi hội';
+//$getlistaccount = $mod->getListAccount($obj);
+//foreach ($getlistaccount as $key => $account) {
+//    echo $key . "->" . $account->getIdAccount() . ' - ' .
+//        $account->getAccountName() . ' - ' .
+//        $account->getBirthday() . ' - ' .
+//        $account->getAddress() . ' - ' .
+//        $account->getSex() . ' - ' .
+//        $account->getPhone() . ' - ' .
+//        $account->getEmail() . ' - ' .
+//        $account->getPermission_position() . ' - ' .
+//        $account->getAcademy_idAcademy() . '<br>';
+//}
+//echo "<br> Xóa một chi hội";
+//$obj->setBranchObj('CTDT', 'Châu Thành Đồng Tháp','ĐT');
+//$mod->deleteBranch($obj);
 
 
 ?>

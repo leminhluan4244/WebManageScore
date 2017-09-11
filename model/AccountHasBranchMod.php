@@ -5,9 +5,6 @@
  *Date:04/08/2017
  * Chỉnh sửa:2108/2017
  */
-require_once("AccountObj.php");
-require_once("BranchObj.php");
-require_once("ConnectToSQl.php");
 
 class AccountHasBranchMod
 {

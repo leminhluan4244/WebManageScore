@@ -1,3 +1,7 @@
+
+<?php
+require_once "../model/link.php";
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
