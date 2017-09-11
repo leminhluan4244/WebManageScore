@@ -3,8 +3,8 @@
     <thead>
     <tr>
         <th>STT</th>
-        <th>MSSV</th>
-        <th>Họ và tên</th>
+        <th>Mã bảng điểm</th>
+        <th>Tên bảng điểm</th>
         <th>Chọn</th>
     </tr>
     </thead>
@@ -15,35 +15,35 @@
     <tr>
         <td>1</td>
         <td>
-            <a class="align-self-center " data-toggle="modal" data-target="#infoStudent">SV001</a>
+            <a class="align-self-center " data-toggle="modal" data-target="#infoScore">BD001</a>
         </td>
         <td>
-            <a class="align-self-center " data-toggle="modal" data-target="#infoStudent">Lê Minh Luân</a>
+            <a class="align-self-center " data-toggle="modal" data-target="#infoScore">Trừ điểm không điểm danh học lớp</a>
         </td>
         <td>
-            <input type="checkbox" name="idAccount" value="idAccount">
+            <input type="checkbox" name="idScore" value="idScore">
         </td>
     </tr>
     <tr>
         <td>2</td>
-        <td>SV002</td>
-        <td>Huỳnh Hoàng Thơ</td>
+        <td>BD002</td>
+        <td>Cộng điểm lao động</td>
         <td>
-            <input type="checkbox" name="idAccount" value="idAccount">
+            <input type="checkbox" name="idScore" value="idScore">
         </td>
     </tr>
     <tr>
         <td>2</td>
-        <td>SV003</td>
-        <td>Đoàn Minh Nhựt</td>
+        <td>BD003</td>
+        <td>Cộng điểm đi sự kiện A</td>
         <td>
             <input type="checkbox" name="idAccount" value="idAccount">
         </td>
     </tr>
     <tr>
         <td>3</td>
-        <td>SV004</td>
-        <td>Nguyễn Tấn Phát</td>
+        <td>BD004</td>
+        <td>Trừ điểm loa động</td>
         <td>
             <input type="checkbox" name="idAccount" value="idAccount">
         </td>
