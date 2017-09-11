@@ -11,7 +11,7 @@
                 <p>Vui lòng kiểm tra cẩn thận!</p>
                 <form action="#" method="post">
                     <div class="modal-footer">
-                        <input type="hidden" name="deleteStudent" id="delete">
+                        <input type="hidden" name="deleteStudent" id="deleteStudent">
                         <button type="submit" name="deleteYes" class="btn btn-danger">Đồng ý</button>
                         <button type="button" class="btn btn-default" data-dismiss="modal">Không</button>
                     </div>
