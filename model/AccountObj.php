@@ -16,8 +16,6 @@
 	 private $email;
    private $password;
    private $Permission_position;
-   private $Academy_idAcademy;
-   private $Class_idClass;
    function __construct(
     $idAccount = 'unknow',
     $accountName = 'unknow',
@@ -27,9 +25,8 @@
     $phone = 0,
     $email = 'unknow',
     $password = 'unknow',
-    $Permission_position = 'unknow',
-    $Academy_idAcademy = 'unknow',
-    $Class_idClass = 'unknow'){
+    $Permission_position = 'unknow'
+    ){
      $this->idAccount = $idAccount;
   	 $this->accountName = $accountName;
   	 $this->birthday = $birthday;
@@ -39,8 +36,6 @@
   	 $this->email = $email;
   	 $this->password = $password;
      $this->Permission_position = $Permission_position;
-     $this->Academy_idAcademy = $Academy_idAcademy;
-     $this->Class_idClass = $Class_idClass;
 	 }
    public function getAccountObj() {
      return $this;
@@ -72,13 +67,7 @@
    public function getPermission_position(){
      return $this->Permission_position;
    }
-   public function getAcademy_idAcademy(){
-     return $this->Academy_idAcademy;
-   }
-   public function getClass_idClass(){
-     return $this->Class_idClass;
-   }
-   public function setAccountObj($idAccount, $accountName, $birthday, $address, $sex, $phone, $email, $password, $Permission_position, $Academy_idAcademy, $Class_idClass){
+   public function setAccountObj($idAccount, $accountName, $birthday, $address, $sex, $phone, $email, $password, $Permission_position){
      $this->idAccount = $idAccount;
   	 $this->accountName = $accountName;
   	 $this->birthday = $birthday;
@@ -88,8 +77,6 @@
   	 $this->email = $email;
   	 $this->password = $password;
      $this->Permission_position = $Permission_position;
-     $this->Academy_idAcademy = $Academy_idAcademy;
-     $this->Class_idClass = $Class_idClass;
 	 }
    public function setIdAccount($idAccount){
      $this->idAccount = $idAccount;
@@ -117,12 +104,6 @@
    }
    public function setPermission_position($Permission_position){
      $this->Permission_position = $Permission_position;
-   }
-   public function setAcademy_idAcademy($Academy_idAcademy){
-     $this->Academy_idAcademy = $Academy_idAcademy;
-   }
-   public function setClass_idClass($Class_idClass){
-     $this->Class_idClass = $Class_idClass;
    }
  }
  #$newStudent = new AccountObj();

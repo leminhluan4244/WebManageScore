@@ -6,8 +6,6 @@
  * Cập nhật: 21/08/2017
  * Trạng thái: đã test thành công
  */
- require 'ConnectToSQL.php';
- require 'AccountObj.php';
   class AccountMod{
     private $conn2sql;
     function __construct(){
@@ -27,7 +25,7 @@
     }
     #ok
     public function addAccount($accountObj){
-      $sql = "INSERT INTO `account`(`idAccount`, `accountName`, `birthday`, `address`, `sex`, `phone`, `email`, `password`, `Permission_position`, `Academy_idAcademy`, `Class_idClass`) VALUES (
+      $sql = "INSERT INTO `account`(`idAccount`, `accountName`, `birthday`, `address`, `sex`, `phone`, `email`, `password`, `Permission_position`) VALUES (
         '".$accountObj->getIdAccount()."',
         '".$accountObj->getAccountName()."',
         '".$accountObj->getBirthday()."',
@@ -36,9 +34,8 @@
         '".$accountObj->getPhone()."',
         '".$accountObj->getEmail()."',
         '".md5($accountObj->getPassword())."',
-        '".$accountObj->getPermission_position()."',
-        '".$accountObj->getAcademy_idAcademy()."',
-        '".$accountObj->getClass_idClass()."')";
+        '".$accountObj->getPermission_position()
+        ."')";
       $this->conn2sql->Connect();
       $result = $this->conn2sql->conn->query($sql);
       $this->conn2sql->Stop();
@@ -55,7 +52,7 @@
       $result = $this->conn2sql->conn->query($sql);
       $this->conn2sql->Stop();
       $row = $result->fetch_row();
-      return new AccountObj($row[0], $row[1], $row[2], $row[3], $row[4], $row[5], $row[6], $row[7], $row[8], $row[9], $row[10]);
+      return new AccountObj($row[0], $row[1], $row[2], $row[3], $row[4], $row[5], $row[6], $row[7], $row[8]);
     }
     #ok
     public function updateAccount($account){
@@ -67,9 +64,7 @@
         `phone`='".$account->getPhone()."',
         `email`='".$account->getEmail()."',
         `password`='".md5($account->getPassword())."',
-        `Permission_position`='".$account->getPermission_position()."',
-        `Academy_idAcademy`='".$account->getAcademy_idAcademy()."',
-        `Class_idClass`='".$account->getClass_idClass()."'
+        `Permission_position`='".$account->getPermission_position()."'
         WHERE `idAccount`='".$account->getIdAccount()."'";
       $this->conn2sql->Connect();
       $result = $this->conn2sql->conn->query($sql);
@@ -94,8 +89,8 @@
       }
     }
     #ok
-    public function checkAccountOnAcademy($idAccount){
-      $sql = "SELECT `Academy_idAcademy` FROM `account` WHERE `idAccount` = '".$idAccount."'";
+    public function checkAccountOnAcademy($idAccount,$academy){
+      $sql = "SELECT `Academy_idAcademys` FROM `account` WHERE `idAccount` = '".$idAccount."'";
       $this->conn2sql->Connect();
       $result = $this->conn2sql->conn->query($sql);
       $row = $result->fetch_row();
@@ -137,9 +132,7 @@
         'phone'=> $row[$i++],
         'email'=> $row[$i++],
         'password'=> $row[$i++],
-        'permission_position'=> $row[$i++],
-        'Academy_idAcademy'=> $row[$i++],
-        'Class_idClass'=> $row[$i++]);
+        'permission_position'=> $row[$i++]);
       return $accountArr;
     }
     #ok
