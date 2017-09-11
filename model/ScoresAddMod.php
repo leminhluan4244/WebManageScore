@@ -18,8 +18,9 @@ class ScoresAddMod
 
     //1. Hàm thêm
     public function addScoresAdd($cores){
-        $sql = "INSERT INTO ScoresAdd (idScores, scores, decribe, Account_idAccount, structure_idItem) 
+        $sql = "INSERT INTO ScoresAdd (idScores,scoreName, scores, decribe, Account_idAccount, structure_idItem) 
 						VALUES('".$cores->getIdScores()."',
+						'".$cores->getScoreName()."',
 						'".$cores->getScores()."',
 						'".$cores->getDecribe()."',
 						'".$cores->getAccount_idAccount()."', '".$cores->getStructure_idItem()."')";
@@ -37,6 +38,7 @@ class ScoresAddMod
     public function updateScoresAdd($cores)
     {
         $sql = "UPDATE ScoresAdd SET
+                  scoreName='".$cores->getScoreName(). "',
                   scores='".$cores->getScores(). "',
                   decribe='".$cores->getDecribe(). "',
                   Account_idAccount='".$cores->getAccount_idAccount(). "',
@@ -79,6 +81,7 @@ class ScoresAddMod
             $obj = new ScoresAddObj();
             $list = array();
             while ($row = $result->fetch_assoc()) {
+                $obj->setScoreName($row["scoreName"]);
                 $obj->setIdScore($row["idScores"]);
                 $obj->setScores($row["scores"]);
                 $obj->setDecribe($row["decribe"]);
@@ -101,17 +104,17 @@ class ScoresAddMod
     1. Hàm thêm
     $sore_mod = new ScoresAddMod();
     $core_obj = new ScoresAddObj();
-    $core_obj->setScoresAddObj("tho", "9", "Good","B1400704","AAA");
+    $core_obj->setScoresAddObj("tho","demo", "9", "Good","B1400704","AAA");
     $sore_mod->addScoresAdd($core_obj);
     1. Hàm cập nhật
     $sore_mod = new ScoresAddMod();
     $core_obj = new ScoresAddObj();
-    $core_obj->setScoresAddObj("tho", "9", "Good","B1400704","AAA");
+    $core_obj->setScoresAddObj("tho", "demo", "9", "Good","B1400704","AAA");
     $sore_mod->updateScoresAdd($core_obj);
     3. Hàm xóa
     $sore_mod = new ScoresAddMod();
     $core_obj = new ScoresAddObj();
-    $core_obj->setScoresAddObj("SC01", "10", "Good","B1400704", "SR01");
+    $core_obj->setScoresAddObj("SC01", "demo", "10", "Good","B1400704", "SR01");
     $sore_mod->deleteClass($core_obj);
     4. Hàm trả về danh sách các điểm cộng trừ
     $sore_mod = new ScoresAddMod();

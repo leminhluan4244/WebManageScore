@@ -50,6 +50,3 @@
 <?php 
 	require_once "../controller/footer.php";
 ?>
-</body>
-
-</html>
