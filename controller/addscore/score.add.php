@@ -5,58 +5,47 @@
                             <div class="modal-header">
 
                                 <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                                <h4 class="modal-title">Thêm mới sinh viên</h4>
+                                <h4 class="modal-title">Thêm mới danh sách điểm sinh viên</h4>
                             </div>
                             <div class="modal-body ">
                                 <form action="#" method="post">
 
                                     <fieldset class="form-group">
-                                        <p class="text-left "><b>Họ và Tên</b></p>
-                                        <input type="text" class="form-control" name="addAccountName" id="addAccountName"
+                                        <p class="text-left "><b>Tên danh sách</b></p>
+                                        <input type="text" class="form-control" name="addScoreName" id="addScoreName"
                                                placeholder="Nhập tên sinh viên">
 
                                     </fieldset>
 
                                     <fieldset class="form-group">
-                                        <p class="text-left"><b>MSSV</b></p>
-                                        <input type="text" class="form-control" name="addIdAccount" id="addIdAccount"
-                                               placeholder="Nhập mã số sinh viên">
+                                        <p class="text-left"><b>Mã danh sách</b></p>
+                                        <p class="text-left form-control"><b>AAAA</b></p>
                                     </fieldset>
 
                                     <fieldset class="form-group">
-                                        <p class="text-left"><b>Ngày Sinh</b></p>
-                                        <input type="date" class="form-control" name="addBirthday" id="addBirthday"
-                                               placeholder="Ngày Sinh">
+                                        <p class="text-left"><b>Ngày Tạo</b></p>
+                                        <input type="date" class="form-control" name="addDay" id="addDay"
+                                               placeholder="Ngày Tạo">
                                     </fieldset>
 
                                     <fieldset class="form-group">
-                                        <p class="text-left"><b>Địa chỉ</b></p>
-                                        <input type="text" class="form-control" name="addAddress" id="addAddress"
-                                               placeholder="Địa chỉ">
-                                    </fieldset>
-
-                                    <fieldset class="form-group">
-                                        <p class="text-left"><b>Giới tính</b></p>
-                                        <select class="form-control" name="addSex" id="addSex">
-                                            <option value="male">Nam</option>
-                                            <option value="female">Nữ</option>
+                                        <p class="text-left"><b>Bảng này thực hiện cho mục</b></p>
+                                        <select class="form-control" name="item" id="item">
+                                            <option value="male">I.1.1 Lao động cấp trường</option>
+                                            <option value="female">I.i.i Bằng khen cấp Khoa</option>
                                         </select>
                                     </fieldset>
 
                                     <fieldset class="form-group">
-                                        <p class="text-left"><b>Điện thoại</b></p>
-                                        <input type="number" class="form-control" name="addPhone" id="addPhone"
-                                               placeholder="Nhập số điện thoại">
+                                        <p class="text-left"><b>Loại</b></p>
+                                        <select class="form-control" name="addType" id="addType">
+                                            <option value="male">Cộng điểm</option>
+                                            <option value="female">Trừ điểm</option>
+                                        </select>
                                     </fieldset>
 
                                     <fieldset class="form-group">
-                                        <p class="text-left"><b>Email</b></p>
-                                        <input type="mail" class="form-control" name="addEmail" id="addEmail"
-                                               placeholder="Nhập email" value="@student.ctu.edu.vn">
-                                    </fieldset>
-
-                                    <fieldset class="form-group">
-                                        <p class="text-left"><b>Khoa - Viện</b></p>
+                                        <p class="text-left"><b>Bảng điểm thuộc khoa</b></p>
                                         <select class="form-control" name="addAcademyName" id="addAcademyName">
                                             <option value="DI">Công nghệ thông tin và
                                                 truyền thông
@@ -68,8 +57,8 @@
                                     </fieldset>
 
                                     <fieldset class="form-group">
-                                        <p class="text-left"><b>Lớp</b></p>
-                                        <select class="form-control" name="addClassNamer" id="addClassName">
+                                        <p class="text-left"><b>Bảng điểm dành cho lớp</b></p>
+                                        <select class="form-control" name="addClassName" id="addClassName">
                                             <option value="DI1496A1">KTPM1 K40</option>
                                             <option value="DI1496A1">KTPM2 K40</option>
                                             <option value="DI1496A1">KTPM3 K40</option>

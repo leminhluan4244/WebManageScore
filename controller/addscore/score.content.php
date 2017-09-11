@@ -2,7 +2,7 @@
 
     <!--Start list student-->
     <?php
-    require "../controller/student.table.php";
+    require "../controller/student/student.table.php";
     ?>
     <!--End list student>
 
@@ -21,25 +21,25 @@
     <!-- End student add button-->
     <!-- Start add student-->
     <?php
-    require "../controller/student.add.php";
+    require "../controller/student/student.add.php";
     ?>
     <!-- End add student-->
 
     <!-- Start infor student-->
     <?php
-    require "../controller/student.info.php";
+    require "../controller/student/student.info.php";
     ?>
     <!-- End infor student-->
 
     <!--Start update student-->
     <?php
-    require "../controller/update.student.php";
+    require "../controller/student/student.update.php";
     ?>
     <!--End update student-->
 
     <!--Start delete student-->
     <?php
-    require "../controller/student.delete.php";
+    require "../controller/student/student.delete.php";
     ?>
     <!--End delete student-->
 

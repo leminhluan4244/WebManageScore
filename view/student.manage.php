@@ -16,14 +16,14 @@
                     <!---->
                     <!--Start combobox academy for student-->
                     <?php
-                        require "../controller/student.filter.academy.php";
+                        require "../controller/student/student.filter.academy.php";
                     ?>
                     <!--End combobox academy for student-->
 
                     <!---->
                     <!--Start combobox class for student-->
                     <?php
-                    require "../controller/student.filter.class.php";
+                    require "../controller/student/student.filter.class.php";
                     ?>
                     <!--End combobox class for student-->
 
@@ -38,7 +38,7 @@
             <!--End filter table-->
             <!--Begin table-->
             <?php
-                require_once "../controller/student.content.php";
+                require_once "../controller/student/student.content.php";
             ?>
             <!--End table-->
 
