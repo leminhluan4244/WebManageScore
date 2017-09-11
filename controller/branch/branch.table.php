@@ -1,4 +1,4 @@
-<table class="table table-bordered table-condensed">
+<table class="table table-bordered table-condensed ">
 
     <thead>
     <tr>
@@ -22,7 +22,7 @@
             <a class="align-self-center " data-toggle="modal" data-target="#infoBranch">Phụng Hiệp</a>
         </td>
         <td>
-            <a class="align-self-center " data-toggle="modal" data-target="#infoBranch">Hậu Giang</a>
+           Hậu Giang
         </td>
         <td>
             <input type="checkbox" name="idBranch" value="idBranch">
