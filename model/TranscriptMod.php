@@ -6,9 +6,6 @@
  * Time: 11:07 PM
  */
 
-require_once 'ConnectToSQL.php';
-require_once 'TranscriptObj.php';
-
 class TranscriptMod {
 	private $connSQL;
 

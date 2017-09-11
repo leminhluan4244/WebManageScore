@@ -7,9 +7,6 @@
  * Time: 12:23
  */
 
-require_once 'ConnectToSQL.php';
-require_once 'StructureObj.php';
-
 class PractiseScoresMod {
 	private $connSQL;
 

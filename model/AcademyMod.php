@@ -5,11 +5,6 @@
  * Date: 05/08/2017
  * Cập nhật: 21/08/2017
  */
-require_once("ConnectToSQL.php");
-require_once("AcademyObj.php");
-require_once("AccountObj.php");
-require_once("ClassObj.php");
-
 class AcademyMod
 {
     //Tạo ra một đối tượng cho phép dùng nó để giao tiếp với MySQL
