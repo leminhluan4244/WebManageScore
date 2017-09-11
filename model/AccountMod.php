@@ -155,9 +155,8 @@
         'phone'=> $row[$i++],
         'email'=> $row[$i++],
         'password'=> $row[$i++],
-        'permission_position'=> $row[$i++],
-        'Academy_idAcademy'=> $row[$i++],
-        'Class_idClass'=> $row[$i++]);
+        'permission_position'=> $row[$i++]
+        );
       return $accountArr;
     }
   }
