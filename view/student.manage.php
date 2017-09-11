@@ -14,7 +14,6 @@
                 <form action="" method="post">
 
                     <!---->
-
                     <!--Start combobox academy for student-->
                     <?php
                         require "../controller/student.filter.academy.php";
