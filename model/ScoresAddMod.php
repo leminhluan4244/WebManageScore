@@ -5,7 +5,7 @@
  * Date: 06/08/2017
  * Time: 9:55 SA
  */
-
+require_once "../model/Link.php";
 class ScoresAddMod
 {
     private $connSql;
@@ -18,12 +18,12 @@ class ScoresAddMod
 
     //1. Hàm thêm
     public function addScoresAdd($cores){
-        $sql = "INSERT INTO ScoresAdd (idScores,scoreName, scores, decribe, Account_idAccount, structure_idItem) 
+        $sql = "INSERT INTO ScoresAdd (idScores, scoreName, scores, decribe, Structure_idItem)
 						VALUES('".$cores->getIdScores()."',
 						'".$cores->getScoreName()."',
 						'".$cores->getScores()."',
 						'".$cores->getDecribe()."',
-						'".$cores->getAccount_idAccount()."', '".$cores->getStructure_idItem()."')";
+						'".$cores->getStructure_idItem()."')";
 
         $this->connSql->Connect();
         if ($this->connSql->conn->query($sql) === true) {
@@ -41,8 +41,7 @@ class ScoresAddMod
                   scoreName='".$cores->getScoreName(). "',
                   scores='".$cores->getScores(). "',
                   decribe='".$cores->getDecribe(). "',
-                  Account_idAccount='".$cores->getAccount_idAccount(). "',
-                  Structure_idItem='".$cores->getStructure_idItem(). "' 
+                  Structure_idItem='".$cores->getStructure_idItem(). "'
                   WHERE idScores='".$cores->getIdScores()."'";
 
         $this->connSql->Connect();
@@ -58,7 +57,7 @@ class ScoresAddMod
     public function deleteScoresAdd($cores)
     {
 
-        $sql = "DELETE FROM ScoresAdd 
+        $sql = "DELETE FROM ScoresAdd
 						WHERE idScores='".$cores->getIdScores()."';";
 
         $this->connSql->Connect();
@@ -85,8 +84,7 @@ class ScoresAddMod
                 $obj->setIdScore($row["idScores"]);
                 $obj->setScores($row["scores"]);
                 $obj->setDecribe($row["decribe"]);
-                $obj->setAccount_idAccount($row["Account_idAccount"]);
-                $obj->setStructure_idItem($row["structure_idItem"]);
+                $obj->setStructure_idItem($row["Structure_idItem"]);
                 $list[$k] = $obj;
                 $k++;
             }
@@ -100,28 +98,28 @@ class ScoresAddMod
     }
 
 }
-    /* Kiểm tra hàm có viết đúng hay không ?
-    1. Hàm thêm
+    #/* Kiểm tra hàm có viết đúng hay không ?
+    #1. Hàm thêm
     $sore_mod = new ScoresAddMod();
     $core_obj = new ScoresAddObj();
     $core_obj->setScoresAddObj("tho","demo", "9", "Good","B1400704","AAA");
     $sore_mod->addScoresAdd($core_obj);
-    1. Hàm cập nhật
+    #2. Hàm cập nhật
     $sore_mod = new ScoresAddMod();
     $core_obj = new ScoresAddObj();
     $core_obj->setScoresAddObj("tho", "demo", "9", "Good","B1400704","AAA");
     $sore_mod->updateScoresAdd($core_obj);
-    3. Hàm xóa
+    #3. Hàm xóa
     $sore_mod = new ScoresAddMod();
     $core_obj = new ScoresAddObj();
     $core_obj->setScoresAddObj("SC01", "demo", "10", "Good","B1400704", "SR01");
     $sore_mod->deleteClass($core_obj);
-    4. Hàm trả về danh sách các điểm cộng trừ
+    #4. Hàm trả về danh sách các điểm cộng trừ
     $sore_mod = new ScoresAddMod();
     $core_obj = new ScoresAddObj();
     $getlist = array();
     $getlist = $sore_mod->getScoresAdd();
     foreach ($getlist as $key => $value) {
         echo $key . "->" . $value->getIdScores() . " - " . $value->getDecribe(); }
-    */
+    #*/
 ?>
