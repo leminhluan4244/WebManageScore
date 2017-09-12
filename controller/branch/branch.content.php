@@ -32,7 +32,7 @@
 
     <!--Start update branch-->
     <?php
-    require "../controller/branch/update.branch.php";
+    require "../controller/branch/branch.update.php";
     ?>
     <!--End update branch-->
 
