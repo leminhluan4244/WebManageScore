@@ -7,7 +7,6 @@
  * Lý do: Có sự thay đổi về cơ sở dữ liệu
  * Trạng thái: đã test thành công
  */
- require_once "Link.php";
   class AccountMod{
     private $conn2sql;
     function __construct(){
@@ -335,7 +334,6 @@
       return $accountArr;
     }
   }
-
 
   #*************************************************************************************************************************
   #$newStudent = new accountMod();
