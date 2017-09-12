@@ -5,7 +5,7 @@
  * Date: 06/08/2017
  * Time: 9:55 SA
  */
-require_once "../model/Link.php";
+
 class ScoresAddMod
 {
     private $connSql;
@@ -94,7 +94,7 @@ class ScoresAddMod
         }
 
         $this->connSql->Stop();
-        //return $list;
+        return $list;
     }
 
 }
