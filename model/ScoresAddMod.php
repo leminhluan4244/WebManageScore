@@ -98,7 +98,7 @@ class ScoresAddMod
     }
 
 }
-    #/* Kiểm tra hàm có viết đúng hay không ?
+    /* Kiểm tra hàm có viết đúng hay không ?
     #1. Hàm thêm
     $sore_mod = new ScoresAddMod();
     $core_obj = new ScoresAddObj();
@@ -121,5 +121,5 @@ class ScoresAddMod
     $getlist = $sore_mod->getScoresAdd();
     foreach ($getlist as $key => $value) {
         echo $key . "->" . $value->getIdScores() . " - " . $value->getDecribe(); }
-    #*/
+    */
 ?>
