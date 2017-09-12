@@ -162,7 +162,6 @@ class AcademyMod
                 $account->setPhone($row["phone"]);
                 $account->setEmail($row["email"]);
                 $account->setPermission_position($row["Permission_position"]);
-                $account->setAcademy_idAcademy($row["Academy_idAcademy"]);
                 $list[$k] = $account;
                 $k++;
             }
@@ -199,7 +198,7 @@ class AcademyMod
                 $k++;
             }
         } else {
-            echo '0 có ID này';
+          //  echo '0 có ID này';
             //Báo rỗng
         }
         return $list;
@@ -262,7 +261,7 @@ class AcademyMod
                 $k++;
             }
         } else {
-            echo "Không có kết quả nào";
+           // echo "Không có kết quả nào";
         }
         //Ngắt kết nối
         $this->conn->Stop();
@@ -280,12 +279,12 @@ class AcademyMod
         // Thực thi câu lệnh
         $this->conn->Connect();
         if ($this->conn->conn->multi_query($sql) === true) {
-            echo "Thêm thành công";
+           // echo "Thêm thành công";
             //Ngắt kết nối
             $this->conn->Stop();
             return true;
         } else {
-            echo "Lỗi addAcademy";
+          //  echo "Lỗi addAcademy";
             //Ngắt kết nối
             $this->conn->Stop();
             return false;
@@ -303,12 +302,12 @@ class AcademyMod
         $this->conn->Connect();
         // Thực hiện câu truy vấn
         if ($this->conn->conn->query($sql) === true) {
-            echo "Xóa thành công";
+          //  echo "Xóa thành công";
             //Ngắt kết nối
             $this->conn->Stop();
             return true;
         } else {
-            echo "Lỗi deleteAcademy";
+           // echo "Lỗi deleteAcademy";
             //Ngắt kết nối
             $this->conn->Stop();
             return false;
@@ -326,12 +325,12 @@ class AcademyMod
         // Thực hiện câu truy vấn
         $this->conn->Connect();
         if ($this->conn->conn->query($sql) === true) {
-            echo "Cập nhật thành công";
+           // echo "Cập nhật thành công";
             //Ngắt kết nối
             $this->conn->Stop();
             return true;
         } else {
-            echo "Lỗi updateAcademy";
+           // echo "Lỗi updateAcademy";
             //Ngắt kết nối
             $this->conn->Stop();
             return false;

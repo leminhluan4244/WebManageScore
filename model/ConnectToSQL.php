@@ -23,6 +23,7 @@ Class ConnectToSQL
     public function Stop()
     {
         mysqli_close($this->conn);
+        //unset($this->conn);
     }
 }
 

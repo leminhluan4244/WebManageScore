@@ -28,5 +28,7 @@ require_once "../model/StructureMod.php";
 require_once "../model/StructureObj.php";
 require_once "../model/TranscriptMod.php";
 require_once "../model/TranscriptObj.php";
-
+require_once "../model/TranscriptHasAccountMod.php";
+require_once "../model/TranscriptHasAccountObj.php";
+require_once "../model/CheckTool.php";
 ?>

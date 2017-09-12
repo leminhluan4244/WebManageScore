@@ -23,7 +23,7 @@ class TranscriptHasAccountMod {
             // Sử dụng vòng lặp while để lặp kết quả
             $k = 0;
             //Tạo một đối tượng chứa
-            $transObj = new ClassObj;
+            $transObj = new TranscriptHasAccountObj();
             $list = array();
             while ($row = $result->fetch_assoc()) {
 

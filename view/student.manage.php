@@ -1,5 +1,8 @@
 <?php
-    require_once "../controller/header.php"
+    require_once "../controller/header.php";
+    $accountObj = new AccountObj();
+    $accountMod = new AccountMod();
+
 ?>
 <div class="container-fluid">
     <!Start content manage student-->
