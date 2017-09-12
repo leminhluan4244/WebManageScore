@@ -162,6 +162,8 @@ INSERT INTO `image` (`Image`, `Account_idAccount`, `Structure_idItem`) VALUES ('
 INSERT INTO `practisescores` (`scores`, `semester`, `year`, `Account_idAccount`) VALUES ('100', '2', '2017', 'B1400123');
 INSERT INTO `practisescores` (`scores`, `semester`, `year`, `Account_idAccount`) VALUES ('98', '1', '2017', 'B1400713');
 INSERT INTO `practisescores` (`scores`, `semester`, `year`, `Account_idAccount`) VALUES ('50', '1', '2016', 'B1400713');
-/*Dữ liệu mẫu cộng trừ điểm*/
+/*Dữ liệu mẫu 3 cộng trừ điểm*/
 INSERT INTO `scoresadd` (`idScores`, `scoreName`, `scores`, `describe`, `Structure_idItem`) VALUES ('AS001', 'Trừ điểm rèn luyện học lớp', '-5', 'Trừ điểm rèn luyện học lớp cho DI1496A1 Học sinh vắng học lớp bị trừ 5 điểm', 'I.b.1.3');
+INSERT INTO `scoresadd` (`idScores`, `scoreName`, `scores`, `describe`, `Structure_idItem`) VALUES ('AS002', 'Trừ điểm rèn luyện học lớp', '-5', 'Trừ điểm rèn luyện học lớp cho DI1496A2 Học sinh vắng học lớp bị trừ 5 điểm', 'I.b.1.3');
+INSERT INTO `scoresadd` (`idScores`, `scoreName`, `scores`, `describe`, `Structure_idItem`) VALUES ('AS003', 'Cộng điểm rèn luyện lao động', '5', 'Cộng điểm rèn luyện học lớp cho DI1496A2 Học sinh vắng học lớp bị trừ 5 điểm', 'I.b.2.1');
 /*Dữ liệu mẫu */	
