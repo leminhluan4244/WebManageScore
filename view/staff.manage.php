@@ -2,14 +2,12 @@
 require_once "../controller/header.php"
 ?>
 
-
-
 <div class="container-fluid">
-    <!Start content manage branch-->
+    <!Start content manage staff-->
     <div class="container main-academy-container">
         <div class="academy-action-list text-center">
 
-            <h4>Danh sách Chi Hội</h4>
+             <h4>Danh sách cán bộ</h4>
             <div class="form-group">
                 <form action="" method="post">
 
@@ -20,13 +18,9 @@ require_once "../controller/header.php"
                     <!---->
                     <!--Start combobox city for branch-->
                     <?php
-                    require "../controller/branch/branch.filter.city.php";
+                    require "../controller/staff/staff.filter.academy.php";
                     ?>
                     <!--End combobox city for branch-->
-
-
-
-                    <!---->
 
                 </form>
                 <br>
@@ -35,7 +29,7 @@ require_once "../controller/header.php"
             <!--End filter table-->
             <!--Begin table-->
             <?php
-            require_once "../controller/branch/branch.content.php";
+            require_once "../controller/staff/staff.content.php";
             ?>
             <!--End table-->
 
