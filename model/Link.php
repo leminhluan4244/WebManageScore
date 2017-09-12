@@ -26,4 +26,5 @@ require_once "../model/StructureMod.php";
 require_once "../model/StructureObj.php";
 require_once "../model/TranscriptMod.php";
 require_once "../model/TranscriptObj.php";
+
 ?>

@@ -1,9 +1,9 @@
 <?php
 /**
  * Created by PhpStorm.
- * User: Administrator
- * Date: 13/8/2017
- * Time: 11:03 PM
+ * User: TanPhat
+ * Date: 5/8/2017
+ * Time: 5:42 PM
  */
 
 class TranscriptObj {
@@ -12,7 +12,6 @@ class TranscriptObj {
 	private $scores;
 	private $describe;
 	private $idParent;
-	private $Account_idAccount;
 
 	public function __construct(){
 		$this->idItem = "";
@@ -20,108 +19,87 @@ class TranscriptObj {
 		$this->scores = 0;
 		$this->describe = "";
 		$this->idParent = "";
-		$this->Account_idAccount = "0";
 	}
 
-	public function getStructureObj(){
+	public function getTranscriptObj(){
 		return $this;
 	}
 
-	public function setTranscriptObj($idItem, $itemName, $scores, $describe, $idParent, $Account_idAccount){
+	public function setTranscriptObj($idItem, $itemName, $scores, $describe, $idParent){
 		$this->idItem = $idItem;
 		$this->itemName = $itemName;
 		$this->scores = $scores;
 		$this->describe = $describe;
 		$this->idParent = $idParent;
-		$this->Account_idAccount = $Account_idAccount;
 	}
 
 	/**
-	 * @return string
-	 */
-	public function getIdItem() {
-		return $this->idItem;
-	}
-
-	/**
-	 * @param string $idItem
-	 */
-	public function setIdItem($idItem) {
-		$this->idItem = $idItem;
-	}
-
-	/**
-	 * @return string
-	 */
-	public function getItemName() {
-		return $this->itemName;
-	}
-
-	/**
-	 * @param string $itemName
-	 */
-	public function setItemName($itemName) {
-		$this->itemName = $itemName;
-	}
-
-	/**
-	 * @return int
+	 * @return mixed
 	 */
 	public function getScores() {
 		return $this->scores;
 	}
 
 	/**
-	 * @param int $scores
+	 * @return mixed
 	 */
-	public function setScores($scores) {
-		$this->scores = $scores;
+	public function getItemName() {
+		return $this->itemName;
 	}
 
 	/**
-	 * @return string
-	 */
-	public function getDescribe() {
-		return $this->describe;
-	}
-
-	/**
-	 * @param string $describe
-	 */
-	public function setDescribe($describe) {
-		$this->describe = $describe;
-	}
-
-	/**
-	 * @return string
+	 * @return mixed
 	 */
 	public function getIdParent() {
 		return $this->idParent;
 	}
 
 	/**
-	 * @param string $idParent
+	 * @return mixed
+	 */
+	public function getIdItem() {
+		return $this->idItem;
+	}
+
+	/**
+	 * @return mixed
+	 */
+	public function getDescribe() {
+		return $this->describe;
+	}
+
+	/**
+	 * @param mixed $scores
+	 */
+	public function setScores($scores) {
+		$this->scores = $scores;
+	}
+
+	/**
+	 * @param mixed $itemName
+	 */
+	public function setItemName($itemName) {
+		$this->itemName = $itemName;
+	}
+
+	/**
+	 * @param mixed $idParent
 	 */
 	public function setIdParent($idParent) {
 		$this->idParent = $idParent;
 	}
 
 	/**
-	 * @return string
+	 * @param mixed $idItem
 	 */
-	public function getAccountIdAccount() {
-		return $this->Account_idAccount;
+	public function setIdItem($idItem) {
+		$this->idItem = $idItem;
 	}
 
 	/**
-	 * @param string $Account_idAccount
+	 * @param mixed $describe
 	 */
-	public function setAccountIdAccount($Account_idAccount) {
-		$this->Account_idAccount = $Account_idAccount;
+	public function setDescribe($describe) {
+		$this->describe = $describe;
 	}
-
-
-
-
-
 }

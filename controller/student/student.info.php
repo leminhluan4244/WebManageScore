@@ -3,9 +3,7 @@
 //Khởi tạo giá trị lấy dự liệu cho thông tin sinh viên
 $student_obj = new AccountObj();
 $student_mod = new AccountMod();
-$student_mod->getAccount()
-
-
+$student_obj=$student_mod->getAccount();
 ?>
 <div id="infoStudent" class="modal fade " tabindex="-1" role="dialog" aria-labelledby aria-hidden="true">
     <div class="modal-dialog">
@@ -19,7 +17,7 @@ $student_mod->getAccount()
                 <form action="#" method="post">
                     <fieldset class="form-group">
                         <p class="text-left "><b>Họ và Tên</b></p>
-                        <p class="text-left form-control"><b>Lê Minh Luân</b></p>
+                        <?php echo '<p class="text-left form-control"><b>'.$student_obj->getAccountName().'</b></p>' ?>
                     </fieldset>
 
                     <fieldset class="form-group">
