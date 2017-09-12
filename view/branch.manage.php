@@ -6,7 +6,7 @@ require_once "../controller/header.php"
 
 <div class="container-fluid">
     <!Start content manage branch-->
-    <div class="container main-city-container">
+    <div class="container main-academy-container">
         <div class="academy-action-list text-center">
 
             <h4>Danh sách Chi Hội</h4>
