@@ -6,7 +6,7 @@
  * Time: 11:03 PM
  */
 
-class TranscriptObj {
+class TranscriptHasAccountObj {
 	private $idItem;
 	private $itemName;
 	private $scores;
