@@ -4,6 +4,9 @@
 $student_obj = new AccountObj();
 $student_mod = new AccountMod();
 $student_obj=$student_mod->getAccount('B1400704');
+$row = array(10);
+//$row =$student_mod->getAccountOnAcademy('B1400704');
+
 ?>
 <div id="infoStudent" class="modal fade " tabindex="-1" role="dialog" aria-labelledby aria-hidden="true">
     <div class="modal-dialog">
@@ -47,17 +50,17 @@ $student_obj=$student_mod->getAccount('B1400704');
 
                     <fieldset class="form-group">
                         <p class="text-left"><b>Email</b></p>
-                        <?php echo '<p class="text-left form-control"><b>'.$student_mod->getEmail().'</b></p>' ?>
+                        <?php echo '<p class="text-left form-control"><b>'.$student_obj->getEmail().'</b></p>' ?>
                     </fieldset>
 
                     <fieldset class="form-group">
                         <p class="text-left"><b>Khoa - Viện</b></p>
-                        <?php echo '<p class="text-left form-control"><b>'.$student_mod->getAccountOnAcademy().'</b></p>' ?>
+                        <?php echo '<p class="text-left form-control"><b>'."agdhagdhf".'</b></p>' ?>
                     </fieldset>
 
                     <fieldset class="form-group">
                         <p class="text-left"><b>Lớp</b></p>
-                        <?php echo '<p class="text-left form-control"><b>'.$student_mod->getAccountOnClass().'</b></p>' ?>
+                        <?php echo '<p class="text-left form-control"><b>'."ahdfvasdgfgasd".'</b></p>' ?>
                     </fieldset>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-default" data-dismiss="modal">Đóng</button>

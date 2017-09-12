@@ -88,14 +88,12 @@
          return false;
       }
     }
-    #ok
+    // Update late
     public function getAccountOnAcademy($idAccount){
-      $sql = "SELECT `Academy_idAcademys` FROM `account` WHERE `idAccount` = '".$idAccount."'";
+      $sql = "SELECT `Academy_idAcademys` FROM `Account_has_Academy` WHERE `idAccount` = '".$idAccount."'";
       $this->conn2sql->Connect();
       $result = $this->conn2sql->conn->query($sql);
       $row = $result->fetch_row();
-      $sql = "SELECT `academyName` FROM `academy` WHERE `idAcademy` = '".$row[0]."'";
-      $result = $this->conn2sql->conn->query($sql);
       $this->conn2sql->Stop();
       $row = $result->fetch_row();
       return $row[0];
