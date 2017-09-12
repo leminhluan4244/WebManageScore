@@ -29,11 +29,11 @@ class AcademyMod
             while ($row = $result->fetch_assoc()) {
 
                 //Cho vào list đối tượng
-                echo $row["count(*)"];
+               // echo $row["count(*)"];
                 return $row["count(*)"];
             }
         } else {
-            echo 'error count class in academy';
+           // echo 'error count class in academy';
             return -1;
         }
 
@@ -56,11 +56,11 @@ class AcademyMod
             while ($row = $result->fetch_assoc()) {
 
                 //Cho vào list đối tượng
-                echo $row["count(*)"];
+                //echo $row["count(*)"];
                 return $row["count(*)"];
             }
         } else {
-            echo "error count student in academy";
+            //echo "error count student in academy";
             return -1;
         }
 
@@ -69,7 +69,7 @@ class AcademyMod
     }
 
     // Hàm đếm số cán bộ trong một khoa có bao cán bộ
-    public function countCadre($academy)
+    public function countStaff($academy)
     {
         $sql = "SELECT count(*) 
 					FROM Account 
@@ -83,11 +83,11 @@ class AcademyMod
             while ($row = $result->fetch_assoc()) {
 
                 //Cho vào list đối tượng
-                echo $row["count(*)"];
+               // echo $row["count(*)"];
                 return $row["count(*)"];
             }
         } else {
-            echo "error count cadre in acdemy";
+            //echo "error count cadre in acdemy";
             return -1;
         }
 
@@ -123,7 +123,8 @@ class AcademyMod
                 $k++;
             }
         } else {
-            echo "Không có kết quả nào";
+            //echo "Không có kết quả nào";
+            return -1;
         }
         //Ngắt kết nối
         $this->conn->Stop();
@@ -166,7 +167,8 @@ class AcademyMod
                 $k++;
             }
         } else {
-            echo "Không có kết quả nào";
+            return -1;
+            //echo "Không có kết quả nào";
         }
         //Ngắt kết nối
         $this->conn->Stop();
@@ -371,7 +373,7 @@ $mod->countClass($obj);
 echo '<br>Đếm số học sinh trong khoa';
 $mod->countStudent($obj);
 echo '<br> Đếm số cán bộ khoa';
-$mod->countCadre($obj);
+$mod->countStaff($obj);
 echo '<br> Danh sách lớp';
 $getlistclass = array();
 $getlistclass=$mod->getListClass($obj);

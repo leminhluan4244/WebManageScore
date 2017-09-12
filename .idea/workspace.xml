@@ -1,7 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="e60ac19f-f4a7-43c4-a1a3-0073984475d3" name="Default" comment="" />
+    <list default="true" id="e60ac19f-f4a7-43c4-a1a3-0073984475d3" name="Default" comment="">
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/WebManageScore.iml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/modules.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/vcs.xml" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/model/TranscriptModa.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/model/TranscriptObja.php" afterPath="" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/model/AcademyMod.php" afterPath="$PROJECT_DIR$/model/AcademyMod.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/model/AccountHasAcademyMod.php" afterPath="$PROJECT_DIR$/model/AccountHasAcademyMod.php" />
+    </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -9,8 +18,91 @@
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
+  <component name="ExecutionTargetManager" SELECTED_TARGET="default_target" />
   <component name="FileEditorManager">
-    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300" />
+    <leaf>
+      <file leaf-file-name="DataInsert.sql" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/document/DataInsert.sql">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="0">
+              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="TranscriptHasAccountMod.php" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/model/TranscriptHasAccountMod.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="68">
+              <caret line="9" column="21" lean-forward="true" selection-start-line="9" selection-start-column="21" selection-end-line="9" selection-end-column="21" />
+              <folding>
+                <marker date="1505227963243" expanded="true" signature="292:369" ph="select * fro... Transcrpit_has_Account" />
+                <marker date="1505227963243" expanded="true" signature="1351:1689" ph="insert into Transcript_has_Account... " />
+                <marker date="1505227963243" expanded="true" signature="1351:1700" ph="insert into Transcript_has_Account... " />
+                <marker date="1505227963243" expanded="true" signature="1885:2285" ph="update trans... " />
+                <marker date="1505227963243" expanded="true" signature="2478:2563" ph="delete from " />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="AccountObj.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/model/AccountObj.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="0">
+              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="TranscriptHasAccountObj.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/model/TranscriptHasAccountObj.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="340">
+              <caret line="49" column="33" lean-forward="false" selection-start-line="49" selection-start-column="21" selection-end-line="49" selection-end-column="33" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="AcademyMod.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/model/AcademyMod.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="1785">
+              <caret line="375" column="23" lean-forward="true" selection-start-line="375" selection-start-column="23" selection-end-line="375" selection-end-column="23" />
+              <folding>
+                <marker date="1505227245273" expanded="true" signature="564:649" ph="SELECT count... Class" />
+                <marker date="1505227245273" expanded="true" signature="1477:1607" ph="SELECT count... Account" />
+                <marker date="1505227245273" expanded="true" signature="2426:2556" ph="SELECT count... Account" />
+                <marker date="1505227245273" expanded="true" signature="3573:3651" ph="SELECT * FRO... Class" />
+                <marker date="1505227245273" expanded="true" signature="5069:5164" ph="SELECT * FRO... Account" />
+                <marker date="1505227245273" expanded="true" signature="6729:6801" ph="SELECT * FRO... Academy" />
+                <marker date="1505227245273" expanded="true" signature="7868:7945" ph="SELECT * FRO... Academy" />
+                <marker date="1505227245273" expanded="true" signature="9114:9135" ph="SELECT * FRO... Academy" />
+                <marker date="1505227245273" expanded="true" signature="10206:10348" ph="INSERT INTO Academy... " />
+                <marker date="1505227245273" expanded="true" signature="10881:10958" ph="DELETE FROM " />
+                <marker date="1505227245273" expanded="true" signature="11527:11663" ph="UPDATE Acade... " />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+    </leaf>
+  </component>
+  <component name="FindInProjectRecents">
+    <findStrings>
+      <find>TranscriptHasAccount</find>
+      <find>Transcript</find>
+      <find>TranscriptMod</find>
+      <find>$class</find>
+    </findStrings>
+    <replaceStrings>
+      <replace>TranscriptHasAccountObj</replace>
+      <replace>TranscriptHasAccountMod</replace>
+      <replace>$transObj</replace>
+    </replaceStrings>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -28,6 +120,10 @@
         <option value="$PROJECT_DIR$/../Project Test/WebManageScore/controller/header.php" />
         <option value="$PROJECT_DIR$/controller/footer.php" />
         <option value="$PROJECT_DIR$/model/AccountMod.php" />
+        <option value="$PROJECT_DIR$/model/TranscriptObja.php" />
+        <option value="$PROJECT_DIR$/model/AccountHasAcademyMod.php" />
+        <option value="$PROJECT_DIR$/model/AcademyMod.php" />
+        <option value="$PROJECT_DIR$/model/TranscriptHasAccountMod.php" />
       </list>
     </option>
   </component>
@@ -40,8 +136,7 @@
   <component name="PhpWorkspaceProjectConfiguration" backward_compatibility_performed="true" />
   <component name="ProjectFrameBounds">
     <option name="x" value="-8" />
-    <option name="y" value="-8" />
-    <option name="width" value="1382" />
+    <option name="width" value="1378" />
     <option name="height" value="703" />
   </component>
   <component name="ProjectView">
@@ -59,23 +154,123 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
-          <expand>
-            <path>
-              <item name="WebManageScore" type="b2602c69:ProjectViewProjectNode" />
-              <item name="WebManageScore" type="2a2b976b:PhpTreeStructureProvider$1" />
-            </path>
-            <path>
-              <item name="WebManageScore" type="b2602c69:ProjectViewProjectNode" />
-              <item name="WebManageScore" type="2a2b976b:PhpTreeStructureProvider$1" />
-              <item name="view" type="2a2b976b:PhpTreeStructureProvider$1" />
-            </path>
-          </expand>
-          <select />
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="WebManageScore" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="WebManageScore" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="WebManageScore" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="WebManageScore" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="view" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="WebManageScore" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="WebManageScore" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="public" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="WebManageScore" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="WebManageScore" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="model" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="WebManageScore" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="WebManageScore" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="helper" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="WebManageScore" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="WebManageScore" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="document" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="WebManageScore" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="WebManageScore" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="controller" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="WebManageScore" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="WebManageScore" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="controller" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="student" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+          </PATH>
         </subPane>
       </pane>
-      <pane id="Scope" />
       <pane id="Scratches" />
     </panes>
   </component>
@@ -95,6 +290,69 @@
       </list>
     </option>
   </component>
+  <component name="RunManager">
+    <configuration default="true" type="CodeceptionConfigurationType" factoryName="Codeception">
+      <PhpTestRunnerSettings />
+      <method />
+    </configuration>
+    <configuration default="true" type="JavaScriptTestRunnerJest" factoryName="Jest">
+      <node-interpreter value="project" />
+      <working-dir value="" />
+      <envs />
+      <scope-kind value="ALL" />
+      <method />
+    </configuration>
+    <configuration default="true" type="JavaScriptTestRunnerProtractor" factoryName="Protractor">
+      <config-file value="" />
+      <node-interpreter value="project" />
+      <envs />
+      <method />
+    </configuration>
+    <configuration default="true" type="JavascriptDebugType" factoryName="JavaScript Debug">
+      <method />
+    </configuration>
+    <configuration default="true" type="NodeJSConfigurationType" factoryName="Node.js" path-to-node="project" working-dir="">
+      <method />
+    </configuration>
+    <configuration default="true" type="PHPUnitRunConfigurationType" factoryName="PHPUnit">
+      <TestRunner />
+      <method />
+    </configuration>
+    <configuration default="true" type="PhpBehatConfigurationType" factoryName="Behat">
+      <BehatRunner />
+      <method />
+    </configuration>
+    <configuration default="true" type="PhpLocalRunConfigurationType" factoryName="PHP Console">
+      <method />
+    </configuration>
+    <configuration default="true" type="PhpSpecConfigurationType" factoryName="PHPSpec">
+      <PhpTestRunnerSettings />
+      <method />
+    </configuration>
+    <configuration default="true" type="js.build_tools.gulp" factoryName="Gulp.js">
+      <method />
+    </configuration>
+    <configuration default="true" type="js.build_tools.npm" factoryName="npm">
+      <command value="run" />
+      <scripts />
+      <node-interpreter value="project" />
+      <envs />
+      <method />
+    </configuration>
+    <configuration default="true" type="mocha-javascript-test-runner" factoryName="Mocha">
+      <node-interpreter>project</node-interpreter>
+      <node-options />
+      <working-directory />
+      <pass-parent-env>true</pass-parent-env>
+      <envs />
+      <ui />
+      <extra-mocha-options />
+      <test-kind>DIRECTORY</test-kind>
+      <test-directory />
+      <recursive>false</recursive>
+      <method />
+    </configuration>
+  </component>
   <component name="ShelveChangesManager" show_recycled="false">
     <option name="remove_strategy" value="false" />
   </component>
@@ -108,16 +366,18 @@
       <workItem from="1505110842296" duration="477000" />
       <workItem from="1505116651266" duration="1760000" />
       <workItem from="1505190288382" duration="80000" />
+      <workItem from="1505220583207" duration="4130000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="2317000" />
+    <option name="totallyTimeSpent" value="6447000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1382" height="703" extended-state="0" />
+    <frame x="-8" y="0" width="1378" height="703" extended-state="0" />
+    <editor active="true" />
     <layout>
-      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.2532943" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.2572079" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -137,7 +397,7 @@
     </layout>
   </component>
   <component name="TypeScriptGeneratedFilesManager">
-    <option name="version" value="1" />
+    <option name="processedProjectFiles" value="true" />
   </component>
   <component name="VcsContentAnnotationSettings">
     <option name="myLimit" value="2678400000" />
@@ -151,9 +411,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="85">
           <caret line="5" column="26" lean-forward="true" selection-start-line="5" selection-start-column="26" selection-end-line="5" selection-end-column="26" />
-          <folding>
-            <marker date="1505190179850" expanded="true" signature="98:173" ph="..." />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
@@ -161,15 +419,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="340">
           <caret line="20" column="34" lean-forward="false" selection-start-line="20" selection-start-column="12" selection-end-line="20" selection-end-column="34" />
-          <folding>
-            <marker date="1505190179850" expanded="true" signature="592:1455" ph="..." />
-            <marker date="1505190179850" expanded="true" signature="652:1419" ph="..." />
-            <marker date="1505190179850" expanded="true" signature="718:790" ph="..." />
-            <marker date="1505190179850" expanded="true" signature="884:1013" ph="..." />
-            <marker date="1505190179850" expanded="true" signature="1131:1412" ph="..." />
-            <marker date="1505190179850" expanded="true" signature="1191:1264" ph="..." />
-            <marker date="1505190179850" expanded="true" signature="1325:1401" ph="..." />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
@@ -177,10 +427,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="374">
           <caret line="22" column="21" lean-forward="true" selection-start-line="22" selection-start-column="21" selection-end-line="22" selection-end-column="21" />
-          <folding>
-            <marker date="1505190180038" expanded="true" signature="5536:5569" ph="..." />
-            <marker date="1505190180038" expanded="true" signature="5577:6374" ph="//..." />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
@@ -263,15 +510,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="340">
           <caret line="20" column="34" lean-forward="false" selection-start-line="20" selection-start-column="12" selection-end-line="20" selection-end-column="34" />
-          <folding>
-            <marker date="1505190179850" expanded="true" signature="592:1455" ph="..." />
-            <marker date="1505190179850" expanded="true" signature="652:1419" ph="..." />
-            <marker date="1505190179850" expanded="true" signature="718:790" ph="..." />
-            <marker date="1505190179850" expanded="true" signature="884:1013" ph="..." />
-            <marker date="1505190179850" expanded="true" signature="1131:1412" ph="..." />
-            <marker date="1505190179850" expanded="true" signature="1191:1264" ph="..." />
-            <marker date="1505190179850" expanded="true" signature="1325:1401" ph="..." />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
@@ -279,10 +518,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-17">
           <caret line="20" column="21" lean-forward="false" selection-start-line="20" selection-start-column="21" selection-end-line="20" selection-end-column="21" />
-          <folding>
-            <marker date="1505190180038" expanded="true" signature="5536:5569" ph="..." />
-            <marker date="1505190180038" expanded="true" signature="5577:6374" ph="//..." />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
@@ -290,8 +526,113 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="85">
           <caret line="5" column="26" lean-forward="false" selection-start-line="5" selection-start-column="26" selection-end-line="5" selection-end-column="26" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/document/DataInsert.sql">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/model/TranscriptModa.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/model/TranscriptObja.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1003">
+          <caret line="64" column="45" lean-forward="true" selection-start-line="64" selection-start-column="45" selection-end-line="64" selection-end-column="45" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/model/AccountHasAcademyMod.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="65">
+          <caret line="56" column="40" lean-forward="true" selection-start-line="56" selection-start-column="40" selection-end-line="56" selection-end-column="40" />
           <folding>
-            <marker date="1505190179850" expanded="true" signature="98:173" ph="..." />
+            <marker date="1505226683177" expanded="true" signature="426:587" ph="INSERT INTO `Account_has_Academy`... " />
+            <marker date="1505226683177" expanded="true" signature="1176:1337" ph="DELETE FROM " />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/model/AcademyObj.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-479">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/model/AcademyMod.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1785">
+          <caret line="375" column="23" lean-forward="true" selection-start-line="375" selection-start-column="23" selection-end-line="375" selection-end-column="23" />
+          <folding>
+            <marker date="1505227245273" expanded="true" signature="564:649" ph="SELECT count... Class" />
+            <marker date="1505227245273" expanded="true" signature="1477:1607" ph="SELECT count... Account" />
+            <marker date="1505227245273" expanded="true" signature="2426:2556" ph="SELECT count... Account" />
+            <marker date="1505227245273" expanded="true" signature="3573:3651" ph="SELECT * FRO... Class" />
+            <marker date="1505227245273" expanded="true" signature="5069:5164" ph="SELECT * FRO... Account" />
+            <marker date="1505227245273" expanded="true" signature="6729:6801" ph="SELECT * FRO... Academy" />
+            <marker date="1505227245273" expanded="true" signature="7868:7945" ph="SELECT * FRO... Academy" />
+            <marker date="1505227245273" expanded="true" signature="9114:9135" ph="SELECT * FRO... Academy" />
+            <marker date="1505227245273" expanded="true" signature="10206:10348" ph="INSERT INTO Academy... " />
+            <marker date="1505227245273" expanded="true" signature="10881:10958" ph="DELETE FROM " />
+            <marker date="1505227245273" expanded="true" signature="11527:11663" ph="UPDATE Acade... " />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/model/TranscriptHasAccountObj.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="340">
+          <caret line="49" column="33" lean-forward="false" selection-start-line="49" selection-start-column="21" selection-end-line="49" selection-end-column="33" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/model/AccountObj.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/model/TranscriptMod.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-204">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding>
+            <marker date="1505206821846" expanded="true" signature="268:525" ph="insert into Transcript... " />
+            <marker date="1505206821846" expanded="true" signature="710:767" ph="select * fro... Transcript" />
+            <marker date="1505206821846" expanded="true" signature="1252:1307" ph="delete from " />
+            <marker date="1505206821846" expanded="true" signature="1495:1776" ph="update Trans... " />
+            <marker date="1505206821846" expanded="true" signature="2026:2055" ph="select idIte... Transcript" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/model/TranscriptHasAccountMod.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="68">
+          <caret line="9" column="21" lean-forward="true" selection-start-line="9" selection-start-column="21" selection-end-line="9" selection-end-column="21" />
+          <folding>
+            <marker date="1505227963243" expanded="true" signature="292:369" ph="select * fro... Transcrpit_has_Account" />
+            <marker date="1505227963243" expanded="true" signature="1351:1689" ph="insert into Transcript_has_Account... " />
+            <marker date="1505227963243" expanded="true" signature="1351:1700" ph="insert into Transcript_has_Account... " />
+            <marker date="1505227963243" expanded="true" signature="1885:2285" ph="update trans... " />
+            <marker date="1505227963243" expanded="true" signature="2478:2563" ph="delete from " />
           </folding>
         </state>
       </provider>
