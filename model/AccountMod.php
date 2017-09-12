@@ -89,7 +89,7 @@
       }
     }
     #ok
-    public function checkAccountOnAcademy($idAccount,$academy){
+    public function getAccountOnAcademy($idAccount){
       $sql = "SELECT `Academy_idAcademys` FROM `account` WHERE `idAccount` = '".$idAccount."'";
       $this->conn2sql->Connect();
       $result = $this->conn2sql->conn->query($sql);
@@ -101,7 +101,7 @@
       return $row[0];
     }
     #ok
-    public function checkAccountOnClass($idAccount){
+    public function getAccountOnClass($idAccount){
       $sql = "SELECT `Class_idClass` FROM `account` WHERE `idAccount` = '".$idAccount."'";
       $this->conn2sql->Connect();
       $result = $this->conn2sql->conn->query($sql);

@@ -1,9 +1,6 @@
 <?php
     require_once "../controller/header.php"
 ?>
-
-
-
 <div class="container-fluid">
     <!Start content manage student-->
     <div class="container main-academy-container">
