@@ -1,10 +1,11 @@
 <?php
 /**
  * Created by PhpStorm.
- * User: Administrator
- * Date: 13/8/2017
- * Time: 11:07 PM
+ * User: TanPhat
+ * Date: 5/8/2017
+ * Time: 5:43 PM
  */
+
 
 class TranscriptMod {
 	private $connSQL;
@@ -13,77 +14,63 @@ class TranscriptMod {
 		$this->connSQL = new ConnectToSQL();
 	}
 
-	/**
-	 * Lấy thông tin bản chấm điểm của tài khoản chỉ định
-	 * @param $idAccount
-	 * @return bool|TranscriptObj
-	 */
-	public function getTranscript($idAccount) {
-		$sql = "select * from transcript where Account_idAccount = '{$idAccount}'";
-		$transObj = new TranscriptObj();
+	public function addTranscript($TranscriptObj){
+		$sql = "insert into Transcript(`idItem`, `itemName`, `scores`, `describe`, `IDParent`) 
+				values('{$TranscriptObj->getIdItem()}','{$TranscriptObj->getItemName()}','{$TranscriptObj->getScores()}','{$TranscriptObj->getDescribe()}','{$TranscriptObj->getIdParent()}');";
 		$this->connSQL->Connect();
 		$result = $this->connSQL->conn->query($sql);
-		if (empty($result))
-			return false;
-		if ($result->num_rows > 0) {
-			$transRow = $result->fetch_assoc();
-			$transObj->setTranscriptObj(
-				$transRow['idItem'],
-				$transRow['itemName'],
-				$transRow['scores'],
-				$transRow['describe'],
-				$transRow['IDParent'],
-				$transRow['Account_idAccount']
-			);
+		$this->connSQL->Stop();
+		return $result;
+	}
+
+	public function getTranscript($TranscriptId){
+		$sql = "select * from Transcript where idItem = '{$TranscriptId}'";
+		$TranscriptObj = new TranscriptObj();
+		$this->connSQL->Connect();
+		$result = $this->connSQL->conn->query($sql);
+		if ($result->num_rows > 0){
+			$TranscriptRow = $result->fetch_assoc();
+			$TranscriptObj->setTranscriptObj($TranscriptRow['idItem'], $TranscriptRow['itemName'], $TranscriptRow['scores'], $TranscriptRow['describe'], $TranscriptRow['IDParent']);
 		}
 		$this->connSQL->Stop();
-		return $transObj;
+		return $TranscriptObj;
+	}
+
+	public function deleteTranscript($TranscriptId){
+		$sql = "delete from Transcript where idItem = '{$TranscriptId}'";
+		$this->connSQL->Connect();
+		$result = $this->connSQL->conn->query($sql);
+		$this->connSQL->Stop();
+		return $result;
+	}
+
+	public function updateTranscript($TranscriptObj){
+		$sql = "update Transcript set
+ 				`itemName` = '{$TranscriptObj->getItemName()}',
+ 				`scores` = '{$TranscriptObj->getScores()}',
+ 				`describe` = '{$TranscriptObj->getDescribe()}',
+ 				`IDParent` = '{$TranscriptObj->getIdParent()}'
+				where `idItem` = '{$TranscriptObj->getIdItem()}'";
+		$this->connSQL->Connect();
+		$result = $this->connSQL->conn->query($sql);
+		$this->connSQL->Stop();
+		return $result;
 	}
 
 	/**
-	 * Thêm mới bảng chấm điểm, chỉ có duy nhất 1 bảng điểm cho mỗi tài khoản
-	 * dùng để chấm điểm cho các học kỳ, mọi thêm mới đề bị ghi đè cho cùng tài khoản
-	 * @param $transObj
-	 * @return mixed
+	 * Trả về danh sách id các mục trong bảng điểm
+	 * @return array
 	 */
-	public function addTranscript($transObj) {
-		$trans = $this->getTranscript($transObj->getAccountIdAccount());
-		if (!empty($trans))
-			return $this->updateTranscript($transObj);
-		$sql = "insert into transcript(`idItem`, `itemName`, `scores`, `describe`, `IDParent`, `Account_idAccount`) 
-				values(
-				'{$transObj->getIdItem()}',
-				'{$transObj->getItemName()}',
-				'{$transObj->getScores()}',
-				'{$transObj->getDescribe()}',
-				'{$transObj->getIdParent()}', 
-				'{$transObj->getAccountIdAccount()}'
-				);";
+	public function getTranscriptAll(){
+		$sql = "select idItem from Transcript";
 		$this->connSQL->Connect();
 		$result = $this->connSQL->conn->query($sql);
+		$listRow = array();
+		if ($result->num_rows > 0){
+			while ($row = $result->fetch_assoc())
+				$listRow[] = $row;
+		}
 		$this->connSQL->Stop();
-		return $result;
-	}
-
-	public function updateTranscript($transObj) {
-		$sql = "update transcript set 
-				`idItem` = '{$transObj->getIdItem()}', 
-				`itemName` = '{$transObj->getItemName()}', 
-				`scores` = '{$transObj->getScores()}', 
-				`describe`  = '{$transObj->getDescribe()}', 
-				`IDParent` = '{$transObj->getIdParent()}' 
-				where `Account_idAccount` = '{$transObj->getAccountIdAccount()}'";
-		$this->connSQL->Connect();
-		$result = $this->connSQL->conn->query($sql);
-		$this->connSQL->Stop();
-		return $result;
-	}
-
-	public function deleteTranscript($transcriptId) {
-		$sql = "delete from transcript where idItem = '{$transcriptId}'";
-		$this->connSQL->Connect();
-		$result = $this->connSQL->conn->query($sql);
-		$this->connSQL->Stop();
-		return $result;
+		return $listRow;
 	}
 }
