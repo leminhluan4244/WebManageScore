@@ -24,7 +24,7 @@ function getClassByAcademy(acaId){
 }
 
 function updateListOfClass(listClasses){
-    var htmlContent = '';
+    var htmlContent = '<option>-- Chọn theo lớp --</option>';
     $.each(listClasses, function (i, cls) {
         htmlContent += "<option value='" + cls.classId + "'>" + cls.className + "</option>";
     });

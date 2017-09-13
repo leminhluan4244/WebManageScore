@@ -23,8 +23,10 @@ if (isAjaxRequest()){
 	$acaObj->setIdAcademy($acaId);
 	$listClasses = $acaMod->getListClass($acaObj);
 	$result = array();
-	foreach ($listClasses as $class) {
-		$result[] = array("classId" => $class->getIdClass(), "className" => $class->getClassName());
+	if (is_array($listClasses)){
+		foreach ($listClasses as $class) {
+			$result[] = array("classId" => $class->getIdClass(), "className" => $class->getClassName());
+		}
 	}
 	die(json_encode(array(
 		"success" => 1,
