@@ -5,9 +5,6 @@
  * Date: 06/08/2017
  * Time: 7:55 SA
  */
-require_once("ConnectToSQL.php");
-require_once("ClassObj.php");
-require_once("AcademyObj.php");
 
 class ClassMod
 {
@@ -96,10 +93,10 @@ class ClassMod
 
         if ($result->num_rows > 0) {
             $k = 0;
-            $classobj = new ClassObj();
+
             $list = array();
             while ($row = $result->fetch_assoc()) {
-
+                $classobj = new ClassObj();
                 $classobj->setIdClass($row["idClass"]);
                 $classobj->setClassName($row["className"]);
                 $classobj->setSchoolYear($row["schoolYear"]);
@@ -127,9 +124,9 @@ class ClassMod
         if ($result->num_rows > 0) {
             $k = 0;
             $list = array();
-            $account = new AccountObj;
-            while ($row = $result->fetch_assoc()) {
 
+            while ($row = $result->fetch_assoc()) {
+                $account = new AccountObj;
                 $account->setIdAccount($row["idAccount"]);
                 $account->setAccountName($row["accountName"]);
                 $account > setBirthday($row["birthday"]);

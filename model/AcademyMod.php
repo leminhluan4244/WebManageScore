@@ -29,11 +29,11 @@ class AcademyMod
             while ($row = $result->fetch_assoc()) {
 
                 //Cho vào list đối tượng
-                echo $row["count(*)"];
+               // echo $row["count(*)"];
                 return $row["count(*)"];
             }
         } else {
-            echo 'error count class in academy';
+           // echo 'error count class in academy';
             return -1;
         }
 
@@ -46,7 +46,7 @@ class AcademyMod
     {
         $sql = "SELECT count(*) 
 					FROM Account 
-					WHERE Academy_idAcademy='".$academy->getIdAcademy()."' and Permission_position ='Student';";
+					WHERE Academy_idAcademy='".$academy->getIdAcademy()."' and Permission_position ='Sinh viên';";
         // Thực thi truy vấn
         $this->conn->Connect();
         $result = $this->conn->conn->query($sql);
@@ -56,11 +56,11 @@ class AcademyMod
             while ($row = $result->fetch_assoc()) {
 
                 //Cho vào list đối tượng
-                echo $row["count(*)"];
+                //echo $row["count(*)"];
                 return $row["count(*)"];
             }
         } else {
-            echo "error count student in academy";
+            //echo "error count student in academy";
             return -1;
         }
 
@@ -69,11 +69,11 @@ class AcademyMod
     }
 
     // Hàm đếm số cán bộ trong một khoa có bao cán bộ
-    public function countCadre($academy)
+    public function countStaff($academy)
     {
         $sql = "SELECT count(*) 
 					FROM Account 
-					WHERE Academy_idAcademy='" .$academy->getIdAcademy(). "' and Permission_position ='Cadre'";
+					WHERE Academy_idAcademy='" .$academy->getIdAcademy(). "' and Permission_position ='Cố vấn học tập'";
         // Thực thi truy vấn
         $this->conn->Connect();
         $result = $this->conn->conn->query($sql);
@@ -83,11 +83,11 @@ class AcademyMod
             while ($row = $result->fetch_assoc()) {
 
                 //Cho vào list đối tượng
-                echo $row["count(*)"];
+               // echo $row["count(*)"];
                 return $row["count(*)"];
             }
         } else {
-            echo "error count cadre in acdemy";
+            //echo "error count cadre in acdemy";
             return -1;
         }
 
@@ -123,7 +123,8 @@ class AcademyMod
                 $k++;
             }
         } else {
-            echo "Không có kết quả nào";
+            //echo "Không có kết quả nào";
+            return -1;
         }
         //Ngắt kết nối
         $this->conn->Stop();
@@ -161,12 +162,12 @@ class AcademyMod
                 $account->setPhone($row["phone"]);
                 $account->setEmail($row["email"]);
                 $account->setPermission_position($row["Permission_position"]);
-                $account->setAcademy_idAcademy($row["Academy_idAcademy"]);
                 $list[$k] = $account;
                 $k++;
             }
         } else {
-            echo "Không có kết quả nào";
+            return -1;
+            //echo "Không có kết quả nào";
         }
         //Ngắt kết nối
         $this->conn->Stop();
@@ -197,7 +198,7 @@ class AcademyMod
                 $k++;
             }
         } else {
-            echo '0 có ID này';
+          //  echo '0 có ID này';
             //Báo rỗng
         }
         return $list;
@@ -250,17 +251,17 @@ class AcademyMod
             // Sử dụng vòng lặp while để lặp kết quả
             $k = 0;
             //Tạo một đối tượng chứa
-            $academy = new AcademyObj;
             while ($row = $result->fetch_assoc()) {
 
                 //Cho vào list đối tượng
+                $academy = new AcademyObj;
                 $academy->setIdAcademy($row["idAcademy"]);
                 $academy->setAcademyName($row["academyName"]);
                 $list[$k] = $academy;
                 $k++;
             }
         } else {
-            echo "Không có kết quả nào";
+           // echo "Không có kết quả nào";
         }
         //Ngắt kết nối
         $this->conn->Stop();
@@ -278,12 +279,12 @@ class AcademyMod
         // Thực thi câu lệnh
         $this->conn->Connect();
         if ($this->conn->conn->multi_query($sql) === true) {
-            echo "Thêm thành công";
+           // echo "Thêm thành công";
             //Ngắt kết nối
             $this->conn->Stop();
             return true;
         } else {
-            echo "Lỗi addAcademy";
+          //  echo "Lỗi addAcademy";
             //Ngắt kết nối
             $this->conn->Stop();
             return false;
@@ -301,12 +302,12 @@ class AcademyMod
         $this->conn->Connect();
         // Thực hiện câu truy vấn
         if ($this->conn->conn->query($sql) === true) {
-            echo "Xóa thành công";
+          //  echo "Xóa thành công";
             //Ngắt kết nối
             $this->conn->Stop();
             return true;
         } else {
-            echo "Lỗi deleteAcademy";
+           // echo "Lỗi deleteAcademy";
             //Ngắt kết nối
             $this->conn->Stop();
             return false;
@@ -324,12 +325,12 @@ class AcademyMod
         // Thực hiện câu truy vấn
         $this->conn->Connect();
         if ($this->conn->conn->query($sql) === true) {
-            echo "Cập nhật thành công";
+           // echo "Cập nhật thành công";
             //Ngắt kết nối
             $this->conn->Stop();
             return true;
         } else {
-            echo "Lỗi updateAcademy";
+           // echo "Lỗi updateAcademy";
             //Ngắt kết nối
             $this->conn->Stop();
             return false;
@@ -338,6 +339,8 @@ class AcademyMod
 
 }
 /* test từng gái trị hàm ở đây
+require_once "AcademyObj.php";
+require_once "ConnectToSQL.php";
 $obj = new AcademyObj();
 $obj->setAcademyObj('id1', 'academy');
 $mod = new AcademyMod();
@@ -365,13 +368,13 @@ $getlist = $mod->getAcademy();
 foreach ($getlist as $key => $value) {
     echo $key . "->" . $value->getIdAcademy() . " vs" . $value->getAcademyName();
 }
-$obj->setAcademyObj('ID', 'Công nghệ thông tin');
+$obj->setAcademyObj('CN', 'Công nghệ');
 echo ' <br>Đếm số lớp trong khoa';
 $mod->countClass($obj);
 echo '<br>Đếm số học sinh trong khoa';
 $mod->countStudent($obj);
 echo '<br> Đếm số cán bộ khoa';
-$mod->countCadre($obj);
+$mod->countStaff($obj);
 echo '<br> Danh sách lớp';
 $getlistclass = array();
 $getlistclass=$mod->getListClass($obj);
@@ -389,8 +392,7 @@ foreach ($getlistaccount as $key => $account) {
     $account->getSex().' - '.
     $account->getPhone().' - '.
     $account->getEmail().' - '.
-    $account->getPermission_position().' - '.
-    $account->getAcademy_idAcademy().'<br>';
+    $account->getPermission_position().' - '.'<br>';
 }
 echo "<br> Xóa một khoa";
 $obj->setAcademyObj('id1', 'cademy1');

@@ -8,7 +8,7 @@
                                 <h4 class="modal-title">Thêm mới sinh viên</h4>
                             </div>
                             <div class="modal-body ">
-                                <form action="#" method="post">
+                                <form action="student.mamage.php" method="post">
 
                                     <fieldset class="form-group">
                                         <p class="text-left "><b>Họ và Tên</b></p>
@@ -58,9 +58,16 @@
                                     <fieldset class="form-group">
                                         <p class="text-left"><b>Khoa - Viện</b></p>
                                         <select class="form-control" name="addAcademyName" id="addAcademyName">
-                                            <option value="DI">Công nghệ thông tin và
-                                                truyền thông
-                                            </option>
+                                            <option value="TS">--Chọn khoa--</option>
+                                            <?php
+                                                $list = array();
+                                                $list = $academyMod->getAcademy();
+                                                foreach ($list as $key => $value){
+                                                    echo'<option value="'.$value->getIdAcademy().'">'.$value->getAcademyName().'</option>';
+                                                }
+
+
+                                            ?>
                                             <option value="TS">Thủy sản</option>
                                             <option value="MT">Môi trường</option>
                                             <option value="CṆ">Công nghệ</option>
@@ -75,6 +82,14 @@
                                             <option value="DI1496A1">KTPM3 K40</option>
                                         </select>
                                     </fieldset>
+                                    <fieldset class="form-group">
+                                        <p class="text-left"><b>Phân quyền</b></p>
+                                        <select class="form-control" name="addPermission_position" id="addPermission_position">
+                                            <option value="DI1496A1">Sinh viên</option>
+                                            <option value="DI1496A1">Cố vấn học tập</option>
+                                            <option value="DI1496A1">Quản lý khoa</option>
+                                        </select>
+                                    </fieldset>
                                     <div class="modal-footer">
                                         <button type="button" class="btn btn-default" data-dismiss="modal">Đóng</button>
                                         <button type="submit" class="btn btn-primary" name="btnAdd">Thêm</button>
@@ -85,3 +100,38 @@
                     </div>
                 </div>
                 <!-- End add student-->
+                <?php
+//                if(!isset($_POST[addAccountName])){
+//                    //thông báo không được rỗng
+//                }
+//                if(!isset($_POST[addIdAccount])){
+//                    //thông báo không được rỗng
+//                }
+//                if(!isset($_POST[addBrithday])){
+//                    //thông báo không được rỗng
+//                }
+//                if(!isset($_POST[addAddress])){
+//                    //thông báo không được rỗng
+//                }
+//                if(!isset($_POST[addSex])){
+//                    //thông báo không được rỗng
+//                }
+//                if(!isset($_POST[addPhone])){
+//                    //thông báo không được rỗng
+//                }
+//                if(!isset($_POST[addEmail])){
+//                    //thông báo không được rỗng
+//                }
+//                if(!isset($_POST[addPassword])){
+//                    //thông báo không được rỗng
+//                }
+//                if(!isset($_POST[addClassName])){
+//                    //thông báo không được rỗng
+//                }
+//                if(!isset($_POST[addAcademyName])){
+//                    //thông báo không được rỗng
+//                }
+//                if(!isset($_POST[addPermision_Position])){
+//                    //thông báo không được rỗng
+//                }
+                ?>

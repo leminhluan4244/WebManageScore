@@ -1,9 +1,9 @@
 
 <?php
 //Khởi tạo giá trị lấy dự liệu cho thông tin sinh viên
-$student_obj = new AccountObj();
-$student_mod = new AccountMod();
-$student_obj=$student_mod->getAccount();
+$accountObj=$accountMod->getAccount($_GET['id']);
+//$row =$student_mod->getAccountOnAcademy('B1400704');
+
 ?>
 <div id="infoStudent" class="modal fade " tabindex="-1" role="dialog" aria-labelledby aria-hidden="true">
     <div class="modal-dialog">
@@ -17,48 +17,59 @@ $student_obj=$student_mod->getAccount();
                 <form action="#" method="post">
                     <fieldset class="form-group">
                         <p class="text-left "><b>Họ và Tên</b></p>
-                        <?php echo '<p class="text-left form-control"><b>'.$student_obj->getAccountName().'</b></p>' ?>
+                        <?php echo '<p class="text-left form-control"><b>'.$accountObj->getAccountName().'</b></p>' ?>
                     </fieldset>
 
                     <fieldset class="form-group">
                         <p class="text-left"><b>MSSV</b></p>
-                        <p class="text-left form-control"><b>B1400704</b></p>
+                        <?php echo '<p class="text-left form-control"><b>'.$accountObj->getIdAccount().'</b></p>' ?>
                     </fieldset>
 
                     <fieldset class="form-group">
                         <p class="text-left"><b>Ngày Sinh</b></p>
-                        <p class="text-left form-control"><b>16-01-1996</b></p>
+                        <?php //echo '<p class="text-left form-control"><b>'.$accountObj->getBrithday().'</b></p>' ?>
                     </fieldset>
 
                     <fieldset class="form-group">
                         <p class="text-left"><b>Địa chỉ</b></p>
-                        <p class="text-left form-control"><b>Địa chỉ</b></p>
+                        <?php echo '<p class="text-left form-control"><b>'.$accountObj->getAddress().'</b></p>' ?>
                     </fieldset>
 
                     <fieldset class="form-group">
                         <p class="text-left"><b>Giới tính</b></p>
-                        <p class="text-left form-control"><b>Nam</b></p>
+                        <?php echo '<p class="text-left form-control"><b>'.$accountObj->getSex().'</b></p>' ?>
                     </fieldset>
 
                     <fieldset class="form-group">
                         <p class="text-left"><b>Điện thoại</b></p>
-                        <p class="text-left form-control"><b>0964054244</b></p>
+                        <?php echo '<p class="text-left form-control"><b>'.$accountObj->getPhone().'</b></p>' ?>
                     </fieldset>
 
                     <fieldset class="form-group">
                         <p class="text-left"><b>Email</b></p>
-                        <p class="text-left form-control"><b>Luanb1400704@student.ctu.edu.vn</b></p>
+                        <?php echo '<p class="text-left form-control"><b>'.$accountObj->getEmail().'</b></p>' ?>
                     </fieldset>
 
                     <fieldset class="form-group">
                         <p class="text-left"><b>Khoa - Viện</b></p>
-                        <p class="text-left form-control"><b>Công nghệ thông tin và truyền thông</b></p>
+                        <?php echo '<p class="text-left form-control"><b>'.'</b></p>' ?>
                     </fieldset>
 
                     <fieldset class="form-group">
                         <p class="text-left"><b>Lớp</b></p>
-                        <p class="text-left form-control"><b>Kỹ thuật phần mềm</b></p>
+                        <?php echo '<p class="text-left form-control"><b>'.'</b></p>' ?>
                     </fieldset>
+
+                    <fieldset class="form-group">
+                        <p class="text-left"><b>Chi hội</b></p>
+                        <?php echo '<p class="text-left form-control"><b>'.'</b></p>' ?>
+                    </fieldset>
+
+                    <fieldset class="form-group">
+                        <p class="text-left"><b>Phân quyền</b></p>
+                        <?php echo '<p class="text-left form-control"><b>'.$accountObj->getPermission_position().'</b></p>' ?>
+                    </fieldset>
+
                     <div class="modal-footer">
                         <button type="button" class="btn btn-default" data-dismiss="modal">Đóng</button>
                     </div>

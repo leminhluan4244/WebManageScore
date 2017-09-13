@@ -11,8 +11,8 @@
 	 private $accountName;
 	 private $birthday;
 	 private $address;
-   private $sex;
-   private $phone;
+     private $sex;
+     private $phone;
 	 private $email;
    private $password;
    private $Permission_position;

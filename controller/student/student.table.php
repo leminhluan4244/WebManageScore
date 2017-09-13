@@ -12,41 +12,24 @@
 
 
     <tbody class="text-center align-self-center">
-    <tr>
+    <?php
+    $arrayAccount = array();
+    $arrayAccount = $accountMod->getAllAccountByPermission('Sinh viên');
+    foreach ($arrayAccount as $key=>$value){
+        echo '<tr>
         <td>1</td>
         <td>
-            <a class="align-self-center " data-toggle="modal" data-target="#infoStudent">SV001</a>
+            <a class="align-self-center " data-toggle="modal" data-target="#infoStudent" method="get" href="student.manage.php?id='.$value->getIdAccount().'">'.$value->getIdAccount().'</a>
         </td>
         <td>
-            <a class="align-self-center " data-toggle="modal" data-target="#infoStudent">Lê Minh Luân</a>
+            <a class="align-self-center " data-toggle="modal" data-target="#infoStudent" method="get" href="student.manage.php?id='.$value->getIdAccount().'">'.$value->getAccountName().'</a>
         </td>
-        <td>
-            <input type="checkbox" name="idAccount" value="idAccount">
-        </td>
-    </tr>
-    <tr>
-        <td>2</td>
-        <td>SV002</td>
-        <td>Huỳnh Hoàng Thơ</td>
         <td>
             <input type="checkbox" name="idAccount" value="idAccount">
         </td>
-    </tr>
-    <tr>
-        <td>2</td>
-        <td>SV003</td>
-        <td>Đoàn Minh Nhựt</td>
-        <td>
-            <input type="checkbox" name="idAccount" value="idAccount">
-        </td>
-    </tr>
-    <tr>
-        <td>3</td>
-        <td>SV004</td>
-        <td>Nguyễn Tấn Phát</td>
-        <td>
-            <input type="checkbox" name="idAccount" value="idAccount">
-        </td>
-    </tr>
+    </tr>';
+    }
+
+    ?>
     </tbody>
 </table>
