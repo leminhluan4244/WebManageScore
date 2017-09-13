@@ -111,9 +111,8 @@ class AcademyMod
             // Sử dụng vòng lặp while để lặp kết quả
             $k = 0;
             //Tạo một đối tượng chứa
-            $class = new ClassObj;
             while ($row = $result->fetch_assoc()) {
-
+				$class = new ClassObj;
                 //Cho vào list đối tượng
                 $class->setIdClass($row["idClass"]);
                 $class->setClassName($row["className"]);

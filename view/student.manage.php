@@ -1,5 +1,7 @@
 <?php
     require_once "../controller/header.php";
+    require_once "../helper/common.helper.php";
+    $baseUrl = getBaseUrl();
     $accountObj = new AccountObj();
     $accountMod = new AccountMod();
     $academyObj = new AcademyObj();
@@ -49,6 +51,9 @@
     <!--End content manage student-->
 </div>
 
-<?php 
+<?php echo "<script>var baseUrl = '$baseUrl';</script>"; ?>
+<script src="<?php echo $baseUrl ?>/public/js/student_action.js"></script>
+
+<?php
 	require_once "../controller/footer.php";
 ?>
