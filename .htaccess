@@ -5,5 +5,5 @@ Options +FollowSymlinks
 	Deny from all
 </Files>
 RewriteEngine on
-RewriteRule ([a-zA-Z]+)-([a-zA-Z]+) controller/$1/$1.$2.php
+RewriteRule ^([a-zA-Z]+)-([a-zA-Z]+)$ controller/$1/$1.$2.php
 #ErrorDocument 404
