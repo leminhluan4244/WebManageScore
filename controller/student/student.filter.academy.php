@@ -7,16 +7,12 @@
             $acdemyM = new AcademyMod();
             $list = array();
             $list = $acdemyM->getAcademy();
-            foreach ($list as $key=>$value)
-            echo '
-            <option value="Công nghệ thông tin và truyền thông"></option>
+            foreach ($list as $key=>$value) {
+                echo '
+                 <option value="'.$value->getIdAcademy().'">'.$value->getAcademyName().'</option>
             ';
+            }
         ?>
-        <option value="Công nghệ thông tin và truyền thông">Công nghệ thông tin và truyền thông
-        </option>
-        <option value="Thủy sản">Thủy sản</option>
-        <option value="Môi trường">Môi trường</option>
-        <option value="Công nghệ">Công nghệ</option>
     </select>
 </div>
 <!--End combobox academy for student-->
