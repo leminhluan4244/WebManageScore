@@ -1,7 +1,7 @@
 
 <?php
 //Khởi tạo giá trị lấy dự liệu cho thông tin sinh viên
-$accountObj=$accountMod->getAccount('B1400704');
+$accountObj=$accountMod->getAccount($_GET['id']);
 //$row =$student_mod->getAccountOnAcademy('B1400704');
 
 ?>
