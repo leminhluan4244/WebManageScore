@@ -61,7 +61,6 @@
       $row = $result->fetch_row();
       return new AccountObj($row[0], $row[1], $row[2], $row[3], $row[4], $row[5], $row[6], $row[7], $row[8]);
     }
-<<<<<<< HEAD
       public function getAllAccount(){
           // Tạo ra một mảng lưu trữ tên list, mặc định bang đầu rỗng
           $list = array();
@@ -77,10 +76,10 @@
               //Tạo một đối tượng chứa
               $account = new AccountObj;
               while ($row = $result->fetch_assoc()) {
-
                   //Cho vào list đối tượng
                   $account->setIdAccount($row["idAccount"]);
                   $account->setAccountName($row["accountName"]);
+                  echo $row["accountName"]."<br>";
                   $account->setBirthday($row["birthday"]);
                   $account->setAddress($row["address"]);
                   $account->setSex($row["sex"]);
@@ -101,10 +100,10 @@
           return $list;
       }
     #ok
-=======
+
 
     #Cập nhật thông tin tài khoản
->>>>>>> 1b93a25112e8f4132be44509d47439979fb74ab8
+
     public function updateAccount($account){
       $sql = "UPDATE `account` SET
         `accountName`='".$account->getAccountName()."',
@@ -464,18 +463,18 @@
   #echo '<br />';
 
   #var_dump($newStudent->findAccountByName('Đoàn Minh Nhựt'));
-<<<<<<< HEAD
+
   #var_dump($newStudent->findAccountByID('B'));
-require_once 'ConnectToSQL.php';
-require_once 'AccountObj.php';
-    $newacc = new accountMod();
-  $row=array();
-  $row=$newacc->getAllAccount();
-    foreach ($row as $key => $value) {
-    echo $key . "->" . $value->getIdAccount()." - ".$value->getAccountName()." <br>";
-    }
-=======
+//require_once 'ConnectToSQL.php';
+//require_once 'AccountObj.php';
+//    $newacc = new accountMod();
+//  $row=array();
+//  $row=$newacc->getAllAccount();
+//    foreach ($row as $key => $value) {
+//    echo $key . "->" . $value->getIdAccount()." - ".$value->getAccountName()." <br>";
+//    }
+
   #var_dump($newStudent->findAccountByID('B1400704'));
   #*************************************************************************************************************************
->>>>>>> 1b93a25112e8f4132be44509d47439979fb74ab8
+
   ?>

@@ -46,7 +46,7 @@ class AcademyMod
     {
         $sql = "SELECT count(*) 
 					FROM Account 
-					WHERE Academy_idAcademy='".$academy->getIdAcademy()."' and Permission_position ='Student';";
+					WHERE Academy_idAcademy='".$academy->getIdAcademy()."' and Permission_position ='Sinh viên';";
         // Thực thi truy vấn
         $this->conn->Connect();
         $result = $this->conn->conn->query($sql);
@@ -73,7 +73,7 @@ class AcademyMod
     {
         $sql = "SELECT count(*) 
 					FROM Account 
-					WHERE Academy_idAcademy='" .$academy->getIdAcademy(). "' and Permission_position ='Cadre'";
+					WHERE Academy_idAcademy='" .$academy->getIdAcademy(). "' and Permission_position ='Cố vấn học tập'";
         // Thực thi truy vấn
         $this->conn->Connect();
         $result = $this->conn->conn->query($sql);
@@ -339,6 +339,8 @@ class AcademyMod
 
 }
 /* test từng gái trị hàm ở đây
+require_once "AcademyObj.php";
+require_once "ConnectToSQL.php";
 $obj = new AcademyObj();
 $obj->setAcademyObj('id1', 'academy');
 $mod = new AcademyMod();
@@ -366,7 +368,7 @@ $getlist = $mod->getAcademy();
 foreach ($getlist as $key => $value) {
     echo $key . "->" . $value->getIdAcademy() . " vs" . $value->getAcademyName();
 }
-$obj->setAcademyObj('ID', 'Công nghệ thông tin');
+$obj->setAcademyObj('CN', 'Công nghệ');
 echo ' <br>Đếm số lớp trong khoa';
 $mod->countClass($obj);
 echo '<br>Đếm số học sinh trong khoa';
@@ -390,8 +392,7 @@ foreach ($getlistaccount as $key => $account) {
     $account->getSex().' - '.
     $account->getPhone().' - '.
     $account->getEmail().' - '.
-    $account->getPermission_position().' - '.
-    $account->getAcademy_idAcademy().'<br>';
+    $account->getPermission_position().' - '.'<br>';
 }
 echo "<br> Xóa một khoa";
 $obj->setAcademyObj('id1', 'cademy1');

@@ -59,9 +59,15 @@
                                         <p class="text-left"><b>Khoa - Viện</b></p>
                                         <select class="form-control" name="addAcademyName" id="addAcademyName">
                                             <option value="TS">--Chọn khoa--</option>
-                                            <option value="DI">Công nghệ thông tin và
-                                                truyền thông
-                                            </option>
+                                            <?php
+                                                $list = array();
+                                                $list = $academyMod->getAcademy();
+                                                foreach ($list as $key => $value){
+                                                    echo'<option value="'.$value->getIdAcademy().'">'.$value->getAcademyName().'</option>';
+                                                }
+
+
+                                            ?>
                                             <option value="TS">Thủy sản</option>
                                             <option value="MT">Môi trường</option>
                                             <option value="CṆ">Công nghệ</option>
