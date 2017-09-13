@@ -1,3 +1,15 @@
+<!--
+<?php
+if(isset($_POST['submitDelete'])) {
+
+    $branchO = new BranchObj();
+    $branchM = new BranchMod();
+    $branchO->setBranchObj($_POST['IdBranch'], $_POST['branchName'], $_POST['city']);
+    $branchM->deleteBranch($branchO);
+
+}
+?>
+-->
 <!--Start delete Branch-->
 <div id="deleteBranch" class="modal fade " tabindex="-1" role="dialog" aria-labelledby aria-hidden="true">
     <div class="modal-dialog">
@@ -12,7 +24,7 @@
                 <form action="#" method="post">
                     <div class="modal-footer">
                         <input type="hidden" name="deleteBranch" id="delete">
-                        <button type="submit" name="deleteYes" class="btn btn-danger">Đồng ý</button>
+                        <button type="submitDelete" name="deleteYes" class="btn btn-danger">Đồng ý</button>
                         <button type="button" class="btn btn-default" data-dismiss="modal">Không</button>
                     </div>
                 </form>
