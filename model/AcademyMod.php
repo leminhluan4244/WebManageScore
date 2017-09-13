@@ -251,10 +251,10 @@ class AcademyMod
             // Sử dụng vòng lặp while để lặp kết quả
             $k = 0;
             //Tạo một đối tượng chứa
-            $academy = new AcademyObj;
             while ($row = $result->fetch_assoc()) {
 
                 //Cho vào list đối tượng
+                $academy = new AcademyObj;
                 $academy->setIdAcademy($row["idAcademy"]);
                 $academy->setAcademyName($row["academyName"]);
                 $list[$k] = $academy;
