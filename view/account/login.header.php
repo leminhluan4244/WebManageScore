@@ -4,23 +4,25 @@
  * User: tanphat
  * Date: 9/11/17
  * Time: 2:40 PM
- */?>
+ */
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
 	<meta charset="UTF-8">
 	<!--	<title>Heje</title>-->
-	<script src="../../public/bootstrap/jquery-3.2.1.min.js"></script>
-	<script src="../../public/bootstrap/js/bootstrap.min.js"></script>
-	<link rel="stylesheet" href="../../public/bootstrap/css/bootstrap.min.css">
-	<link rel="stylesheet" href="../../public/bootstrap/css/bootstrap-theme.min.css">
-	<link rel="stylesheet" href="../../public/style/style.css">
-	<link rel="icon" href="../../public/img/logo.gif">
+	<script src="<?php echo $baseUrl; ?>/public/bootstrap/jquery-3.2.1.min.js"></script>
+	<script src="<?php echo $baseUrl; ?>/public/bootstrap/js/bootstrap.min.js"></script>
+<!--	<link rel="stylesheet" href="--><?php //echo $baseUrl; ?><!--/public/bootstrap/css/bootstrap.min.css">-->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css">
+	<link rel="stylesheet" href="<?php echo $baseUrl; ?>/public/style/style.css">
+	<link rel="icon" href="<?php echo $baseUrl; ?>/public/img/logo.gif">
 </head>
 <body>
 <div class="banner container-fluid">
 	<div class="col-sm-2 logo">
-		<img src="../../public/img/logo.gif" width="90" alt="">
+		<img src="<?php echo $baseUrl; ?>/public/img/logo.gif" width="90" alt="">
 	</div>
 	<div class="banner-title col-sm-10">
 		<h4><strong>TRƯỜNG ĐẠI HỌC CẦN THƠ</strong></h4>

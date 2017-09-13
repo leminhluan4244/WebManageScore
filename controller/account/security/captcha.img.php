@@ -11,4 +11,4 @@ $captcha = new Captcha();
 $code = $captcha->generate();
 
 // Lưu code session
-$_SESSION['captcha'] = $code;
+$_SESSION['captcha'] = strtolower($code);

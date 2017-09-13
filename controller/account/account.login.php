@@ -5,11 +5,16 @@
  * Date: 11/9/2017
  * Time: 2:06 PM
  */
-require_once '../../helper/form.helper.php';
+
+$rootUri = dirname(dirname(__DIR__));
+require_once $rootUri . '/helper/common.helper.php';
+require_once $rootUri . '/helper/form.helper.php';
+$baseUrl = getBaseUrl();
 session_start();
 if (isSubmit('login')){
 	$error = false;
 	$username = getPOSTValue('username');
+	$username = strtolower($username);
 	if (strlen($username) < 4 || !preg_match("/^[a-zA-Z0-9]+$/", $username)){
 		$error = true;
 		showMessage("Tài khoản không hợp lệ");
@@ -22,6 +27,7 @@ if (isSubmit('login')){
 	}
 
 	$captcha = getPOSTValue('captcha');
+	$captcha = strtolower($captcha);
 	if (strlen($captcha) < 5 || $captcha !== $_SESSION['captcha']){
 		$error = true;
 		showMessage("Mã xác nhận không đúng");
@@ -36,13 +42,13 @@ if (isSubmit('login')){
 			showMessage('Đăng nhập thất bại');
 		} else {
 //					redirect()
-			echo "Đăng nhập Ok";
+			showMessage("Đăng nhập thành công");
 		}
 	}
 }
 
 ?>
 
-<?php require_once '../../view/account/login.header.php'?>
-<?php require_once '../../view/account/login.view.php'?>
-<?php require_once '../../view/account/login.footer.php'?>
+<?php require_once $rootUri . '/view/account/login.header.php'?>
+<?php require_once $rootUri . '/view/account/login.view.php'?>
+<?php require_once $rootUri . '/view/account/login.footer.php'?>

@@ -38,7 +38,7 @@
 							</div>
 						</div>
 						<div class="col-sm-6">
-							<img src="../../controller/account/security/captcha.img.php" alt="Captcha" title="Click vào để đổi" data-toggle="tooltip" id="captcha">
+							<img src="<?php echo $baseUrl; ?>/controller/account/security/captcha.img.php" alt="Captcha" title="Click vào để đổi" data-toggle="tooltip" id="captcha">
 						</div>
 					</div>
 					<br>
