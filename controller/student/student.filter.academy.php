@@ -3,6 +3,15 @@
     <select name="academy"  class="form-control">
         <option value="Công nghệ thông tin và truyền thông">--Chọn theo khoa--
         </option>
+        <?php
+            $acdemyM = new AcademyMod();
+            $list = array();
+            $list = $acdemyM->getAcademy();
+            foreach ($list as $key=>$value)
+            echo '
+            <option value="Công nghệ thông tin và truyền thông"></option>
+            ';
+        ?>
         <option value="Công nghệ thông tin và truyền thông">Công nghệ thông tin và truyền thông
         </option>
         <option value="Thủy sản">Thủy sản</option>
