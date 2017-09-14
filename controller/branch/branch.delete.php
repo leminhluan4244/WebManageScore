@@ -1,3 +1,15 @@
+<!--
+<?php
+if(isset($_POST['deleteYes'])) {
+
+    $branchO = new BranchObj();
+    $branchM = new BranchMod();
+    $branchO->setBranchObj($_POST['IdBranch'], $_POST['branchName'], $_POST['city']);
+    $branchM->deleteBranch($branchO);
+
+}
+?>
+-->
 <!--Start delete Branch-->
 <div id="deleteBranch" class="modal fade " tabindex="-1" role="dialog" aria-labelledby aria-hidden="true">
     <div class="modal-dialog">
@@ -11,7 +23,7 @@
                 <p>Vui lòng kiểm tra cẩn thận!</p>
                 <form action="#" method="post">
                     <div class="modal-footer">
-                        <input type="hidden" name="deleteBranch" id="delete">
+                        <input type="hidden" name="deleteBranch" id="deleteBranch">
                         <button type="submit" name="deleteYes" class="btn btn-danger">Đồng ý</button>
                         <button type="button" class="btn btn-default" data-dismiss="modal">Không</button>
                     </div>
@@ -21,3 +33,21 @@
     </div>
 </div>
 <!--End delete Branch-->
+
+<!-- Bắt sự kiện check all tất cả checkbox để xóa tất cả dữ liệu  -->
+<script language="JavaScript">
+    function toggle(checkall) {
+        checkboxes = document.getElementsByName('idBranch');
+        for(var i=0, n=checkboxes.length;i<n;i++) {
+            checkboxes[i].checked = checkall.checked;
+        }
+    }
+    /*
+    //xóa 1 chi hội
+    $('#deleteYes').on('show.bs.modal', function(e) {
+        var product = $(e.relatedTarget).value('id');
+        $("#deleteBranch").val(product);
+    });
+    */
+</script>
+<!-- Kết thúc Bắt sự kiện check all tất cả checkbox để xóa tất cả dữ liệu  -->

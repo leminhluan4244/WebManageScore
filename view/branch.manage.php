@@ -1,8 +1,8 @@
 <?php
-require_once "../controller/header.php"
+require_once "../controller/header.php";
+$branchMod = new BranchMod();
+$branchobj = new BranchObj();
 ?>
-
-
 
 <div class="container-fluid">
     <!Start content manage branch-->
@@ -43,7 +43,7 @@ require_once "../controller/header.php"
     </div>
     <!--End content manage branch-->
 </div>
-
+<br>
 <?php
 require_once "../controller/footer.php";
 ?>

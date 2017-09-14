@@ -5,9 +5,6 @@
  * Date: 05/08/2017
  * Trạng thái: đã test
  */
-require_once("ConnectToSQL.php");
-require_once("BranchObj.php");
-require_once("AccountObj.php");
 
 class BranchMod
 {
@@ -31,11 +28,11 @@ class BranchMod
         if ($result->num_rows > 0) {
             while ($row = $result->fetch_assoc()) {
                 //Cho vào list đối tượng
-                echo $row["count(*)"];
+             //   echo $row["count(*)"];
                 return $row["count(*)"];
             }
         } else {
-            echo "error count account in branch";
+          //  echo "error count account in branch";
             return -1;
         }
 
@@ -78,7 +75,7 @@ class BranchMod
                 $k++;
 			    }
         } else {
-            echo "Không có kết quả nào";
+           // echo "Không có kết quả nào";
         }
         //Ngắt kết nối
         $this->conn->Stop();
@@ -160,11 +157,11 @@ class BranchMod
             while ($row = $result->fetch_assoc()) {
 
                 //Cho vào list đối tượng
-                echo $row["count(*)"];
+              //  echo $row["count(*)"];
                 return $row["count(*)"];
             }
         } else {
-            echo "error count student in branch";
+           // echo "error count student in branch";
             return -1;
         }
 
@@ -186,17 +183,19 @@ class BranchMod
             // Sử dụng vòng lặp while để lặp kết quả
             $k = 0;
             //Tạo một đối tượng chứa
-            $branch = new BranchObj();
-            while ($row = $result->fetch_assoc()) {
 
+            while ($row = $result->fetch_assoc()) {
+                $branch = new BranchObj();
                 //Cho vào list đối tượng
                 $branch->setidBranch($row["idBranch"]);
                 $branch->setBranchName($row["branchName"]);
+                $branch->setCity($row["city"]);
                 $list[$k] = $branch;
                 $k++;
             }
         } else {
-            echo "Không có kết quả nào";
+            return -1;
+            //echo "Không có kết quả nào";
         }
         //Ngắt kết nối
         $this->conn->Stop();
@@ -212,12 +211,12 @@ class BranchMod
         // Thực thi câu lệnh
         $this->conn->Connect();
         if ($this->conn->conn->multi_query($sql) === true) {
-            echo "Thêm thành công";
+            //echo "Thêm thành công";
             //Ngắt kết nối
             $this->conn->Stop();
             return true;
         } else {
-            echo "Lỗi addbranch";
+           // echo "Lỗi addbranch";
             //Ngắt kết nối
             $this->conn->Stop();
             return false;
@@ -238,12 +237,12 @@ class BranchMod
         // Thực hiện câu truy vấn
         $this->conn->Connect();
         if ($this->conn->conn->query($sql1) === true && $this->conn->conn->query($sql2)) {
-            echo "Xóa thành công";
+            //echo "Xóa thành công";
             //Ngắt kết nối
             $this->conn->Stop();
             return true;
         } else {
-            echo "Lỗi deletebranch";
+           // echo "Lỗi deletebranch";
             //Ngắt kết nối
             $this->conn->Stop();
             return false;
@@ -259,12 +258,12 @@ class BranchMod
         // Thực hiện câu truy vấn
         $this->conn->Connect();
         if ($this->conn->conn->query($sql) === true) {
-            echo "Cập nhật thành công";
+           // echo "Cập nhật thành công";
             //Ngắt kết nối
             $this->conn->Stop();
             return true;
         } else {
-            echo "Lỗi updatebranch";
+           // echo "Lỗi updatebranch";
             //Ngắt kết nối
             $this->conn->Stop();
             return false;
@@ -279,6 +278,8 @@ class BranchMod
 //$mod = new BranchMod();
 //echo '<br>';
 //$mod->addBranch($obj);
+
+
 //echo '<br>';
 //$obj->setBranchObj('CTDT', 'Châu Thành Đồng Tháp','ĐT');
 //$mod->updateBranch($obj);
@@ -296,10 +297,11 @@ class BranchMod
 //    echo $key . "->" . $value->getIdBranch() . " vs" . $value->getBranchName()." vs ".$value->getCity();
 //}
 //echo '<br>';
+//$mod = new BranchMod();
 //$getlist = array();
 //$getlist = $mod->getBranch();
 //foreach ($getlist as $key => $value) {
-//    echo $key . "->" . $value->getIdBranch() . " vs" . $value->getBranchName()." vs ".$value->getCity();
+ //  echo $key . "->" . $value->getIdBranch() . " vs" . $value->getBranchName()." vs ".$value->getCity();
 //}
 //$obj->setBranchObj('ABC', 'aaaaa','adasdasd');
 //echo '<br>Đếm số học sinh trong chi hội';
