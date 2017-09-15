@@ -76,7 +76,7 @@
                                 </fieldset>
                                 <div class="modal-footer">
                                     <button type="button" class="btn btn-default" data-dismiss="modal">Đóng</button>
-                                    <button type="submit" class="btn btn-warning" name="btnAdd">Sửa</button>
+                                    <button type="submit" class="btn btn-warning" name="btnUpdate">Sửa</button>
                                 </div>
                             </form>
                         </div>
