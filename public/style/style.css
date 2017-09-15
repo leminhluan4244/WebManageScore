@@ -27,7 +27,8 @@
 footer {
   padding: 20px;
   background-color: #094E7E;
-  color: #fff; }
+  color: #fff;
+  width: 100%; }
 
 .div-login .panel {
   -webkit-box-shadow: 3px 3px 5px gray;

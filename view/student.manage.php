@@ -1,9 +1,12 @@
 <?php
-    require_once "../controller/header.php";
-    $accountObj = new AccountObj();
-    $accountMod = new AccountMod();
-    $academyObj = new AcademyObj();
-    $academyMod = new AcademyMod();
+require_once "../controller/header.php";
+require_once "../helper/common.helper.php";
+require_once "../helper/form.helper.php";
+$baseUrl = getBaseUrl();
+$accountObj = new AccountObj();
+$accountMod = new AccountMod();
+$academyObj = new AcademyObj();
+$academyMod = new AcademyMod();
 
 ?>
 <div class="container-fluid">
@@ -17,21 +20,22 @@
 
                     <!---->
                     <!--Start combobox academy for student-->
-                    <?php
-                        require "../controller/student/student.filter.academy.php";
-                    ?>
+					<?php
+					require "../controller/student/student.filter.academy.php";
+					?>
                     <!--End combobox academy for student-->
 
                     <!---->
                     <!--Start combobox class for student-->
-                    <?php
-                    require "../controller/student/student.filter.class.php";
-                    ?>
+					<?php
+					require "../controller/student/student.filter.class.php";
+					?>
                     <!--End combobox class for student-->
 
                     <!---->
                     <!--Start buttun filter-->
                     <input type="submit" value="Lọc" class="btn btn-primary col-sm-1">
+
                     <!--End buttun filter-->
                 </form>
                 <br>
@@ -39,9 +43,9 @@
             </div>
             <!--End filter table-->
             <!--Begin table-->
-            <?php
-                require_once "../controller/student/student.content.php";
-            ?>
+			<?php
+			require_once "../controller/student/student.content.php";
+			?>
             <!--End table-->
 
         </div>
@@ -49,6 +53,9 @@
     <!--End content manage student-->
 </div>
 
-<?php 
-	require_once "../controller/footer.php";
+<?php echo "<script>var baseUrl = '$baseUrl';</script>"; ?>
+<script src="<?php echo $baseUrl ?>/public/js/student_action.js"></script>
+
+<?php
+require_once "../controller/footer.php";
 ?>

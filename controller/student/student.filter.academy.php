@@ -1,18 +1,14 @@
 <!--Start combobox academy for student-->
-<div class="col-sm-4">
-    <select name="academy"  class="form-control">
-        <option value="Công nghệ thông tin và truyền thông">--Chọn theo khoa--
-        </option>
-        <?php
-            $acdemyM = new AcademyMod();
-            $list = array();
-            $list = $acdemyM->getAcademy();
-            foreach ($list as $key=>$value) {
-                echo '
-                 <option value="'.$value->getIdAcademy().'">'.$value->getAcademyName().'</option>
-            ';
-            }
-        ?>
+<div class="col-sm-4 form-group">
+    <select id="select-student-academy" name="academy" class="form-control">
+        <option>-- Chọn theo khoa --</option>
+		<?php
+		$academyMod = new AcademyMod();
+		$list = array();
+		$list = $academyMod->getAcademy();
+		foreach ($list as $key => $value) { ?>
+            <option value="<?php echo $value->getIdAcademy(); ?>"><?php echo $value->getAcademyName(); ?></option>
+		<?php } ?>
     </select>
 </div>
 <!--End combobox academy for student-->

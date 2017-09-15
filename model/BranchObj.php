@@ -35,15 +35,15 @@ class BranchObj
         return $this->branchName;
     }
     //Thêm một dữ liệu kiểu chuỗi tỉnh
-    public function setCity($branchName)
+    public function setCity($city)
     {
-        $this->branchName = $branchName;
+        $this->city = $city;
     }
 
     //Trả ra dữ liệu kiểu chuỗi tỉnh
     public function getCity()
     {
-        return $this->branchName;
+        return $this->city;
     }
 
     //Nhận dữ liệu cho tất cả các trường của chi hội
