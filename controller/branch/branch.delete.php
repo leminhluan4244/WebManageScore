@@ -1,12 +1,12 @@
 <!--
 <?php
-if(isset($_POST['deleteYes'])) {
-
+if(isset($_POST['xoa'])) {
     $branchO = new BranchObj();
     $branchM = new BranchMod();
-    $branchO->setBranchObj($_POST['IdBranch'], $_POST['branchName'], $_POST['city']);
-    $branchM->deleteBranch($branchO);
-
+    foreach ($_POST['xoa'] as $key=> $value){
+            $branchO->setidBranch($value);
+            $branchM->deleteBranch($branchO);
+    }
 }
 ?>
 -->
@@ -21,20 +21,23 @@ if(isset($_POST['deleteYes'])) {
             <div class="modal-body">
                 <h4>Hành động này cần xác nhận: Không thể hoàn tác!</h4>
                 <p>Vui lòng kiểm tra cẩn thận!</p>
-                <form action="#" method="post">
-                    <div class="modal-footer">
-                        <input type="hidden" name="deleteBranch" id="deleteBranch">
-                        <button type="submit" name="deleteYes" class="btn btn-danger">Đồng ý</button>
-                        <button type="button" class="btn btn-default" data-dismiss="modal">Không</button>
-                    </div>
-                </form>
+                <div class="modal-footer">
+                    <input type="hidden" name="deleteBranch" id="deleteBranch">
+                    <button name="deleteYes" id="yes" onclick="submitform();" class="btn btn-danger">Đồng ý</button>
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Không</button>
+                </div>
             </div>
         </div>
     </div>
 </div>
+<script>
+    function submitform() {
+        $('#deleteForm').submit();
+    }
+</script>
 <!--End delete Branch-->
 
-<!-- Bắt sự kiện check all tất cả checkbox để xóa tất cả dữ liệu  -->
+<!--
 <script language="JavaScript">
     function toggle(checkall) {
         checkboxes = document.getElementsByName('idBranch');
@@ -42,12 +45,18 @@ if(isset($_POST['deleteYes'])) {
             checkboxes[i].checked = checkall.checked;
         }
     }
-    /*
-    //xóa 1 chi hội
-    $('#deleteYes').on('show.bs.modal', function(e) {
-        var product = $(e.relatedTarget).value('id');
-        $("#deleteBranch").val(product);
-    });
-    */
 </script>
-<!-- Kết thúc Bắt sự kiện check all tất cả checkbox để xóa tất cả dữ liệu  -->
+
+
+
+<script language="javascript">
+    document.getElementById('action').onclick = function(e){
+        if (this.checked){
+            alert("Bạn vừa tích");
+        }
+        else{
+            alert("Bạn vừa bỏ tích");
+        }
+    };
+</script>
+-->
