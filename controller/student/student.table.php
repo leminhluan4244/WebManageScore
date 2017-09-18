@@ -1,7 +1,17 @@
 <?php
-    $studentList = $accountMod->getAllAccountByPermission('Sinh viên');
+    $classId = getGETValue('class');
+    $studentList = array();
+    if (!empty($classId)){
+        $classMod = new ClassMod();
+        $classObj = new ClassObj();
+        $classObj->setIdClass($classId);
+		$studentList = $classMod->getListStudent($classObj);
+    }
     if (!is_array($studentList))
         $studentList = array();
+    $url = getCurrentUrl();
+    $url = preg_replace("/&id.+/", '', $url);
+    $url = strpos($url, "?") ? "$url&": "$url?";
 ?>
 <table class="table table-bordered table-condensed">
     <thead>
@@ -17,7 +27,7 @@
         <tr>
             <td><?php echo $order + 1; ?></td>
             <td>
-                <a href="?id=<?php echo $student->getIdAccount(); ?>">
+                <a href="<?php echo $url . 'id=' . $student->getIdAccount(); ?>">
                     <?php echo $student->getIdAccount(); ?>
                 </a>
             </td>

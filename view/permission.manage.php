@@ -99,7 +99,7 @@
               <div class="col-sm-6 col-sm-offset-3">
                 <fieldset class="form-group">
                   <p class="text-left"><b>Tên phân quyền</b></p>
-                  <input class="form-control" name="txt-namePermission" placeholder="Nhập tên tên phân quyền" type="text">
+                  <input class="form-control" name="txt-namePermission" placeholder="Nhập tên tên phân quyền" required type="text">
                 </fieldset>
                 <div class="row">
                   <div class="form-group text-right">

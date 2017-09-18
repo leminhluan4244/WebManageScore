@@ -2,15 +2,17 @@
 require_once "../controller/header.php";
 require_once "../helper/common.helper.php";
 require_once "../helper/form.helper.php";
-$baseUrl = getBaseUrl();
 $accountObj = new AccountObj();
 $accountMod = new AccountMod();
 $academyObj = new AcademyObj();
 $academyMod = new AcademyMod();
+<<<<<<< HEAD
 $classObj = new ClassObj();
 $classMod = new ClassMod();
 $perObj = new PermissionObj();
 $perMod = new PermissionMod();
+=======
+>>>>>>> 0fae567ac49cbb5649e517f628718495231583a4
 ?>
 <div class="container-fluid">
     <!Start content manage student-->
@@ -19,7 +21,7 @@ $perMod = new PermissionMod();
 
             <h4>Danh sách sinh viên</h4>
             <div class="form-group">
-                <form action="" method="post">
+                <form action="" method="get">
 
                     <!---->
                     <!--Start combobox academy for student-->
