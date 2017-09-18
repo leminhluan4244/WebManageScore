@@ -50,12 +50,13 @@ if (!empty($id)) {
                         </div>
                         <div class="col-sm-6 form-group">
                             <label>Khoa - Viện: </label>
-                            <span class="form-control-static"><?php
-                                $list = array();
-                                $list = $accountMod->findAcademy($accountObj->getIdAccount());
-                                foreach ($list as $key=> $value){
-                                    echo $value->getAcademyName();
-                                }
+                            <span class="form-control-static">
+                                <?php
+//                                $list = array();
+//                                $list = $accountMod->findAcademy($accountObj->getIdAccount());
+//                                foreach ($list as $key=> $value){
+//                                    echo $value->getAcademyName();
+//                                }
                                 ?>
                             </span>
                         </div>
