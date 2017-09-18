@@ -93,13 +93,13 @@
         <div class="col-sm-12">
           <h4>Theo mới nhóm quyền người dùng vào hệ thống</h4>
           <hr>
-          <form action="#" method="get">
+          <form action="../controller/permission/permission.add.php" method="post">
             <!--unknow?-->
             <div class="row">
               <div class="col-sm-6 col-sm-offset-3">
                 <fieldset class="form-group">
                   <p class="text-left"><b>Tên phân quyền</b></p>
-                  <input class="form-control" name="" placeholder="Nhập tên tên phân quyền" type="text">
+                  <input class="form-control" name="txt-namePermission" placeholder="Nhập tên tên phân quyền" type="text">
                 </fieldset>
                 <div class="row">
                   <div class="form-group text-right">
