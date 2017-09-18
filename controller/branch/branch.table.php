@@ -9,37 +9,37 @@
         <th>Tên CH</th>
         <th>Tỉnh Thành</th>
         <th>Chọn</th>
-        <!-- <th><input type="checkbox" id="action" value="1"/> <br>All check</th> -->
+
     </tr>
     </thead>
-    <form action="branch.manage.php" method="post" id="deleteForm">
+    <form action="branch.manage.php" method="post" id="manageForm">
         <?php
-        $arrayBranch = array();
-        $arrayBranch = $branchMod->getBranch();
-        $list=array();
-        $i=0;
+            $arrayBranch = array();
+            $arrayBranch = $branchMod->getBranch();
+            $list=array();
+            $i=0;
 
-        foreach ($arrayBranch as $key => $value) {
-            $i++;
-            echo '
-
-        <tr>
-        <td>'.$i.'</td>
-        <td>
-            <a class="align-self-center " data-toggle="modal" data-target="#infoBranch" method="get" href="branch.manage.php?id=' . $value->getidBranch() . '">' . $value->getidBranch() . '</a>
-        </td>
-        <td>
-            <a class="align-self-center " data-toggle="modal" data-target="#infoBranch" method="get" href="branch.manage.php?id=' . $value->getidBranch() . '">' . $value->getBranchName() . '</a>
-        </td>
-        <td>
-            <a class="align-self-center " data-toggle="modal" data-target="#infoBranch" method="get" href="branch.manage.php?id=' . $value->getidBranch() . '">' . $value->getCity() . '</a>
-        </td>
-        <td>
-            
-            <input type="checkbox" name="xoa[]" id="'.$value->getidBranch().'" value="'.$value->getidBranch().'"/>            
-        </td>
-    </tr>';
-        }
+            foreach ($arrayBranch as $key => $value) {
+                $i++;
+                echo '
+    
+                <tr>
+                    <td>'.$i.'</td>
+                    <td>
+                        <a class="align-self-center " data-toggle="modal" data-target="#infoBranch" method="get" href="branch.manage.php?id=' . $value->getidBranch() . '">' . $value->getidBranch() . '</a>
+                    </td>
+                    <td>
+                        <a class="align-self-center " data-toggle="modal" data-target="#infoBranch" method="get" href="branch.manage.php?id=' . $value->getidBranch() . '">' . $value->getBranchName() . '</a>
+                    </td>
+                    <td>
+                        <a class="align-self-center " data-toggle="modal" data-target="#infoBranch" method="get" href="branch.manage.php?id=' . $value->getidBranch() . '">' . $value->getCity() . '</a>
+                    </td>
+                    <td>
+                        
+                        <input type="checkbox" name="xoa[]" id="'.$value->getidBranch().'" value="'.$value->getidBranch().'"/>            
+                    </td>
+                </tr>';
+            }
         ?>
     </form>
     <!-- Kết thúc lấy thuộc tính cho bảng từ CSDL -->
