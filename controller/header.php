@@ -1,6 +1,6 @@
 
 <?php
-require_once "../model/link.php";
+require_once "../model/Link.php";
 ?>
 <!DOCTYPE html>
 <html lang="en">
