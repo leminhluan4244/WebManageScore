@@ -43,7 +43,7 @@ $branchobj = new BranchObj();
     </div>
     <!--End content manage branch-->
 </div>
-
+<br>
 <?php
 require_once "../controller/footer.php";
 ?>

@@ -6,7 +6,7 @@
         <th>Mã CH</th>
         <th>Tên CH</th>
         <th>Tỉnh Thành</th>
-        <th>Chọn</th>
+        <th><input type="checkbox" onClick="toggle(this)"><br>All check</th>
     </tr>
     </thead>
 
