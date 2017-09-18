@@ -130,9 +130,9 @@ class ClassMod {
                 $account -> setPhone($row["phone"]);
                 $account -> setEmail($row["email"]);
                 $account -> setPassword($row["password"]);
-                $account -> setPermission_position($row["permission_position"]);
+                $account -> setPermission_position($row["Permission_position"]);
                 if($account->getPermission_position()=='Sinh viên'){
-                    $list[k] = $account;
+                    $list[$k] = $account;
                     $k++;
                 }
 

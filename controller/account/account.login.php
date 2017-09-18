@@ -9,9 +9,8 @@
 $rootUri = dirname(dirname(__DIR__));
 require_once $rootUri . '/helper/common.helper.php';
 require_once $rootUri . '/helper/form.helper.php';
-$baseUrl = getBaseUrl();
-session_start();
 if (isSubmit('login')){
+	require_once $rootUri . '/helper/account.helper.php';
 	$error = false;
 	$username = getPOSTValue('username');
 	$username = strtolower($username);
@@ -36,15 +35,30 @@ if (isSubmit('login')){
 	if (!$error){
 		require_once '../../model/ConnectToSQL.php';
 		require_once '../../model/AccountMod.php';
+		require_once '../../model/AccountObj.php';
 		$accountMod = new AccountMod();
-		echo "$username, $password";
 		if (!$accountMod->checkLogin($username, $password)){
 			showMessage('Đăng nhập thất bại');
 		} else {
-//					redirect()
-			showMessage("Đăng nhập thành công");
+			$accountObj = $accountMod->getAccount($username);
+			saveAccountInfo($accountObj);
+			redirect("../../view/main.php");
 		}
 	}
+}
+
+function saveAccountInfo($account) {
+	$info = array(
+		"idAccount" => $account->getIdAccount(),
+		"name" => $account->getAccountName(),
+		"sex" => $account->getSex(),
+		"birthday" => $account->getBirthday(),
+		"address" => $account->getAddress(),
+		"email" => $account->getEmail(),
+		"phone" => $account->getPhone(),
+		"permission" => $account->getPermission_position()
+	);
+	login($info);
 }
 
 ?>

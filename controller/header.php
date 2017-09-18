@@ -36,9 +36,9 @@ require_once "../model/Link.php";
     <!---->
     <!--Start button top right-->
     <div class="banner-action col-sm-2 text-right">
-        <a href="main.html" class="btn btn-primary btn-sm">
+        <a href="main.php" class="btn btn-primary btn-sm">
             <span class="glyphicon glyphicon-home"></span> Trang chủ</a>
-        <a href="index.html" class="btn btn-warning btn-sm">
+        <a href="../controller/account/account.logout.php" class="btn btn-warning btn-sm">
             <span class="glyphicon glyphicon-log-out"></span> Đăng xuất</a>
     </div>
 </div>
