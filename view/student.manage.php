@@ -7,10 +7,10 @@ $accountObj = new AccountObj();
 $accountMod = new AccountMod();
 $academyObj = new AcademyObj();
 $academyMod = new AcademyMod();
+$classObj = new ClassObj();
 $classMod = new ClassMod();
-$clsObj = new ClassObj();
-$clsObj->setIdClass('DI1496A1');
-var_dump($classMod->getListAccount($clsObj));
+$perObj = new PermissionObj();
+$perMod = new PermissionMod();
 ?>
 <div class="container-fluid">
     <!Start content manage student-->

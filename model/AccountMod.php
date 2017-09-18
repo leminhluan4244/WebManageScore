@@ -411,7 +411,37 @@
         );
       return $accountArr;
     }
+      public function findAcademy($accountID)
+      {
+          $sql = "SELECT Academy.idAcademy, Academy.academyName FROM Academy, Account_has_Academy WHERE Academy.idAcademy = Academy_idAcademy and Account_idAccount='" . $accountID . "';";
+          // Thực thi truy vấn
+          $this->conn->Connect();
+          $result = $this->conn->conn->query($sql);
+          // Kiểm tra số lượng kết trả về có lơn hơn 0
+          // Nếu lớn hơn tức là có kết quả, ngược lại sẽ không có kết quả, num_rows xem như biến chứa kết quả sau khi trả về
+          if ($result->num_rows > 0) {
+              // Nếu có thì trả về đối tượng đo
+              $list = array();
+              $k = 0;
+
+              while ($row = $result->fetch_assoc()) {
+                  $academytemp = new AcademyObj();
+                  //Cho vào list đối tượng
+                  $academytemp->setIdAcademy($row["idAcademy"]);
+                  $academytemp->setAcademyName($row["academyName"]);
+                  $list[$k] = $academytemp;
+                  $k++;
+              }
+          } else {
+              //  echo '0 có ID này';
+              //Báo rỗng
+          }
+          return $list;
+          //Ngắt kết nối
+          $this->conn->Stop();
+      }
   }
+
 
   #*************************************************************************************************************************
   #$newStudent = new accountMod();

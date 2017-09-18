@@ -70,8 +70,8 @@ if(isset($_POST['btnAdd'])) {
                                         <select class="form-control" name="addAcademyName" id="addAcademyName">
                                             <option value="NoneAcademy">--Chọn khoa--</option>
                                             <?php
-                                                $list = array();
-                                                $list = $academyMod->getAcademy();
+                                                $listAcademy = array();
+                                                $listAcademy = $academyMod->getAcademy();
                                                 foreach ($list as $key => $value){
                                                     echo'<option value="'.$value->getIdAcademy().'">'.$value->getAcademyName().'</option>';
                                                 }
@@ -82,31 +82,27 @@ if(isset($_POST['btnAdd'])) {
                                     <fieldset class="form-group">
                                         <p class="text-left"><b>Lớp</b></p>
                                         <select class="form-control" name="addClassName" id="addClassName">
+                                            <option value="NoneClass">--Chọn Lớp--</option>
                                             <?php
-                                            $list = array();
-                                            $list = $academyMod->getAcademy();
-                                            foreach ($list as $key => $value){
-                                                echo'<option value="'.$value->getIdAcademy().'">'.$value->getAcademyName().'</option>';
+                                            $listClass = array();
+                                            $listClass = $classMod->getClass();
+                                            foreach ($listClass as $key => $value){
+                                                echo'<option value="'.$value->getIdClass().'">'.$value->getClassName().'</option>';
                                             }
                                             ?>
-                                            <option value="DI1496A1">KTPM1 K40</option>
-                                            <option value="DI1496A1">KTPM2 K40</option>
-                                            <option value="DI1496A1">KTPM3 K40</option>
                                         </select>
                                     </fieldset>
                                     <fieldset class="form-group">
                                         <p class="text-left"><b>Phân quyền</b></p>
                                         <select class="form-control" name="addPermission_position" id="addPermission_position">
+                                            <option value="NonePer">--Chọn phân quyền--</option>
                                             <?php
-                                            $list = array();
-                                            $list = $academyMod->getAcademy();
-                                            foreach ($list as $key => $value){
-                                                echo'<option value="'.$value->getIdAcademy().'">'.$value->getAcademyName().'</option>';
+                                            $listPermissionM = array();
+                                            $listPermissionM = $perMod->getPermission();
+                                            foreach ($listPermissionM as $key => $value){
+                                                echo'<option value="'.$value->getPosition().'">'.$value->getPosition().'</option>';
                                             }
                                             ?>
-                                            <option value="DI1496A1">Sinh viên</option>
-                                            <option value="DI1496A1">Cố vấn học tập</option>
-                                            <option value="DI1496A1">Quản lý khoa</option>
                                         </select>
                                     </fieldset>
                                     <div class="modal-footer">

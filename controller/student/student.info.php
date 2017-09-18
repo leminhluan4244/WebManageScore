@@ -26,7 +26,7 @@ if (!empty($id)) {
                     <div class="row">
                         <div class="col-sm-6 form-group">
                             <label>Ngày Sinh: </label>
-                            <span class="form-control-static"><?php echo $accountObj->getAccountName(); ?></span>
+                            <span class="form-control-static"><?php echo $accountObj->getBirthday(); ?></span>
                         </div>
                         <div class="col-sm-6 form-group">
                             <label>Địa chỉ: </label>
@@ -50,7 +50,14 @@ if (!empty($id)) {
                         </div>
                         <div class="col-sm-6 form-group">
                             <label>Khoa - Viện: </label>
-                            <span class="form-control-static"><?php echo $accountObj->getPhone(); ?></span>
+                            <span class="form-control-static"><?php
+                                $list = array();
+                                $list = $accountMod->findAcademy($accountObj->getIdAccount());
+                                foreach ($list as $key=> $value){
+                                    echo $value->getAcademyName();
+                                }
+                                ?>
+                            </span>
                         </div>
                     </div>
                     <div class="row">

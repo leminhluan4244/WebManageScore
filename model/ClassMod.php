@@ -90,13 +90,12 @@ class ClassMod
         $sql = "SELECT * FROM Class";
         $this->connSql->Connect();
         $result = $this->connSql->conn->query($sql);
+        $list = array();
 
         if ($result->num_rows > 0) {
             $k = 0;
-            $classobj = new ClassObj();
-            $list = array();
             while ($row = $result->fetch_assoc()) {
-
+                $classobj = new ClassObj();
                 $classobj->setIdClass($row["idClass"]);
                 $classobj->setClassName($row["className"]);
                 $classobj->setSchoolYear($row["schoolYear"]);

@@ -23,9 +23,9 @@ class PermissionMod
 						'".$permission->getPower()."')";
         $this->connSql->Connect();
         if ($this->connSql->conn->query($sql) === TRUE) {
-            echo "Addition is successful! ";
+          //  echo "Addition is successful! ";
         } else {
-            echo "Addition is not successful! " . $this->connSql->error;
+          //  echo "Addition is not successful! " . $this->connSql->error;
         }
         $this->connSql->Stop();
     }
@@ -38,9 +38,9 @@ class PermissionMod
 			        WHERE position='".$permission->getPosition()."'";
         $this->connSql->Connect();
         if ($this->connSql->conn->query($sql) === true) {
-            echo "Updation is successful!";
+           // echo "Updation is successful!";
         } else {
-            echo "Updation is not successful!" . $this->connSql->error;
+           // echo "Updation is not successful!" . $this->connSql->error;
         }
         $this->connSql->Stop();
     }
@@ -54,9 +54,9 @@ class PermissionMod
 
         $this->connSql->Connect();
         if ($this->connSql->conn->query($sql) === TRUE) {
-            echo "Deletion is successful! ";
+           // echo "Deletion is successful! ";
         } else {
-            echo "Deletion is not successful! " . $this->connSql->error;
+          //  echo "Deletion is not successful! " . $this->connSql->error;
         }
         $this->connSql->Stop();
     }
@@ -64,16 +64,15 @@ class PermissionMod
     //4. Hàm trả về danh sách các phân quyền hiện có
     public function getPermission()
     {
-        $sql = "SELECT * FROM Permission";
+        $sql = "SELECT DISTINCT * FROM Permission GROUP BY Position";
         $this->connSql->Connect();
         $result = $this->connSql->conn->query($sql);
 
         if ($result->num_rows > 0) {
             $k = 0;
-            $permission = new PermissionObj();
             $list = array();
             while ($row = $result->fetch_assoc()) {
-
+                $permission = new PermissionObj();
                 $permission->setPosition($row["position"]);
                 $permission->getPower($row["power"]);
                 $list[$k] = $permission;
@@ -81,7 +80,7 @@ class PermissionMod
             }
 
         } else {
-            echo "The result of information processing is data false";
+             //echo "The result of information processing is data false";
         }
 
         $this->connSql->Stop();
