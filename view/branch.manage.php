@@ -2,7 +2,6 @@
 require_once "../controller/header.php";
 $branchMod = new BranchMod();
 $branchobj = new BranchObj();
-var_dump($_POST['xoa']);
 ?>
 
 <div class="container-fluid">

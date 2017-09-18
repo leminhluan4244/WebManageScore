@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Quản Lý Chi Hội</title>
+    <script src="bootstrap/jquery-3.2.1.min.js"></script>
+    <script src="bootstrap/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="bootstrap/css/bootstrap-theme.min.css">
+    <link rel="stylesheet" href="style/style.css">
+    <link rel="icon" href="img/logo.gif">
+</head>
+
+<body>
+    <div class="banner container-fluid">
+        <div class="col-sm-2 logo">
+            <img src="img/logo.gif" width="70" alt="">
+        </div>
+        <div class="banner-title col-sm-8">
+            <h4><strong>TRƯỜNG ĐẠI HỌC CẦN THƠ</strong></h4>
+            <p><strong>Hệ thống chấm điểm rèn luyện</strong></p>
+        </div>
+        <div class="banner-action col-sm-2 text-right">
+            <a href="main.html" class="btn btn-primary btn-sm">
+                <span class="glyphicon glyphicon-home"></span> Trang chủ</a>
+            <a href="index.html" class="btn btn-warning btn-sm">
+                <span class="glyphicon glyphicon-log-out"></span> Đăng xuất</a>
+        </div>
+    </div>
+    <br>
+    <div class="container main-academy-container">
+        <div class="academy-action-list text-center">
+
+            <h4>Danh sách Chi Hội</h4>
+            <div class="form-group">
+               <form action="" method="post">
+
+                     <input type="submit" value="Lọc theo" class="btn btn-primary col-sm-1"> 
+
+                  <div class="col-sm-4">
+                    <select name="kv" id="" class="form-control"> 
+                        <option value="CH01">Hậu Giang</option>
+                        <option value="CH02">Cần Thơ</option>
+                        <option value="CH03">Vĩnh Long</option>
+                         <option value="CH04">Sóc Trăng</option>
+                         <option value="CH05">Cà Mau</option>
+                         <option value="CH06">Trà Vinh</option>
+
+                    </select>
+                </div>
+          
+               </form>
+               <br>
+               <br>
+
+
+
+
+
+
+
+
+
+            </div> <!--Bang trich loc-->
+            <div class="">
+                <table class="table table-bordered table-condensed">
+                    <thead>
+                        <tr>
+                            <th>STT</th>
+                            <th>MCB</th>
+                            <th>Họ và tên</th>
+                            <th>Thay đổi</th>
+                        </tr>
+                    </thead>
+                    <tbody class="text-left">
+                        <tr>
+                            <td>1</td>
+                            <td>B1400</td>
+                            <td>Lê Minh Luân</td>
+                            <td>
+                                <a href="#" class="btn btn-success btn-sm">
+                                    <span class="glyphicon glyphicon-edit"></span> Sửa
+                                </a>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>2</td>
+                            <td>B1400</td>
+                            <td>Nguyễn Minh Nhựt</td>
+                            <td>
+                                <a href="#" class="btn btn-success btn-sm">
+                                    <span class="glyphicon glyphicon-edit"></span> Sửa
+                                </a>
+                            </td>
+                        </tr>
+                         <tr>
+                            <td>2</td>
+                            <td>B1400</td>
+                            <td>Nguyễn Tấn Phát</td>
+                            <td>
+                                <a href="#" class="btn btn-success btn-sm">
+                                    <span class="glyphicon glyphicon-edit"></span> Sửa
+                                </a>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>3</td>
+                            <td>B1400</td>
+                            <td>Huỳnh Hoàng Thơ</td>
+                            <td>
+                                <a href="#" class="btn btn-success btn-sm">
+                                    <span class="glyphicon glyphicon-edit"></span> Sửa
+                                </a>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+
+              <!-- them moi can bo -->
+
+<div id="addMember" class="modal fade" tabindex="-1" role="dialog" aria-labelledby aria-hidden="true">
+<div class="modal-dialog">
+<div class="modal-content">
+<div class="modal-header">
+
+<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+<h4 class="modal-title">Thêm mới chi hội</h4>
+</div>
+<div class="modal-body">
+<form action="" method="post">
+
+<fieldset class="form-group">
+<p class="alignLeft"><b>Họ và Tên</p>
+<input type="text" class="form-control" name="nameMember" id="nameMember" placeholder="Nhập tên sinh viên">
+</fieldset>
+
+<fieldset class="form-group">
+<p class="alignLeft"><b>MSSV</p>
+<input type="text" class="form-control" name="idMember" id="idMember" placeholder="Nhập mã số sinh viên">
+</fieldset>
+
+<fieldset class="form-group">
+<p class="alignLeft"><b>Ngày Sinh</p>
+<input type="date" class="form-control" name="ngaysinh" id="ngaysinh" placeholder="Ngày Sinh">
+</fieldset>
+
+<fieldset class="form-group">
+<p class="alignLeft"><b>Điện thoại</p>
+<input type="number" class="form-control" name="phoneMember" id="phoneMember" placeholder="Nhập số điện thoại">
+</fieldset>
+
+<fieldset class="form-group">
+<p class="alignLeft"><b>Email</p>
+<input type="mail" class="form-control" name="mailMember" id="mailMember" placeholder="Nhập email" value="@student.ctu.edu.vn">
+</fieldset>
+
+<fieldset class="form-group">
+<p class="alignLeft"><b>Tỉnh/Thành Phố</p>
+<select class="form-control" name="typeMember" id="typeMember">
+                        <option value="CH01">Hậu Giang</option>
+                        <option value="CH02">Cần Thơ</option>
+                        <option value="CH03">Vĩnh Long</option>
+                         <option value="CH04">Sóc Trăng</option>
+                         <option value="CH05">Cà Mau</option>
+                         <option value="CH06">Trà Vinh</option>
+                         <option value="CH07">NULL</option>
+</select>
+<small class="text-muted">Nếu không có tham gia chi hội, chọn NULL</i></small>
+</fieldset>
+
+</div>
+<div class="modal-footer">
+<button type="button" class="btn btn-default" data-dismiss="modal">Đóng</button>
+<button type="submit" class="btn btn-primary" name="addNewMember">Thêm</button></form>
+</div>
+</div>
+</div>
+</div>
+
+<form action="" class="form-inline">
+  <div class="form-group">
+    <a class="btn btn-success" data-toggle="modal" data-target="#addMember">
+      <span class="glyphicon glyphicon-plus"></span> Thêm mới chi hội
+    </a>
+  </div>
+  </form>
+<!-- end them moi can bo-->
+
+            </div>
+        </div>
+
+    </div>
+    <script src="js/common.js"></script>
+    <script src="js/academy_action.js"></script>
+    <footer class="container-fluid text-center">
+        Trường Đại học Cần Thơ <br> Nhóm nghiên cứu khoa học
+    </footer>
+</body>
+
+</html>

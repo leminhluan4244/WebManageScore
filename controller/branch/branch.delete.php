@@ -1,4 +1,4 @@
-<!--
+
 <?php
 if(isset($_POST['xoa'])) {
     $branchO = new BranchObj();
@@ -7,9 +7,10 @@ if(isset($_POST['xoa'])) {
             $branchO->setidBranch($value);
             $branchM->deleteBranch($branchO);
     }
+
 }
 ?>
--->
+
 <!--Start delete Branch-->
 <div id="deleteBranch" class="modal fade " tabindex="-1" role="dialog" aria-labelledby aria-hidden="true">
     <div class="modal-dialog">
@@ -32,31 +33,8 @@ if(isset($_POST['xoa'])) {
 </div>
 <script>
     function submitform() {
-        $('#deleteForm').submit();
+        $('#manageForm').submit();
     }
 </script>
 <!--End delete Branch-->
 
-<!--
-<script language="JavaScript">
-    function toggle(checkall) {
-        checkboxes = document.getElementsByName('idBranch');
-        for(var i=0, n=checkboxes.length;i<n;i++) {
-            checkboxes[i].checked = checkall.checked;
-        }
-    }
-</script>
-
-
-
-<script language="javascript">
-    document.getElementById('action').onclick = function(e){
-        if (this.checked){
-            alert("Bạn vừa tích");
-        }
-        else{
-            alert("Bạn vừa bỏ tích");
-        }
-    };
-</script>
--->

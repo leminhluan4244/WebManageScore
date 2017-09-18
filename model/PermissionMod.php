@@ -91,6 +91,8 @@ class PermissionMod
 
     /* Kiểm tra hàm có viết đúng hay không ?
     1. Hàm thêm
+    require_once 'ConnectToSQL.php';
+    require_once 'PermissionObj.php';
     $permission_mod = new PermissionMod();
     $permission_obj = new PermissionObj();
     $permission_obj->setPermissionObj('PQ1', 'Admin');
