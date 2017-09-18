@@ -52,11 +52,10 @@ if (!empty($id)) {
                             <label>Khoa - Viện: </label>
                             <span class="form-control-static">
                                 <?php
-//                                $list = array();
-//                                $list = $accountMod->findAcademy($accountObj->getIdAccount());
-//                                foreach ($list as $key=> $value){
-//                                    echo $value->getAcademyName();
-//                                }
+                                $listInfoAcademy = $accountMod->getAcademy($accountObj->getIdAccount());
+                                foreach ($listInfoAcademy as $key=> $value){
+                                   echo '<br />'.$value ;
+                                }
                                 ?>
                             </span>
                         </div>
@@ -64,11 +63,26 @@ if (!empty($id)) {
                     <div class="row">
                         <div class="col-sm-6 form-group">
                             <label>Lớp: </label>
-                            <span class="form-control-static"><?php echo $accountObj->getEmail(); ?></span>
+                            <span class="form-control-static">
+                            <?php
+                            $listInfoClass = $accountMod->getClass($accountObj->getIdAccount());
+                            foreach ($listInfoClass as $key=> $value){
+                                echo '<br />'.$value ;
+                            }
+                            ?>
+                            </span>
                         </div>
                         <div class="col-sm-6 form-group">
                             <label>Chi hội: </label>
-                            <span class="form-control-static"><?php echo $accountObj->getPhone(); ?></span>
+                            <span class="form-control-static">
+                            <?php
+                            $listInfoBranch = $accountMod->getBranch($accountObj->getIdAccount());
+                            foreach ($listInfoBranch as $key=> $value){
+                                echo '<br />'.$value ;
+                            }
+                            ?>
+
+                            </span>
                         </div>
                     </div>
                     <div class="row">

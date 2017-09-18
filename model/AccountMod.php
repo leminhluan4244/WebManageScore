@@ -242,8 +242,68 @@
       $this->conn2sql->Stop();
       return $className;
     }
+    //Minh luan tag - trả danh sách lớp, khoa , chi hoi
+      public function getClass($id)
+      {
+          $sql = "SELECT class.className FROM account,account_has_class,class WHERE account.idAccount = account_has_class.Account_idAccount AND account_has_class.Class_idClass = class.idClass AND account.idAccount='".$id."';
+";
+          $this->conn2sql->Connect();
+          $result = $this->conn2sql->conn->query($sql);
+          $this->conn2sql->Stop();
+          $list = array();
+          if ($result->num_rows > 0) {
+              $k = 0;
+              while ($row = $result->fetch_assoc()) {
+                  $list[$k] = $row["className"];
+                  $k++;
+              }
 
-    #Trả về một mảng chứa tên các khoa
+          } else {
+              // echo "The result of information processing is data false";
+          }
+          return $list;
+      }
+      public function getAcademy($id)
+      {
+          $sql = "SELECT academy.academyName FROM account,account_has_academy,academy WHERE account.idAccount = account_has_academy.Account_idAccount AND account_has_academy.Academy_idAcademy = academy.idAcademy AND account.idAccount='".$id."';
+";
+          $this->conn2sql->Connect();
+          $result = $this->conn2sql->conn->query($sql);
+          $this->conn2sql->Stop();
+          $list = array();
+          if ($result->num_rows > 0) {
+              $k = 0;
+              while ($row = $result->fetch_assoc()) {
+                  $list[$k] = $row["academyName"];
+                  $k++;
+              }
+
+          } else {
+              // echo "The result of information processing is data false";
+          }
+          return $list;
+      }
+      public function getBranch($id)
+      {
+          $sql = "SELECT branch.branchName FROM account,account_has_branch,branch WHERE account.idAccount = account_has_branch.Account_idAccount AND account_has_branch.Branch_idBranch = branch.idBranch AND account.idAccount='".$id."';
+";
+          $this->conn2sql->Connect();
+          $result = $this->conn2sql->conn->query($sql);
+          $this->conn2sql->Stop();
+          $list = array();
+          if ($result->num_rows > 0) {
+              $k = 0;
+              while ($row = $result->fetch_assoc()) {
+                  $list[$k] = $row["branchName"];
+                  $k++;
+              }
+
+          } else {
+              // echo "The result of information processing is data false";
+          }
+          return $list;
+      }
+      #Trả về một mảng chứa tên các khoa
     public function getAccountOnAcademy($idAccount){
       $sql = "SELECT `Academy_idAcademy` FROM `account_has_academy` WHERE `Account_idAccount` = '".$idAccount."'";
       $this->conn2sql->Connect();
@@ -569,14 +629,14 @@
   #var_dump($newStudent->findAccountByName('Đoàn Minh Nhựt'));
 
   #var_dump($newStudent->findAccountByID('B'));
-//require_once 'ConnectToSQL.php';
-//require_once 'AccountObj.php';
-//    $newacc = new AccountMod();
-//  $row=array();
-//  $row=$newacc->getAllAccount();
-//    foreach ($row as $key => $value) {
-//    echo $key . "->" . $value->getIdAccount()." - ".$value->getAccountName()." <br>";
-//    }
+require_once 'ConnectToSQL.php';
+require_once 'AccountObj.php';
+    $newacc = new AccountMod();
+  $row=array();
+  $row=$newacc->getClass("B1400704");
+    foreach ($row as $key => $value) {
+    echo $key . "->" . $value." <br>";
+    }
 
   #var_dump($newStudent->findAccountByID('B1400704'));
   #*************************************************************************************************************************
