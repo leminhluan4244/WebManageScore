@@ -52,8 +52,7 @@ $academyMod = new AcademyMod();
     <!--End content manage student-->
 </div>
 
-<?php echo "<script>var baseUrl = '$baseUrl';</script>"; ?>
-<script src="<?php echo $baseUrl ?>/public/js/student_action.js"></script>
+<script src="../public/js/student_action.js"></script>
 
 <?php
 require_once "../controller/footer.php";
