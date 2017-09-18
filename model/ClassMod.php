@@ -114,10 +114,10 @@ class ClassMod
     }
 
     //6. Hàm trả về danh sách các tài khoản sinh viên hiện có trong một lớp học
-    public function getListAccount($class)
+    public function getListStudent($class)
     {
 
-        $sql = "SELECT * FROM Account WHERE Class_idClass = '".$class->getIdClass()."'";
+        $sql = "SELECT * FROM Account,Account_has_Class WHERE Account_has_Class.Class_idClass = '".$class->getIdClass()."'";
         $this->connSql->Connect();
         $result = $this->connSql->conn->query($sql);
 
@@ -136,11 +136,47 @@ class ClassMod
                 $account -> setEmail($row["email"]);
                 $account -> setPassword($row["password"]);
                 $account -> setPermission_position($row["permission_position"]);
-                $list[k] = $account;
-                $k++;
+                if($account->getPermission_position()=='Sinh viên'){
+                    $list[k] = $account;
+                    $k++;
+                }
+
             }
         } else {
            // echo "The result of information processing is data false";
+        }
+        $this->connSql->Stop();
+        return $list;
+    }
+    public function getListTeacher($class)
+    {
+
+        $sql = "SELECT * FROM Account,Account_has_Class WHERE Account_has_Class.Class_idClass = '".$class->getIdClass()."'";
+        $this->connSql->Connect();
+        $result = $this->connSql->conn->query($sql);
+
+        if ($result->num_rows > 0) {
+            $k = 0;
+            $list = array();
+            $account = new AccountObj;
+            while ($row = $result->fetch_assoc()) {
+
+                $account->setIdAccount($row["idAccount"]);
+                $account->setAccountName($row["accountName"]);
+                $account -> setBirthday($row["birthday"]);
+                $account -> setAddress($row["address"]);
+                $account -> setSex($row["sex"]);
+                $account -> setPhone($row["phone"]);
+                $account -> setEmail($row["email"]);
+                $account -> setPassword($row["password"]);
+                $account -> setPermission_position($row["permission_position"]);
+                if($account->getPermission_position()=='Cố vấn học tập'){
+                    $list[k] = $account;
+                    $k++;
+                }
+            }
+        } else {
+            // echo "The result of information processing is data false";
         }
         $this->connSql->Stop();
         return $list;
