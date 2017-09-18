@@ -628,15 +628,15 @@
 
   #var_dump($newStudent->findAccountByName('Đoàn Minh Nhựt'));
 
-  #var_dump($newStudent->findAccountByID('B'));
-require_once 'ConnectToSQL.php';
-require_once 'AccountObj.php';
-    $newacc = new AccountMod();
-  $row=array();
-  $row=$newacc->getClass("B1400704");
-    foreach ($row as $key => $value) {
-    echo $key . "->" . $value." <br>";
-    }
+//  #var_dump($newStudent->findAccountByID('B'));
+//require_once 'ConnectToSQL.php';
+//require_once 'AccountObj.php';
+//    $newacc = new AccountMod();
+//  $row=array();
+//  $row=$newacc->getClass("B1400704");
+//    foreach ($row as $key => $value) {
+//    echo $key . "->" . $value." <br>";
+//    }
 
   #var_dump($newStudent->findAccountByID('B1400704'));
   #*************************************************************************************************************************
