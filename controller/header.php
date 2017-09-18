@@ -6,7 +6,7 @@ require_once "../model/Link.php";
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Quản Lý Sinh viêṇ</title>
+    <title>Quản Lý Điểm rèn luyện Sinh viên</title>
     <script src="../public/bootstrap/jquery-3.2.1.min.js"></script>
     <script src="../public/bootstrap/js/bootstrap.min.js"></script>
     <link rel="stylesheet" href="../public/bootstrap/css/bootstrap.min.css">
