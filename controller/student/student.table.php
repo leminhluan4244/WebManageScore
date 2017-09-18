@@ -13,6 +13,9 @@
     $url = preg_replace("/&id.+/", '', $url);
     $url = strpos($url, "?") ? "$url&": "$url?";
 ?>
+<?php
+    $listTable = $accountMod->getStudentAll();
+?>
 <table class="table table-bordered table-condensed">
     <thead>
     <tr>
@@ -23,7 +26,7 @@
     </tr>
     </thead>
     <tbody class="text-center align-self-center">
-    <?php foreach ($studentList as $order => $student) { ?>
+    <?php foreach ($listTable as $order => $student) { ?>
         <tr>
             <td><?php echo $order + 1; ?></td>
             <td>

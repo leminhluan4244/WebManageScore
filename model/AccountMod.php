@@ -138,7 +138,44 @@
       }
       #ok
 
-
+    //Trả ra mảng sinh viên và quản lý chi hội
+      public function getStudentAll(){
+          // Tạo ra một mảng lưu trữ tên list, mặc định bang đầu rỗng
+          $list = array();
+          // Đẩy câu lệnh vào string
+          $sql = "SELECT * FROM Account WHERE Permission_position='Sinh viên' or Permission_position='Quản lý chi hội';";
+          $this->conn2sql->Connect();
+          $result = $this->conn2sql->conn->query($sql);
+          // Kiểm tra số lượng kết quả trả về có lơn hơn 0
+          // Nếu lớn hơn tức là có kết quả, ngược lại sẽ không có kết quả
+          if ($result->num_rows > 0) {
+              // Sử dụng vòng lặp while để lặp kết quả
+              $k = 0;
+              //Tạo một đối tượng chứa
+              while ($row = $result->fetch_assoc()) {
+                  //Cho vào list đối tượng
+                  $account = new AccountObj;
+                  $account->setIdAccount($row["idAccount"]);
+                  $account->setAccountName($row["accountName"]);
+                  $account->setBirthday($row["birthday"]);
+                  $account->setAddress($row["address"]);
+                  $account->setSex($row["sex"]);
+                  $account->setPhone($row["phone"]);
+                  $account->setEmail($row["email"]);
+                  $account->setPassword("don't know");
+                  $account->setPermission_position($row["Permission_position"]);
+                  $list[$k] = $account;
+                  $k++;
+              }
+          } else {
+              return -1;
+              //echo "Không có kết quả nào";
+          }
+          //Ngắt kết nối
+          $this->conn2sql->Stop();
+          //Trả đối tượng đi, sau này lớp control sẽ sử dụng mảng này để truy xuất
+          return $list;
+      }
     #Cập nhật thông tin tài khoản
 
     public function updateAccount($account){
@@ -182,7 +219,7 @@
       $this->conn2sql->Connect();
       $result = $this->conn2sql->conn->query($sql);
       if(empty($result)){
-        echo 'EMPTY';
+        //echo 'EMPTY';
         return [];
       }
       $arr = array();

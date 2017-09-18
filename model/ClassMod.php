@@ -120,9 +120,8 @@ class ClassMod {
         if ($result->num_rows > 0) {
             $k = 0;
             $list = array();
-            $account = new AccountObj;
             while ($row = $result->fetch_assoc()) {
-
+                $account = new AccountObj;
                 $account->setIdAccount($row["idAccount"]);
                 $account->setAccountName($row["accountName"]);
                 $account -> setBirthday($row["birthday"]);
@@ -150,13 +149,11 @@ class ClassMod {
         $sql = "SELECT * FROM Account,Account_has_Class WHERE Account_has_Class.Class_idClass = '".$class->getIdClass()."'";
         $this->connSql->Connect();
         $result = $this->connSql->conn->query($sql);
-
         if ($result->num_rows > 0) {
             $k = 0;
             $list = array();
-            $account = new AccountObj;
             while ($row = $result->fetch_assoc()) {
-
+                $account = new AccountObj;
                 $account->setIdAccount($row["idAccount"]);
                 $account->setAccountName($row["accountName"]);
                 $account -> setBirthday($row["birthday"]);
