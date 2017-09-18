@@ -16,12 +16,18 @@ if (isAjaxRequest()){
 		die('{}');
 	require_once $rootUri . '/model/ConnectToSQL.php';
 	require_once $rootUri . '/model/ClassObj.php';
-	require_once $rootUri . '/model/AcademyMod.php';
-	require_once $rootUri . '/model/AcademyObj.php';
-	$acaMod = new AcademyMod();
-	$acaObj = new AcademyObj();
-	$acaObj->setIdAcademy($acaId);
-	$listClasses = $acaMod->getListClass($acaObj);
+	if ($acaId === "all"){
+		require_once $rootUri . '/model/ClassMod.php';
+		$classMod = new ClassMod();
+		$listClasses = $classMod->getClass();
+	} else{
+		require_once $rootUri . '/model/AcademyMod.php';
+		require_once $rootUri . '/model/AcademyObj.php';
+		$acaMod = new AcademyMod();
+		$acaObj = new AcademyObj();
+		$acaObj->setIdAcademy($acaId);
+		$listClasses = $acaMod->getListClass($acaObj);
+	}
 	$result = array();
 	if (is_array($listClasses)){
 		foreach ($listClasses as $class) {
