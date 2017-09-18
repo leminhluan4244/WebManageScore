@@ -25,9 +25,9 @@ class ClassMod
 						'" . $class->getAcademy_idAcademy() . "');";
         $this->connSql->Connect();
         if ($this->connSql->conn->query($sql) === TRUE) {
-            echo "Addition is successful! ";
+           // echo "Addition is successful! ";
         } else {
-            echo "Addition is not successful! " . $this->connSql->error;
+          //  echo "Addition is not successful! " . $this->connSql->error;
         }
         $this->connSql->Stop();
     }
@@ -42,9 +42,9 @@ class ClassMod
                         WHERE Academy_idAcademy='".$class->getAcademy_idAcademy()."'";
         $this->connSql->Connect();
         if ($this->connSql->conn->query($sql) === true) {
-            echo "Updation is successful!";
+          //  echo "Updation is successful!";
         } else {
-            echo "Updation is not successful!" . $this->connSql->error;
+            //echo "Updation is not successful!" . $this->connSql->error;
         }
         $this->connSql->Stop();
     }
@@ -58,9 +58,9 @@ class ClassMod
 
         $this->connSql->Connect();
         if ($this->connSql->conn->query($sql) === TRUE) {
-            echo "Deletion is successful! ";
+           // echo "Deletion is successful! ";
         } else {
-            echo "Deletion is not successful! " . $this->connSql->error;
+          //  echo "Deletion is not successful! " . $this->connSql->error;
         }
         $this->connSql->Stop();
     }
@@ -78,7 +78,7 @@ class ClassMod
                 return $row["count(*)"];
             }
         } else {
-            echo 'error ';
+           // echo 'error ';
             return -1;
         }
         $this->connSql->Stop();
@@ -93,10 +93,10 @@ class ClassMod
 
         if ($result->num_rows > 0) {
             $k = 0;
-
+            $classobj = new ClassObj();
             $list = array();
             while ($row = $result->fetch_assoc()) {
-                $classobj = new ClassObj();
+
                 $classobj->setIdClass($row["idClass"]);
                 $classobj->setClassName($row["className"]);
                 $classobj->setSchoolYear($row["schoolYear"]);
@@ -106,7 +106,7 @@ class ClassMod
             }
 
         } else {
-            echo "The result of information processing is data false";
+           // echo "The result of information processing is data false";
         }
 
         $this->connSql->Stop();
@@ -124,26 +124,23 @@ class ClassMod
         if ($result->num_rows > 0) {
             $k = 0;
             $list = array();
-
+            $account = new AccountObj;
             while ($row = $result->fetch_assoc()) {
-                $account = new AccountObj;
+
                 $account->setIdAccount($row["idAccount"]);
                 $account->setAccountName($row["accountName"]);
-                $account > setBirthday($row["birthday"]);
-                $account > setAddress($row["address"]);
-                $account > setSex($row["sex"]);
-                $account > setPhone($row["phone"]);
-                $account > setEmail($row["email"]);
-                $account > setPassword($row["password"]);
-                $account > setPermission_position($row["permission_position"]);
-                $account > setAcademy_idAcademy($row["Academy_idAcademy"]);
-                $account-> setClass_idClass($row["Class_idClass"]);
-
+                $account -> setBirthday($row["birthday"]);
+                $account -> setAddress($row["address"]);
+                $account -> setSex($row["sex"]);
+                $account -> setPhone($row["phone"]);
+                $account -> setEmail($row["email"]);
+                $account -> setPassword($row["password"]);
+                $account -> setPermission_position($row["permission_position"]);
                 $list[k] = $account;
                 $k++;
             }
         } else {
-            echo "The result of information processing is data false";
+           // echo "The result of information processing is data false";
         }
         $this->connSql->Stop();
         return $list;
@@ -172,7 +169,7 @@ class ClassMod
                 $k++;
             }
         } else {
-            echo "Not Found";
+           // echo "Not Found";
         }
 
         $this->connSql->Stop();
@@ -200,7 +197,7 @@ class ClassMod
                 $k++;
             }
         } else {
-            echo "Not Found";
+           // echo "Not Found";
         }
 
         $this->connSql->Stop();
