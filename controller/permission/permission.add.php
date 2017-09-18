@@ -1,8 +1,10 @@
 <?php
-#echo $_POST['txt-namePermission'];
-$permission_mod = new PermissionMod();
-$permission_obj = new PermissionObj();
-$permission_obj->setPermissionObj('PQ1', 'Admin');
-$permission_mod->addPermission($permission_obj);
-#echo'<META http-equiv="refresh" content="0;URL=view/permission.manage.php">';
+require_once("../../model/ConnectToSQL.php");
+require_once("../../model/PermissionObj.php");
+require_once("../../model/PermissionMod.php");
+$newPermissionMod = new PermissionMod();
+$newPermissionObj = new PermissionObj();
+$newPermissionObj->setPermissionObj($_POST['txt-namePermission'], 'EMPTY');
+$newPermissionMod->addPermission($newPermissionObj);
+echo'<META http-equiv="refresh" content="0;URL=../../view/permission.manage.php">';
 ?>
