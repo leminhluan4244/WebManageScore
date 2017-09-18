@@ -119,5 +119,4 @@ if(isset($_POST['btnAdd'])) {
                     </div>
                 </div>
                 <!-- End add student-->
-<?php echo "<script>var baseUrl = '$baseUrl';</script>"; ?>
-<script src="<?php echo $baseUrl ?>/public/js/student_action.js"></script>
+<script src="../public/js/student_action.js"></script>
