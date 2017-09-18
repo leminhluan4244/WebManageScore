@@ -1,32 +1,32 @@
 $(function () {
     $("#select-student-academy").change(function () {
         var acaId = $(this).val();
-        getClassByAcademy(acaId);
+        getClassByAcademy(acaId, "select-student-class");
     });
 });
 
-function getClassByAcademy(acaId){
+function getClassByAcademy(acaId, selectId){
     if (!/^[a-zA-Z0-9]+$/.test(acaId))
         return false;
     $.get(
-        baseUrl + "/controller/academy/get.class.by.academy.php?id=" + acaId,
+        "../controller/academy/get.class.by.academy.php?id=" + acaId,
         {},
         function (respond) {
             if (respond.hasOwnProperty("success") &&
                     respond.hasOwnProperty('data')){
-                updateListOfClass(respond.data);
+                updateListOfClass(respond.data, selectId);
             } else {
-                updateListOfClass([]);
+                updateListOfClass([], selectId);
             }
         },
         'json'
     );
 }
 
-function updateListOfClass(listClasses){
+function updateListOfClass(listClasses, selectId){
     var htmlContent = '<option>-- Chọn theo lớp --</option>';
     $.each(listClasses, function (i, cls) {
         htmlContent += "<option value='" + cls.classId + "'>" + cls.className + "</option>";
     });
-    $('#select-student-class').html(htmlContent);
+    $("#" + selectId).html(htmlContent);
 }
