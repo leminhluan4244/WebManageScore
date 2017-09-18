@@ -5,11 +5,7 @@ if(isset($_POST['submit'])) {
     $branchM = new BranchMod();
     $branchO->setBranchObj($_POST['IdBranch'], $_POST['branchName'], $_POST['city']);
     $branchM->addBranch($branchO);
-<<<<<<< HEAD
     echo'<META http-equiv="refresh" content="0;URL=branch.manage.php">';
-=======
-
->>>>>>> c8e41a3e0b6ede107c72e50397d37a0a6d275d8d
 }
  ?>
 
@@ -112,11 +108,7 @@ if(isset($_POST['submit'])) {
 
                     <div class="modal-footer">
                         <button type="button" class="btn btn-default" data-dismiss="modal">Đóng</button>
-<<<<<<< HEAD
                         <button type="submit" class="btn btn-primary" name="submit" ">Thêm</button>
-=======
-                        <button type="submit" class="btn btn-primary" name="submit">Thêm</button>
->>>>>>> c8e41a3e0b6ede107c72e50397d37a0a6d275d8d
                     </div>
                 </form>
             </div>
