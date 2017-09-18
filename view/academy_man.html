@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="bootstrap/jquery-3.2.1.min.js"></script>
+    <script src="bootstrap/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="bootstrap/css/bootstrap-theme.min.css">
+    <link rel="stylesheet" href="style/style.css">
+    <link rel="icon" href="img/logo.gif">
+</head>
+<body>
+<div class="banner container-fluid">
+    <div class="col-sm-2 logo">
+        <img src="img/logo.gif" width="70" alt="">
+    </div>
+    <div class="banner-title col-sm-8">
+        <h4><strong>TRƯỜNG ĐẠI HỌC CẦN THƠ</strong></h4>
+        <p><strong>Hệ thống chấm điểm rèn luyện</strong></p>
+    </div>
+    <div class="banner-action col-sm-2 text-right">
+        <a href="main.html" class="btn btn-primary btn-sm">
+            <span class="glyphicon glyphicon-home"></span> Trang chủ</a>
+        <a href="index.html" class="btn btn-warning btn-sm">
+            <span class="glyphicon glyphicon-log-out"></span> Đăng xuất</a>
+    </div>
+</div>
+<br>
+<div class="container main-academy-container">
+    <div class="academy-action-menu btn-group">
+        <a href="" id="btn-list-academy" class="btn btn-primary active">Danh sách khoa/viện </a>
+        <a href="" id="btn-add-new-academy" class="btn btn-primary">Thêm mới khoa/viện</a>
+        <a href="" class="btn btn-primary">Xóa khoa/viện </a>
+    </div>
+    <div class="academy-action-list text-center">
+        <h4>Danh sách khoa viện</h4>
+        
+        <hr>
+        <div class="">
+            <table class="table table-bordered table-condensed">
+                <thead ><tr><th>STT</th><th>Tên</th><th>Thay đổi</th></tr></thead>
+                <tbody class="text-left">
+                <tr>
+                    <td>1</td>
+                    <td>Công nghệ thông tin và truyền thông</td>
+                    <td><a href="#" class="btn btn-success btn-sm">
+                            <span class="glyphicon glyphicon-edit"></span> Sửa
+                        </a>
+                    </td>
+                </tr>
+                <tr>
+                    <td>2</td>
+                    <td>Luật</td>
+
+                    <td><a href="#" class="btn btn-success btn-sm">
+                        <span class="glyphicon glyphicon-edit"></span> Sửa
+                    </a>
+                    </td>
+                </tr>
+                <tr>
+                    <td>3</td>
+                    <td>Kinh tế</td>
+                    <td><a href="#" class="btn btn-success btn-sm">
+                        <span class="glyphicon glyphicon-edit"></span> Sửa
+                    </a>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <div class="academy-action-add text-center" style="display: none;">
+        <h4>Thêm mới khoa/viện</h4>
+        <hr>
+        <div class="col-sm-offset-3 col-sm-6">
+            <form action="">
+                <div class="form-group text-left">
+                    <label>Tên khoa/viện</label>
+                    <input class="form-control">
+                </div>
+                <div class="form-group text-right">
+                    <button class="btn btn-success">
+                        <span class="glyphicon glyphicon-ok"></span> Lưu lại
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+<script src="js/common.js"></script>
+<script src="js/academy_action.js"></script>
+<footer class="container-fluid text-center">
+    Trường Đại học Cần Thơ <br>
+    Nhóm nghiên cứu khoa học
+</footer>
+</body>
+</html>
