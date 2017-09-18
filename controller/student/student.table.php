@@ -16,6 +16,7 @@
 <?php
     $listTable = $accountMod->getStudentAll();
 ?>
+<form action="student.manage.php" method="post" id="manageForm">
 <table class="table table-bordered table-condensed">
     <thead>
     <tr>
@@ -35,8 +36,9 @@
                 </a>
             </td>
             <td><?php echo $student->getAccountName(); ?></td>
-            <td><input type="checkbox"></td>
+            <td><input type="checkbox" name="xoa[]" id="<?php echo $student->getIdAccount(); ?>" value="<?php echo $student->getIdAccount(); ?>"/> </td>
         </tr>
     <?php } ?>
     </tbody>
 </table>
+</form>
