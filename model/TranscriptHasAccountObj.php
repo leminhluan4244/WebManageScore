@@ -27,7 +27,7 @@ class TranscriptHasAccountObj {
 		return $this;
 	}
 
-	public function setTranscriptHasAccountObj($Transcript_idItem, $Account_idAccount, $scoresStudent, $scoresStudent, $scoresTeacher, $scoresEnd){
+	public function setTranscriptHasAccountObj($Transcript_idItem, $Account_idAccount, $scoresStudent, $scoresTeacher, $scoresEnd){
 		$this->Transcript_idItem=$Transcript_idItem;
 	    $this->Account_idAccount = $Account_idAccount;
 	    $this->scoresStudent=$scoresStudent;

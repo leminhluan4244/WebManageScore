@@ -7,12 +7,13 @@ require_once "../model/Link.php";
 <head>
     <meta charset="UTF-8">
     <title>Hệ thống quản lý điểm rèn luyện</title>
-    <script src="../public/bootstrap/jquery-3.2.1.min.js"></script>
-    <script src="../public/bootstrap/js/bootstrap.min.js"></script>
-    <link rel="stylesheet" href="../public/bootstrap/css/bootstrap.min.css">
-    <link rel="stylesheet" href="../public/bootstrap/css/bootstrap-theme.min.css">
-    <link rel="stylesheet" href="../public/style/style.css">
-    <link rel="icon" href="../public/img/logo.gif">
+    <script src="<?php echo getBaseUrl(); ?>/public/bootstrap/jquery-3.2.1.min.js"></script>
+    <script src="<?php echo getBaseUrl(); ?>/public/bootstrap/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="<?php echo getBaseUrl(); ?>public/bootstrap/css/bootstrap.min.css">
+<!--    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">-->
+    <link rel="stylesheet" href="<?php echo getBaseUrl(); ?>/public/bootstrap/css/bootstrap-theme.min.css">
+    <link rel="stylesheet" href="<?php echo getBaseUrl(); ?>/public/style/style.css">
+    <link rel="icon" href="<?php echo getBaseUrl(); ?>/public/img/logo.gif">
 </head>
 
 <body>

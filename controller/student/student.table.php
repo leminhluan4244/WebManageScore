@@ -1,5 +1,9 @@
+<?php
+    $studentList = $accountMod->getAllAccountByPermission('Sinh viên');
+    if (!is_array($studentList))
+        $studentList = array();
+?>
 <table class="table table-bordered table-condensed">
-
     <thead>
     <tr>
         <th>STT</th>
@@ -8,28 +12,18 @@
         <th>Chọn</th>
     </tr>
     </thead>
-
-
-
     <tbody class="text-center align-self-center">
-    <?php
-    $arrayAccount = array();
-    $arrayAccount = $accountMod->getAllAccountByPermission('Sinh viên');
-    foreach ($arrayAccount as $key=>$value){
-        echo '<tr>
-        <td>1</td>
-        <td>
-            <a class="align-self-center " data-toggle="modal" data-target="#infoStudent" method="get" href="student.manage.php?id='.$value->getIdAccount().'">'.$value->getIdAccount().'</a>
-        </td>
-        <td>
-            <a class="align-self-center " data-toggle="modal" data-target="#infoStudent" method="get" href="student.manage.php?id='.$value->getIdAccount().'">'.$value->getAccountName().'</a>
-        </td>
-        <td>
-            <input type="checkbox" name="idAccount" value="idAccount">
-        </td>
-    </tr>';
-    }
-
-    ?>
+    <?php foreach ($studentList as $order => $student) { ?>
+        <tr>
+            <td><?php echo $order + 1; ?></td>
+            <td>
+                <a href="?id=<?php echo $student->getIdAccount(); ?>">
+                    <?php echo $student->getIdAccount(); ?>
+                </a>
+            </td>
+            <td><?php echo $student->getAccountName(); ?></td>
+            <td><input type="checkbox"></td>
+        </tr>
+    <?php } ?>
     </tbody>
 </table>

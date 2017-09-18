@@ -6,7 +6,9 @@
  * Time: 2:45 PM
  */
 ?>
-<script src="../../public/js/common.js"></script>
-<script src="../../public/js/account.js"></script>
+<script src="<?php echo $baseUrl; ?>/public/js/common.js"></script>
+<script src="<?php echo $baseUrl; ?>/public/js/account.js"></script>
+
+<?php echo "<script>var baseUrl = '$baseUrl';</script>" ?>
 </body>
 </html>
