@@ -7,6 +7,7 @@
  */
 
 
+define("ROOT_STRUCTURE", "0");
 class StructureMod {
 	private $connSQL;
 
@@ -72,5 +73,54 @@ class StructureMod {
 		}
 		$this->connSQL->Stop();
 		return $listRow;
+	}
+
+	/**
+	 * Lấy item trên cùng của bảng điểm
+	 * @return StructureObj
+	 */
+	public function getRootStructure(){
+		$root = new StructureObj();
+		$root->setIdItem(ROOT_STRUCTURE);
+		return $root;
+	}
+
+	public function isRootStructure($structureObj){
+		return $structureObj->getIdItem() == ROOT_STRUCTURE;
+	}
+
+	/**
+	 * Lấy tất cả các con trực tiếp của item đó
+	 * @param $structureObj
+	 */
+	public function getAllDirectChildOfStructure($structureObj){
+		$children = array();
+		$id = $structureObj->getIdItem();
+		$sql = "select * from structure where IDParent = '$id'";
+		$this->connSQL->Connect();
+		$result = $this->connSQL->conn->query($sql);
+		if (!empty($result)){
+			while ($row = $result->fetch_assoc()){
+				$child = new StructureObj();
+				$child->setStructureObj(
+					$row['idItem'],
+					$row['itemName'],
+					$row['scores'],
+					$row['describe'],
+					$row['IDParent']
+				);
+				$children[] = $child;
+			}
+		}
+		return $children;
+	}
+
+	public function isChildOfRoot($structureObj){
+		return $structureObj->getIdParent() === ROOT_STRUCTURE;
+	}
+
+	public function isLeaf($structureObj){
+//		return $structureObj->getScores() > 0;
+		return empty($this->getAllDirectChildOfStructure($structureObj));
 	}
 }
