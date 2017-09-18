@@ -1,3 +1,13 @@
+<?php
+if(isset($_POST['btnAdd'])) {
+
+    $studentO = new AccountObj();
+    $studentM = new AccountMod();
+    $studentO->setAccountObj($_POST['addIdAccount'], $_POST['addAccountName'], $_POST['addBirthday'], $_POST['addAddress'], $_POST['addSex'], $_POST['addPhone'], $_POST['addEmail'],'123', $_POST['addPermission_position']);
+    $studentM->addAccount($studentO);
+    echo'<META http-equiv="refresh" content="0;URL=student.manage.php">';
+}
+?>
                 <!-- Start add student-->
                 <div id="addStudent" class="modal fade " tabindex="-1" role="dialog" aria-labelledby aria-hidden="true">
                     <div class="modal-dialog">
@@ -8,7 +18,7 @@
                                 <h4 class="modal-title">Thêm mới sinh viên</h4>
                             </div>
                             <div class="modal-body ">
-                                <form action="student.mamage.php" method="post">
+                                <form action="student.manage.php" method="post">
 
                                     <fieldset class="form-group">
                                         <p class="text-left "><b>Họ và Tên</b></p>
@@ -58,25 +68,27 @@
                                     <fieldset class="form-group">
                                         <p class="text-left"><b>Khoa - Viện</b></p>
                                         <select class="form-control" name="addAcademyName" id="addAcademyName">
-                                            <option value="TS">--Chọn khoa--</option>
+                                            <option value="NoneAcademy">--Chọn khoa--</option>
                                             <?php
                                                 $list = array();
                                                 $list = $academyMod->getAcademy();
                                                 foreach ($list as $key => $value){
                                                     echo'<option value="'.$value->getIdAcademy().'">'.$value->getAcademyName().'</option>';
                                                 }
-
-
                                             ?>
-                                            <option value="TS">Thủy sản</option>
-                                            <option value="MT">Môi trường</option>
-                                            <option value="CṆ">Công nghệ</option>
                                         </select>
                                     </fieldset>
 
                                     <fieldset class="form-group">
                                         <p class="text-left"><b>Lớp</b></p>
                                         <select class="form-control" name="addClassName" id="addClassName">
+                                            <?php
+                                            $list = array();
+                                            $list = $academyMod->getAcademy();
+                                            foreach ($list as $key => $value){
+                                                echo'<option value="'.$value->getIdAcademy().'">'.$value->getAcademyName().'</option>';
+                                            }
+                                            ?>
                                             <option value="DI1496A1">KTPM1 K40</option>
                                             <option value="DI1496A1">KTPM2 K40</option>
                                             <option value="DI1496A1">KTPM3 K40</option>
@@ -85,6 +97,13 @@
                                     <fieldset class="form-group">
                                         <p class="text-left"><b>Phân quyền</b></p>
                                         <select class="form-control" name="addPermission_position" id="addPermission_position">
+                                            <?php
+                                            $list = array();
+                                            $list = $academyMod->getAcademy();
+                                            foreach ($list as $key => $value){
+                                                echo'<option value="'.$value->getIdAcademy().'">'.$value->getAcademyName().'</option>';
+                                            }
+                                            ?>
                                             <option value="DI1496A1">Sinh viên</option>
                                             <option value="DI1496A1">Cố vấn học tập</option>
                                             <option value="DI1496A1">Quản lý khoa</option>
@@ -100,38 +119,5 @@
                     </div>
                 </div>
                 <!-- End add student-->
-                <?php
-//                if(!isset($_POST[addAccountName])){
-//                    //thông báo không được rỗng
-//                }
-//                if(!isset($_POST[addIdAccount])){
-//                    //thông báo không được rỗng
-//                }
-//                if(!isset($_POST[addBrithday])){
-//                    //thông báo không được rỗng
-//                }
-//                if(!isset($_POST[addAddress])){
-//                    //thông báo không được rỗng
-//                }
-//                if(!isset($_POST[addSex])){
-//                    //thông báo không được rỗng
-//                }
-//                if(!isset($_POST[addPhone])){
-//                    //thông báo không được rỗng
-//                }
-//                if(!isset($_POST[addEmail])){
-//                    //thông báo không được rỗng
-//                }
-//                if(!isset($_POST[addPassword])){
-//                    //thông báo không được rỗng
-//                }
-//                if(!isset($_POST[addClassName])){
-//                    //thông báo không được rỗng
-//                }
-//                if(!isset($_POST[addAcademyName])){
-//                    //thông báo không được rỗng
-//                }
-//                if(!isset($_POST[addPermision_Position])){
-//                    //thông báo không được rỗng
-//                }
-                ?>
+<?php echo "<script>var baseUrl = '$baseUrl';</script>"; ?>
+<script src="<?php echo $baseUrl ?>/public/js/student_action.js"></script>

@@ -7,7 +7,6 @@ $accountObj = new AccountObj();
 $accountMod = new AccountMod();
 $academyObj = new AcademyObj();
 $academyMod = new AcademyMod();
-
 ?>
 <div class="container-fluid">
     <!Start content manage student-->

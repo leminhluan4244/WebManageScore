@@ -1,4 +1,13 @@
 <!--Start delete student-->
+<?php
+if(isset($_POST['deleteYes'])) {
+
+    $branchO = new BranchObj();
+    $branchM = new BranchMod();
+    $branchO->setBranchObj($_POST['IdBranch'], $_POST['branchName'], $_POST['city']);
+    $branchM->deleteBranch($branchO);
+}
+?>
 <div id="deleteStudent" class="modal fade " tabindex="-1" role="dialog" aria-labelledby aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
@@ -21,3 +30,20 @@
     </div>
 </div>
 <!--End delete student-->
+<!-- Bắt sự kiện check all tất cả checkbox để xóa tất cả dữ liệu  -->
+<script language="JavaScript">
+    function toggle(checkall) {
+        checkboxes = document.getElementsByName('idBranch');
+        for(var i=0, n=checkboxes.length;i<n;i++) {
+            checkboxes[i].checked = checkall.checked;
+        }
+    }
+    /*
+     //xóa 1 chi hội
+     $('#deleteYes').on('show.bs.modal', function(e) {
+     var product = $(e.relatedTarget).value('id');
+     $("#deleteBranch").val(product);
+     });
+     */
+</script>
+<!-- Kết thúc Bắt sự kiện check all tất cả checkbox để xóa tất cả dữ liệu  -->
