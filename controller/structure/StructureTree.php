@@ -6,11 +6,12 @@
  * Date: 18/09/2017
  * Time: 09:58
  */
+define("ROOT", "0");
 class StructureTree {
-	private $structureModel;
+	private $data;
 	private $htmlText;
-	public function __construct() {
-		$this->structureModel = new StructureMod();
+	public function __construct($data) {
+		$this->data = $data;
 		$this->htmlText = "";
 	}
 
@@ -22,69 +23,76 @@ class StructureTree {
 	}
 
 	public function getRoot(){
-		return $this->structureModel->getRootStructure();
+		return ROOT;
 	}
 
-	public function isRoot($structureNode){
-		return $this->structureModel->isRootStructure($structureNode);
+	public function isLeaf($nodeId){
+		return count($this->getAllDirectChildOfStructure($nodeId)) == 0;
 	}
 
-	public function getLeftMostChildOf($structureTree){
-		$children = $this->structureModel->getAllDirectChildOfStructure($structureTree);
+	public function getAllDirectChildOfStructure($nodeId){
+		$children = [];
+		foreach ($this->data as $child) {
+			if ($child['IDParent'] === $nodeId)
+				$children[] = $child;
+		}
+		return $children;
+	}
+
+	public function getLeftMostChildOf($nodeId){
+		$children = $this->getAllDirectChildOfStructure($nodeId);
 		if (empty($children))
 			return null;
 		return $children[0];
 	}
 
-	public function getNextSiblingOf($structureNode){
-		$parent = new StructureObj();
-		$parent->setIdItem($structureNode->getIdParent());
-		$children = $this->structureModel->getAllDirectChildOfStructure($parent);
-		$len = count($children);
-		for ($i = 0; $i < $len; $i++){
-			$child = $children[$i];
-			if ($child->getIdItem() === $structureNode->getIdItem()){
-				if (!empty($children[$i+1]))
-					return $children[$i+1];
-			}
+	public function getNextSiblingOf($nodeId){
+		$parentId = $this->data[$nodeId]["IDParent"];
+		$children = $this->getAllDirectChildOfStructure($parentId);
+		$found = false;
+		foreach ($children as $child) {
+			if ($found)
+				return $child;
+			if ($child["idItem"] === $nodeId)
+				$found = true;
 		}
 		return null;
 	}
 
 
 
-	public function PreOderTreeToHtml($structureNode, $level){
-		if (!$this->isRoot($structureNode))
-			$this->htmlText .= $this->generateNodeToHtml($structureNode, $level);
-		$node = $this->getLeftMostChildOf($structureNode);
+	public function PreOderTreeToHtml($nodeId, $level){
+		if ($nodeId != ROOT)
+			$this->htmlText .= $this->generateNodeToHtml($nodeId, $level);
+		$node = $this->getLeftMostChildOf($nodeId)["idItem"];
 		while (!empty($node)){
 			$this->PreOderTreeToHtml($node, $level + 1);
-			$node = $this->getNextSiblingOf($node);
+			$node = $this->getNextSiblingOf($node)["idItem"];
 		}
 	}
 
-	function generateNodeToHtml($structureNode, $level){
+	function generateNodeToHtml($nodeId, $level){
 		$htmlText = "<tr class='section-$level'>";
-		if ($this->structureModel->isLeaf($structureNode)){
-			$htmlText .= $this->getLeafHTML($structureNode);
+		if ($this->isLeaf($nodeId)){
+			$htmlText .= $this->getLeafHTML($nodeId);
 			$htmlText .= "</tr>";
 		} else {
-			$htmlText .= $this->getNonLeafHTML($structureNode);
+			$htmlText .= $this->getNonLeafHTML($nodeId);
 			$htmlText .= "</tr>";
 		}
 		return $htmlText;
 	}
 
-	function getLeafHTML($structureObj){
+	function getLeafHTML($nodeId){
 		$htmlText = "";
-		$htmlText .= "<td><span class='spacing'></span>" . str_replace("-", "", $structureObj->getItemName()) . "</td>";
-		$htmlText .= "<td>{$structureObj->getScores()}</td>";
-		$htmlText .= "<td><input type='number' class='input-number' min='0' max='{$structureObj->getScores()}' value='0'></td>";
+		$htmlText .= "<td><span class='spacing'></span>" . str_replace("-", "", $this->data[$nodeId]["itemName"]) . "</td>";
+		$htmlText .= "<td>{$this->data[$nodeId]["scores"]}</td>";
+		$htmlText .= "<td><input type='number' class='input-number' min='0' max='{$this->data[$nodeId]["scores"]}' value='0'></td>";
 		$htmlText .= "<td></td><td></td>";
 		return $htmlText;
 	}
 
-	function getNonLeafHTML($structureObj){
-		return "<td colspan='5'>" . str_replace("-", "", $structureObj->getItemName()) . "</td>";
+	function getNonLeafHTML($nodeId){
+		return "<td colspan='5'>" . str_replace("-", "", $this->data[$nodeId]["itemName"]) . "</td>";
 	}
 }

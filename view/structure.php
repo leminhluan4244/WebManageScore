@@ -7,7 +7,8 @@
  */
 require_once '../model/Link.php';
 require_once '../controller/structure/StructureTree.php';
-$tree = new StructureTree();
+$md = new StructureMod();
+$tree = new StructureTree($md->getEntireStructureTable());
 //var_dump($tree->getNextSiblingOf($tree->getLeftMostChildOf($tree->getRoot())));
 $root = $tree->getRoot();
 $tree->PreOderTreeToHtml($root, 0);

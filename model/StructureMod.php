@@ -6,8 +6,6 @@
  * Time: 5:43 PM
  */
 
-
-define("ROOT_STRUCTURE", "0");
 class StructureMod {
 	private $connSQL;
 
@@ -73,6 +71,19 @@ class StructureMod {
 		}
 		$this->connSQL->Stop();
 		return $listRow;
+	}
+
+	public function getEntireStructureTable(){
+		$sql = "select * from structure";
+		$this->connSQL->Connect();
+		$result = $this->connSQL->conn->query($sql);
+		$this->connSQL->Stop();
+		$board = [];
+		if (!empty($result)){
+			while ($row = $result->fetch_assoc())
+				$board[$row["idItem"]] = $row;
+		}
+		return $board;
 	}
 
 	/**
