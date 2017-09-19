@@ -45,5 +45,11 @@
 				<p>Phân quyền</p>
 			</a>
 		</div>
+		<div class="col-sm-offset-2 col-sm-4 thumbnail">
+			<a href="structure.editor.php" class="">
+				<img src="../public/img/structure-edit.ico" width="70" alt="">
+				<p>Chỉnh sửa bảng điểm</p>
+			</a>
+		</div>
 	</div>
 </div>

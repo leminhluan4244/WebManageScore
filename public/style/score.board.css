@@ -70,4 +70,7 @@ footer {
       max-width: 200px !important;
       white-space: normal; } }
 
+.table-score-editor tr td:last-child, .table-score-editor tr td:nth-child(2) {
+  text-align: center; }
+
 /*# sourceMappingURL=score.board.css.map */

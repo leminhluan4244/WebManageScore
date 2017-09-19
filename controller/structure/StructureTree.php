@@ -7,9 +7,13 @@
  * Time: 09:58
  */
 define("ROOT", "0");
+define("NORM", 1);
+define("EDIT", 2);
+
 class StructureTree {
 	private $data;
 	private $htmlText;
+
 	public function __construct($data) {
 		$this->data = $data;
 		$this->htmlText = "";
@@ -22,15 +26,23 @@ class StructureTree {
 		return $this->htmlText;
 	}
 
-	public function getRoot(){
+	public function getRoot() {
 		return ROOT;
 	}
 
-	public function isLeaf($nodeId){
-		return count($this->getAllDirectChildOfStructure($nodeId)) == 0;
+	public function getNormMode() {
+		return NORM;
 	}
 
-	public function getAllDirectChildOfStructure($nodeId){
+	public function getEditMode() {
+		return EDIT;
+	}
+
+	public function isLeaf($nodeId) {
+		return count($this->getAllDirectChildOf($nodeId)) == 0;
+	}
+
+	public function getAllDirectChildOf($nodeId) {
 		$children = [];
 		foreach ($this->data as $child) {
 			if ($child['IDParent'] === $nodeId)
@@ -39,16 +51,16 @@ class StructureTree {
 		return $children;
 	}
 
-	public function getLeftMostChildOf($nodeId){
-		$children = $this->getAllDirectChildOfStructure($nodeId);
+	public function getLeftMostChildOf($nodeId) {
+		$children = $this->getAllDirectChildOf($nodeId);
 		if (empty($children))
 			return null;
 		return $children[0];
 	}
 
-	public function getNextSiblingOf($nodeId){
+	public function getNextSiblingOf($nodeId) {
 		$parentId = $this->data[$nodeId]["IDParent"];
-		$children = $this->getAllDirectChildOfStructure($parentId);
+		$children = $this->getAllDirectChildOf($parentId);
 		$found = false;
 		foreach ($children as $child) {
 			if ($found)
@@ -60,30 +72,73 @@ class StructureTree {
 	}
 
 
-
-	public function PreOderTreeToHtml($nodeId, $level){
+	public function PreOderTreeToHtml($nodeId, $level, $mode) {
 		if ($nodeId != ROOT)
-			$this->htmlText .= $this->generateNodeToHtml($nodeId, $level);
+			$this->htmlText .= $this->generateNodeToHtml($nodeId, $level, $mode);
 		$node = $this->getLeftMostChildOf($nodeId)["idItem"];
-		while (!empty($node)){
-			$this->PreOderTreeToHtml($node, $level + 1);
+		while (!empty($node)) {
+			$this->PreOderTreeToHtml($node, $level + 1, $mode);
 			$node = $this->getNextSiblingOf($node)["idItem"];
 		}
 	}
 
-	function generateNodeToHtml($nodeId, $level){
+	function generateNodeToHtml($nodeId, $level, $mode) {
 		$htmlText = "<tr class='section-$level'>";
-		if ($this->isLeaf($nodeId)){
-			$htmlText .= $this->getLeafHTML($nodeId);
+		if ($this->isLeaf($nodeId)) {
+			$htmlText .= $this->getLeafHTML($nodeId, $mode);
 			$htmlText .= "</tr>";
 		} else {
-			$htmlText .= $this->getNonLeafHTML($nodeId);
+			$htmlText .= $this->getNonLeafHTML($nodeId, $mode);
 			$htmlText .= "</tr>";
 		}
 		return $htmlText;
 	}
 
-	function getLeafHTML($nodeId){
+	function getLeafHTML($nodeId, $mode) {
+		switch ($mode) {
+			case NORM:
+				return $this->getLeafHTMLNormMode($nodeId);
+				break;
+			case EDIT:
+				return $this->getLeafHTMLEditMode($nodeId);
+				break;
+			default:
+				break;
+		}
+	}
+
+	function getNonLeafHTML($nodeId, $mode) {
+		switch ($mode) {
+			case NORM:
+				return $this->getNonLeafHTMLNormMode($nodeId);
+				break;
+			case EDIT:
+				return $this->getNonLeafHTMLEditMode($nodeId);
+				break;
+			default:
+				break;
+		}
+	}
+
+	function getLeafHTMLEditMode($nodeId) {
+		$htmlText = "";
+		$htmlText .= "<td><span class='spacing'></span>" . str_replace("-", "", $this->data[$nodeId]["itemName"]) . "</td>";
+		$htmlText .= "<td>{$this->data[$nodeId]["scores"]}</td>";
+		$htmlText .=
+			"<td>
+				<form action='../controller/structure/structure.delete.php' method='post'>
+					<input type='hidden' name='id' value='{$this->data[$nodeId]["idItem"]}'>
+					<input type='hidden' name='requestName' value='delete'>
+					<a href='../controller/structure/structure.edit.php?id={$this->data[$nodeId]["idItem"]}' class='btn btn-primary btn-sm'>Sửa</a>
+					<button class='btn btn-warning btn-sm' value='delete' onclick='return confirm(\"Xác nhận xóa?\")'>
+						Xóa
+					</button>
+				</form>
+			</td>";
+		return $htmlText;
+	}
+
+	function getLeafHTMLNormMode($nodeId) {
 		$htmlText = "";
 		$htmlText .= "<td><span class='spacing'></span>" . str_replace("-", "", $this->data[$nodeId]["itemName"]) . "</td>";
 		$htmlText .= "<td>{$this->data[$nodeId]["scores"]}</td>";
@@ -92,7 +147,23 @@ class StructureTree {
 		return $htmlText;
 	}
 
-	function getNonLeafHTML($nodeId){
+	function getNonLeafHTMLEditMode($nodeId) {
+		$html = "<td colspan='2'>" . str_replace("-", "", $this->data[$nodeId]["itemName"]) . "</td>";
+		$html .=
+			"<td>
+				<form action='../controller/structure/structure.delete.php' method='post'>
+					<input type='hidden' name='id' value='{$this->data[$nodeId]["idItem"]}'>
+					<input type='hidden' name='requestName' value='delete'>
+					<a href=\"../controller/structure/structure.edit.php?id={$this->data[$nodeId]["idItem"]}\" class='btn btn-primary btn-sm'>Sửa</a>
+					<button class='btn btn-warning btn-sm' value='delete' onclick='return confirm(\"Xác nhận xóa?\")'>
+						Xóa
+					</button>
+				</form>
+			</td>";
+		return $html;
+	}
+
+	function getNonLeafHTMLNormMode($nodeId) {
 		return "<td colspan='5'>" . str_replace("-", "", $this->data[$nodeId]["itemName"]) . "</td>";
 	}
 }

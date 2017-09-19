@@ -137,3 +137,9 @@ footer{
     }
   }
 }
+
+.table-score-editor{
+  tr td:last-child, tr td:nth-child(2){
+    text-align: center;
+  }
+}

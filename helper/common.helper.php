@@ -25,3 +25,8 @@ function redirect($url){
 	header("Location: $url");
 	die();
 }
+
+function softRedirect($url){
+	echo "<script>window.location.href = '$url';</script>";
+	die();
+}
