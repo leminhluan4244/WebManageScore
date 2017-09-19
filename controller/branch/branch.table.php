@@ -8,7 +8,7 @@
         <th>Mã CH</th>
         <th>Tên CH</th>
         <th>Tỉnh Thành</th>
-        <th>Chọn</th>
+        <th>Tất cả <br /><input type="checkbox" onClick="toggle(this)"></th>
 
     </tr>
     </thead>
@@ -45,3 +45,11 @@
     <!-- Kết thúc lấy thuộc tính cho bảng từ CSDL -->
     </tbody>
 </table>
+<script language="JavaScript">
+    function toggle(checkall) {
+        checkboxes = document.getElementsByName('xoa[]');
+        for(var i=0, n=checkboxes.length;i<n;i++)
+        {checkboxes[i].checked = checkall.checked;
+                  }
+          }
+</script>

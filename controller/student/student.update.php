@@ -13,7 +13,7 @@
                                 <fieldset class="form-group">
                                     <p class="text-left "><b>Họ và Tên</b></p>
                                     <input type="text" class="form-control" name="updateAccountName" id="updateAccountName"
-                                           placeholder="Nhập tên sinh viên">
+                                           value="">
 
                                 </fieldset>
 

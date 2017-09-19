@@ -16,19 +16,19 @@
 			</a>
 		</div>
 		<div class="col-sm-offset-2 col-sm-4 thumbnail">
-			<a href="academy_man.html" class="">
+			<a href="academy.manage.php" class="">
 				<img src="../public/img/academy.png" width="70" alt="">
 				<p>Quản lý khoa/viện</p>
 			</a>
 		</div>
 		<div class="col-sm-offset-2 col-sm-4 thumbnail">
-			<a href="quanly_canbo.html" class="">
+			<a href="staff.manage.php" class="">
 				<img src="../public/img/staff.png" width="70" alt="">
 				<p>Quản lý cán bộ</p>
 			</a>
 		</div>
 		<div class="col-sm-offset-2 col-sm-4 thumbnail">
-			<a href="quanly_chihoi.html" class="">
+			<a href="branch.manage.php" class="">
 				<img src="../public/img/branch.png" width="70" alt="">
 				<p>Quản lý chi hội</p>
 			</a>

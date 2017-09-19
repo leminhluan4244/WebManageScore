@@ -27,7 +27,7 @@
 
     <!-- Start infor academy-->
     <?php
-    require "../controller/academy/academy.info.php";
+//    require "../controller/academy/academy.info.php";
     ?>
     <!-- End infor academy-->
 

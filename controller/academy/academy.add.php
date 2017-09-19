@@ -1,3 +1,13 @@
+<?php
+if(isset($_POST['btnAdd'])) {
+
+    $academyO = new AcademyObj();
+    $academyM = new AcademyMod();
+    $academyO->setAcademyObj($_POST['addIdAcademy'], $_POST['addAcademyName']);
+    $academyM->addAcademy($academyO);
+    echo'<META http-equiv="refresh" content="0;URL=academy.manage.php">';
+}
+?>
                 <!-- Start add academy-->
                 <div id="addAcademy" class="modal fade " tabindex="-1" role="dialog" aria-labelledby aria-hidden="true">
                     <div class="modal-dialog">
@@ -8,7 +18,7 @@
                                 <h4 class="modal-title">Thêm mới khoa viện</h4>
                             </div>
                             <div class="modal-body ">
-                                <form action="academy.mamage.php" method="post">
+                                <form action="academy.manage.php" method="post">
 
                                     <fieldset class="form-group">
                                         <p class="text-left "><b>Tên khoa - viện</b></p>
@@ -33,37 +43,4 @@
                 </div>
                 <!-- End add academy-->
                 <?php
-//                if(!isset($_POST[addAccountName])){
-//                    //thông báo không được rỗng
-//                }
-//                if(!isset($_POST[addIdAccount])){
-//                    //thông báo không được rỗng
-//                }
-//                if(!isset($_POST[addBrithday])){
-//                    //thông báo không được rỗng
-//                }
-//                if(!isset($_POST[addAddress])){
-//                    //thông báo không được rỗng
-//                }
-//                if(!isset($_POST[addSex])){
-//                    //thông báo không được rỗng
-//                }
-//                if(!isset($_POST[addPhone])){
-//                    //thông báo không được rỗng
-//                }
-//                if(!isset($_POST[addEmail])){
-//                    //thông báo không được rỗng
-//                }
-//                if(!isset($_POST[addPassword])){
-//                    //thông báo không được rỗng
-//                }
-//                if(!isset($_POST[addClassName])){
-//                    //thông báo không được rỗng
-//                }
-//                if(!isset($_POST[addAcademyName])){
-//                    //thông báo không được rỗng
-//                }
-//                if(!isset($_POST[addPermision_Position])){
-//                    //thông báo không được rỗng
-//                }
                 ?>

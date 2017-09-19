@@ -32,38 +32,3 @@
     </div>
 </div>
 <!-- End add academy-->
-<?php
-//                if(!isset($_POST[addAccountName])){
-//                    //thông báo không được rỗng
-//                }
-//                if(!isset($_POST[addIdAccount])){
-//                    //thông báo không được rỗng
-//                }
-//                if(!isset($_POST[addBrithday])){
-//                    //thông báo không được rỗng
-//                }
-//                if(!isset($_POST[addAddress])){
-//                    //thông báo không được rỗng
-//                }
-//                if(!isset($_POST[addSex])){
-//                    //thông báo không được rỗng
-//                }
-//                if(!isset($_POST[addPhone])){
-//                    //thông báo không được rỗng
-//                }
-//                if(!isset($_POST[addEmail])){
-//                    //thông báo không được rỗng
-//                }
-//                if(!isset($_POST[addPassword])){
-//                    //thông báo không được rỗng
-//                }
-//                if(!isset($_POST[addClassName])){
-//                    //thông báo không được rỗng
-//                }
-//                if(!isset($_POST[addAcademyName])){
-//                    //thông báo không được rỗng
-//                }
-//                if(!isset($_POST[addPermision_Position])){
-//                    //thông báo không được rỗng
-//                }
-?>
