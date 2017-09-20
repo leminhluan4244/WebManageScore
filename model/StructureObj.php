@@ -18,7 +18,7 @@ class StructureObj {
 		$this->itemName = "";
 		$this->scores = 0;
 		$this->describe = "";
-		$this->idParent = "";
+		$this->idParent = "0";
 	}
 
 	public function getStructureObj(){

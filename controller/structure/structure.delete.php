@@ -15,11 +15,13 @@ $model = new StructureMod();
 $tree = new StructureTree($model->getEntireStructureTable());
 if (isSubmit("delete")){
 	$id = getPOSTValue('id');
-	if (count($tree->getAllDirectChildOf($id)) > 0){
-		showMessage("Mục này vẫn còn các mục con, hãy xóa các mục con trước!!");
-		softRedirect("../../view/structure.editor.php");
+	$listId = [];
+	$tree->PreOrderTreeToGetAllChildIdOf($id, $listId);
+	$result = true;
+	foreach ($listId as $itemId) {
+		$result = $model->deleteStructure($itemId);
 	}
-	if ($model->deleteStructure($id)){
+	if ($result){
 		showMessage("Xóa thành công!");
 	} else {
 		showMessage("Xóa thất bại, hãy thử lại sau!");

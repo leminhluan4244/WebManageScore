@@ -86,6 +86,14 @@ class StructureMod {
 		return $board;
 	}
 
+	public function deleteStructureHasParent($idParent){
+		$sql = "delete from structure where IDParent = '{$idParent}'";
+		$this->connSQL->Connect();
+		$result = $this->connSQL->conn->query($sql);
+		$this->connSQL->Stop();
+		return $result;
+	}
+
 	/**
 	 * Lấy item trên cùng của bảng điểm
 	 * @return StructureObj

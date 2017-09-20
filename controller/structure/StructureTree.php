@@ -30,6 +30,13 @@ class StructureTree {
 		return ROOT;
 	}
 
+	/**
+	 * @return mixed
+	 */
+	public function getData() {
+		return $this->data;
+	}
+
 	public function getNormMode() {
 		return NORM;
 	}
@@ -71,6 +78,14 @@ class StructureTree {
 		return null;
 	}
 
+	public function PreOrderTreeToGetAllChildIdOf($nodeId, &$listId){
+		$listId[] = $nodeId;
+		$node = $this->getLeftMostChildOf($nodeId)["idItem"];
+		while (!empty($node)){
+			$this->PreOrderTreeToGetAllChildIdOf($node, $listId);
+			$node = $this->getNextSiblingOf($node)["idItem"];
+		}
+	}
 
 	public function PreOderTreeToHtml($nodeId, $level, $mode) {
 		if ($nodeId != ROOT)
@@ -129,7 +144,7 @@ class StructureTree {
 				<form action='../controller/structure/structure.delete.php' method='post'>
 					<input type='hidden' name='id' value='{$this->data[$nodeId]["idItem"]}'>
 					<input type='hidden' name='requestName' value='delete'>
-					<a href='../controller/structure/structure.edit.php?id={$this->data[$nodeId]["idItem"]}' class='btn btn-primary btn-sm'>Sửa</a>
+					<a href='?a=edit&id={$this->data[$nodeId]["idItem"]}' class='btn btn-primary btn-sm'>Sửa</a>
 					<button class='btn btn-warning btn-sm' value='delete' onclick='return confirm(\"Xác nhận xóa?\")'>
 						Xóa
 					</button>
@@ -154,8 +169,8 @@ class StructureTree {
 				<form action='../controller/structure/structure.delete.php' method='post'>
 					<input type='hidden' name='id' value='{$this->data[$nodeId]["idItem"]}'>
 					<input type='hidden' name='requestName' value='delete'>
-					<a href=\"../controller/structure/structure.edit.php?id={$this->data[$nodeId]["idItem"]}\" class='btn btn-primary btn-sm'>Sửa</a>
-					<button class='btn btn-warning btn-sm' value='delete' onclick='return confirm(\"Xác nhận xóa?\")'>
+					<a href=\"?a=edit&id={$this->data[$nodeId]["idItem"]}\" class='btn btn-primary btn-sm'>Sửa</a>
+					<button class='btn btn-warning btn-sm' value='delete' onclick='return confirm(\"Mục này chứa các mục con, xác nhận xóa hết?\")'>
 						Xóa
 					</button>
 				</form>

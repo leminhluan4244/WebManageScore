@@ -7,11 +7,11 @@
  */
 
 function getGETValue($key){
-	return !empty($_GET[$key]) ? $_GET[$key]: false;
+	return isset($_GET[$key]) ? $_GET[$key]: false;
 }
 
 function getPOSTValue($key){
-	return !empty($_POST[$key]) ? $_POST[$key]: false;
+	return isset($_POST[$key]) ? $_POST[$key]: false;
 }
 
 function isSubmit($key){

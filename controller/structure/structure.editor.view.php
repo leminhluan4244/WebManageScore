@@ -10,6 +10,11 @@ if (empty($tree))
 ?>
 
 <div class="table-score-wrapper">
+    <h4 class="text-center text-primary">
+        Danh sách mục điểm của bảng điểm hiện tại
+        <a href="?a=add" class="btn btn-primary btn-sm">Thêm mục mới</a>
+    </h4>
+
 	<table id="table-score" class="table-bordered table-responsive table-condensed  table-score-editor">
 		<thead>
 		<tr>

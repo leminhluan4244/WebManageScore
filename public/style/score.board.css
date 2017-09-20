@@ -72,5 +72,7 @@ footer {
 
 .table-score-editor tr td:last-child, .table-score-editor tr td:nth-child(2) {
   text-align: center; }
+.table-score-editor .btn-sm {
+  padding: 2px 5px; }
 
 /*# sourceMappingURL=score.board.css.map */
