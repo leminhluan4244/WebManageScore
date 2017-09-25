@@ -29,6 +29,7 @@ INSERT INTO `permission` (`position`, `power`) VALUES ('Cố vấn học tậ
 INSERT INTO `permission` (`position`, `power`) VALUES ('Quản lý khoa', 'Chấm điểm rèn luyện cho cả khoa');
 INSERT INTO `permission` (`position`, `power`) VALUES ('Quản lý khoa', 'Thêm bảng điểm cộng trừ cho khoa');
 INSERT INTO `permission` (`position`, `power`) VALUES ('Quản lý chi hội', 'Thêm bảng điểm cộng trừ cho sinh viên theo chi hội');
+INSERT INTO `permission` (`position`, `power`) VALUES ('Quản lý chi hội', 'Null');
 /*Dữ liệu mẫu 5 Tài khoản*/
 INSERT INTO `account` (`idAccount`, `accountName`, `birthday`, `address`, `sex`, `phone`, `email`, `password`, `Permission_position`) 
 VALUES ('B1400704', 'Lê Minh Luân', '1996-01-16', 'An Khánh - Ninh Kiều Cần Thơ', 'Nam', '0964054244', 'luanb1400704@student.ctu.edu.vn', '81dc9bdb52d04dc20036dbd8313ed055', 'Sinh viên');
