@@ -1,7 +1,6 @@
 <?php
 require_once "../controller/header.php";
 $branchMod = new BranchMod();
-$branchobj = new BranchObj();
 ?>
 
 <div class="container-fluid">
@@ -44,6 +43,7 @@ $branchobj = new BranchObj();
     <!--End content manage branch-->
 </div>
 <br>
+
 <?php
 require_once "../controller/footer.php";
 ?>
