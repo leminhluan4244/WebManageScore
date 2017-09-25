@@ -22,8 +22,6 @@ require_once "../model/PractiseScoresMod.php";
 require_once "../model/PractiseScoresObj.php";
 require_once "../model/ScoresAddMod.php";
 require_once "../model/ScoresAddObj.php";
-require_once "../model/ScoresAddHasAccountMod.php";
-require_once "../model/ScoresAddHasAccountObj.php";
 require_once "../model/StructureMod.php";
 require_once "../model/StructureObj.php";
 require_once "../model/TranscriptMod.php";

@@ -24,6 +24,7 @@
         <th>MSSV</th>
         <th>Họ và tên</th>
         <th>Tất cả <br /><input type="checkbox" onClick="toggle(this)"></th>
+        <th>Sửa<br /></th>
     </tr>
     </thead>
     <tbody class="text-center align-self-center">
@@ -37,6 +38,9 @@
             </td>
             <td><?php echo $student->getAccountName(); ?></td>
             <td><input type="checkbox" name="xoa[]" id="<?php echo $student->getIdAccount(); ?>" value="<?php echo $student->getIdAccount(); ?>"/> </td>
+            <td><a class="btn btn-danger col align-self-center " data-toggle="modal" data-target="#updateStudent" name="<?php echo $student->getIdAccount()?>>
+                <span class="glyphicon glyphicon-trash"></span> Sửa
+            </a></td>
         </tr>
     <?php } ?>
     </tbody>

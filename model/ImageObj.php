@@ -9,7 +9,7 @@ class ImageObj
 {
     private $Image;
     private $Account_idAccount;
-    private $Structure_idItem;
+    private $Transcript_idItem;
 
     //Thêm một hình ảnh vào trường hình ảnh
     public function setImage($Image)
@@ -35,7 +35,7 @@ class ImageObj
         return $this->Account_idAccount;
     }
     //Thêm dữ liệu kiểu chuỗi cho trường mục điểm
-    public function setStructure_idItem($id)
+    public function setTranscript_idItem($id)
     {
         $this->Structure_idItem = $id;
     }
@@ -43,15 +43,15 @@ class ImageObj
     //Trả ra dữ liệu kiểu chuỗi cho trường mục điểm
     public function getStructure_idItem()
     {
-        return $this->Structure_idItem;
+        return $this->Transcript_idItem;
     }
 
     //Nhận dữ liệu cho tất cả các trường của ảnh
-    public function setImageObj($Image, $Account_idAccount, $Structure_idItem)
+    public function setImageObj($Image, $Account_idAccount, $tran)
     {
         $this->setImage($Image);
         $this->setAccount_idAccount($Account_idAccount);
-        $this->setStructure_idItem($Structure_idItem);
+        $this->setTranscript_idItem($tran);
     }
 
     //Trả về dữ liệu kiểu đối tượng ảnh
