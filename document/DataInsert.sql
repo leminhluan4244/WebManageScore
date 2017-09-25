@@ -172,7 +172,7 @@ INSERT INTO `scoresadd_has_account` (`ScoresAdd_idScores`, `Account_idAccount`) 
 INSERT INTO `scoresadd_has_account` (`ScoresAdd_idScores`, `Account_idAccount`) VALUES ('AS001', 'B1400704');
 INSERT INTO `scoresadd_has_account` (`ScoresAdd_idScores`, `Account_idAccount`) VALUES ('AS003', 'B1400704');
 INSERT INTO `scoresadd_has_account` (`ScoresAdd_idScores`, `Account_idAccount`) VALUES ('AS002', 'B1400713');
-/*Dữ liệu mẫu transcrpit*/	
+/*Dữ liệu mẫu transcrpit
 INSERT INTO `Transcript` (`idItem`, `itemName`, `scores`, `describe`, `IDParent`) VALUES
 ('I', 'Điều 4. Đánh giá về ý thức tham gia học tập', 20, '', ''),
 ('I.a', 'a. Ý thức và thái độ trong học tập.',0, '', 'I'),
@@ -263,8 +263,10 @@ INSERT INTO `Transcript` (`idItem`, `itemName`, `scores`, `describe`, `IDParent`
 
 ('VI', 'Tổng điểm các điều', 100, '', '');
 /*Dữ liệu mẫu điểm cho 1 sinh viên*/	
+/*
 INSERT INTO `transcript_has_account` (`Transcript_idItem`, `Account_idAccount`, `scoresStudent`, `scoresTeacher`,`scoresEnd`) VALUES ('I', 'B1400704', '20', '20','20');
 INSERT INTO `transcript_has_account` (`Transcript_idItem`, `Account_idAccount`, `scoresStudent`, `scoresTeacher`,`scoresEnd`) VALUES ('I.a', 'B1400704', '6', '6','6');
+*/
 /*Dữ liệu mẫu */	
 /*Dữ liệu mẫu */	
 /*Dữ liệu mẫu */	
