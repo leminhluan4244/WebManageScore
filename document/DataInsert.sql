@@ -67,7 +67,7 @@ INSERT INTO `calendarscoring` (`openDate`, `closeDate`, `Permission_position`) V
 
 /*Dữ liệu mẫu struct*/
 INSERT INTO `Structure` (`idItem`, `itemName`, `scores`, `describe`, `IDParent`) VALUES
-('I', 'Điều 4. Đánh giá về ý thức tham gia học tập', 20, '', ''),
+('I', 'Điều 4. Đánh giá về ý thức tham gia học tập', 20, '', '0'),
 ('I.a', 'a. Ý thức và thái độ trong học tập.',0, '', 'I'),
 ('', '- Đi học đầy đủ, đúng giờ, nghiêm túc trong giờ học (Mỗi môn bị cấm thi trừ 03 điểm)',6, '', 'I.a'),
 
@@ -105,7 +105,7 @@ INSERT INTO `Structure` (`idItem`, `itemName`, `scores`, `describe`, `IDParent`)
 ('I.e.1.4', '- ĐTBCHK đạt từ 2,00 đến 2,49',0, '', 'I.e.1'),
 
 
-('II', 'Điều 5. Đánh giá về ý thức và kết quả chấp hành nội quy, quy chế, quy định trong nhà trường', 25, '', ''),
+('II', 'Điều 5. Đánh giá về ý thức và kết quả chấp hành nội quy, quy chế, quy định trong nhà trường', 25, '', '0'),
 ('II.a', 'a. Ý thức chấp hành các văn bản chỉ đạo của ngành, của cơ quan chỉ đạo cấp trên được thực hiện trong nhà trường.',0, '', 'II'),
 ('II.a.1', '- Không vi phạm và có ý thức tham gia thực hiện nghiêm túc các quy định của Lớp, nội quy, quy chế của trường, Khoa và các tổ chức trong nhà trường (Mỗi lần vắng trừ 03 điểm)',0, '', 'II.a'),
 
@@ -114,7 +114,7 @@ INSERT INTO `Structure` (`idItem`, `itemName`, `scores`, `describe`, `IDParent`)
 ('II.b.1.1', '- Giữ gìn an ninh, trật tự nơi công cộng có xác nhận của Đoàn khoa.',0, '', 'II.b.1'),
 ('II.b.1.2', '- Giữ gìn vệ sinh, bảo vệ cảnh quan môi trường, nếp sống văn minh (có xác nhận của đoàn thể, Khoa, trường ...)',0, '', 'II.b.1'),
 
-('III', 'Điều 6. Đánh giá về ý thức tham gia các hoạt động chính trị, xã hội, văn hóa, văn nghệ, thể thao, phòng chống tội phạm và các tệ nạn xã hội', 20, '', ''),
+('III', 'Điều 6. Đánh giá về ý thức tham gia các hoạt động chính trị, xã hội, văn hóa, văn nghệ, thể thao, phòng chống tội phạm và các tệ nạn xã hội', 20, '', '0'),
 ('III.a', 'a. Ý thức và hiệu quả tham gia các hoạt động rèn luyện về chính trị, xã hội, văn hóa, văn nghệ, thể thao.',0, '', 'III'),
 ('III.a.1', ' - Tham gia đầy đủ các hoạt động chính trị, xã hội, văn hóa, văn nghệ, thể thao các cấp từ Lớp, Chi hội, Chi đoàn trở lên tổ chức (Mỗi lần vắng trừ 02 điểm từ cấp đơn vị lớp trở lên).',0, '', 'III.a'),
 
@@ -129,7 +129,7 @@ INSERT INTO `Structure` (`idItem`, `itemName`, `scores`, `describe`, `IDParent`)
 ('III.c.1.2', '- Giấy khen cấp Trường.',0, '', 'III.c.1'),
 ('III.c.1.3', '- Giấy khen cấp cao hơn.',0, '', 'III.c.1'),
 
-('IV', 'Điều 7. Đánh giá về ý thức công dân trong quan hệ cộng đồng', 25, '', ''),
+('IV', 'Điều 7. Đánh giá về ý thức công dân trong quan hệ cộng đồng', 25, '', '0'),
 ('IV.a', 'a. Ý thức chấp hành và tham gia tuyên truyền các chủ trương của Đảng, chính sách, pháp luật của Nhà nước trong cộng đồng.', 0, '', 'IV'),
 ('IV.a.1', '- Không vi phạm pháp luật của Nhà nước (Nếu vi phạm pháp luật sẽ bị điểm 00 (điểm không)).', 0, '', 'IV.a'),
 ('IV.a.2', '- Tích cực tham gia tuyên truyền các chủ trương của Đảng, chính sách, pháp luật của Nhà nước trong cộng đồng.', 0, '', 'IV.a'),
@@ -138,7 +138,7 @@ INSERT INTO `Structure` (`idItem`, `itemName`, `scores`, `describe`, `IDParent`)
 ('IV.c', 'c. Có tinh thần chia sẽ, giúp đỡ người thân, người có khó khăn, hoạn nạn.', 0, '', 'IV'),
 ('IV.c.1', '- Có tinh thần giúp đỡ bạn bè trong học tập, trong cuộc sống.', 0, '', 'IV.c'),
 
-('V', 'Điều 8. Đánh giá về ý thức và kết quả khi tham gia công tác cán bộ lớp, các đoàn thể, tổ chức trong nhà trường hoặc người học đạt được thành tích đặc biệt trong học tập, rèn luyện.', 10, '', ''),
+('V', 'Điều 8. Đánh giá về ý thức và kết quả khi tham gia công tác cán bộ lớp, các đoàn thể, tổ chức trong nhà trường hoặc người học đạt được thành tích đặc biệt trong học tập, rèn luyện.', 10, '', '0'),
 ('V.a', 'a. Ý thức, tinh thần thái độ, uy tín và hiệu quả công việc của người học được phân công nhiệm vụ quản lý lớp, các tổ chức Đảng, Đoàn thanh niên, Hội sinh viên và các tổ chức khác trong nhà trường.', 0, '', 'V'),
 ('V.a.1', '- Lớp trưởng, Bí thư Chi đoàn, Ủy viên BCH đoàn thể cấp cao hơn Chi đoàn, BCH Hội sinh viên Trường, Liên Chi hội trưởng, Chi hội trưởng, Đội trưởng các Đội, Nhóm, Câu lạc bộ từ cấp khoa và tương đương.', 0, '', 'V.a'),
 
@@ -154,7 +154,7 @@ INSERT INTO `Structure` (`idItem`, `itemName`, `scores`, `describe`, `IDParent`)
 ('V.d.2', '- Đạt danh hiệu sinh viên 5 tốt cấp trường trở lên.', 0, '', 'V.d'),
 ('V.d.3', '- Phân loại Đảng viên được xếp loại mức 2', 0, '', 'V.d'),
 
-('VI', 'Tổng điểm các điều', 100, '', '');
+('VI', 'Tổng điểm các điều', 100, '', '0');
 /*Dữ liệu mẫu 3 hình ảnh minnh chứng*/
 INSERT INTO `image` (`Image`, `Account_idAccount`, `Structure_idItem`) VALUES ('abc.com', 'B1400123', 'I.b.1.1');
 INSERT INTO `image` (`Image`, `Account_idAccount`, `Structure_idItem`) VALUES ('abc.com', 'B1400704', 'I.b.2.4');
