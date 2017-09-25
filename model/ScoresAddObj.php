@@ -12,13 +12,20 @@ class ScoresAddObj
     private $scoreName;
     private $scores;
     private $decribe;
-    private $Structure_idItem;
+    private $Transcript_idItem;
+    private $Transcript_Account_idAccount;
 
-    public function setStructure_idItem($Structure_idItem){
-        $this->Structure_idItem = $Structure_idItem;
+    public function setTranscript_idItem($Transcript_idItem){
+        $this->Transcript_idItem = $Transcript_idItem;
     }
-    public function getStructure_idItem(){
-        return $this->Structure_idItem;
+    public function getTranscript_idItem(){
+        return $this->Transcript_idItem;
+    }
+    public function setTranscript_Account_idAccount($Transcript_Account_idAccount){
+        $this->Transcript_Account_idAccount = $Transcript_Account_idAccount;
+    }
+    public function getTranscript_Account_idAccount(){
+        return $this->Transcript_Account_idAccount;
     }
     public function setScoreName($ScoreName){
         $this->scoreName = $ScoreName;
@@ -48,12 +55,12 @@ class ScoresAddObj
         return $this->decribe;
     }
 
-    public function setScoresAddObj($idScores, $scoreName, $scores, $decribe, $Structure_idItem){
+    public function setScoresAddObj($idScores, $scoreName, $scores, $decribe, $Transcript_idItem){
         $this->setIdScore($idScores);
         $this->setscoreName($scoreName);
         $this->setScores($scores);
         $this->setDecribe($decribe);
-        $this->setStructure_idItem($Structure_idItem);
+        $this->setTranscript_idItem($Transcript_idItem);
 
     }
     public function getScoresAddObj(){

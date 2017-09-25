@@ -18,18 +18,19 @@ class ScoresAddMod
 
     //1. Hàm thêm
     public function addScoresAdd($cores){
-        $sql = "INSERT INTO ScoresAdd (idScores, scoreName, scores, decribe, Structure_idItem)
+        $sql = "INSERT INTO ScoresAdd (idScores, scoreName, scores, decribe, Transcipt_idItem,Transcipt_Account_idAccount)
 						VALUES('".$cores->getIdScores()."',
 						'".$cores->getScoreName()."',
 						'".$cores->getScores()."',
 						'".$cores->getDecribe()."',
-						'".$cores->getStructure_idItem()."')";
+						'".$cores->getTranscript_idItem()."',
+						'".$cores->getTranscript_Account_idAccount()."')";
 
         $this->connSql->Connect();
         if ($this->connSql->conn->query($sql) === true) {
-            echo "Updation is successful!";
+           // echo "Updation is successful!";
         } else {
-            echo "Updation is not successful!" . $this->connSql->error;
+          //  echo "Updation is not successful!" . $this->connSql->error;
         }
         $this->connSql->Stop();
     }
@@ -41,14 +42,15 @@ class ScoresAddMod
                   scoreName='".$cores->getScoreName(). "',
                   scores='".$cores->getScores(). "',
                   decribe='".$cores->getDecribe(). "',
-                  Structure_idItem='".$cores->getStructure_idItem(). "'
+                  Transcript_idItem ='".$cores->getTranscript_idItem()."',
+				  Transcript_Account_idAccount='".$cores->getTranscript_Account_idAccount()."'
                   WHERE idScores='".$cores->getIdScores()."'";
 
         $this->connSql->Connect();
         if ($this->connSql->conn->query($sql) === TRUE) {
-            echo "Updation is successful!";
+          //  echo "Updation is successful!";
         } else {
-            echo "Updation is not successful!" . $this->connSql->error;
+          //  echo "Updation is not successful!" . $this->connSql->error;
         }
         $this->connSql->Stop();
     }
@@ -62,9 +64,9 @@ class ScoresAddMod
 
         $this->connSql->Connect();
         if ($this->connSql->conn->query($sql) === TRUE) {
-            echo "Deletion is successful! ";
+           // echo "Deletion is successful! ";
         } else {
-            echo "Deletion is not successful! " . $this->connSql->error;
+          //  echo "Deletion is not successful! " . $this->connSql->error;
         }
         $this->connSql->Stop();
     }
@@ -84,13 +86,14 @@ class ScoresAddMod
                 $obj->setIdScore($row["idScores"]);
                 $obj->setScores($row["scores"]);
                 $obj->setDecribe($row["decribe"]);
-                $obj->setStructure_idItem($row["Structure_idItem"]);
+                $obj->setTranscript_idItem($row["Transcript_idItem"]);
+                $obj->setTranscript_Account_idAccount($row["Transcript_Account_idAccount"]);
                 $list[$k] = $obj;
                 $k++;
             }
 
         } else {
-            echo "The result of information processing is data false";
+           // echo "The result of information processing is data false";
         }
 
         $this->connSql->Stop();

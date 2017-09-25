@@ -15,8 +15,8 @@ class TranscriptMod {
 	}
 
 	public function addTranscript($TranscriptObj){
-		$sql = "insert into Transcript(`Transcript_idItem`,`Account_idAccount`, `itemName`, `scores`, `describe`, `IDParent`,`scoresDefault`,`scoresMax`,`scoresStudent`,`scoresTeacher`) 
-				values('{$TranscriptObj->Transcript_idItem}','{$TranscriptObj->getAccount_idAccount()}','{$TranscriptObj->getItemName()}','{$TranscriptObj->getScores()}','{$TranscriptObj->getDescribe()}','{$TranscriptObj->getIdParent()}','{$TranscriptObj->getScoresDefault()}','{$TranscriptObj->getScoresMax()}','{$TranscriptObj->getScoresStudent()}','{$TranscriptObj->getScoresTeacher()}');";
+		$sql = "insert into Transcript(`idItem`,`Account_idAccount`, `itemName`, `scores`, `describe`, `IDParent`,`scoresDefault`,`scoresMax`,`scoresStudent`,`scoresTeacher`) 
+				values('{$TranscriptObj->getIdItem()}','{$TranscriptObj->getAccount_idAccount()}','{$TranscriptObj->getItemName()}','{$TranscriptObj->getScores()}','{$TranscriptObj->getDescribe()}','{$TranscriptObj->getIdParent()}','{$TranscriptObj->getScoresDefault()}','{$TranscriptObj->getScoresMax()}','{$TranscriptObj->getScoresStudent()}','{$TranscriptObj->getScoresTeacher()}');";
 		$this->connSQL->Connect();
 		$result = $this->connSQL->conn->query($sql);
 		$this->connSQL->Stop();
@@ -30,7 +30,7 @@ class TranscriptMod {
 		$result = $this->connSQL->conn->query($sql);
 		if ($result->num_rows > 0){
 			$TranscriptRow = $result->fetch_assoc();
-			$TranscriptObj->setTranscriptObj($TranscriptRow['Transcript_idItem'], $TranscriptRow['Account_idAccount'],$TranscriptRow['itemName'], $TranscriptRow['scores'], $TranscriptRow['describe'], $TranscriptRow['IDParent'], $TranscriptRow['scoresDefault'], $TranscriptRow['scoresMax'], $TranscriptRow['scoresStudent'], $TranscriptRow['scoresTeacher']);
+			$TranscriptObj->setTranscriptObj($TranscriptRow['idItem'], $TranscriptRow['Account_idAccount'],$TranscriptRow['itemName'], $TranscriptRow['scores'], $TranscriptRow['describe'], $TranscriptRow['IDParent'], $TranscriptRow['scoresDefault'], $TranscriptRow['scoresMax'], $TranscriptRow['scoresStudent'], $TranscriptRow['scoresTeacher']);
 		}
 		$this->connSQL->Stop();
 		return $TranscriptObj;
@@ -55,7 +55,7 @@ class TranscriptMod {
  				    `scoresMax`= {$TranscriptObj->getScoresMax()},
  				    `scoresStudent`= {$TranscriptObj->getScoresStudent()},
  				    `scoresTeacher`= {$TranscriptObj->getScoresTeacher()} 
-				where `Transcript_idItem` = '{$TranscriptObj->getTranscript_idItem()}'";
+				where `idItem` = '{$TranscriptObj->getIdItem()}'";
 		$this->connSQL->Connect();
 		$result = $this->connSQL->conn->query($sql);
 		$this->connSQL->Stop();
@@ -67,7 +67,7 @@ class TranscriptMod {
 	 * @return array
 	 */
 	public function getTranscriptAll(){
-		$sql = "select Transcript_idItem from Transcript";
+		$sql = "select idItem from Transcript";
 		$this->connSQL->Connect();
 		$result = $this->connSQL->conn->query($sql);
 		$listRow = array();

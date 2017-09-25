@@ -8,7 +8,7 @@
 
 class TranscriptObj {
 
-    private $Transcript_idItem;
+    private $idItem;
     private $Account_idAccount;
     private $itemName;
     private $scores;
@@ -21,7 +21,7 @@ class TranscriptObj {
 
 
     public function __construct(){
-        $this->Transcript_idItem = '';
+        $this->idItem = '';
         $this->Account_idAccount = '';
         $this->itemName='';
         $this->scores = 0;
@@ -37,8 +37,8 @@ class TranscriptObj {
         return $this;
     }
 
-    public function setStructureObj($Transcript_idItem,$Account_idAccount,$itemName,$scores,$describe,$idParent,$scoresDefault,$scoresMax,$scoresStudent,$scoresTeacher){
-        $this->Transcript_idItem = $Transcript_idItem;
+    public function setStructureObj($idItem,$Account_idAccount,$itemName,$scores,$describe,$idParent,$scoresDefault,$scoresMax,$scoresStudent,$scoresTeacher){
+        $this->idItem = $idItem;
         $this->Account_idAccount = $Account_idAccount;
         $this->itemName=$itemName;
         $this->scores = $scores;
@@ -53,8 +53,8 @@ class TranscriptObj {
     /**
      * @return mixed
      */
-    public function getTranscript_idItem(){
-        $this->Transcript_idItem;
+    public function getIdItem(){
+        $this->idItem;
     }
     public function getAccount_idAccount(){
         $this->Account_idAccount;
@@ -83,8 +83,8 @@ class TranscriptObj {
     public function getScoresTeacher(){
         $this->getScoresTeacher;
     }
-    public function setTranscript_idItem($Transcript_idItem){
-        $this->Transcript_idItem=$Transcript_idItem;
+    public function setIdItem($idItem){
+        $this->idItem=$idItem;
     }
     public function setAccount_idAccount($Account_idAccount){
         $this->Account_idAccount=$Account_idAccount;
