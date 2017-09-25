@@ -145,20 +145,11 @@ class StructureTree {
 					<input type='hidden' name='id' value='{$this->data[$nodeId]["idItem"]}'>
 					<input type='hidden' name='requestName' value='delete'>
 					<a href='?a=edit&id={$this->data[$nodeId]["idItem"]}' class='btn btn-primary btn-sm'>Sửa</a>
-					<button class='btn btn-warning btn-sm' value='delete' onclick='return confirm(\"Xác nhận xóa?\")'>
+					<button class='btn btn-danger btn-sm btn-del-struct' value='delete' type='button'>
 						Xóa
 					</button>
 				</form>
 			</td>";
-		return $htmlText;
-	}
-
-	function getLeafHTMLNormMode($nodeId) {
-		$htmlText = "";
-		$htmlText .= "<td><span class='spacing'></span>" . str_replace("-", "", $this->data[$nodeId]["itemName"]) . "</td>";
-		$htmlText .= "<td>{$this->data[$nodeId]["scores"]}</td>";
-		$htmlText .= "<td><input type='number' class='input-number' min='0' max='{$this->data[$nodeId]["scores"]}' value='0'></td>";
-		$htmlText .= "<td></td><td></td>";
 		return $htmlText;
 	}
 
@@ -170,7 +161,7 @@ class StructureTree {
 					<input type='hidden' name='id' value='{$this->data[$nodeId]["idItem"]}'>
 					<input type='hidden' name='requestName' value='delete'>
 					<a href=\"?a=edit&id={$this->data[$nodeId]["idItem"]}\" class='btn btn-primary btn-sm'>Sửa</a>
-					<button class='btn btn-warning btn-sm' value='delete' onclick='return confirm(\"Mục này chứa các mục con, xác nhận xóa hết?\")'>
+					<button class='btn btn-danger btn-sm btn-del-struct' type='button' value='delete'>
 						Xóa
 					</button>
 				</form>
@@ -178,6 +169,16 @@ class StructureTree {
 		return $html;
 	}
 
+	#-------- Norm mode -------
+
+	function getLeafHTMLNormMode($nodeId) {
+		$htmlText = "";
+		$htmlText .= "<td><span class='spacing'></span>" . str_replace("-", "", $this->data[$nodeId]["itemName"]) . "</td>";
+		$htmlText .= "<td>{$this->data[$nodeId]["scores"]}</td>";
+		$htmlText .= "<td><input type='number' class='input-number' min='0' max='{$this->data[$nodeId]["scores"]}' value='0'></td>";
+		$htmlText .= "<td></td><td></td>";
+		return $htmlText;
+	}
 	function getNonLeafHTMLNormMode($nodeId) {
 		return "<td colspan='5'>" . str_replace("-", "", $this->data[$nodeId]["itemName"]) . "</td>";
 	}

@@ -21,9 +21,7 @@ if (isSubmit("delete")){
 	foreach ($listId as $itemId) {
 		$result = $model->deleteStructure($itemId);
 	}
-	if ($result){
-		showMessage("Xóa thành công!");
-	} else {
+	if (!$result){
 		showMessage("Xóa thất bại, hãy thử lại sau!");
 	}
 	softRedirect("../../view/structure.editor.php");

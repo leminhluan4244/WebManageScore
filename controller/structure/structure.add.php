@@ -15,7 +15,7 @@ if (isSubmit('save')){
 	$structObj = new StructureObj();
 	$structObj->setStructureObj($idItem, $itemName, $score, "", $idParent);
 	if ($model->addStructure($structObj)) {
-		showMessage("Thêm thành công!!");
+//		showMessage("Thêm thành công!!");
 	} else
 		showMessage("Thêm thất bại, thử lại sau!!");
 	softRedirect("structure.editor.php");
