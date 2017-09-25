@@ -43,7 +43,7 @@ class Pagination{
 		$start = $this->start();
 		$limit = $this->limit;
 		$listPage = '';
-		
+
 		if($totalPages > 1){ // số trang phải từ 2 trang trở lên
 			$current = ($start/$limit) + 1; // trang hiện tại
 			if($current != 1){ // Nút prev
