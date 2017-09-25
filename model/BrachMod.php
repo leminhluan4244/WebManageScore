@@ -84,33 +84,28 @@ class BranchMod
     }
     //*********************************************************
     //Hàm tìm kiếm một chi hội theo mã
-    public function findBranchByID($branch)
+    public function findBranchByID($branchS)
     {
-        $sql = "SELECT * FROM branch WHERE idBranch='" . $branch->getIdBranch() . "';";
+        $sql = "SELECT * FROM branch WHERE idBranch='" . $branchS . "';";
         // Thực thi truy vấn
         $this->conn->Connect();
         $result = $this->conn->conn->query($sql);
-        $list = array();
-
         // Kiểm tra số lượng kết trả về có lơn hơn 0
         // Nếu lớn hơn tức là có kết quả, ngược lại sẽ không có kết quả, num_rows xem như biến chứa kết quả sau khi trả về
         if ($result->num_rows > 0) {
             // Nếu có thì trả về đối tượng đó
             $branch = new BranchObj();
-
-            $k = 0;
             while ($row = $result->fetch_assoc()) {
 
                 //Cho vào list đối tượng
                 $branch->setidBranch($row["idBranch"]);
                 $branch->setBranchName($row["branchName"]);
-                $list[$k] = $branch;
-                $k++;
+                $branch->setCity($row["city"]);
             }
         } else {
             //Báo rỗng
         }
-        return $list;
+        return $branch;
         //Ngắt kết nối
         $this->conn->Stop();
     }
