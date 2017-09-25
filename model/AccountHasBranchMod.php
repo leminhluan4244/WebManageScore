@@ -25,12 +25,12 @@ class AccountHasBranchMod
         // Thực thi câu lệnh
         $this->conn->Connect();
         if ($this->conn->conn->multi_query($sql) === true) {
-            echo "Thêm thành công";
+           // echo "Thêm thành công";
             //Ngắt kết nối
             $this->conn->Stop();
             return true;
         } else {
-            echo "Lỗi add Account to Branch";
+           // echo "Lỗi add Account to Branch";
             //Ngắt kết nối
             $this->conn->Stop();
             return false;

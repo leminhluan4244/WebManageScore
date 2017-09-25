@@ -34,7 +34,7 @@ class AcademyMod
             }
         } else {
            // echo 'error count class in academy';
-            return -1;
+            return 0;
         }
 
         //Ngắt kết nối

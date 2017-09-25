@@ -212,7 +212,7 @@ class BranchMod
                 $k++;
             }
         } else {
-            return -1;
+            return 0;
             //echo "Không có kết quả nào";
         }
         //Ngắt kết nối

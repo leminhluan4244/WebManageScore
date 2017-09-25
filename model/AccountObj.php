@@ -17,15 +17,15 @@
    private $password;
    private $Permission_position;
    function __construct(
-    $idAccount = 'unknow',
-    $accountName = 'unknow',
-    $birthday = 'unknow',
-    $address = 'unknow',
-    $sex = 'unknow',
+    $idAccount = '',
+    $accountName = '',
+    $birthday = '',
+    $address = '',
+    $sex = '',
     $phone = 0,
-    $email = 'unknow',
-    $password = 'unknow',
-    $Permission_position = 'unknow'
+    $email = '',
+    $password = '',
+    $Permission_position = ''
     ){
      $this->idAccount = $idAccount;
   	 $this->accountName = $accountName;

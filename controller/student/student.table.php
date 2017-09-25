@@ -15,34 +15,42 @@
 ?>
 <?php
     $listTable = $accountMod->getStudentAll();
+if($listTable!=0)  {
 ?>
 <form action="student.manage.php" method="post" id="manageForm">
-<table class="table table-bordered table-condensed">
-    <thead>
-    <tr>
-        <th>STT</th>
-        <th>MSSV</th>
-        <th>Họ và tên</th>
-        <th>Tất cả <br /><input type="checkbox" onClick="toggle(this)"></th>
-        <th>Sửa<br /></th>
-    </tr>
-    </thead>
-    <tbody class="text-center align-self-center">
-    <?php foreach ($listTable as $order => $student) { ?>
+    <table class="table table-bordered table-condensed">
+        <thead>
         <tr>
-            <td><?php echo $order + 1; ?></td>
-            <td>
-                <a href="<?php echo $url . 'id=' . $student->getIdAccount(); ?>">
-                    <?php echo $student->getIdAccount(); ?>
-                </a>
-            </td>
-            <td><?php echo $student->getAccountName(); ?></td>
-            <td><input type="checkbox" name="xoa[]" id="<?php echo $student->getIdAccount(); ?>" value="<?php echo $student->getIdAccount(); ?>"/> </td>
-            <td><a class="btn btn-danger col align-self-center " data-toggle="modal" data-target="#updateStudent" name="<?php echo $student->getIdAccount()?>>
-                <span class="glyphicon glyphicon-trash"></span> Sửa
-            </a></td>
+            <th>STT</th>
+            <th>MSSV</th>
+            <th>Họ và tên</th>
+            <th>Tất cả <br/><input type="checkbox" onClick="toggle(this)"></th>
+            <th>Sửa<br/></th>
         </tr>
-    <?php } ?>
+        </thead>
+        <tbody class="text-center align-self-center">
+        <?php
+
+        foreach ($listTable as $order => $student) { ?>
+            <tr>
+                <td><?php echo $order + 1; ?></td>
+                <td>
+                    <a href="<?php echo $url . 'id=' . $student->getIdAccount(); ?>">
+                        <?php echo $student->getIdAccount(); ?>
+                    </a>
+                </td>
+                <td><?php echo $student->getAccountName(); ?></td>
+                <td><input type="checkbox" name="xoa[]" id="<?php echo $student->getIdAccount(); ?>"
+                           value="<?php echo $student->getIdAccount(); ?>"/></td>
+                <td><a class="btn btn-danger col align-self-center " data-toggle="modal" data-target="#updateStudent"
+                       name="<?php echo $student->getIdAccount() ?>>
+                <span class=" glyphicon glyphicon-trash"></span> Sửa
+                    </a></td>
+            </tr>
+            <?php
+        }
+        }else echo 'Danh sách rỗng';
+    ?>
     </tbody>
 </table>
 </form>
