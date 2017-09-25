@@ -1,5 +1,12 @@
+<hr />
 <?php
+$Pagination = new Pagination();
+$limit = $Pagination->limit; // Số record hiển thị trên một trang
+$stat = $Pagination->start(); // Vị trí của record
+$totalRecord = $branchMod->countBranch(); // Tổng số user có trong database
+$totalPages = $Pagination->totalPages($totalRecord); // Tổng số trang tìm được
 ?>
+
 <table class="table table-bordered table-condensed ">
 
     <thead>
@@ -16,7 +23,7 @@
     <form action="branch.manage.php" method="post" id="manageForm">
         <?php
             $arrayBranch = array();
-            $arrayBranch = $branchMod->getBranch();
+            $arrayBranch = $branchMod->getBranchLimit($stat, $limit);
               $i=0;
         if(count($arrayBranch)>1)
             foreach ($arrayBranch as $key => $value) {
@@ -47,6 +54,10 @@
     <!-- Kết thúc lấy thuộc tính cho bảng từ CSDL -->
     </tbody>
 </table>
+<!-- List phân trang -->
+<div id="pagination">
+    <?php echo $Pagination->listPages($totalPages); ?>
+</div>
 <!-- Bắt sự kiện check all tất cả checkbox để xóa tất cả dữ liệu  -->
 <script language="JavaScript">
     function toggle(checkall) {

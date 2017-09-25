@@ -33,7 +33,30 @@ class BranchMod
             }
         } else {
           //  echo "error count account in branch";
-            return -1;
+            return 0;
+        }
+
+        //Ngắt kết nối
+        $this->conn->Stop();
+    }
+    //Đếm số chi hội hiện có
+    public function countBranch()
+    {
+        $sql = "SELECT count(*) FROM Branch ";
+        // Thực thi truy vấn
+        $this->conn->Connect();
+        $result = $this->conn->conn->query($sql);
+        // Kiểm tra số lượng kết trả về có lơn hơn 0
+        // Nếu lớn hơn tức là có kết quả, ngược lại sẽ không có kết quả, num_rows xem như biến chứa kết quả sau khi trả về
+        if ($result->num_rows > 0) {
+            while ($row = $result->fetch_assoc()) {
+                //Cho vào list đối tượng
+                //   echo $row["count(*)"];
+                return $row["count(*)"];
+            }
+        } else {
+            //  echo "error count account in branch";
+            return 0;
         }
 
         //Ngắt kết nối
@@ -195,6 +218,39 @@ class BranchMod
             }
         } else {
             return -1;
+            //echo "Không có kết quả nào";
+        }
+        //Ngắt kết nối
+        $this->conn->Stop();
+        //Trả đối tượng đi, sau này lớp control sẽ sử dụng mảng này để truy xuất
+        return $list;
+    }
+    public function getBranchLimit( $start, $limit)
+    {
+        // Tạo ra một mảng lưu trữ tên list, mặc định bang đầu rỗng
+        $list = array();
+        // Đẩy câu lệnh vào string
+        $sql = "SELECT * FROM branch LIMIT ".$start.",".$limit;
+        $this->conn->Connect();
+        $result = $this->conn->conn->query($sql);
+        // Kiểm tra số lượng kết quả trả về có lơn hơn 0
+        // Nếu lớn hơn tức là có kết quả, ngược lại sẽ không có kết quả
+        if ($result->num_rows > 0) {
+            // Sử dụng vòng lặp while để lặp kết quả
+            $k = 0;
+            //Tạo một đối tượng chứa
+
+            while ($row = $result->fetch_assoc()) {
+                $branch = new BranchObj();
+                //Cho vào list đối tượng
+                $branch->setidBranch($row["idBranch"]);
+                $branch->setBranchName($row["branchName"]);
+                $branch->setCity($row["city"]);
+                $list[$k] = $branch;
+                $k++;
+            }
+        } else {
+            return 0;
             //echo "Không có kết quả nào";
         }
         //Ngắt kết nối
