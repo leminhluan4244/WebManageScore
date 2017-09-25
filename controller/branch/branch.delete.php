@@ -3,11 +3,11 @@
 if(isset($_POST['xoa'])) {
     $branchO = new BranchObj();
     $branchM = new BranchMod();
+    echo'<META http-equiv="refresh" content="0;URL=branch.manage.php">';
     foreach ($_POST['xoa'] as $key=> $value){
             $branchO->setidBranch($value);
             $branchM->deleteBranch($branchO);
     }
-
 }
 ?>
 
