@@ -1,5 +1,12 @@
+<hr />
 <?php
+$Pagination = new Pagination();
+$limit = $Pagination->limit; // Số record hiển thị trên một trang
+$stat = $Pagination->start(); // Vị trí của record
+$totalRecord = $branchMod->countBranch(); // Tổng số user có trong database
+$totalPages = $Pagination->totalPages($totalRecord); // Tổng số trang tìm được
 ?>
+
 <table class="table table-bordered table-condensed ">
 
     <thead>
@@ -8,17 +15,17 @@
         <th>Mã CH</th>
         <th>Tên CH</th>
         <th>Tỉnh Thành</th>
-        <th>Tất cả <br /><input type="checkbox" onClick="toggle(this)"></th>
-
+        <th>Tùy Chỉnh</th>
+        <th>Chọn tất cả<br>
+            <input type="checkbox" onClick="toggle(this)"></th>
     </tr>
     </thead>
     <form action="branch.manage.php" method="post" id="manageForm">
         <?php
             $arrayBranch = array();
-            $arrayBranch = $branchMod->getBranch();
-            $list=array();
-            $i=0;
-
+            $arrayBranch = $branchMod->getBranchLimit($stat, $limit);
+              $i=0;
+        if(count($arrayBranch)>1)
             foreach ($arrayBranch as $key => $value) {
                 $i++;
                 echo '
@@ -35,7 +42,9 @@
                         <a class="align-self-center " data-toggle="modal" data-target="#infoBranch" method="get" href="branch.manage.php?id=' . $value->getidBranch() . '">' . $value->getCity() . '</a>
                     </td>
                     <td>
-                        
+                        <a href="?idBranch='.$value->getidBranch().'" class="btn btn-primary btn-sm"><span class="glyphicon glyphicon-pencil"></span></a>
+                    </td>
+                    <td>
                         <input type="checkbox" name="xoa[]" id="'.$value->getidBranch().'" value="'.$value->getidBranch().'"/>            
                     </td>
                 </tr>';
@@ -45,11 +54,16 @@
     <!-- Kết thúc lấy thuộc tính cho bảng từ CSDL -->
     </tbody>
 </table>
+<!-- List phân trang -->
+<div id="pagination">
+    <?php echo $Pagination->listPages($totalPages); ?>
+</div>
+<!-- Bắt sự kiện check all tất cả checkbox để xóa tất cả dữ liệu  -->
 <script language="JavaScript">
     function toggle(checkall) {
         checkboxes = document.getElementsByName('xoa[]');
-        for(var i=0, n=checkboxes.length;i<n;i++)
-        {checkboxes[i].checked = checkall.checked;
-                  }
-          }
+        for(var i=0, n=checkboxes.length;i<n;i++) {
+            checkboxes[i].checked = checkall.checked;
+        }
+    }
 </script>

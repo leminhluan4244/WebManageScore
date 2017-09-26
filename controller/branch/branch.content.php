@@ -10,9 +10,6 @@
         <a class="btn btn-primary col align-self-center " data-toggle="modal" data-target="#addBranch">
             <span class="glyphicon glyphicon-plus"></span> Thêm mới Chi hội
         </a>
-        <a class="btn btn-warning col align-self-center " data-toggle="modal" data-target="#updateBranch">
-            <span class="glyphicon glyphicon-pencil"></span> Sửa đổi
-        </a>
         <a class="btn btn-danger col align-self-center " data-toggle="modal" data-target="#deleteBranch">
             <span class="glyphicon glyphicon-trash"></span> Xóa
         </a>
