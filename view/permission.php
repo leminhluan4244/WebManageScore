@@ -1,5 +1,5 @@
 <?php
-    require_once "../controller/header.php"
+  require_once "../controller/header.php"
 ?>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
   <script>
@@ -32,6 +32,9 @@
         $("#div-edit-permission").hide();
         $("#div-delete-permission").show();
       });
+      $("#isSelected").change(function() {
+        console.log($("#isSelected").val());
+      });
     });
   </script>
   <div id="div-main" class="container main-academy-container">
@@ -41,69 +44,20 @@
       <button id="btn-edit-permission" class="btn btn-primary">Sửa phân quyền</button>
       <button id="btn-delete-permission" class="btn btn-primary">Xóa phân quyền</button>
     </div>
+    <div class="row">
+      <div class="col-sm-12">
+        <br />
+        <?php
+          require_once "../controller/permission/permission.filter.php";
+        ?>
+      </div>
+    </div>
     <div id="div-list-permission" class="academy-action-list">
       <div class="row">
         <div class="col-sm-12">
           <h4>Danh sách theo phân quyền của người dùng</h4>
           <hr>
-          <form action="#" method="get">
-            <!--unknow?-->
-            <table>
-              <tr>
-                <td>
-                  <div style="margin-right: 10px">
-                    <select class="thumbnail" name="">
-                          <option selected hidden>-- Chọn theo phân quyền --</option>
-                          <option selected disabled>-- Chọn theo phân quyền --</option>
-                          <option value="">Cố vấn học tập</option>
-                          <option value="">Quản lý khoa</option>
-                          <option value="">Quản lý chi hội</option>
-                          <option value="">Sinh viên</option>
-                        </select>
-                  </div>
-                </td>
-                <td>
-                  <div style="margin-right: 10px">
-                    <select class="thumbnail" name="">
-                        <option selected hidden>-- Chọn theo khoa --</option>
-                        <option selected disabled>-- Chọn theo khoa --</option>
-                        <option value="">Khoa Công Nghệ</option>
-                        <option value="">Khoa CNTT TT</option>
-                        <option value="">Khoa Kinh Tế</option>
-                        <option value="">Khoa Luật</option>
-                      </select>
-                  </div>
-                </td>
-                <td>
-                  <div style="margin-right: 10px">
-                    <select class="thumbnail" name="">
-                        <option selected hidden>-- Chọn theo lớp --</option>
-                        <option selected disabled>-- Chọn theo lớp --</option>
-                        <option value="">Lớp DI1496 A1</option>
-                        <option value="">Lớp DI1496 A2</option>
-                    </select>
-                  </div>
-                </td>
-                <td>
-                  <div style="margin-right: 10px">
-                    <select class="thumbnail" name="">
-                        <option selected hidden>-- Chọn theo chi hội --</option>
-                        <option selected disabled>-- Chọn theo chi hội --</option>
-                        <option value="">Chi hội sinh viên Hậu Giang</option>
-                      </select>
-                  </div>
-                </td>
-                <td>
-                  <div class="form-group text-right" style="margin-top: -24px">
-                    <br />
-                    <button type="submit" class="center-block btn btn-primary">Lọc</button>
-                  </div>
-                </td>
-              </tr>
-            </table>
-          </form>
-          <form action="#" method="get">
-            <!--unknow?-->
+          <form action="#" method="post">
             <table class="table table-hover table-condensed table-bordered">
               <thead>
                 <tr>
@@ -113,15 +67,20 @@
                 </tr>
               </thead>
               <tbody class="text-center">
-                <tr>
-                  <td>B1400713</td>
-                  <td>Đoàn Minh Nhựt</td>
-                  <td>Sinh viên</td>
-                </tr>
+                <?php
+                 $accountArr = (new AccountMod())->getAllAccount();
+                 foreach ($accountArr as $key => $value) {
+                   echo '<tr>';
+                   echo '<td>'.$accountArr[$key]->getIdAccount().'</td>';
+                   echo '<td>'.$accountArr[$key]->getAccountName().'</td>';
+                   echo '<td>'.$accountArr[$key]->getPermission_position().'</td>';
+                   echo '</tr>';
+                 }
+                 ?>
               </tbody>
             </table>
             <div class="form-group text-right">
-              <button type="submit" class="center-block btn btn-primary">
+              <button type="submit" name="btn-submit" value="list" class="center-block btn btn-primary">
                             <span class="glyphicon glyphicon-repeat"></span> Trở về
                         </button>
             </div>
@@ -135,64 +94,7 @@
         <div class="col-sm-12">
           <h4>Cập nhật danh sách theo phân quyền của người dùng</h4>
           <hr>
-          <form action="#" method="get">
-            <!--unknow?-->
-            <table>
-              <tr>
-                <td>
-                  <div style="margin-right: 10px">
-                    <select class="thumbnail" name="">
-                          <option selected hidden>-- Chọn theo phân quyền --</option>
-                          <option selected disabled>-- Chọn theo phân quyền --</option>
-                          <option value="">Cố vấn học tập</option>
-                          <option value="">Quản lý khoa</option>
-                          <option value="">Quản lý chi hội</option>
-                          <option value="">Sinh viên</option>
-                        </select>
-                  </div>
-                </td>
-                <td>
-                  <div style="margin-right: 10px">
-                    <select class="thumbnail" name="">
-                        <option selected hidden>-- Chọn theo khoa --</option>
-                        <option selected disabled>-- Chọn theo khoa --</option>
-                        <option value="">Khoa Công Nghệ</option>
-                        <option value="">Khoa CNTT TT</option>
-                        <option value="">Khoa Kinh Tế</option>
-                        <option value="">Khoa Luật</option>
-                      </select>
-                  </div>
-                </td>
-                <td>
-                  <div style="margin-right: 10px">
-                    <select class="thumbnail" name="">
-                        <option selected hidden>-- Chọn theo lớp --</option>
-                        <option selected disabled>-- Chọn theo lớp --</option>
-                        <option value="">Lớp DI1496 A1</option>
-                        <option value="">Lớp DI1496 A2</option>
-                    </select>
-                  </div>
-                </td>
-                <td>
-                  <div style="margin-right: 10px">
-                    <select class="thumbnail" name="">
-                        <option selected hidden>-- Chọn theo chi hội --</option>
-                        <option selected disabled>-- Chọn theo chi hội --</option>
-                        <option value="">Chi hội sinh viên Hậu Giang</option>
-                      </select>
-                  </div>
-                </td>
-                <td>
-                  <div class="form-group text-right" style="margin-top: -24px">
-                    <br />
-                    <button type="submit" class="center-block btn btn-primary">Lọc</button>
-                  </div>
-                </td>
-              </tr>
-            </table>
-          </form>
-          <form action="#" method="get">
-            <!--unknow?-->
+          <form action="../controller/permission/permission.update.php" method="post">
             <table class="table table-hover table-condensed table-bordered">
               <thead>
                 <tr>
@@ -202,23 +104,31 @@
                 </tr>
               </thead>
               <tbody class="text-center">
-                <tr>
-                  <td>B1400713</td>
-                  <td>Đoàn Minh Nhựt</td>
-                  <td>
-                    <select class="thumbnail center-block" style="margin-top: -1px; margin-bottom: 1px" name="">
-                            <option selected hidden>-- Chọn một Phân quyền --</option>
-                            <option selected disabled>-- Chọn một Phân quyền --</option>
-                            <option value="">Cố Vấn học tập</option>
-                            <option value="">Quản lý khoa</option>
-                            <option value="">Quản lý chi hội</option>
-                            <option value="">Sinh viên</option>
-                          </select></td>
-                </tr>
+                <?php
+                 $accountArr = (new AccountMod())->getAllAccount();
+                 $permissionArr = (new PermissionMod())->getPermission();
+                 foreach ($accountArr as $key => $value) {
+                   echo '<tr>';
+                   echo '<td>'.$accountArr[$key]->getIdAccount().'</td>';
+                   echo '<td>'.$accountArr[$key]->getAccountName().'</td>';
+                   echo '<td>';
+                   echo '<select name="'.$accountArr[$key]->getIdAccount().'" class="thumbnail center-block" style="margin-top: -1px; margin-bottom: 1px">';
+                      foreach ($permissionArr as $keyOption => $valueOption) {
+                       if($permissionArr[$keyOption]->getPosition() == $accountArr[$key]->getPermission_position()){
+                        echo '<option selected disabled value="'.$permissionArr[$keyOption]->getPosition().'">'.$permissionArr[$keyOption]->getPosition().'</option>';
+                       } else {
+                        echo '<option value="'.$permissionArr[$keyOption]->getPosition().'">'.$permissionArr[$keyOption]->getPosition().'</option>';
+                       }
+                      }
+                   echo '</select>';
+                   echo '</td>';
+                   echo '</tr>';
+                  }
+                 ?>
               </tbody>
             </table>
             <div class="form-group text-right">
-              <button type="submit" class="center-block btn btn-success">
+              <button type="submit" name="btn-submit" value="save" class="center-block btn btn-success">
                             <span class="glyphicon glyphicon-ok"></span> Lưu lại
                         </button>
             </div>
@@ -232,64 +142,7 @@
         <div class="col-sm-12">
           <h4>Xóa phân quyền của người dùng</h4>
           <hr>
-          <form action="#" method="get">
-            <!--unknow?-->
-            <table>
-              <tr>
-                <td>
-                  <div style="margin-right: 10px">
-                    <select class="thumbnail" name="">
-                          <option selected hidden>-- Chọn theo phân quyền --</option>
-                          <option selected disabled>-- Chọn theo phân quyền --</option>
-                          <option value="">Cố vấn học tập</option>
-                          <option value="">Quản lý khoa</option>
-                          <option value="">Quản lý chi hội</option>
-                          <option value="">Sinh viên</option>
-                        </select>
-                  </div>
-                </td>
-                <td>
-                  <div style="margin-right: 10px">
-                    <select class="thumbnail" name="">
-                        <option selected hidden>-- Chọn theo khoa --</option>
-                        <option selected disabled>-- Chọn theo khoa --</option>
-                        <option value="">Khoa Công Nghệ</option>
-                        <option value="">Khoa CNTT TT</option>
-                        <option value="">Khoa Kinh Tế</option>
-                        <option value="">Khoa Luật</option>
-                      </select>
-                  </div>
-                </td>
-                <td>
-                  <div style="margin-right: 10px">
-                    <select class="thumbnail" name="">
-                        <option selected hidden>-- Chọn theo lớp --</option>
-                        <option selected disabled>-- Chọn theo lớp --</option>
-                        <option value="">Lớp DI1496 A1</option>
-                        <option value="">Lớp DI1496 A2</option>
-                    </select>
-                  </div>
-                </td>
-                <td>
-                  <div style="margin-right: 10px">
-                    <select class="thumbnail" name="">
-                        <option selected hidden>-- Chọn theo chi hội --</option>
-                        <option selected disabled>-- Chọn theo chi hội --</option>
-                        <option value="">Chi hội sinh viên Hậu Giang</option>
-                      </select>
-                  </div>
-                </td>
-                <td>
-                  <div class="form-group text-right" style="margin-top: -24px">
-                    <br />
-                    <button type="submit" class="center-block btn btn-primary">Lọc</button>
-                  </div>
-                </td>
-              </tr>
-            </table>
-          </form>
-          <form action="#" method="get">
-            <!--unknow?-->
+          <form action="../controller/permission/permission.update.php" method="post">
             <table class="table table-hover table-condensed table-bordered">
               <thead>
                 <tr>
@@ -300,17 +153,22 @@
                 </tr>
               </thead>
               <tbody class="text-center">
-                <tr>
-                  <td>B1400713</td>
-                  <td>Đoàn Minh Nhựt</td>
-                  <td>Sinh viên</td>
-                  <td><label><input type="checkbox" value="" name=""></label></td>
-                </tr>
+                <?php
+                 $accountArr = (new AccountMod())->getAllAccount();
+                 foreach ($accountArr as $key => $value) {
+                   echo '<tr>';
+                   echo '<td>'.$accountArr[$key]->getIdAccount().'</td>';
+                   echo '<td>'.$accountArr[$key]->getAccountName().'</td>';
+                   echo '<td>'.$accountArr[$key]->getPermission_position().'</td>';
+                   echo '<td><label><input type="checkbox" value="'.$accountArr[$key]->getIdAccount().'" name="checkbox[]"></label></td>';
+                   echo '</tr>';
+                 }
+                 ?>
               </tbody>
             </table>
             <div class="form-group text-right">
-              <button type="submit" class="center-block btn btn-danger">
-                            <span class="glyphicon glyphicon-ok"></span> Xóa
+              <button type="submit" name="btn-submit" value="delete" class="center-block btn btn-danger">
+                            <span class="glyphicon glyphicon-trash"></span> Xóa
                         </button>
             </div>
           </form>

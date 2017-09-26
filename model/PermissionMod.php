@@ -18,7 +18,7 @@ class PermissionMod
     // 1. Hàm thêm một phân quyền
     public function addPermission($permission)
     {
-        $sql = "INSERT INTO Permission(position,power) 
+        $sql = "INSERT INTO Permission(position,power)
 						VALUES('".$permission->getPosition()."',
 						'".$permission->getPower()."')";
         $this->connSql->Connect();
@@ -33,7 +33,7 @@ class PermissionMod
     //2. Hàm cập nhật một phân quyền
     public function updatePermission($permission)
     {
-        $sql = "UPDATE Permission 
+        $sql = "UPDATE Permission
 					SET power= '".$permission->getPower()."'
 			        WHERE position='".$permission->getPosition()."'";
         $this->connSql->Connect();
@@ -49,7 +49,7 @@ class PermissionMod
     public function deletePermission($permission)
     {
 
-        $sql = "DELETE FROM Permission  
+        $sql = "DELETE FROM Permission
 						WHERE position ='".$permission->getPosition()."'";
 
         $this->connSql->Connect();
@@ -76,6 +76,28 @@ class PermissionMod
                 $permission->setPosition($row["position"]);
                 $permission->getPower($row["power"]);
                 $list[$k] = $permission;
+                $k++;
+            }
+
+        } else {
+             //echo "The result of information processing is data false";
+        }
+
+        $this->connSql->Stop();
+        return $list;
+    }
+
+    public function selectPower($selected)
+    {
+        $sql = "SELECT `power` FROM `Permission` WHERE `position` = '".$selected."'";
+        $this->connSql->Connect();
+        $result = $this->connSql->conn->query($sql);
+
+        if ($result->num_rows > 0) {
+            $k = 0;
+            $list = array();
+            while ($row = $result->fetch_assoc()) {
+                $list[$k] = $row["power"];
                 $k++;
             }
 
