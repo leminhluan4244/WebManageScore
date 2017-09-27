@@ -19,25 +19,26 @@ if(isset($_POST['submit'])) {
                 <h4 class="modal-title">Thêm mới Chi Hội</h4>
             </div>
             <div class="modal-body">
-                <form action="#" method="post">
+                <form action="#" method="post" id="formAddBranch" >
 
                     <fieldset class="form-group">
                         <p class="text-left"><b>Mã Chi Hội</b></p>
                         <input type="text" class="form-control" name="IdBranch" id="addidBranch"
-                               placeholder="Nhập mã chi hội">
+                               placeholder="Nhập mã chi hội" required autofocus>
                     </fieldset>
 
                     <fieldset class="form-group">
                         <p class="text-left"><b>Tên Chi Hội</b></p>
                         <input type="text" class="form-control" name="branchName" id="addbranchName"
-                               placeholder="Nhập tên chi hội">
+                               placeholder="Nhập tên chi hội" required autofocus>
                     </fieldset>
 
                     <fieldset class="form-group">
                         <p class="text-left"><b>Tỉnh Thành</b></p>
-                        <select class="form-control" name="city" id="addcity">
+                        <select class="form-control" name="city" id="addcity" required autofocus>
                             <?php
                             echo'
+                            <option value="Cần Thơ">Cần Thơ</option>
                             <option value="An Giang">An Giang</option>
                             <option value="Bà Rịa - Vũng Tàu">Bà Rịa - Vũng Tàu</option>
                             <option value="Bắc Giang">Bắc Giang</option>
@@ -96,7 +97,6 @@ if(isset($_POST['submit'])) {
                             <option value="Vĩnh Phúc">Vĩnh Phúc</option>
                             <option value="Yên Bái">Yên Bái</option>
                             <option value="Phú Yên">Phú Yên</option>
-                            <option value="Cần Thơ">Cần Thơ</option>
                             <option value="Đà Nẵng">Đà Nẵng</option>
                             <option value="Hải Phòng">Hải Phòng</option>
                             <option value="Hà Nội">Hà Nội</option>

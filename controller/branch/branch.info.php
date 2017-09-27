@@ -1,38 +1,47 @@
 <?php
+if(isset($_GET['id']))
+$id = $_GET['id'];
+if (!empty($id)) {
+    $branchObj = $branchMod->getBranchId($id);
+    ?>
 
-?>
-
-
-<div id="infoBranch" class="modal fade " tabindex="-1" role="dialog" aria-labelledby aria-hidden="true">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header">
-
-                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                <h4 class="modal-title">Thông tin Chi Hội</h4>
-            </div>
-            <div class="modal-body ">
-                <form action="#" method="post">
-
-                    <fieldset class="form-group">
-                        <p class="text-left "><b>Mã Chi Hội</b></p>
-                        <p class="text-left form-control"><b>CH001</b></p>
-                    </fieldset>
-
-                    <fieldset class="form-group">
-                        <p class="text-left"><b>Tên Chi Hội</b></p>
-                        <p class="text-left form-control"><b>Phụng Hiệp</b></p>
-                    </fieldset>
-
-                    <fieldset class="form-group">
-                        <p class="text-left"><b>Tỉnh Thành</b></p>
-                        <p class="text-left form-control"><b>Hậu Giang</b></p>
-                    </fieldset>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-default" data-dismiss="modal">Đóng</button>
+    <div id="infoBranch" class="modal text-left" tabindex="-1" role="dialog" aria-labelledby aria-hidden="true">
+        <div class="modal-dialog ">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                    <h4 class="modal-title">Thông tin chi hội</h4>
+                </div>
+                <div class="modal-body ">
+                    <div class="row">
+                        <div class="col-sm-6 form-group">
+                            <label>Tên chi hội:  </label>
+                            <span class="form-control-static"><?php echo $branchObj->getBranchName(); ?></span>
+                        </div>
+                        <div class="col-sm-6 form-group">
+                            <label>Mã chi hội: </label>
+                            <span class="form-control-static"><?php echo $branchObj->getidBranch(); ?></span>
+                        </div>
+                        <div class="col-sm-6 form-group">
+                            <label>Tỉnh thành: </label>
+                            <span class="form-control-static"><?php echo $branchObj->getCity(); ?></span>
+                        </div>
                     </div>
-                </form>
+
+
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Đóng</button>
+                </div>
             </div>
         </div>
     </div>
-</div>
+    <script>
+        $(function () {
+            $('#infoStudent').modal('toggle');
+            var url = window.location.href;
+            url = url.replace(/\?.+/, '');
+            window.history.pushState({path: url}, '', url);
+        });
+    </script>
+<?php } ?>

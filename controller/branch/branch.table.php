@@ -1,4 +1,5 @@
 <hr />
+<!--phan trang-->
 <?php
 $Pagination = new Pagination();
 $limit = $Pagination->limit; // Số record hiển thị trên một trang
@@ -32,6 +33,7 @@ $totalPages = $Pagination->totalPages($totalRecord); // Tổng số trang tìm �
     
                 <tr>
                     <td>'.$i.'</td>
+                   
                     <td>
                         <a class="align-self-center " data-toggle="modal" data-target="#infoBranch" method="get" href="branch.manage.php?id=' . $value->getidBranch() . '">' . $value->getidBranch() . '</a>
                     </td>
