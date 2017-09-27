@@ -1,14 +1,17 @@
 <hr />
-<!--phan trang-->
 <?php
-$Pagination = new Pagination();
-$limit = $Pagination->limit; // Số record hiển thị trên một trang
-$stat = $Pagination->start(); // Vị trí của record
-$totalRecord = $branchMod->countBranch(); // Tổng số user có trong database
-$totalPages = $Pagination->totalPages($totalRecord); // Tổng số trang tìm được
-?>
+if(!isset($_GET['btnfilter'])) {
+    $arrayBranch = array();
+    $arrayBranch = $branchMod->getBranch();
+}
+else {
+    $arrayBranch = array();
+    $arrayBranch = $branchMod->findBranchByCity($_GET['city']);
 
-<table class="table table-bordered table-condensed ">
+}
+
+?>
+<table class="table table-bordered table-condensed " id="table-manage-branch">
 
     <thead>
     <tr>
@@ -23,8 +26,6 @@ $totalPages = $Pagination->totalPages($totalRecord); // Tổng số trang tìm �
     </thead>
     <form action="branch.manage.php" method="post" id="manageForm">
         <?php
-            $arrayBranch = array();
-            $arrayBranch = $branchMod->getBranchLimit($stat, $limit);
               $i=0;
         if(count($arrayBranch)>1)
             foreach ($arrayBranch as $key => $value) {
@@ -35,13 +36,13 @@ $totalPages = $Pagination->totalPages($totalRecord); // Tổng số trang tìm �
                     <td>'.$i.'</td>
                    
                     <td>
-                        <a class="align-self-center " data-toggle="modal" data-target="#infoBranch" method="get" href="branch.manage.php?id=' . $value->getidBranch() . '">' . $value->getidBranch() . '</a>
+                        ' . $value->getidBranch() . '
                     </td>
                     <td>
-                        <a class="align-self-center " data-toggle="modal" data-target="#infoBranch" method="get" href="branch.manage.php?id=' . $value->getidBranch() . '">' . $value->getBranchName() . '</a>
+                        ' . $value->getBranchName() . '
                     </td>
                     <td>
-                        <a class="align-self-center " data-toggle="modal" data-target="#infoBranch" method="get" href="branch.manage.php?id=' . $value->getidBranch() . '">' . $value->getCity() . '</a>
+                        ' . $value->getCity() . '
                     </td>
                     <td>
                         <a href="?idBranch='.$value->getidBranch().'" class="btn btn-primary btn-sm"><span class="glyphicon glyphicon-pencil"></span></a>
@@ -56,11 +57,6 @@ $totalPages = $Pagination->totalPages($totalRecord); // Tổng số trang tìm �
     <!-- Kết thúc lấy thuộc tính cho bảng từ CSDL -->
     </tbody>
 </table>
-<!-- List phân trang -->
-<div id="pagination">
-    <?php echo $Pagination->listPages($totalPages); ?>
-</div>
-<!-- Bắt sự kiện check all tất cả checkbox để xóa tất cả dữ liệu  -->
 <script language="JavaScript">
     function toggle(checkall) {
         checkboxes = document.getElementsByName('xoa[]');
@@ -68,4 +64,5 @@ $totalPages = $Pagination->totalPages($totalRecord); // Tổng số trang tìm �
             checkboxes[i].checked = checkall.checked;
         }
     }
+    $('#table-manage-branch').DataTable();
 </script>

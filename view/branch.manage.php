@@ -10,10 +10,10 @@ $branchMod = new BranchMod();
 
             <h4>Danh sách Chi Hội</h4>
             <div class="form-group">
-                <form action="" method="post">
+                <form action="" method="get">
 
                     <!--Start buttun filter-->
-                    <input type="submit" value="Lọc" class="btn btn-primary col-sm-1">
+                    <input type="submit" value="Lọc" class="btn btn-primary col-sm-1" name="btnfilter">
                     <!--End buttun filter-->
 
                     <!---->

@@ -132,7 +132,35 @@ class BranchMod
         //Ngắt kết nối
         $this->conn->Stop();
     }
+    public function findBranchByCity($branchC)
+    {
+        $sql = "SELECT * FROM branch WHERE city='" . $branchC . "';";
+        // Thực thi truy vấn
+        $this->conn->Connect();
+        $result = $this->conn->conn->query($sql);
+        // Kiểm tra số lượng kết trả về có lơn hơn 0
+        // Nếu lớn hơn tức là có kết quả, ngược lại sẽ không có kết quả, num_rows xem như biến chứa kết quả sau khi trả về
+        if ($result->num_rows > 0) {
+            $k=0;
+            $list = array();
+            // Nếu có thì trả về đối tượng đó
 
+            while ($row = $result->fetch_assoc()) {
+                $branch = new BranchObj();
+                //Cho vào list đối tượng
+                $branch->setidBranch($row["idBranch"]);
+                $branch->setBranchName($row["branchName"]);
+                $branch->setCity($row["city"]);
+                $list[$k] = $branch;
+                $k++;
+            }
+        } else {
+            //Báo rỗng
+        }
+        return $list;
+        //Ngắt kết nối
+        $this->conn->Stop();
+    }
     //Hàm tìm kiếm một chi hội theo tên
     public function findBranchByName($branch)
     {

@@ -1,8 +1,8 @@
 <div class="col-sm-4">
-    <select name="kv" id="" class="form-control">
+    <select name="city" id="" class="form-control">
         <?php
-        echo' 
-                             <option value="Cần Thơ">Cần Thơ</option>
+        echo'               
+                            <option value="Cần Thơ">Cần Thơ</option>
                             <option value="An Giang">An Giang</option>
                             <option value="Bà Rịa - Vũng Tàu">Bà Rịa - Vũng Tàu</option>
                             <option value="Bắc Giang">Bắc Giang</option>

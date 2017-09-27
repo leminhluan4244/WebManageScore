@@ -16,33 +16,7 @@ require_once "../model/Link.php";
     <script src="../public/bootstrap/js/bootstrap.min.js"></script>
     <link rel="stylesheet" href="../public/style/style.css">
     <link rel="icon" href="../public/img/logo.gif">
-    <!-- phan trang -->
-    <style type="text/css">
-        #pagination {
-            width: 700px;
-            margin-top: 15px;
-            text-align: center
-        }
 
-        #pagination a, span.current {
-            text-decoration: none;
-            padding: 0px 10px;
-            border: 1px solid #CCC;
-            border-radius: 3px;
-            margin-right: 3px;
-            color: #090;
-            font-size: 13px
-        }
-
-        span.current {
-            color: #F00;
-            font-weight: bold
-        }
-
-        .red {
-            color: #F00
-        }
-    </style>
 </head>
 <!-- phan trang -->
 
