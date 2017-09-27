@@ -186,6 +186,15 @@ class BranchMod
         //Ngắt kết nối
         $this->conn->Stop();
     }
+    // tra ve doi tuong chi hoi
+    public function getBranchId($i){
+        $sql = "SELECT * FROM `branch` WHERE `idBranch` = '".$i."'";
+        $this->conn->Connect();
+        $result = $this->conn->conn->query($sql);
+        $this->conn->Stop();
+        $row = $result->fetch_row();
+        return new BranchObj($row[0], $row[1], $row[2]);
+    }
     // Hàm trả về danh sách các chi hội hiện có
     public function getBranch()
     {

@@ -18,9 +18,9 @@ class PermissionMod
     // 1. Hàm thêm một phân quyền
     public function addPermission($permission)
     {
-        $sql = "INSERT INTO Permission(position,power)
+        $sql = "INSERT INTO Permission(position,power,selected)
 						VALUES('".$permission->getPosition()."',
-						'".$permission->getPower()."')";
+						'".$permission->getPower()."','".$permission->getSelected()."')";
         $this->connSql->Connect();
         if ($this->connSql->conn->query($sql) === TRUE) {
           //  echo "Addition is successful! ";
@@ -34,7 +34,8 @@ class PermissionMod
     public function updatePermission($permission)
     {
         $sql = "UPDATE Permission
-					SET power= '".$permission->getPower()."'
+					SET power= '".$permission->getPower()."',
+					selected= '".$permission->getSecleted()."'
 			        WHERE position='".$permission->getPosition()."'";
         $this->connSql->Connect();
         if ($this->connSql->conn->query($sql) === true) {
@@ -75,6 +76,7 @@ class PermissionMod
                 $permission = new PermissionObj();
                 $permission->setPosition($row["position"]);
                 $permission->getPower($row["power"]);
+                $permission->getSelected($row["selected"]);
                 $list[$k] = $permission;
                 $k++;
             }

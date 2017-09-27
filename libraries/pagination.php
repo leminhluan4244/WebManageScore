@@ -6,7 +6,7 @@
 */
 class Pagination{
 	
-	public $limit = 4; // số record hiển thị trên một trang
+	public $limit = 8; // số record hiển thị trên một trang
 	protected $_baseUrl;
 	
 	public function __construct(){

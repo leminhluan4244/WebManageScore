@@ -1,61 +1,36 @@
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-    <script src="bootstrap/jquery-3.2.1.min.js"></script>
-    <script src="bootstrap/js/bootstrap.min.js"></script>
-    <link rel="stylesheet" href="bootstrap/css/bootstrap.min.css">
-    <link rel="stylesheet" href="bootstrap/css/bootstrap-theme.min.css">
-    <link rel="stylesheet" href="style/style.css">
-    <link rel="icon" href="img/logo.gif">
-</head>
-
-<body>
-    <div class="banner container-fluid">
-        <div class="col-sm-2 logo">
-            <img src="img/logo.gif" width="70" alt="">
-        </div>
-        <div class="banner-title col-sm-8">
-            <h4><strong>TRƯỜNG ĐẠI HỌC CẦN THƠ</strong></h4>
-            <p><strong>Hệ thống chấm điểm rèn luyện</strong></p>
-        </div>
-        <div class="banner-action col-sm-2 text-right">
-            <a href="main.html" class="btn btn-primary btn-sm">
-                <span class="glyphicon glyphicon-home"></span> Trang chủ</a>
-            <a href="index.html" class="btn btn-warning btn-sm">
-                <span class="glyphicon glyphicon-log-out"></span> Đăng xuất</a>
-        </div>
-    </div>
-    <br>
-    <div class="container main-academy-container">
+<?php
+require_once "../controller/header.php";
+?>
+<div class="container main-academy-container">
         <div class="academy-action-list text-center">
             <h4>Danh sách sinh viên</h4>
             <div class="form-group">
                <form action="" method="post">
-                  <div class="col-sm-3">
-                    <select name="kv" id="" class="form-control">
-                       <option value="Chọn khoa viện">Chọn loại bảng điểm</option>
-                        <option value="Cong"> Cộng điểm</option>
-                        <option value="Tru">Trừ điểm</option>
-                    </select>
-                </div>
-                <div class="form-group input-group">
-                        
-                        <div class="col-sm-2">
-                             <input type=text name="day" placeholder="Ngày" class="form-control ">
-                        </div>
-                        <div class="col-sm-2">
-                            <input type=text name="month" placeholder="Tháng" class="form-control col-sm-2">
-                        </div>
-                        <div class="col-sm-2">
-                            <input type="text" name="year" placeholder="Năm" class="form-control col-sm-2">
-                        </div>                        
-                    </div> <!--ngay thang nam -->
-                    <div class="form-group input-group <col-sm-12></col-sm-12>">
-                        <input type="text "name="lyDo" placeholder="Lý do " class="form-control">
-                    </div> <!-Lý do-->
+<!--                   <div class="row">-->
+<!--                       <div class="col-3">-->
+<!--                           <fieldset class="form-group">-->
+<!--                               <p class="text-left"><b>Chọn loại bảng điểm</b></p>-->
+<!--                               <select class="form-control" name="addSex" id="addSex">-->
+<!--                                   <option value="Cong">Cộng</option>-->
+<!--                                   <option value="Tru">Trừ</option>-->
+<!--                               </select>-->
+<!--                           </fieldset>-->
+<!--                       </div>-->
+<!--                       <div class="col-3">-->
+<!--                           <fieldset class="form-group">-->
+<!--                               <p class="text-left"><b>Ngày thêm</b></p>-->
+<!--                               <input type="date" class="form-control" name="addDay" id="addDay"-->
+<!--                                      placeholder="Ngày Sinh">-->
+<!--                           </fieldset>-->
+<!--                       </div>-->
+<!--                       <div class="col-12">-->
+<!--                           <fieldset class="form-group">-->
+<!--                               <p class="text-left"><b>Lý do</b></p>-->
+<!--                               <input type="text" class="form-control" name="addHow" id="addHow"-->
+<!--                                      placeholder="Lý do cộng hoặc trừ điểm" required autofocus>-->
+<!--                           </fieldset>-->
+<!--                       </div>-->
+<!--                   </div>-->
                </form>
             </div> <!--Bang trich loc-->
             <div class="">
@@ -95,17 +70,12 @@
                         </tr>
                     </tbody>
                 </table>
-                <a type="button" class="btn btn-primary" href="#">Tạo bảng điểm</a>
+                <a type="button" class="btn btn-primary" href="#">Thêm</a>
 
             </div>
         </div>
 
     </div>
-    <script src="js/common.js"></script>
-    <script src="js/academy_action.js"></script>
-    <footer class="container-fluid text-center">
-        Trường Đại học Cần Thơ <br> Nhóm nghiên cứu khoa học
-    </footer>
-</body>
-
-</html>
+ <?php
+require_once "../controller/footer.php";
+ ?>

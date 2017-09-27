@@ -109,17 +109,31 @@ class ClassMod {
         return $list;
     }
 
+    //5. Hàm trả về danh sách các lớp hiện có
+    public function getClassNameOf($classId)
+    {
+        $sql = "SELECT className FROM Class where idClass = '$classId'";
+        $this->connSql->Connect();
+        $result = $this->connSql->conn->query($sql);
+		$this->connSql->Stop();
+		$className = "";
+        if (!empty($result)){
+            $className = $result->fetch_assoc()['className'];
+        }
+        return $className;
+    }
+
     //6. Hàm trả về danh sách các tài khoản sinh viên hiện có trong một lớp học
     public function getListStudent($class)
     {
 
-        $sql = "SELECT * FROM Account,Account_has_Class WHERE Account_has_Class.Class_idClass = '".$class->getIdClass()."'";
+        $sql = "SELECT * FROM Account,Account_has_Class WHERE Account.idAccount = Account_has_Class.Account_idAccount AND Account_has_Class.Class_idClass = '".$class->getIdClass()."'";
         $this->connSql->Connect();
         $result = $this->connSql->conn->query($sql);
 
+		$list = array();
         if ($result->num_rows > 0) {
             $k = 0;
-            $list = array();
             while ($row = $result->fetch_assoc()) {
                 $account = new AccountObj;
                 $account->setIdAccount($row["idAccount"]);
@@ -131,7 +145,7 @@ class ClassMod {
                 $account -> setEmail($row["email"]);
                 $account -> setPassword($row["password"]);
                 $account -> setPermission_position($row["Permission_position"]);
-                if($account->getPermission_position()=='Sinh viên'){
+                if($account->getPermission_position()=='Sinh viên' or $account->getPermission_position()=='Quản lý chi hội'){
                     $list[$k] = $account;
                     $k++;
                 }
