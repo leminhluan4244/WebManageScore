@@ -91,10 +91,9 @@ class PermissionMod
 
     public function selectPower($selected)
     {
-        $sql = "SELECT `power` FROM `Permission` WHERE `position` = '".$selected."'";
+        $sql = "SELECT `power` FROM `Permission` WHERE `position` = '".$selected."' AND `selected` = 1";
         $this->connSql->Connect();
         $result = $this->connSql->conn->query($sql);
-
         if ($result->num_rows > 0) {
             $k = 0;
             $list = array();
@@ -105,12 +104,34 @@ class PermissionMod
 
         } else {
              //echo "The result of information processing is data false";
+             return [];
         }
 
         $this->connSql->Stop();
         return $list;
     }
-
+     public function setAllDisplay($namePermission, $num){
+       $sql = "UPDATE `permission` SET `selected`= $num WHERE `position` = '".$namePermission."'";
+       #var_dump($sql);
+       $this->connSql->Connect();
+       if ($this->connSql->conn->query($sql) === true) {
+          // echo "Updation is successful!";
+       } else {
+          // echo "Updation is not successful!" . $this->connSql->error;
+       }
+       $this->connSql->Stop();
+    }
+    public function setDisplay($namePermission, $num, $power){
+      $sql = "UPDATE `permission` SET `selected`= $num WHERE `position` = '".$namePermission."' AND `power` = '".$power."'";
+      #var_dump($sql);
+      $this->connSql->Connect();
+      if ($this->connSql->conn->query($sql) === true) {
+         // echo "Updation is successful!";
+      } else {
+         // echo "Updation is not successful!" . $this->connSql->error;
+      }
+      $this->connSql->Stop();
+   }
     }
 
     /* Kiểm tra hàm có viết đúng hay không ?

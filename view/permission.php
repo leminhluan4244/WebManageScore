@@ -1,9 +1,11 @@
 <?php
   require_once "../controller/header.php"
 ?>
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
   <script>
     $(document).ready(function() {
+      $("#tbl-list").DataTable();
+      $("#tbl-edit").DataTable();
+      $("#tbl-delete").DataTable();
       $("#btn-list-permission").addClass("active");
       $("#div-list-permission").show();
       $("#div-edit-permission").hide();
@@ -44,21 +46,21 @@
       <button id="btn-edit-permission" class="btn btn-primary">Sửa phân quyền</button>
       <button id="btn-delete-permission" class="btn btn-primary">Xóa phân quyền</button>
     </div>
-    <div class="row">
+    <!--<div class="row">
       <div class="col-sm-12">
         <br />
         <?php
-          require_once "../controller/permission/permission.filter.php";
+          #require_once "../controller/permission/permission.filter.php";
         ?>
       </div>
-    </div>
+    </div>-->
     <div id="div-list-permission" class="academy-action-list">
       <div class="row">
         <div class="col-sm-12">
           <h4>Danh sách theo phân quyền của người dùng</h4>
           <hr>
           <form action="#" method="post">
-            <table class="table table-hover table-condensed table-bordered">
+            <table id="tbl-list" class="table table-hover table-condensed table-bordered">
               <thead>
                 <tr>
                   <th>Mã số</th>
@@ -95,7 +97,7 @@
           <h4>Cập nhật danh sách theo phân quyền của người dùng</h4>
           <hr>
           <form action="../controller/permission/permission.update.php" method="post">
-            <table class="table table-hover table-condensed table-bordered">
+            <table id="tbl-edit" class="table table-hover table-condensed table-bordered">
               <thead>
                 <tr>
                   <th>Mã số</th>
@@ -143,7 +145,7 @@
           <h4>Xóa phân quyền của người dùng</h4>
           <hr>
           <form action="../controller/permission/permission.update.php" method="post">
-            <table class="table table-hover table-condensed table-bordered">
+            <table id="tbl-delete" class="table table-hover table-condensed table-bordered">
               <thead>
                 <tr>
                   <th>Mã số</th>

@@ -1,15 +1,15 @@
 <?php
   require_once "../controller/header.php"
 ?>
-<?php
+  <?php
   $permissionArr = (new PermissionMod())->getPermission();
 ?>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-<?php
+    <?php
   if(!empty($_POST['btn-submit']) && !empty($_POST['select']) && $_POST['btn-submit'] == 'view'){
     $newPermissionObj = new PermissionObj();
     $newPermissionMod = new PermissionMod();
     $arr = $newPermissionMod->selectPower($_POST['select']);
+    #var_dump($arr);
     echo '<script>
     $(document).ready(function() {
       $("#select").val("'.$_POST['select'].'");';
@@ -60,9 +60,9 @@
             $("#div-person-group").hide();
             $("#div-add-permission").show();
           });
-          $("#select").change(function(){
-           var json = JSON.stringify($("#select").val());
-           document.cookie = "json=" + json;
+          $("#select").change(function() {
+            var json = JSON.stringify($("#select").val());
+            document.cookie = "json=" + json;
           });
         });
       </script>
@@ -124,15 +124,7 @@
                 <br />
                 <div class="row">
                   <div class="form-group text-right">
-                    <button type="submit" name="btn-submit"
-                    <?php
-                     if(!empty(($_COOKIE['json']))){
-                       $var = json_decode($_COOKIE['json']);
-                       echo 'value = "'.$var.'"';
-                     }else{
-                       echo 'value = "save"';
-                     }
-                    ?>
+                    <button type="submit" name="btn-submit" <?php if(!empty(($_COOKIE[ 'json']))){ $var=json_decode($_COOKIE[ 'json']); echo 'value = "'.$var. '"'; }else{ echo 'value = "save"'; } ?>
                     class="center-block btn btn-success">
                 <span class="glyphicon glyphicon-ok"></span> Lưu lại
             </button>
