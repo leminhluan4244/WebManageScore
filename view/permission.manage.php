@@ -60,6 +60,10 @@
             $("#div-person-group").hide();
             $("#div-add-permission").show();
           });
+          $("#select").change(function(){
+           var json = JSON.stringify($("#select").val());
+           document.cookie = "json=" + json;
+          });
         });
       </script>
       <div id="div-main" class="container main-academy-container">
@@ -120,7 +124,16 @@
                 <br />
                 <div class="row">
                   <div class="form-group text-right">
-                    <button type="submit" name="btn-submit" value="save" class="center-block btn btn-success">
+                    <button type="submit" name="btn-submit"
+                    <?php
+                     if(!empty(($_COOKIE['json']))){
+                       $var = json_decode($_COOKIE['json']);
+                       echo 'value = "'.$var.'"';
+                     }else{
+                       echo 'value = "save"';
+                     }
+                    ?>
+                    class="center-block btn btn-success">
                 <span class="glyphicon glyphicon-ok"></span> Lưu lại
             </button>
                   </div>
