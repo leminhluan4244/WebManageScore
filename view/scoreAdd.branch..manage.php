@@ -4,7 +4,7 @@ require_once "../controller/header.php";
 <div class="container main-academy-container">
         <div class="academy-action-list text-center">
             <h4>Danh sách sinh viên</h4>
-            <div class="form-group">
+            <div class="form-group row">
                <form action="" method="post">
                    <div class="col-3">
                        <fieldset class="form-group">
@@ -24,9 +24,9 @@ require_once "../controller/header.php";
                     </div>
                    <div class="col-3">
                        <fieldset class="form-group">
-                           <p class="text-left"><b>Địa chỉ</b></p>
+                           <p class="text-left"><b>Lý do</b></p>
                            <input type="text" class="form-control" name="addAddress" id="addAddress"
-                                  placeholder="Địa chỉ">
+                                  placeholder="Lý do cộng hoặc trừ điểm">
                        </fieldset>
                    </div>
                </form>

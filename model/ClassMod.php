@@ -113,7 +113,7 @@ class ClassMod {
     public function getListStudent($class)
     {
 
-        $sql = "SELECT * FROM Account,Account_has_Class WHERE Account_has_Class.Class_idClass = '".$class->getIdClass()."'";
+        $sql = "SELECT * FROM Account,Account_has_Class WHERE Account.idAccount = Account_has_Class.Account_idAccount AND Account_has_Class.Class_idClass = '".$class->getIdClass()."'";
         $this->connSql->Connect();
         $result = $this->connSql->conn->query($sql);
 
@@ -131,7 +131,7 @@ class ClassMod {
                 $account -> setEmail($row["email"]);
                 $account -> setPassword($row["password"]);
                 $account -> setPermission_position($row["Permission_position"]);
-                if($account->getPermission_position()=='Sinh viên'){
+                if($account->getPermission_position()=='Sinh viên' or $account->getPermission_position()=='Quản lý chi hội'){
                     $list[$k] = $account;
                     $k++;
                 }
