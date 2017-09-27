@@ -20,7 +20,6 @@
             </a>
         </form>
     </div>
-    <br>
     <!-- End student add button-->
     <!-- Start add student-->
     <?php

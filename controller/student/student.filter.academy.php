@@ -1,6 +1,6 @@
 <!--Start combobox academy for student-->
 <div class="col-sm-4 form-group">
-    <select id="select-student-academy" name="academy" class="form-control">
+    <select id="select-student-academy" class="form-control">
         <option value="all">-- Chọn theo khoa --</option>
 		<?php
 		$academyMod = new AcademyMod();

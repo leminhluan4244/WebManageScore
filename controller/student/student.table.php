@@ -1,24 +1,27 @@
 <?php
 $classId = getGETValue('class');
+$className = "";
 $studentList = array();
-if (!empty($classId)) {
+if (preg_match("/^[a-zA-Z0-9]+$/", $classId)) {
 	$classMod = new ClassMod();
 	$classObj = new ClassObj();
 	$classObj->setIdClass($classId);
+	$className = $classMod->getClassNameOf($classId);
 	$studentList = $classMod->getListStudent($classObj);
 }
 if (!is_array($studentList))
 	$studentList = array();
-var_dump($studentList);
 $url = getCurrentUrl();
 $url = preg_replace("/&id.+/", '', $url);
 $url = strpos($url, "?") ? "$url&" : "$url?";
 ?>
-<?php
-$listTable = $accountMod->getStudentAll();
-if ($listTable != 0)  {
-?>
+
 <div id="student-manage-wrapper">
+    <?php if (!empty($classId)) {?>
+        <hr>
+        <h4 class="text-primary text-center">Danh sách sinh viên lớp: <?php echo $className; ?></h4>
+    <?php } ?>
+
     <form action="student.manage.php" method="post" id="manageForm">
         <table class="table table-bordered table-condensed" id="table-manage-student">
             <thead>
@@ -33,7 +36,7 @@ if ($listTable != 0)  {
             <tbody class="text-center align-self-center">
 			<?php
 
-			foreach ($listTable as $order => $student) { ?>
+			foreach ($studentList as $order => $student) { ?>
                 <tr>
                     <td><?php echo $order + 1; ?></td>
                     <td>
@@ -44,16 +47,13 @@ if ($listTable != 0)  {
                     <td><?php echo $student->getAccountName(); ?></td>
                     <td><input type="checkbox" name="xoa[]" id="<?php echo $student->getIdAccount(); ?>"
                                value="<?php echo $student->getIdAccount(); ?>"/></td>
-                    <td><a class="btn btn-danger col align-self-center " data-toggle="modal"
+                    <td><a class="btn btn-danger btn-sm col align-self-center " data-toggle="modal"
                            data-target="#updateStudent"
-                           name="<?php echo $student->getIdAccount() ?>>
-                <span class=" glyphicon glyphicon-trash"></span> Sửa
+                           name="<?php echo $student->getIdAccount() ?>">
+                            <span class=" glyphicon glyphicon-trash"></span> Sửa
                         </a></td>
                 </tr>
-				<?php
-			}
-			} else echo 'Danh sách rỗng';
-			?>
+			<?php } ?>
             </tbody>
         </table>
     </form>
@@ -67,5 +67,4 @@ if ($listTable != 0)  {
     }
 
     $('#table-manage-student').DataTable();
-
 </script>

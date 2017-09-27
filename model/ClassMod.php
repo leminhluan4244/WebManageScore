@@ -109,6 +109,20 @@ class ClassMod {
         return $list;
     }
 
+    //5. Hàm trả về danh sách các lớp hiện có
+    public function getClassNameOf($classId)
+    {
+        $sql = "SELECT className FROM Class where idClass = '$classId'";
+        $this->connSql->Connect();
+        $result = $this->connSql->conn->query($sql);
+		$this->connSql->Stop();
+		$className = "";
+        if (!empty($result)){
+            $className = $result->fetch_assoc()['className'];
+        }
+        return $className;
+    }
+
     //6. Hàm trả về danh sách các tài khoản sinh viên hiện có trong một lớp học
     public function getListStudent($class)
     {
@@ -117,9 +131,9 @@ class ClassMod {
         $this->connSql->Connect();
         $result = $this->connSql->conn->query($sql);
 
+		$list = array();
         if ($result->num_rows > 0) {
             $k = 0;
-            $list = array();
             while ($row = $result->fetch_assoc()) {
                 $account = new AccountObj;
                 $account->setIdAccount($row["idAccount"]);

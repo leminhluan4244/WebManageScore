@@ -18,7 +18,7 @@ $perMod = new PermissionMod();
 
             <h4>Danh sách sinh viên</h4>
             <div class="form-group">
-                <form action="" method="get">
+                <form id="form-filter-student">
                     <div class="row">
                         <!--Start combobox academy for student-->
 						<?php
@@ -34,7 +34,7 @@ $perMod = new PermissionMod();
                         <!--End combobox class for student-->
                         <!---->
                         <!--Start buttun filter-->
-                        <input type="submit" value="Lọc" class="btn btn-primary col-sm-1">
+                        <button class="btn btn-primary col-sm-1">Lọc</button>
 
                         <!--End buttun filter-->
                     </div>
@@ -54,7 +54,12 @@ $perMod = new PermissionMod();
 </div>
 
 <script src="../public/js/student_action.js"></script>
-
+<!--<script>-->
+<!--//    $('#form-filter-student').submit(function(){-->
+<!--//        var classId = $('#select-student-class').val();-->
+<!--//        return /^[a-zA-Z0-9]+4/.test(classId);-->
+<!--//    });-->
+<!--</script>-->
 <?php
 require_once "../controller/footer.php";
 ?>
