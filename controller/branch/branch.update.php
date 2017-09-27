@@ -4,7 +4,7 @@ if(isset($_POST['save'])) {
     $branchO = new BranchObj();
     $branchM = new BranchMod();
 
-    $branchO->setBranchObj($_POST['IdBranch'], $_POST['branchName'], $_POST['city']);
+    $branchO->setBranchObj($_POST['idBranch'], $_POST['branchName'], $_POST['city']);
     $branchM->updateBranch($branchO);
     echo'<META http-equiv="refresh" content="0;URL=branch.manage.php">';
 }

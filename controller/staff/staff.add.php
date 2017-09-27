@@ -1,3 +1,13 @@
+<?php
+if(isset($_POST['btnThem'])) {
+
+    $staffO = new AccountObj();
+    $staffM = new AccountMod();
+    $staffO->setAccountObj($_POST['addIdAccount'], $_POST['addAccountName'], $_POST['addBirthday'], $_POST['addAddress'], $_POST['addSex'], $_POST['addPhone'], $_POST['addEmail'],'123', $_POST['addPermission_position']);
+    $staffM->addAccount($staffO);
+    echo'<META http-equiv="refresh" content="0;URL=staff.manage.php">';
+}
+?>
 <!-- Start add Staff-->
 <div id="addStaff" class="modal fade" tabindex="-1" role="dialog" aria-labelledby aria-hidden="true">
     <div class="modal-dialog">
@@ -60,15 +70,17 @@
                     </fieldset>
 
                     <fieldset class="form-group">
-                        <p class="text-left"><b>Phân Quyền</b></p>
-                        <select class="form-control" name="Permission_position" id="Permission_position">
-                            <option value="Cố vấn học tập">Cố vấn học tập
-                            </option>
-                            <option value="Quản lý khoa viện">Quản lý khoa viện</option>
-                            <option value="Quản lý chi hội">Quản lý chi hội</option>
+                        <p class="text-left"><b>Phân quyền</b></p>
+                        <select class="form-control" name="addPermission_position" id="addPermission_position">
+                            <option value="NonePer">--Chọn phân quyền--</option>
+                            <?php
+                            $listPermissionM = array();
+                            $listPermissionM = $perMod->getPermission();
+                            foreach ($listPermissionM as $key => $value){
+                                echo'<option value="'.$value->getPosition().'">'.$value->getPosition().'</option>';
+                            }
+                            ?>
                         </select>
-                    </fieldset>
-
                     <fieldset class="form-group">
                         <p class="text-left"><b>Khoa - Viện</b></p>
                         <select class="form-control" name="Academy_idAcademy" id="Academy_idAcademy">
@@ -81,19 +93,23 @@
                         </select>
                     </fieldset>
 
-                    <fieldset class="form-group">
-                        <p class="text-left"><b>Lớp</b></p>
-                        <select class="form-control" name="Class_idClass" id="Class_idClass">
-                            <option value="Kỹ thuật phần mềm A1">Kỹ thuật phần mềm A1</option>
-                            <option value="Kỹ thuật phần mềm A2">Kỹ thuật phần mềm A2</option>
-                            <option value="Công nghệ thông tin A1">Công nghệ thông tin A1</option>
-                            <option value="Công nghệ thông tin A2">Công nghệ thông tin A1</option>
-                        </select>
-                    </fieldset>
+                        <fieldset class="form-group">
+                            <p class="text-left"><b>Lớp</b></p>
+                            <select class="form-control" name="addClassName" id="addClassName">
+                                <option value="NoneClass">--Chọn Lớp--</option>
+                                <?php
+                                $listClass = array();
+                                $listClass = $classMod->getClass();
+                                foreach ($listClass as $key => $value){
+                                    echo'<option value="'.$value->getIdClass().'">'.$value->getClassName().'</option>';
+                                }
+                                ?>
+                            </select>
+                        </fieldset>
 
                     <div class="modal-footer">
                         <button type="button" class="btn btn-default" data-dismiss="modal">Đóng</button>
-                        <button type="submit" class="btn btn-primary" name="addNewMember">Thêm</button>
+                        <button type="submit" class="btn btn-primary" name="btnThem">Thêm</button>
                     </div>
                 </form>
 
