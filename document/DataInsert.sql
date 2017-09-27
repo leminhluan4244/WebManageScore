@@ -21,15 +21,14 @@ INSERT INTO `class` (`idClass`, `className`, `schoolYear`, `Academy_idAcademy`) 
 INSERT INTO `class` (`idClass`, `className`, `schoolYear`, `Academy_idAcademy`) VALUES ('TS13ABA1', 'Chăn nuôi thủy sản 1', '39', 'TS');
 
 /*Dữ liệu mẫu 7 phân quyền */
-INSERT INTO `permission` (`position`, `power`) VALUES ('Cố vấn học tập', 'Chấm điểm rèn luyện cá nhân sinh viên');
-INSERT INTO `permission` (`position`, `power`) VALUES ('Sinh viên', 'Chấm điểm rèn luyện cá nhân sinh viên');
-INSERT INTO `permission` (`position`, `power`) VALUES ('Quản lý chi hội', 'Chấm điểm rèn luyện cá nhân sinh viên');
-INSERT INTO `permission` (`position`, `power`) VALUES ('Cố vấn học tập', 'Chấm điểm cho một lớp');
-INSERT INTO `permission` (`position`, `power`) VALUES ('Cố vấn học tập', 'Thêm bảng điểm cộng trừ cho lớp');
-INSERT INTO `permission` (`position`, `power`) VALUES ('Quản lý khoa', 'Chấm điểm rèn luyện cho cả khoa');
-INSERT INTO `permission` (`position`, `power`) VALUES ('Quản lý khoa', 'Thêm bảng điểm cộng trừ cho khoa');
-INSERT INTO `permission` (`position`, `power`) VALUES ('Quản lý chi hội', 'Thêm bảng điểm cộng trừ cho sinh viên theo chi hội');
-INSERT INTO `permission` (`position`, `power`) VALUES ('Quản lý chi hội', 'Null');
+INSERT INTO `permission` (`position`, `power`,`selected`) VALUES ('Cố vấn học tập', 'Chấm điểm rèn luyện cá nhân sinh viên',1);
+INSERT INTO `permission` (`position`, `power`,`selected`) VALUES ('Sinh viên', 'Chấm điểm rèn luyện cá nhân sinh viên',1);
+INSERT INTO `permission` (`position`, `power`,`selected`) VALUES ('Quản lý chi hội', 'Chấm điểm rèn luyện cá nhân sinh viên',1);
+INSERT INTO `permission` (`position`, `power`,`selected`) VALUES ('Cố vấn học tập', 'Chấm điểm cho một lớp',1);
+INSERT INTO `permission` (`position`, `power`,`selected`) VALUES ('Cố vấn học tập', 'Thêm bảng điểm cộng trừ cho lớp',1);
+INSERT INTO `permission` (`position`, `power`,`selected`) VALUES ('Quản lý khoa', 'Chấm điểm rèn luyện cho cả khoa',1);
+INSERT INTO `permission` (`position`, `power`,`selected`) VALUES ('Quản lý khoa', 'Thêm bảng điểm cộng trừ cho khoa');
+INSERT INTO `permission` (`position`, `power`,`selected`) VALUES ('Quản lý chi hội', 'Thêm bảng điểm cộng trừ cho sinh viên theo chi hội',1);
 /*Dữ liệu mẫu 5 Tài khoản*/
 INSERT INTO `account` (`idAccount`, `accountName`, `birthday`, `address`, `sex`, `phone`, `email`, `password`, `Permission_position`) 
 VALUES ('B1400704', 'Lê Minh Luân', '1996-01-16', 'An Khánh - Ninh Kiều Cần Thơ', 'Nam', '0964054244', 'luanb1400704@student.ctu.edu.vn', '81dc9bdb52d04dc20036dbd8313ed055', 'Sinh viên');
