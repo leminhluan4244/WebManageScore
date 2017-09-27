@@ -4,31 +4,33 @@ require_once "../controller/header.php";
 <div class="container main-academy-container">
         <div class="academy-action-list text-center">
             <h4>Danh sách sinh viên</h4>
-            <div class="form-group row">
+            <div class="form-group">
                <form action="" method="post">
-                   <div class="col-3">
-                       <fieldset class="form-group">
-                           <p class="text-left"><b>Chọn loại bảng điểm</b></p>
-                           <select class="form-control" name="addSex" id="addSex">
-                               <option value="Cong">Cộng</option>
-                               <option value="Tru">Trừ</option>
-                           </select>
-                       </fieldset>
-                   </div>
-                    <div class="col-3">
-                        <fieldset class="form-group">
-                            <p class="text-left"><b>Ngày thêm</b></p>
-                            <input type="date" class="form-control" name="addBirthday" id="addBirthday"
-                                   placeholder="Ngày Sinh">
-                        </fieldset>
-                    </div>
-                   <div class="col-3">
-                       <fieldset class="form-group">
-                           <p class="text-left"><b>Lý do</b></p>
-                           <input type="text" class="form-control" name="addAddress" id="addAddress"
-                                  placeholder="Lý do cộng hoặc trừ điểm">
-                       </fieldset>
-                   </div>
+<!--                   <div class="row">-->
+<!--                       <div class="col-3">-->
+<!--                           <fieldset class="form-group">-->
+<!--                               <p class="text-left"><b>Chọn loại bảng điểm</b></p>-->
+<!--                               <select class="form-control" name="addSex" id="addSex">-->
+<!--                                   <option value="Cong">Cộng</option>-->
+<!--                                   <option value="Tru">Trừ</option>-->
+<!--                               </select>-->
+<!--                           </fieldset>-->
+<!--                       </div>-->
+<!--                       <div class="col-3">-->
+<!--                           <fieldset class="form-group">-->
+<!--                               <p class="text-left"><b>Ngày thêm</b></p>-->
+<!--                               <input type="date" class="form-control" name="addDay" id="addDay"-->
+<!--                                      placeholder="Ngày Sinh">-->
+<!--                           </fieldset>-->
+<!--                       </div>-->
+<!--                       <div class="col-12">-->
+<!--                           <fieldset class="form-group">-->
+<!--                               <p class="text-left"><b>Lý do</b></p>-->
+<!--                               <input type="text" class="form-control" name="addHow" id="addHow"-->
+<!--                                      placeholder="Lý do cộng hoặc trừ điểm" required autofocus>-->
+<!--                           </fieldset>-->
+<!--                       </div>-->
+<!--                   </div>-->
                </form>
             </div> <!--Bang trich loc-->
             <div class="">
@@ -68,7 +70,7 @@ require_once "../controller/header.php";
                         </tr>
                     </tbody>
                 </table>
-                <a type="button" class="btn btn-primary" href="#">Tạo bảng điểm</a>
+                <a type="button" class="btn btn-primary" href="#">Thêm</a>
 
             </div>
         </div>
