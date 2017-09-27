@@ -14,32 +14,32 @@ $perMod = new PermissionMod();
 <div class="container-fluid">
     <!--Start content manage student-->
     <div class="container main-academy-container">
-        <div class="academy-action-list text-center">
+        <div class="academy-action-list">
 
             <h4>Danh sách sinh viên</h4>
             <div class="form-group">
                 <form action="" method="get">
-                    <!--Start combobox academy for student-->
-					<?php
-					require "../controller/student/student.filter.academy.php";
-					?>
-                    <!--End combobox academy for student-->
+                    <div class="row">
+                        <!--Start combobox academy for student-->
+						<?php
+						require "../controller/student/student.filter.academy.php";
+						?>
+                        <!--End combobox academy for student-->
 
-                    <!---->
-                    <!--Start combobox class for student-->
-					<?php
-					require "../controller/student/student.filter.class.php";
-					?>
-                    <!--End combobox class for student-->
+                        <!---->
+                        <!--Start combobox class for student-->
+						<?php
+						require "../controller/student/student.filter.class.php";
+						?>
+                        <!--End combobox class for student-->
+                        <!---->
+                        <!--Start buttun filter-->
+                        <input type="submit" value="Lọc" class="btn btn-primary col-sm-1">
 
-                    <!---->
-                    <!--Start buttun filter-->
-                    <input type="submit" value="Lọc" class="btn btn-primary col-sm-1">
+                        <!--End buttun filter-->
+                    </div>
 
-                    <!--End buttun filter-->
                 </form>
-                <br>
-                <br>
             </div>
             <!--End filter table-->
             <!--Begin table-->
