@@ -169,7 +169,7 @@
                   $k++;
               }
           } else {
-              return 0;
+//              return 0;
               //echo "Không có kết quả nào";
           }
           //Ngắt kết nối

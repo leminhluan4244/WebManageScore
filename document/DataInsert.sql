@@ -27,7 +27,7 @@ INSERT INTO `permission` (`position`, `power`,`selected`) VALUES ('Quản lý c
 INSERT INTO `permission` (`position`, `power`,`selected`) VALUES ('Cố vấn học tập', 'Chấm điểm cho một lớp',1);
 INSERT INTO `permission` (`position`, `power`,`selected`) VALUES ('Cố vấn học tập', 'Thêm bảng điểm cộng trừ cho lớp',1);
 INSERT INTO `permission` (`position`, `power`,`selected`) VALUES ('Quản lý khoa', 'Chấm điểm rèn luyện cho cả khoa',1);
-INSERT INTO `permission` (`position`, `power`,`selected`) VALUES ('Quản lý khoa', 'Thêm bảng điểm cộng trừ cho khoa');
+INSERT INTO `permission` (`position`, `power`,`selected`) VALUES ('Quản lý khoa', 'Thêm bảng điểm cộng trừ cho khoa',1);
 INSERT INTO `permission` (`position`, `power`,`selected`) VALUES ('Quản lý chi hội', 'Thêm bảng điểm cộng trừ cho sinh viên theo chi hội',1);
 /*Dữ liệu mẫu 5 Tài khoản*/
 INSERT INTO `account` (`idAccount`, `accountName`, `birthday`, `address`, `sex`, `phone`, `email`, `password`, `Permission_position`) 
