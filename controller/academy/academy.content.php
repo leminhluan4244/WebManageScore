@@ -11,9 +11,6 @@
         <a class="btn btn-primary col align-self-center " data-toggle="modal" data-target="#addAcademy">
             <span class="glyphicon glyphicon-plus"></span> Thêm mới khoa - viện
         </a>
-        <a class="btn btn-warning col align-self-center " data-toggle="modal" data-target="#updateAcademy">
-            <span class="glyphicon glyphicon-pencil"></span> Sửa đổi
-        </a>
         <a class="btn btn-danger col align-self-center " data-toggle="modal" data-target="#deleteAcademy">
             <span class="glyphicon glyphicon-trash"></span> Xóa
         </a>
@@ -24,13 +21,6 @@
     require "../controller/academy/academy.add.php";
     ?>
     <!-- End add academy-->
-
-    <!-- Start infor academy-->
-    <?php
-//    require "../controller/academy/academy.info.php";
-    ?>
-    <!-- End infor academy-->
-
     <!--Start update academy-->
     <?php
     require "../controller/academy/academy.update.php";

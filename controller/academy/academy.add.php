@@ -42,5 +42,3 @@ if(isset($_POST['btnAdd'])) {
                     </div>
                 </div>
                 <!-- End add academy-->
-                <?php
-                ?>

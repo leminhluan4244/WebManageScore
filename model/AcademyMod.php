@@ -177,7 +177,7 @@ class AcademyMod
     //Hàm tìm kiếm một khoa theo mã
     public function findAcademyByID($academy)
     {
-        $sql = "SELECT * FROM Academy WHERE idAcademy='" . $academy->getIdAcademy() . "';";
+        $sql = "SELECT * FROM Academy WHERE idAcademy='" . $academy. "';";
         // Thực thi truy vấn
         $this->conn->Connect();
         $result = $this->conn->conn->query($sql);
@@ -185,22 +185,18 @@ class AcademyMod
         // Nếu lớn hơn tức là có kết quả, ngược lại sẽ không có kết quả, num_rows xem như biến chứa kết quả sau khi trả về
         if ($result->num_rows > 0) {
             // Nếu có thì trả về đối tượng đo
-            $list = array();
-            $k = 0;
-            $academytemp = new AcademyObj();
             while ($row = $result->fetch_assoc()) {
-
+                $academytemp = new AcademyObj();
                 //Cho vào list đối tượng
                 $academytemp->setIdAcademy($row["idAcademy"]);
                 $academytemp->setAcademyName($row["academyName"]);
-                $list[$k] = $academytemp;
-                $k++;
             }
         } else {
+            return 0;
           //  echo '0 có ID này';
             //Báo rỗng
         }
-        return $list;
+        return $academytemp;
         //Ngắt kết nối
         $this->conn->Stop();
     }

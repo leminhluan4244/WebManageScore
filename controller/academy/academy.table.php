@@ -1,12 +1,13 @@
 <form action="academy.manage.php" method="post" id="manageForm">
-<table class="table table-bordered table-condensed">
+<table class="table table-bordered table-condensed" id="table-manage-academy">
 
     <thead>
     <tr>
         <th>STT</th>
         <th>Mã khoa - viện</th>
         <th>Tên khoa viện</th>
-        <th>Tất cả <br /><input type="checkbox" onClick="toggle(this)"></th>
+        <th>Tùy chỉnh</th>
+        <th>Chọn tất cả <br /><input type="checkbox" onClick="toggle(this)"></th>
     </tr>
     </thead>
 
@@ -21,10 +22,13 @@
         echo '<tr>
         <td>'.++$i.'</td>
         <td>
-            <a class="align-self-center " data-toggle="modal" data-target="#infoStudent" method="get" href="student.manage.php?id='.$value->getIdAcademy().'">'.$value->getIdAcademy().'</a>
+            '.$value->getIdAcademy().'
         </td>
         <td>
-            <a class="align-self-center " data-toggle="modal" data-target="#infoStudent" method="get" href="student.manage.php?id='.$value->getIdAcademy().'">'.$value->getAcademyName().'</a>
+            '.$value->getAcademyName().'
+        </td>
+        <td>
+            <a href="?idAcademy='.$value->getIdAcademy().'" class="btn btn-primary btn-sm"><span class="glyphicon glyphicon-pencil"></span></a>
         </td>
         <td><input type="checkbox" name="xoa[]" id="'.$value->getIdAcademy().'" value="'.$value->getIdAcademy().'"/> </td>
        
@@ -42,4 +46,5 @@
         {checkboxes[i].checked = checkall.checked;
         }
     }
+    $('#table-manage-academy').DataTable();
 </script>
