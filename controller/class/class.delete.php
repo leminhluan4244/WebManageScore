@@ -1,28 +1,28 @@
-<!--Start delete student-->
 <?php
 if(isset($_POST['xoa'])) {
-    $studentO = new AccountObj();
-    $studentM = new AccountMod();
+    $classOD = new ClassObj();
+    $classMD = new ClassMod();
     foreach ($_POST['xoa'] as $key=> $value){
-        $studentO->setIdAccount($value);
-        $studentM->deleteAccount($studentO);
-        echo'<META http-equiv="refresh" content="0;URL=score.academy.add.php">';
+        $classOD->setIdClass($value);
+        $classMD->deleteClass($classOD);
+        echo'<META http-equiv="refresh" content="0;URL=class.manage.php">';
     }
 
 }
 ?>
-<div id="deleteStudent" class="modal fade " tabindex="-1" role="dialog" aria-labelledby aria-hidden="true">
+<!--Start delete Class-->
+<div id="deleteClass" class="modal fade " tabindex="-1" role="dialog" aria-labelledby aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-                <h4 class="modal-title" id="">Xóa sinh viên!</h4>
+                <h4 class="modal-title" id="">Xóa lớp!</h4>
             </div>
             <div class="modal-body">
                 <h4>Hành động này cần xác nhận: Không thể hoàn tác!</h4>
                 <p>Vui lòng kiểm tra cẩn thận!</p>
                     <div class="modal-footer">
-                        <input type="hidden" name="deleteStudent" id="deleteStudent">
+                        <input type="hidden" name="deleteClass" id="deleteClass">
                         <button type="submit" name="deleteYes" onclick="submitform();" class="btn btn-danger">Đồng ý</button>
                         <button type="button" class="btn btn-default" data-dismiss="modal">Không</button>
                     </div>
@@ -30,11 +30,9 @@ if(isset($_POST['xoa'])) {
         </div>
     </div>
 </div>
-<!--End delete student-->
-<!-- Bắt sự kiện check all tất cả checkbox để xóa tất cả dữ liệu  -->
 <script>
     function submitform() {
         $('#manageForm').submit();
     }
 </script>
-<!-- Kết thúc Bắt sự kiện check all tất cả checkbox để xóa tất cả dữ liệu  -->
+<!--End delete Class-->

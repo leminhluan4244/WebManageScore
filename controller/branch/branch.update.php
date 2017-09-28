@@ -10,7 +10,6 @@ if(isset($_POST['save'])) {
 }
 $branchM = new BranchMod();
 $list = $branchM->getBranch();
-
 $idBranch = isset($_GET['idBranch']) ? $_GET['idBranch'] : false;
 if ($idBranch) {
     $branchO = new BranchObj();

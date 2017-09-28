@@ -292,7 +292,9 @@ class AcademyMod
     {
         // Đẩy câu lệnh vào string
         $sql = "DELETE FROM Academy 
-						WHERE idAcademy='" . $academy->getIdAcademy() . "';";
+						WHERE idAcademy='" . $academy->getIdAcademy() . "';".
+            " DELETE FROM Account_has_Academy 
+						WHERE Academy_idAcademy='" . $academy->getIdAcademy() . "';";
         // Thực thi câu lệnh
         $this->conn->Connect();
         // Thực hiện câu truy vấn

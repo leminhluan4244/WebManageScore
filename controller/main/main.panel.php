@@ -33,6 +33,19 @@
 				<p>Quản lý chi hội</p>
 			</a>
 		</div>
+        <div class="col-sm-offset-2 col-sm-4 thumbnail">
+            <a href="structure.editor.php" class="">
+                <img src="../public/img/structure-edit.png" width="70" alt="">
+                <p>Chỉnh sửa bảng điểm</p>
+            </a>
+        </div>
+
+        <div class="col-sm-offset-2 col-sm-4 thumbnail">
+            <a href="class.manage.php" class="">
+                <img src="../public/img/class.png" width="70" alt="">
+                <p>Quản lý lớp</p>
+            </a>
+        </div>
 		<div class="col-sm-offset-2 col-sm-4 thumbnail">
 			<a href="permission.manage.php" class="">
 				<img src="../public/img/permission-setting.png" width="70" alt="">
@@ -45,11 +58,11 @@
 				<p>Phân quyền</p>
 			</a>
 		</div>
-		<div class="col-sm-offset-2 col-sm-4 thumbnail">
-			<a href="structure.editor.php" class="">
-				<img src="../public/img/structure-edit.ico" width="70" alt="">
-				<p>Chỉnh sửa bảng điểm</p>
-			</a>
-		</div>
+        <div class="col-sm-offset-2 col-sm-4 thumbnail">
+            <a href="" class="">
+                <img src="../public/img/schedule.png" width="70" alt="">
+                <p>Quản lý lịch chấm điểm</p>
+            </a>
+        </div>
 	</div>
 </div>

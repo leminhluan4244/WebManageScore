@@ -13,24 +13,6 @@
             <div class="form-group">
                 <form action="" method="post">
 
-                    <!---->
-                    <!--Start combobox academy for student-->
-                    <?php
-                        require "../controller/addscore/score.filter.academy.php";
-                    ?>
-                    <!--End combobox academy for student-->
-
-                    <!---->
-                    <!--Start combobox class for student-->
-                    <?php
-                    require "../controller/addscore/score.filter.class.php";
-                    ?>
-                    <!--End combobox class for student-->
-
-                    <!---->
-                    <!--Start buttun filter-->
-                    <input type="submit" value="Lọc" class="btn btn-primary col-sm-1">
-                    <!--End buttun filter-->
                 </form>
                 <br>
                 <br>

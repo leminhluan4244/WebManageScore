@@ -51,7 +51,9 @@ class ClassMod {
     {
 
         $sql = "DELETE FROM Class 
-						WHERE idClass='".$class->getIdClass()."'";
+						WHERE idClass='".$class->getIdClass()."'".
+            " DELETE FROM Account_has_Class 
+						WHERE Class_idClass='".$class->getIdClass()."'";
 
         $this->connSql->Connect();
         if ($this->connSql->conn->query($sql) === TRUE) {
@@ -190,31 +192,26 @@ class ClassMod {
     }
 
     //7. Hàm tìm kiếm một lớp theo mã lớp hoc
-    public function findClassByID($class)
+    public function findClassByID($classID)
     {
 
-        $sql = "SELECT * FROM Class WHERE idClass='".$class->getIdClass()."'";
+        $sql = "SELECT * FROM Class WHERE idClass='".$classID."'";
         $this->connSql->Connect();
         $result = $this->connSql->conn->query($sql);
 
         if ($result->num_rows > 0) {
-
-            $list = array();
-            $k = 0;
             while ($row = $result->fetch_assoc()) {
                 $class = new ClassObj;
                 $class->setIdClass($row["idClass"]);
                 $class->setClassName($row["className"]);
                 $class->setSchoolYear($row["schoolYear"]);
                 $class->setAcademy_idAcademy($row["Academy_idAcademy"]);
-                $list[k] = $class;
-                $k++;
             }
         } else {
            // echo "Not Found";
         }
         $this->connSql->Stop();
-        return $list;
+        return $class;
     }
 
     //8. Hàm tìm kiếm một lớp theo tên lớp

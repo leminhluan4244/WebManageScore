@@ -28,5 +28,4 @@ require_once "../model/TranscriptMod.php";
 require_once "../model/TranscriptObj.php";
 require_once "../model/CheckTool.php";
 require_once "../helper/common.helper.php";
-require("../libraries/pagination.php"); // gọi file pagination.php
 ?>

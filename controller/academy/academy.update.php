@@ -9,7 +9,6 @@ if(isset($_POST['btnUpdate'])) {
 }
 $academyM = new AcademyMod();
 $list = $academyM->getAcademy();
-
 $idAcademy = isset($_GET['idAcademy']) ? $_GET['idAcademy'] : false;
 if ($idAcademy) {
     $academyO = new AcademyObj();
