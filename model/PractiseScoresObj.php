@@ -10,17 +10,21 @@ class PractiseScoresObj {
 	private $scores;
 	private $semester;
 	private $year;
-	private $accountIdAccount;
+	private $Account_IdAccount;
+	private $beginDate;
+	private $endDate;
 
-	public function getInstance(){
+	public function getPractiseScoresObj(){
 		return $this;
 	}
 
-	public function setData($scores, $semester, $year, $accountIdAccount){
+	public function setPractiseScoresObj($scores, $semester, $year, $accountIdAccount,$begin,$end){
 		$this->scores = $scores;
 		$this->semester = $semester;
 		$this->year = $year;
-		$this->accountIdAccount = $accountIdAccount;
+		$this->Account_IdAccount = $accountIdAccount;
+		$this->beginDate = $begin;
+		$this->endDate = $end;
 	}
 
 	/**
@@ -68,14 +72,33 @@ class PractiseScoresObj {
 	/**
 	 * @return mixed
 	 */
-	public function getAccountIdAccount() {
+	public function getAccount_IdAccount() {
 		return $this->accountIdAccount;
 	}
 
 	/**
 	 * @param mixed $accountIdAccount
 	 */
-	public function setAccountIdAccount($accountIdAccount) {
+	public function setAccount_IdAccount($accountIdAccount) {
 		$this->accountIdAccount = $accountIdAccount;
 	}
+
+
+    public function getBeginDate() {
+        return $this->beginDate;
+    }
+
+
+    public function setBeginDate($date) {
+        $this->beginDate = $date;
+    }
+    public function getEndDate() {
+        return $this->endDate;
+    }
+
+
+    public function setEndDate($date) {
+        $this->endDate = $date;
+    }
+
 }

@@ -58,7 +58,7 @@ class PractiseScoresMod {
 	 */
 	public function getPractiseScores($pcObj){
 		$sql = "select * from practisescores 
-				where Account_idAccount = '{$pcObj->getAccountIdAccount()}' 
+				where Account_idAccount = '{$pcObj->getAccount_IdAccount()}' 
 				and semester = '{$pcObj->getSemester()}' 
 				and year = '{$pcObj->getYear()}'";
 		$this->connSQL->Connect();
@@ -82,7 +82,9 @@ class PractiseScoresMod {
 					'{$pcObj->getScores()}', 
 					'{$pcObj->getSemester()}',
 					'{$pcObj->getYear()}',
-					'{$pcObj->getAccountIdAccount()}'
+					'{$pcObj->getAccount_IdAccount()}',
+					'{$pcObj->getBeginDate()}',
+					'{$pcObj->getEndDate()}'
 				)";
 		$this->connSQL->Connect();
 		$result = $this->connSQL->conn->query($sql);
@@ -97,7 +99,7 @@ class PractiseScoresMod {
 	 */
 	public function deletePractiseScores($pcObj){
 		$sql = "delete from practisescores 
-				where Account_idAccount = '{$pcObj->getAccountIdAccount()}'
+				where Account_idAccount = '{$pcObj->getAccount_IdAccount()}'
 				and semester = '{$pcObj->getSemester()}'
 				and year = '{$pcObj->getYear()}'";
 		$this->connSQL->Connect();
@@ -112,8 +114,8 @@ class PractiseScoresMod {
 	 * @return bool
 	 */
 	public function updatePractiseScores($pcObj){
-		$sql = "update practisescores set scores = '{$pcObj->getScores()}'
-				where Account_idAccount = '{$pcObj->getAccountIdAccount()}'
+		$sql = "update practisescores set scores = '{$pcObj->getScores()}',beginDate = '{$pcObj->getbeginDate()}',endDate = '{$pcObj->getEndDate()}'
+				where Account_idAccount = '{$pcObj->getAccount_IdAccount()}'
 				and semester = '{$pcObj->getSemester()}'
 				and year = '{$pcObj->getYear()}'";
 		$this->connSQL->Connect();
