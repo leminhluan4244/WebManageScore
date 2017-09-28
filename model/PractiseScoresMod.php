@@ -39,7 +39,7 @@ class PractiseScoresMod {
 	 * @return array - danh sách các mảng chứa điểm của tài khoản đó
 	 */
 	public function getListAllScoresByYear($idAccount, $year){
-		$sql = "select * from practisescores where Account_idAccount = '$idAccount' and year = '$year'";
+		$sql = "select * from practisescores where Account_idAccount = '$idAccount' and years = '$year'";
 		$this->connSQL->Connect();
 		$result = $this->connSQL->conn->query($sql);
 		$listRow = array();
@@ -51,6 +51,28 @@ class PractiseScoresMod {
 		return $listRow;
 	}
 
+    public function getListYears(){
+        $sql = "SELECT DISTINCT semester,years,beginDate,endDate FROM PractiseScores ";
+        $this->connSQL->Connect();
+        $result = $this->connSQL->conn->query($sql);
+        $listRow = array();
+        $k=0;
+        if ($result->num_rows > 0){
+            while ($row = $result->fetch_assoc()){
+                $practices = new PractiseScoresObj();
+                $practices->setSemester($row['semester']);
+                $practices->setYears($row['years']);
+                $practices->setBeginDate($row['beginDate']);
+                $practices->setEndDate($row['endDate']);
+                $listRow[$k]= $practices;
+                $k++;
+            }
+
+        }
+        $this->connSQL->Stop();
+        return $listRow;
+    }
+
 	/**
 	 * Lấy điểm số của của năm học, học kỳ chỉ định của 1 account
 	 * @param $pcObj - Chưa lưu điểm trong object này
@@ -60,7 +82,7 @@ class PractiseScoresMod {
 		$sql = "select * from practisescores 
 				where Account_idAccount = '{$pcObj->getAccount_IdAccount()}' 
 				and semester = '{$pcObj->getSemester()}' 
-				and year = '{$pcObj->getYear()}'";
+				and years = '{$pcObj->getYears()}'";
 		$this->connSQL->Connect();
 		$result = $this->connSQL->conn->query($sql);
 		if ($result->num_rows > 0){
@@ -81,7 +103,7 @@ class PractiseScoresMod {
 				values(
 					'{$pcObj->getScores()}', 
 					'{$pcObj->getSemester()}',
-					'{$pcObj->getYear()}',
+					'{$pcObj->getYears()}',
 					'{$pcObj->getAccount_IdAccount()}',
 					'{$pcObj->getBeginDate()}',
 					'{$pcObj->getEndDate()}'
@@ -101,7 +123,7 @@ class PractiseScoresMod {
 		$sql = "delete from practisescores 
 				where Account_idAccount = '{$pcObj->getAccount_IdAccount()}'
 				and semester = '{$pcObj->getSemester()}'
-				and year = '{$pcObj->getYear()}'";
+				and years = '{$pcObj->getYears()}'";
 		$this->connSQL->Connect();
 		$result = $this->connSQL->conn->query($sql);
 		$this->connSQL->Stop();
@@ -117,7 +139,7 @@ class PractiseScoresMod {
 		$sql = "update practisescores set scores = '{$pcObj->getScores()}',beginDate = '{$pcObj->getbeginDate()}',endDate = '{$pcObj->getEndDate()}'
 				where Account_idAccount = '{$pcObj->getAccount_IdAccount()}'
 				and semester = '{$pcObj->getSemester()}'
-				and year = '{$pcObj->getYear()}'";
+				and years = '{$pcObj->getYears()}'";
 		$this->connSQL->Connect();
 		$result = $this->connSQL->conn->query($sql);
 		$this->connSQL->Stop();

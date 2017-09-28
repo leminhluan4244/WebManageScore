@@ -9,7 +9,7 @@
 class PractiseScoresObj {
 	private $scores;
 	private $semester;
-	private $year;
+	private $years;
 	private $Account_IdAccount;
 	private $beginDate;
 	private $endDate;
@@ -21,7 +21,7 @@ class PractiseScoresObj {
 	public function setPractiseScoresObj($scores, $semester, $year, $accountIdAccount,$begin,$end){
 		$this->scores = $scores;
 		$this->semester = $semester;
-		$this->year = $year;
+		$this->years = $year;
 		$this->Account_IdAccount = $accountIdAccount;
 		$this->beginDate = $begin;
 		$this->endDate = $end;
@@ -58,15 +58,15 @@ class PractiseScoresObj {
 	/**
 	 * @return mixed
 	 */
-	public function getYear() {
-		return $this->year;
+	public function getYears() {
+		return $this->years;
 	}
 
 	/**
 	 * @param mixed $year
 	 */
-	public function setYear($year) {
-		$this->year = $year;
+	public function setYears($year) {
+		$this->years = $year;
 	}
 
 	/**
