@@ -1,38 +1,98 @@
-/*Dữ liệu mẫu 5 khoa*/
+/*Dữ liệu mẫu khoa viện*/
+INSERT INTO `academy` (`idAcademy`, `academyName`) VALUES ('CN', 'Khoa Công nghệ');
+INSERT INTO `academy` (`idAcademy`, `academyName`) VALUES ('DI', 'Khoa Công nghệ Thông tin và Truyền thông');
+INSERT INTO `academy` (`idAcademy`, `academyName`) VALUES ('DBDT', 'Khoa Dự bị Dân tộc');
+INSERT INTO `academy` (`idAcademy`, `academyName`) VALUES ('KHCT', 'Khoa Khoa học Chính trị');
+INSERT INTO `academy` (`idAcademy`, `academyName`) VALUES ('KHTN', 'Khoa Khoa học Tự nhiên');
+INSERT INTO `academy` (`idAcademy`, `academyName`) VALUES ('KHXH', 'Khoa Khoa học Xã hội và Nhân văn');
+INSERT INTO `academy` (`idAcademy`, `academyName`) VALUES ('KT', 'Khoa Kinh Tế');
+INSERT INTO `academy` (`idAcademy`, `academyName`) VALUES ('L', 'Khoa Luật');
+INSERT INTO `academy` (`idAcademy`, `academyName`) VALUES ('MT', 'Khoa Trường và Tài nguyên Thiên nhiên');
+INSERT INTO `academy` (`idAcademy`, `academyName`) VALUES ('NN', 'Khoa Ngoại ngữ');
+INSERT INTO `academy` (`idAcademy`, `academyName`) VALUES ('NNSH', 'Khoa Nông nghiệp và Sinh học Ứng dụng');
+INSERT INTO `academy` (`idAcademy`, `academyName`) VALUES ('PTNT', 'Khoa Phát triển Nông thôn');
+INSERT INTO `academy` (`idAcademy`, `academyName`) VALUES ('SDH', 'Khoa Sau đại học');
+INSERT INTO `academy` (`idAcademy`, `academyName`) VALUES ('SP', 'Khoa Sư phạm');
+INSERT INTO `academy` (`idAcademy`, `academyName`) VALUES ('TS', 'Khoa Thủy sản');
+INSERT INTO `academy` (`idAcademy`, `academyName`) VALUES ('GDTC', 'Bộ môn Giáo dục Thể Chất');
+INSERT INTO `academy` (`idAcademy`, `academyName`) VALUES ('VNCBDKH', 'Viện Nghiên cứu Biến đổi Khí hậu');
+INSERT INTO `academy` (`idAcademy`, `academyName`) VALUES ('VNCPT', 'Viện Nghiên cứu Phát triển ĐBSCL');
+INSERT INTO `academy` (`idAcademy`, `academyName`) VALUES ('VNCPTCNSH', 'Viện Nghiên cứu và phát triển công nghệ sinh học');
+INSERT INTO `academy` (`idAcademy`, `academyName`) VALUES ('THSP', 'Trường THPT Thực hành Sư phạm');
 
-INSERT INTO `academy` (`idAcademy`, `academyName`) VALUES ('DI', 'Công nghệ thông tin và truyền thông');
-INSERT INTO `academy` (`idAcademy`, `academyName`) VALUES ('TS', 'Thủy sản');
-INSERT INTO `academy` (`idAcademy`, `academyName`) VALUES ('MT', 'Môi trường');
-INSERT INTO `academy` (`idAcademy`, `academyName`) VALUES ('CN', 'Công nghệ');
-INSERT INTO `academy` (`idAcademy`, `academyName`) VALUES ('KT', 'Kinh tê');
 
-/*Dữ liệu mẫu 5 chi hội*/
-INSERT INTO `branch` (`idBranch`, `branchName`, `city`) VALUES ('AG01', 'Châu Thành An Giang', 'An Giang');
-INSERT INTO `branch` (`idBranch`, `branchName`, `city`) VALUES ('ST01', 'Châu Thành Sóc Trăng', 'Sóc Trăng');
-INSERT INTO `branch` (`idBranch`, `branchName`, `city`) VALUES ('ST02', 'Kế Sách', 'Sóc Trăng');
-INSERT INTO `branch` (`idBranch`, `branchName`, `city`) VALUES ('BT02', 'Mỏ Cày Bến Tre', 'Bến Tre');
-INSERT INTO `branch` (`idBranch`, `branchName`, `city`) VALUES ('CT03', 'Ninh Kiều', 'Cần Thơ');
 
-/*Dữ liệu mẫu 5 lớp*/
+/*Dữ liệu mẫu chi hội*/
+INSERT INTO `branch` (`idBranch`, `branchName`, `city`) VALUES ('CT01', 'Ninh Kiều', 'Cần Thơ');
+INSERT INTO `branch` (`idBranch`, `branchName`, `city`) VALUES ('CT02', 'Bình Thủy', 'Cần Thơ');
+INSERT INTO `branch` (`idBranch`, `branchName`, `city`) VALUES ('CT03', 'Cái Răng', 'Cần Thơ');
+INSERT INTO `branch` (`idBranch`, `branchName`, `city`) VALUES ('CT04', 'Cờ Đở', 'Cần Thơ');
+INSERT INTO `branch` (`idBranch`, `branchName`, `city`) VALUES ('CT05', 'Thốt Nốt', 'Cần Thơ');
+INSERT INTO `branch` (`idBranch`, `branchName`, `city`) VALUES ('CT06', 'Ô Môn', 'Cần Thơ');
+INSERT INTO `branch` (`idBranch`, `branchName`, `city`) VALUES ('CT07', 'Phong Điền', 'Cần Thơ');
+INSERT INTO `branch` (`idBranch`, `branchName`, `city`) VALUES ('CT08', 'Vĩnh Thạnh', 'Cần Thơ');
+
+INSERT INTO `branch` (`idBranch`, `branchName`, `city`) VALUES ('ST01', 'Mỹ Tú', 'Sóc Trăng');
+INSERT INTO `branch` (`idBranch`, `branchName`, `city`) VALUES ('ST02', 'TP. Sóc Trăng', 'Sóc Trăng');
+INSERT INTO `branch` (`idBranch`, `branchName`, `city`) VALUES ('ST03', 'Kế Sách', 'Sóc Trăng');
+INSERT INTO `branch` (`idBranch`, `branchName`, `city`) VALUES ('ST04', 'Châu Thành', 'Sóc Trăng');
+INSERT INTO `branch` (`idBranch`, `branchName`, `city`) VALUES ('ST05', 'Cù Lao Dung', 'Sóc Trăng');
+INSERT INTO `branch` (`idBranch`, `branchName`, `city`) VALUES ('ST06', 'Mỹ Xuyên', 'Sóc Trăng');
+INSERT INTO `branch` (`idBranch`, `branchName`, `city`) VALUES ('ST07', 'Long Phú', 'Sóc Trăng');
+INSERT INTO `branch` (`idBranch`, `branchName`, `city`) VALUES ('ST08', 'Vĩnh Châu', 'Sóc Trăng');
+INSERT INTO `branch` (`idBranch`, `branchName`, `city`) VALUES ('ST09', 'Thạnh Trị', 'Sóc Trăng');
+INSERT INTO `branch` (`idBranch`, `branchName`, `city`) VALUES ('ST10', 'Ngã Năm', 'Sóc Trăng');
+
+INSERT INTO `branch` (`idBranch`, `branchName`, `city`) VALUES ('HG01', 'Châu Thành', 'Hậu Giang');
+INSERT INTO `branch` (`idBranch`, `branchName`, `city`) VALUES ('HG02', 'Ngã Bảy', 'Hậu Giang');
+INSERT INTO `branch` (`idBranch`, `branchName`, `city`) VALUES ('HG03', 'Phụng Hiệp', 'Hậu Giang');
+INSERT INTO `branch` (`idBranch`, `branchName`, `city`) VALUES ('HG04', 'Châu Thành A', 'Hậu Giang');
+INSERT INTO `branch` (`idBranch`, `branchName`, `city`) VALUES ('HG05', 'Vị Thủy', 'Hậu Giang');
+INSERT INTO `branch` (`idBranch`, `branchName`, `city`) VALUES ('HG06', 'Vị Thanh', 'Hậu Giang');
+INSERT INTO `branch` (`idBranch`, `branchName`, `city`) VALUES ('HG07', 'Long Mỹ', 'Hậu Giang');
+
+INSERT INTO `branch` (`idBranch`, `branchName`, `city`) VALUES ('ĐT01', 'TP. Sa Đéc', 'Đồng Tháp');
+INSERT INTO `branch` (`idBranch`, `branchName`, `city`) VALUES ('ĐT02', 'TP. Cao Lãnh', 'Đồng Tháp');
+INSERT INTO `branch` (`idBranch`, `branchName`, `city`) VALUES ('ĐT03', 'Tháp Mười', 'Đồng Tháp');
+INSERT INTO `branch` (`idBranch`, `branchName`, `city`) VALUES ('ĐT04', 'Cao Lãnh', 'Đồng Tháp');
+INSERT INTO `branch` (`idBranch`, `branchName`, `city`) VALUES ('ĐT05', 'Lấp Vò', 'Đồng Tháp');
+INSERT INTO `branch` (`idBranch`, `branchName`, `city`) VALUES ('ĐT06', 'Lai Dung', 'Đồng Tháp');
+INSERT INTO `branch` (`idBranch`, `branchName`, `city`) VALUES ('ĐT07', 'Châu Thành', 'Đồng Tháp');
+INSERT INTO `branch` (`idBranch`, `branchName`, `city`) VALUES ('ĐT08', 'Thanh Bình', 'Đồng Tháp');
+INSERT INTO `branch` (`idBranch`, `branchName`, `city`) VALUES ('ĐT09', 'Tam Nông', 'Đồng Tháp');
+INSERT INTO `branch` (`idBranch`, `branchName`, `city`) VALUES ('ĐT10', 'Tân Hồng', 'Đồng Tháp');
+INSERT INTO `branch` (`idBranch`, `branchName`, `city`) VALUES ('ĐT11', 'Hồng Ngự', 'Đồng Tháp');
+
+
+/*Dữ liệu mẫu lớp*/
 INSERT INTO `class` (`idClass`, `className`, `schoolYear`, `Academy_idAcademy`) VALUES ('DI1496A1', 'Kỹ thuật phần mềm 1', '40', 'DI');
 INSERT INTO `class` (`idClass`, `className`, `schoolYear`, `Academy_idAcademy`) VALUES ('DI1496A2', 'Kỹ thuật phần mềm 2', '40', 'DI');
-INSERT INTO `class` (`idClass`, `className`, `schoolYear`, `Academy_idAcademy`) VALUES ('CN16YTA2', 'Cơ khí giao thông 2', '42', 'CN');
-INSERT INTO `class` (`idClass`, `className`, `schoolYear`, `Academy_idAcademy`) VALUES ('KT15ABA3', 'Kinh tế tài nguyên 3', '41', 'KT');
+INSERT INTO `class` (`idClass`, `className`, `schoolYear`, `Academy_idAcademy`) VALUES ('CN15YTA1', 'Cơ khí giao thông 1', '41', 'CN');
+INSERT INTO `class` (`idClass`, `className`, `schoolYear`, `Academy_idAcademy`) VALUES ('CN15YTA2', 'Cơ khí giao thông 2', '41', 'CN');
+INSERT INTO `class` (`idClass`, `className`, `schoolYear`, `Academy_idAcademy`) VALUES ('KT16ABA2', 'Kinh tế tài nguyên 2', '42', 'KT');
+INSERT INTO `class` (`idClass`, `className`, `schoolYear`, `Academy_idAcademy`) VALUES ('KT16ABA1', 'Kinh tế tài nguyên 1', '42', 'KT');
 INSERT INTO `class` (`idClass`, `className`, `schoolYear`, `Academy_idAcademy`) VALUES ('TS13ABA1', 'Chăn nuôi thủy sản 1', '39', 'TS');
+INSERT INTO `class` (`idClass`, `className`, `schoolYear`, `Academy_idAcademy`) VALUES ('TS13ABA2', 'Chăn nuôi thủy sản 2', '39', 'TS');
+INSERT INTO `class` (`idClass`, `className`, `schoolYear`, `Academy_idAcademy`) VALUES ('L1496A1', 'Luật Kinh Tế 1', '40', 'L');
+INSERT INTO `class` (`idClass`, `className`, `schoolYear`, `Academy_idAcademy`) VALUES ('L1496A2', 'Luật Kinh Tế 2', '40', 'L');
+INSERT INTO `class` (`idClass`, `className`, `schoolYear`, `Academy_idAcademy`) VALUES ('NN15YTA1', 'Khoa Học Cây Trồng 1', '41', 'NNSH');
+INSERT INTO `class` (`idClass`, `className`, `schoolYear`, `Academy_idAcademy`) VALUES ('NN15YTA2', 'Khoa Học Cây Trồng 2', '41', 'NNSH');
+INSERT INTO `class` (`idClass`, `className`, `schoolYear`, `Academy_idAcademy`) VALUES ('SP15ABA2', 'Sư phạm toán 2', '41', 'SP');
+INSERT INTO `class` (`idClass`, `className`, `schoolYear`, `Academy_idAcademy`) VALUES ('SP15ABA1', 'Sư phạm toán 1', '41', 'SP');
+INSERT INTO `class` (`idClass`, `className`, `schoolYear`, `Academy_idAcademy`) VALUES ('MT13ABA1', 'Tài nguyên môi trường 1', '39', 'MT');
+INSERT INTO `class` (`idClass`, `className`, `schoolYear`, `Academy_idAcademy`) VALUES ('MT13ABA2', 'Tài nguyên môi trường 2', '39', 'MT');
 
-/*Dữ liệu mẫu 7 phân quyền */
+/*Dữ liệu mẫu phân quyền */
 INSERT INTO `permission` (`position`, `power`,`selected`) VALUES ('Cố vấn học tập', 'Chấm điểm rèn luyện cá nhân sinh viên',1);
 INSERT INTO `permission` (`position`, `power`,`selected`) VALUES ('Sinh viên', 'Chấm điểm rèn luyện cá nhân sinh viên',1);
 INSERT INTO `permission` (`position`, `power`,`selected`) VALUES ('Quản lý chi hội', 'Chấm điểm rèn luyện cá nhân sinh viên',1);
 INSERT INTO `permission` (`position`, `power`,`selected`) VALUES ('Cố vấn học tập', 'Chấm điểm cho một lớp',1);
 INSERT INTO `permission` (`position`, `power`,`selected`) VALUES ('Cố vấn học tập', 'Thêm bảng điểm cộng trừ cho lớp',1);
 INSERT INTO `permission` (`position`, `power`,`selected`) VALUES ('Quản lý khoa', 'Chấm điểm rèn luyện cho cả khoa',1);
-<<<<<<< HEAD
 INSERT INTO `permission` (`position`, `power`,`selected`) VALUES ('Quản lý khoa', 'Thêm bảng điểm cộng trừ cho khoa',1);
-=======
-INSERT INTO `permission` (`position`, `power`,`selected`) VALUES ('Quản lý khoa', 'Thêm bảng điểm cộng trừ cho khoa', 1);
->>>>>>> f17e83a968c5c89970dfe0686afd2fa0b386fb94
 INSERT INTO `permission` (`position`, `power`,`selected`) VALUES ('Quản lý chi hội', 'Thêm bảng điểm cộng trừ cho sinh viên theo chi hội',1);
+INSERT INTO `permission` (`position`, `power`,`selected`) VALUES ('Quản trị viên', 'Full ',1);
+INSERT INTO `permission` (`position`, `power`,`selected`) VALUES ('Default', 'Not ',1);
 /*Dữ liệu mẫu 5 Tài khoản*/
 INSERT INTO `account` (`idAccount`, `accountName`, `birthday`, `address`, `sex`, `phone`, `email`, `password`, `Permission_position`)
 VALUES ('B1400704', 'Lê Minh Luân', '1996-01-16', 'An Khánh - Ninh Kiều Cần Thơ', 'Nam', '0964054244', 'luanb1400704@student.ctu.edu.vn', '81dc9bdb52d04dc20036dbd8313ed055', 'Sinh viên');
@@ -84,19 +144,20 @@ INSERT INTO `account_has_academy` (`Account_idAccount`, `Academy_idAcademy`) VAL
 INSERT INTO `account_has_academy` (`Account_idAccount`, `Academy_idAcademy`) VALUES ('CB001', 'DI');
 INSERT INTO `account_has_academy` (`Account_idAccount`, `Academy_idAcademy`) VALUES ('CB002', 'DI');
 /*Dữ liệu mẫu 5 */
-INSERT INTO `account_has_class` (`Account_idAccount`, `Class_idClass`) VALUES ('B1400123', 'CN16YTA2');
+INSERT INTO `account_has_class` (`Account_idAccount`, `Class_idClass`) VALUES ('B1400123', 'CN15YTA1');
 INSERT INTO `account_has_class` (`Account_idAccount`, `Class_idClass`) VALUES ('B1400704', 'DI1496A1');
 INSERT INTO `account_has_class` (`Account_idAccount`, `Class_idClass`) VALUES ('CB001', 'DI1496A1');
 INSERT INTO `account_has_class` (`Account_idAccount`, `Class_idClass`) VALUES ('CB001', 'DI1496A2');
 INSERT INTO `account_has_class` (`Account_idAccount`, `Class_idClass`) VALUES ('B1400123', 'DI1496A1');
 /*Dữ liệu mẫu 5 */
-INSERT INTO `account_has_branch` (`Account_idAccount`, `Branch_idBranch`) VALUES ('B1400123', 'AG01');
+INSERT INTO `account_has_branch` (`Account_idAccount`, `Branch_idBranch`) VALUES ('B1400123', 'ĐT01');
 INSERT INTO `account_has_branch` (`Account_idAccount`, `Branch_idBranch`) VALUES ('B1400123', 'ST01');
-INSERT INTO `account_has_branch` (`Account_idAccount`, `Branch_idBranch`) VALUES ('B1400704', 'AG01');
-INSERT INTO `account_has_branch` (`Account_idAccount`, `Branch_idBranch`) VALUES ('B1400713', 'AG01');
+INSERT INTO `account_has_branch` (`Account_idAccount`, `Branch_idBranch`) VALUES ('B1400704', 'CT01');
+INSERT INTO `account_has_branch` (`Account_idAccount`, `Branch_idBranch`) VALUES ('B1400713', 'HG01');
 INSERT INTO `account_has_branch` (`Account_idAccount`, `Branch_idBranch`) VALUES ('B1400123', 'CT03');
 /*Dữ liệu mẫu 3 lịch chấm điểm*/
 INSERT INTO `calendarscoring` (`openDate`, `closeDate`, `Permission_position`) VALUES ('2017-09-09', '2017-09-15', 'Sinh viên');
+INSERT INTO `calendarscoring` (`openDate`, `closeDate`, `Permission_position`) VALUES ('2017-09-09', '2017-09-15', 'Quản lý chi hội');
 INSERT INTO `calendarscoring` (`openDate`, `closeDate`, `Permission_position`) VALUES ('2017-09-15', '2017-10-30','Cố vấn học tập');
 INSERT INTO `calendarscoring` (`openDate`, `closeDate`, `Permission_position`) VALUES ('2017-10-01', '2017-10-10', 'Quản lý khoa');
 
