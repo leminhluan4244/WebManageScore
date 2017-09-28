@@ -6,26 +6,25 @@ switch ($_POST['btn-submit']) {
   case 'add':
     $newPermissionObj = new PermissionObj();
     $newPermissionMod = new PermissionMod();
-    $newPermissionObj->setPermissionObj($_POST['txt-namePermission'], 'EMPTY');
+    $newPermissionObj->setPermissionObj($_POST['txt-namePermission'], 'EMPTY', 0);
     $newPermissionMod->addPermission($newPermissionObj);
     break;
   default:
    $newPermissionObj = new PermissionObj();
    $newPermissionMod = new PermissionMod();
-   $newPermissionMod->delete($_POST['btn-submit']);
+   #var_dump($_POST['btn-submit']);
+   $newPermissionMod->setAllDisplay($_POST['btn-submit'], 0);
    if(!empty($_POST['checkbox'])){
      $checkbox = $_POST['checkbox'];
      if(is_array($checkbox)){
        foreach ($checkbox as $key => $value) {
          $newPermissionObj = new PermissionObj();
          $newPermissionMod = new PermissionMod();
-         $newPermissionObj->setPermissionObj($_POST['btn-submit'], $value);
+         $newPermissionObj->setPermissionObj($_POST['btn-submit'], $value, 1);
          $newPermissionMod->addPermission($newPermissionObj);
+         $newPermissionMod->setDisplay($_POST['btn-submit'], 1, $value);
        }
      }
-   }else{
-     $newPermissionObj->setPermissionObj($_POST['btn-submit'], 'EMPTY');
-     $newPermissionMod->addPermission($newPermissionObj);
    }
   break;
 }

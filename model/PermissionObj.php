@@ -34,7 +34,7 @@ class PermissionObj{
 		public function setPermissionObj($position,$power,$sl){
 			$this->setPosition($position);
 			$this->setPower($power);
-			$this->setSelected(sl);
+			$this->setSelected($sl);
 		}
 		public function getPermissionobj(){
 			return $this;

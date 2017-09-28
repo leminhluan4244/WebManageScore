@@ -27,10 +27,12 @@ else {
     <form action="branch.manage.php" method="post" id="manageForm">
         <?php
               $i=0;
-        if(count($arrayBranch)>1)
-            foreach ($arrayBranch as $key => $value) {
-                $i++;
-                echo '
+        if(count($arrayBranch)>1){
+            if($arrayBranch==0) echo 'Dữ liệu rỗng';
+            else
+                foreach ($arrayBranch as $key => $value) {
+                    $i++;
+                    echo '
     
                 <tr>
                     <td>'.$i.'</td>
@@ -51,7 +53,9 @@ else {
                         <input type="checkbox" name="xoa[]" id="'.$value->getidBranch().'" value="'.$value->getidBranch().'"/>            
                     </td>
                 </tr>';
-            }
+                }
+        }
+
         ?>
     </form>
     <!-- Kết thúc lấy thuộc tính cho bảng từ CSDL -->

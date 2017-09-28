@@ -127,6 +127,7 @@ class BranchMod
             }
         } else {
             //Báo rỗng
+            return 0;
         }
         return $branch;
         //Ngắt kết nối
@@ -156,6 +157,7 @@ class BranchMod
             }
         } else {
             //Báo rỗng
+            return 0;
         }
         return $list;
         //Ngắt kết nối
