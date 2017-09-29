@@ -5,7 +5,7 @@ if(isset($_POST['xoa'])) {
     foreach ($_POST['xoa'] as $key=> $value){
         $classOD->setIdClass($value);
         $classMD->deleteClass($classOD);
-        echo'<META http-equiv="refresh" content="0;URL=class.manage.php">';
+       echo'<META http-equiv="refresh" content="0;URL=class.manage.php">';
     }
 
 }

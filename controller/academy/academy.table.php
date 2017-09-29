@@ -30,7 +30,9 @@
         <td>
             <a href="?idAcademy='.$value->getIdAcademy().'" class="btn btn-primary btn-sm"><span class="glyphicon glyphicon-pencil"></span></a>
         </td>
-        <td><input type="checkbox" name="xoa[]" id="'.$value->getIdAcademy().'" value="'.$value->getIdAcademy().'"/> </td>
+        <td><input type="checkbox" name="xoa[]" id="'.$value->getIdAcademy().'" value="'.$value->getIdAcademy().'"/>
+            '.$value->getIdAcademy().'
+         </td>
        
     </tr>';
     }
@@ -46,5 +48,5 @@
         {checkboxes[i].checked = checkall.checked;
         }
     }
-    $('#table-manage-academy').DataTable();
+  $('#table-manage-academy').DataTable();
 </script>

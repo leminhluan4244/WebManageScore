@@ -49,19 +49,26 @@ class ClassMod {
     //3. Hàm xóa một lớp học
     public function deleteClass($class)
     {
+        // Đẩy câu lệnh vào string
 
-        $sql = "DELETE FROM Class 
-						WHERE idClass='".$class->getIdClass()."'".
-            " DELETE FROM Account_has_Class 
-						WHERE Class_idClass='".$class->getIdClass()."'";
-
+        $sql1 = "DELETE FROM Account_has_Class 
+						WHERE Class_idClass='" . $class->getIdClass() . "';";
+        $sql2 = "DELETE FROM class 
+						WHERE idClass='" . $class->getIdClass() . "';";
+        // Thực thi câu lệnh
+        // Thực hiện câu truy vấn
         $this->connSql->Connect();
-        if ($this->connSql->conn->query($sql) === TRUE) {
-           // echo "Deletion is successful! ";
+        if ($this->connSql->conn->query($sql1) === true && $this->connSql->conn->query($sql2)===true) {
+            //echo "Xóa thành công";
+            //Ngắt kết nối
+            $this->connSql->Stop();
+            return true;
         } else {
-          //  echo "Deletion is not successful! " . $this->connSql->error;
+            // echo "Lỗi deletebranch";
+            //Ngắt kết nối
+            $this->connSql->Stop();
+            return false;
         }
-        $this->connSql->Stop();
     }
 
     //4. Hàm đếm số sinh viên trong một lớp học

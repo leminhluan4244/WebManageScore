@@ -38,7 +38,7 @@ else {
                     <td>'.$i.'</td>
                    
                     <td>
-                        ' . $value->getidBranch() . '
+                        ' . $value->getIdBranch() . '
                     </td>
                     <td>
                         ' . $value->getBranchName() . '
@@ -47,10 +47,10 @@ else {
                         ' . $value->getCity() . '
                     </td>
                     <td>
-                        <a href="?idBranch='.$value->getidBranch().'" class="btn btn-primary btn-sm"><span class="glyphicon glyphicon-pencil"></span></a>
+                        <a href="?idBranch='.$value->getIdBranch().'" class="btn btn-primary btn-sm"><span class="glyphicon glyphicon-pencil"></span></a>
                     </td>
                     <td>
-                        <input type="checkbox" name="xoa[]" id="'.$value->getidBranch().'" value="'.$value->getidBranch().'"/>            
+                        <input type="checkbox" name="xoa[]" id="'.$value->getIdBranch().'" value="'.$value->getIdBranch().'"/>       
                     </td>
                 </tr>';
                 }

@@ -291,21 +291,31 @@ class AcademyMod
     public function deleteAcademy($academy)
     {
         // Đẩy câu lệnh vào string
-        $sql = "DELETE FROM Academy 
-						WHERE idAcademy='" . $academy->getIdAcademy() . "';".
-            " DELETE FROM Account_has_Academy 
-						WHERE Academy_idAcademy='" . $academy->getIdAcademy() . "';";
+                $class =$this->getListClass($academy);
+                var_dump($class);
+                if($class>0){
+                    foreach ($class as $key => $value){
+                        $classTemp = new ClassMod();
+                        $classTemp->deleteClass($value);
+                        echo 'Ok delete class';
+                    }
+                }
+        $sql = " DELETE FROM Account_has_Academy 
+						    WHERE Academy_idAcademy='" . $academy->getIdAcademy() . "';".
+                         " DELETE FROM Academy 
+                            WHERE idAcademy='" . $academy->getIdAcademy() . "';" ;
+                echo $sql;
         // Thực thi câu lệnh
         $this->conn->Connect();
         // Thực hiện câu truy vấn
+        $this->conn->Connect();
         if ($this->conn->conn->query($sql) === true) {
-          //  echo "Xóa thành công";
             //Ngắt kết nối
             $this->conn->Stop();
             return true;
         } else {
-           // echo "Lỗi deleteAcademy";
             //Ngắt kết nối
+            echo "sai";
             $this->conn->Stop();
             return false;
         }

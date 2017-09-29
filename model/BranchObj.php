@@ -12,13 +12,13 @@ class BranchObj
     private $city;
 
     //Thêm một dữ liệu kiểu chuổi vào trong mã chi hội
-    public function setidBranch($idBranch)
+    public function setIdBranch($idBranch)
     {
         $this->idBranch = $idBranch;
     }
 
     //Trả ra dữ liệu kiểu chuỗi của id chi hội
-    public function getidBranch()
+    public function getIdBranch()
     {
         return $this->idBranch;
     }
