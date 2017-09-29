@@ -11,18 +11,15 @@
 
             <h4>Danh sách sinh viên</h4>
             <div class="form-group">
-                <form action="" method="post">
-
+                <form action="" method="get">
+                    <!--Begin table-->
+                    <?php
+                    require_once "../controller/addScores/score.content.php";
+                    ?>
+                    <!--End table-->
                 </form>
-                <br>
-                <br>
             </div>
-            <!--End filter table-->
-            <!--Begin table-->
-            <?php
-                require_once "../controller/addscore/score.content.php";
-            ?>
-            <!--End table-->
+
 
         </div>
     </div>

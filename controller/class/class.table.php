@@ -19,6 +19,12 @@ else {
         $arrayClass = $academyMTB->getListClass($academyOTB);
     }
 }
+function getName($id){
+    $academyTo = new AcademyObj();
+    $academyTm = new AcademyMod();
+    $academyTo= $academyTm->findAcademyByID($id);
+    return $academyTo->getAcademyName();
+}
 
 ?>
 
@@ -56,7 +62,7 @@ else {
             '.$value->getSchoolYear().'
         </td>
         <td>
-            '.$value->getAcademy_idAcademy().'
+            '.getName($value->getAcademy_idAcademy()).'
         </td>
         <td>
             <a href="?idClass='.$value->getIdClass().'" class="btn btn-primary btn-sm"><span class="glyphicon glyphicon-pencil"></span></a>

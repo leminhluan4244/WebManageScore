@@ -18,13 +18,13 @@ class ScoresAddMod
 
     //1. Hàm thêm
     public function addScoresAdd($cores){
-        $sql = "INSERT INTO ScoresAdd (idScores, scoreName, scores, decribe, Transcipt_idItem,Transcipt_Account_idAccount)
-						VALUES('".$cores->getIdScores()."',
+        $sql = "INSERT INTO ScoresAdd (idScore, scoreName, scores, decribe, Transcipt_idItem,idAccountManage)
+						VALUES('".$cores->getIdScore()."',
 						'".$cores->getScoreName()."',
 						'".$cores->getScores()."',
 						'".$cores->getDecribe()."',
 						'".$cores->getTranscript_idItem()."',
-						'".$cores->getTranscript_Account_idAccount()."')";
+						'".$cores->getIdAccountManage()."')";
 
         $this->connSql->Connect();
         if ($this->connSql->conn->query($sql) === true) {
@@ -43,8 +43,8 @@ class ScoresAddMod
                   scores='".$cores->getScores(). "',
                   decribe='".$cores->getDecribe(). "',
                   Transcript_idItem ='".$cores->getTranscript_idItem()."',
-				  Transcript_Account_idAccount='".$cores->getTranscript_Account_idAccount()."'
-                  WHERE idScores='".$cores->getIdScores()."'";
+				  idAccountManage='".$cores->getIdAccountManage()."'
+                  WHERE idScore='".$cores->getIdScore()."'";
 
         $this->connSql->Connect();
         if ($this->connSql->conn->query($sql) === TRUE) {
@@ -60,7 +60,7 @@ class ScoresAddMod
     {
 
         $sql = "DELETE FROM ScoresAdd
-						WHERE idScores='".$cores->getIdScores()."';";
+						WHERE idScore='".$cores->getIdScore()."';";
 
         $this->connSql->Connect();
         if ($this->connSql->conn->query($sql) === TRUE) {
@@ -79,15 +79,16 @@ class ScoresAddMod
 
         if ($result->num_rows > 0) {
             $k = 0;
-            $obj = new ScoresAddObj();
+
             $list = array();
             while ($row = $result->fetch_assoc()) {
+                $obj = new ScoresAddObj();
                 $obj->setScoreName($row["scoreName"]);
-                $obj->setIdScore($row["idScores"]);
+                $obj->setIdScore($row["idScore"]);
                 $obj->setScores($row["scores"]);
                 $obj->setDecribe($row["decribe"]);
                 $obj->setTranscript_idItem($row["Transcript_idItem"]);
-                $obj->setTranscript_Account_idAccount($row["Transcript_Account_idAccount"]);
+                $obj->setIdAccountManage($row["idAccountManage"]);
                 $list[$k] = $obj;
                 $k++;
             }
@@ -99,30 +100,36 @@ class ScoresAddMod
         $this->connSql->Stop();
         return $list;
     }
+    //Trả về các bảng điểm theo một người quản lý đã tạo
+    public function getScoresAddByAccount($idManage)
+    {
+        $sql = "SELECT * FROM ScoresAdd WHERE idAccountManage='".$idManage."'";
+        $this->connSql->Connect();
+        $result = $this->connSql->conn->query($sql);
+
+        if ($result->num_rows > 0) {
+            $k = 0;
+
+            $list = array();
+            while ($row = $result->fetch_assoc()) {
+                $obj = new ScoresAddObj();
+                $obj->setScoreName($row["scoreName"]);
+                $obj->setIdScore($row["idScore"]);
+                $obj->setScores($row["scores"]);
+                $obj->setDecribe($row["decribe"]);
+                $obj->setTranscript_idItem($row["Transcript_idItem"]);
+                $obj->setIdAccountManage($row["idAccountManage"]);
+                $list[$k] = $obj;
+                $k++;
+            }
+
+        } else {
+            // echo "The result of information processing is data false";
+        }
+
+        $this->connSql->Stop();
+        return $list;
+    }
 
 }
-    /* Kiểm tra hàm có viết đúng hay không ?
-    #1. Hàm thêm
-    $sore_mod = new ScoresAddMod();
-    $core_obj = new ScoresAddObj();
-    $core_obj->setScoresAddObj("tho","demo", "9", "Good","B1400704","AAA");
-    $sore_mod->addScoresAdd($core_obj);
-    #2. Hàm cập nhật
-    $sore_mod = new ScoresAddMod();
-    $core_obj = new ScoresAddObj();
-    $core_obj->setScoresAddObj("tho", "demo", "9", "Good","B1400704","AAA");
-    $sore_mod->updateScoresAdd($core_obj);
-    #3. Hàm xóa
-    $sore_mod = new ScoresAddMod();
-    $core_obj = new ScoresAddObj();
-    $core_obj->setScoresAddObj("SC01", "demo", "10", "Good","B1400704", "SR01");
-    $sore_mod->deleteClass($core_obj);
-    #4. Hàm trả về danh sách các điểm cộng trừ
-    $sore_mod = new ScoresAddMod();
-    $core_obj = new ScoresAddObj();
-    $getlist = array();
-    $getlist = $sore_mod->getScoresAdd();
-    foreach ($getlist as $key => $value) {
-        echo $key . "->" . $value->getIdScores() . " - " . $value->getDecribe(); }
-    */
 ?>

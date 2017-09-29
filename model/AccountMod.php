@@ -264,6 +264,22 @@
           }
           return $list;
       }
+      public function getPermission($id)
+      {
+          $sql = "SELECT Permission_position FROM account WHERE  account.idAccount='".$id."';";
+          $this->conn2sql->Connect();
+          $result = $this->conn2sql->conn->query($sql);
+          $this->conn2sql->Stop();
+          if ($result->num_rows > 0) {
+              while ($row = $result->fetch_assoc()) {
+                  $list = $row["Permission_position"];
+              }
+
+          } else {
+              // echo "The result of information processing is data false";
+          }
+          return $list;
+      }
       public function getAcademy($id)
       {
           $sql = "SELECT academy.academyName FROM account,account_has_academy,academy WHERE account.idAccount = account_has_academy.Account_idAccount AND account_has_academy.Academy_idAcademy = academy.idAcademy AND account.idAccount='".$id."';

@@ -16,7 +16,6 @@
                     <!--Start buttun filter-->
                     <input type="submit" value="Lọc" class="btn btn-primary col-sm-1" name="btnfilter">
                     <!--End buttun filter-->
-
                     <!---->
                     <!--Start combobox city for class-->
                     <?php

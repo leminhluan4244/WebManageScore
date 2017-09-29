@@ -8,12 +8,12 @@
 
 class ScoresAddObj
 {
-    private $idScores;
+    private $idScore;
     private $scoreName;
     private $scores;
     private $decribe;
     private $Transcript_idItem;
-    private $Transcript_Account_idAccount;
+    private $idAccountManage;
 
     public function setTranscript_idItem($Transcript_idItem){
         $this->Transcript_idItem = $Transcript_idItem;
@@ -21,11 +21,11 @@ class ScoresAddObj
     public function getTranscript_idItem(){
         return $this->Transcript_idItem;
     }
-    public function setTranscript_Account_idAccount($Transcript_Account_idAccount){
-        $this->Transcript_Account_idAccount = $Transcript_Account_idAccount;
+    public function setIdAccountManage($idAccountManage){
+        $this->idAccountManage = $idAccountManage;
     }
-    public function getTranscript_Account_idAccount(){
-        return $this->Transcript_Account_idAccount;
+    public function getIdAccountManage(){
+        return $this->idAccountManage;
     }
     public function setScoreName($ScoreName){
         $this->scoreName = $ScoreName;
@@ -34,12 +34,12 @@ class ScoresAddObj
         return $this->scoreName;
     }
 
-    public function setIdScore($idScores){
-        $this->idScores =  $idScores;
+    public function setIdScore($idScore){
+        $this->idScore =  $idScore;
     }
 
-    public function getIdScores(){
-        return $this->idScores;
+    public function getidScore(){
+        return $this->idScore;
     }
 
     public function setScores($scores){
@@ -55,12 +55,13 @@ class ScoresAddObj
         return $this->decribe;
     }
 
-    public function setScoresAddObj($idScores, $scoreName, $scores, $decribe, $Transcript_idItem){
-        $this->setIdScore($idScores);
+    public function setScoresAddObj($idScore, $scoreName, $scores, $decribe, $Transcript_idItem, $idAccountManage){
+        $this->setIdScore($idScore);
         $this->setscoreName($scoreName);
         $this->setScores($scores);
         $this->setDecribe($decribe);
         $this->setTranscript_idItem($Transcript_idItem);
+        $this->setidAccountManage($idAccountManage);
 
     }
     public function getScoresAddObj(){
