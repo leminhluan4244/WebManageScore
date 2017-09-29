@@ -31,7 +31,6 @@
             <a href="?idAcademy='.$value->getIdAcademy().'" class="btn btn-primary btn-sm"><span class="glyphicon glyphicon-pencil"></span></a>
         </td>
         <td><input type="checkbox" name="xoa[]" id="'.$value->getIdAcademy().'" value="'.$value->getIdAcademy().'"/>
-            '.$value->getIdAcademy().'
          </td>
        
     </tr>';

@@ -5,8 +5,8 @@ if(isset($_POST['xoa'])) {
     foreach ($_POST['xoa'] as $key=> $value){
         $academyO->setIdAcademy($value);
         $academyM->deleteAcademy($academyO);
-       // echo'<META http-equiv="refresh" content="0;URL=academy.manage.php">';
     }
+    echo'<META http-equiv="refresh" content="0;URL=academy.manage.php">';
 }
 ?>
 <!--Start delete Academy-->

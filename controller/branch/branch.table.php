@@ -24,11 +24,11 @@ else {
             <input type="checkbox" onClick="toggle(this)"></th>
     </tr>
     </thead>
+    <tbody>
     <form action="branch.manage.php" method="post" id="manageForm">
         <?php
               $i=0;
-        if(count($arrayBranch)>1){
-            if($arrayBranch==0) echo 'Dữ liệu rỗng';
+            if($arrayBranch<=0) echo 'Không có dữ liệu';
             else
                 foreach ($arrayBranch as $key => $value) {
                     $i++;
@@ -50,10 +50,9 @@ else {
                         <a href="?idBranch='.$value->getIdBranch().'" class="btn btn-primary btn-sm"><span class="glyphicon glyphicon-pencil"></span></a>
                     </td>
                     <td>
-                        <input type="checkbox" name="xoa[]" id="'.$value->getIdBranch().'" value="'.$value->getIdBranch().'"/>       
+                        <input type="checkbox" name="xoa[]" id="'.$value->getIdBranch().'" value="'.$value->getIdBranch().'"/>
                     </td>
                 </tr>';
-                }
         }
 
         ?>
@@ -68,5 +67,5 @@ else {
             checkboxes[i].checked = checkall.checked;
         }
     }
-    $('#table-manage-branch').DataTable();
+//   $('#table-manage-branch').DataTable();
 </script>

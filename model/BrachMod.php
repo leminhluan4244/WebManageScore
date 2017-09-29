@@ -326,7 +326,7 @@ class BranchMod
         // Thực thi câu lệnh
         // Thực hiện câu truy vấn
         $this->conn->Connect();
-        if ($this->conn->conn->query($sql1) === true && $this->conn->conn->query($sql2)===true) {
+        if ($this->conn->conn->multi_query($sql1) === true && $this->conn->conn->multi_query($sql2)===true) {
             //echo "Xóa thành công";
             //Ngắt kết nối
             $this->conn->Stop();

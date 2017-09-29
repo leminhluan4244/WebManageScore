@@ -7,7 +7,7 @@
             $permissionAcc = $accountMod->getPermission($_POST['id']);
             $list = $permissionMod->selectPower($permissionAcc);
             foreach ($list as $key => $value){
-                #nếu có là nguwoif quản lý thì show ra các bảng điểm mà người đó đã thêm
+                #nếu có là nguoi quản lý thì show ra các bảng điểm mà người đó đã thêm
                 if($value=='Thêm bảng điểm cộng trừ cho lớp' || $value=='Thêm bảng điểm cộng trừ cho khoa' ||$value=='Thêm bảng điểm cộng trừ cho sinh viên theo chi hội'){
                         $scoreadd = new ScoresAddMod();
                         $temp = $scoreadd->getScoresAddByAccount($_POST['id']);
@@ -32,9 +32,6 @@
         <th>Chọn tất cả <br /><input type="checkbox" onClick="toggle(this)"></th>
     </tr>
     </thead>
-
-
-
     <tbody class="text-center align-self-center">
     <?php
     $i=0;

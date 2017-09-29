@@ -1,18 +1,19 @@
 
 <?php
 if(isset($_POST['xoa'])) {
+    var_dump($_POST['xoa']);
     $branchO = new BranchObj();
     $branchM = new BranchMod();
+
     foreach ($_POST['xoa'] as $key=> $value){
             $branchO->setIdBranch($value);
-        var_dump($branchO->getIdBranch());
             $branchM->deleteBranch($branchO);
+        echo'<META http-equiv="refresh" content="0;URL=branch.manage.php">';
     }
 
-   echo'<META http-equiv="refresh" content="0;URL=branch.manage.php">';
+
 }
 ?>
-
 <!--Start delete Branch-->
 <div id="deleteBranch" class="modal fade " tabindex="-1" role="dialog" aria-labelledby aria-hidden="true">
     <div class="modal-dialog">
