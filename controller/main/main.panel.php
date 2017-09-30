@@ -9,56 +9,56 @@
 <div class="col-sm-7 div-action">
 	<div class="row text-center" id="user-action">
 		<h5><strong>Các hành động</strong></h5>
-		<div class="col-sm-offset-2 col-sm-4 thumbnail">
+		<div id="div-student-manage" class="col-sm-offset-2 col-sm-4 thumbnail" style="display: none;">
 			<a href="student.manage.php" class="">
 				<img src="../public/img/student.png" width="70" alt="">
 				<p>Quản lý sinh viên</p>
 			</a>
 		</div>
-		<div class="col-sm-offset-2 col-sm-4 thumbnail">
+		<div id="div-academy-manage" class="col-sm-offset-2 col-sm-4 thumbnail" style="display: none;">
 			<a href="academy.manage.php" class="">
 				<img src="../public/img/academy.png" width="70" alt="">
 				<p>Quản lý khoa/viện</p>
 			</a>
 		</div>
-		<div class="col-sm-offset-2 col-sm-4 thumbnail">
+		<div id="div-staff-manage" class="col-sm-offset-2 col-sm-4 thumbnail" style="display: none;">
 			<a href="staff.manage.php" class="">
 				<img src="../public/img/staff.png" width="70" alt="">
 				<p>Quản lý cán bộ</p>
 			</a>
 		</div>
-		<div class="col-sm-offset-2 col-sm-4 thumbnail">
+		<div id="div-branch-manage" class="col-sm-offset-2 col-sm-4 thumbnail" style="display: none;">
 			<a href="branch.manage.php" class="">
 				<img src="../public/img/branch.png" width="70" alt="">
 				<p>Quản lý chi hội</p>
 			</a>
 		</div>
-        <div class="col-sm-offset-2 col-sm-4 thumbnail">
+        <div id="div-structure-editor" class="col-sm-offset-2 col-sm-4 thumbnail" style="display: none;">
             <a href="structure.editor.php" class="">
                 <img src="../public/img/structure-edit.png" width="70" alt="">
                 <p>Chỉnh sửa bảng điểm</p>
             </a>
         </div>
 
-        <div class="col-sm-offset-2 col-sm-4 thumbnail">
+        <div id="div-class-manage" class="col-sm-offset-2 col-sm-4 thumbnail" style="display: none;">
             <a href="class.manage.php" class="">
                 <img src="../public/img/class.png" width="70" alt="">
                 <p>Quản lý lớp</p>
             </a>
         </div>
-		<div class="col-sm-offset-2 col-sm-4 thumbnail">
+		<div id="div-permission-manage" class="col-sm-offset-2 col-sm-4 thumbnail" style="display: none;">
 			<a href="permission.manage.php" class="">
 				<img src="../public/img/permission-setting.png" width="70" alt="">
 				<p>Quản lý phân quyền</p>
 			</a>
 		</div>
-		<div class="col-sm-offset-2 col-sm-4 thumbnail">
+		<div id="div-permission" class="col-sm-offset-2 col-sm-4 thumbnail" style="display: none;">
 			<a href="permission.php" class="">
 				<img src="../public/img/permission.png" width="70" alt="">
 				<p>Phân quyền</p>
 			</a>
 		</div>
-        <div class="col-sm-offset-2 col-sm-4 thumbnail">
+        <div id="div-schedule-manage" class="col-sm-offset-2 col-sm-4 thumbnail" style="display: none;">
             <a href="" class="">
                 <img src="../public/img/schedule.png" width="70" alt="">
                 <p>Quản lý lịch chấm điểm</p>

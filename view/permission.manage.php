@@ -60,9 +60,10 @@
             $("#div-person-group").hide();
             $("#div-add-permission").show();
           });
+          $("#btn-edit").prop("value", $("#select").val());
           $("#select").change(function() {
-            var json = JSON.stringify($("#select").val());
-            document.cookie = "json=" + json;
+            $("#btn-edit").prop("value", $("#select").val());
+            console.log($("#btn-edit").val());
           });
         });
       </script>
@@ -123,9 +124,16 @@
                 </div>
                 <br />
                 <div class="row">
+                  <!-- <?php
+                   if(!empty(($_COOKIE[ 'json']))){
+                     $var=json_decode($_COOKIE['json']);
+                     echo 'value = "'.$var. '"';
+                   }else{
+                     echo 'value = "save"';
+                   }
+                  ?> -->
                   <div class="form-group text-right">
-                    <button type="submit" name="btn-submit" <?php if(!empty(($_COOKIE[ 'json']))){ $var=json_decode($_COOKIE[ 'json']); echo 'value = "'.$var. '"'; }else{ echo 'value = "save"'; } ?>
-                    class="center-block btn btn-success">
+                    <button id="btn-edit" type="submit" name="btn-submit" class="center-block btn btn-success">
                 <span class="glyphicon glyphicon-ok"></span> Lưu lại
             </button>
                   </div>

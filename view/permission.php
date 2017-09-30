@@ -34,8 +34,14 @@
         $("#div-edit-permission").hide();
         $("#div-delete-permission").show();
       });
-      $("#isSelected").change(function() {
-        console.log($("#isSelected").val());
+      var bool = false;
+      $("#checkAll").change(function() {
+        bool = !bool;
+        if(bool){
+          $(".isCheck").prop("checked", true);
+        } else{
+          $(".isCheck").prop("checked", false);
+        }
       });
     });
   </script>
@@ -148,10 +154,14 @@
             <table id="tbl-delete" class="table table-hover table-condensed table-bordered">
               <thead>
                 <tr>
-                  <th>Mã số</th>
-                  <th>Họ tên</th>
-                  <th>Phân quyền</th>
-                  <th>Xóa</th>
+                  <th>Mã số<br /><label></label></th>
+                  <th>Họ tên<br /><label></label></th>
+                  <th>Phân quyền<br /><label></label></th>
+                  <th>
+                      Xóa
+                      <br />
+                      <label><input style="margin-left:15px" type="checkbox" id="checkAll"></label>
+                    </th>
                 </tr>
               </thead>
               <tbody class="text-center">
@@ -162,7 +172,7 @@
                    echo '<td>'.$accountArr[$key]->getIdAccount().'</td>';
                    echo '<td>'.$accountArr[$key]->getAccountName().'</td>';
                    echo '<td>'.$accountArr[$key]->getPermission_position().'</td>';
-                   echo '<td><label><input type="checkbox" value="'.$accountArr[$key]->getIdAccount().'" name="checkbox[]"></label></td>';
+                   echo '<td><label><input class="isCheck" type="checkbox" value="'.$accountArr[$key]->getIdAccount().'" name="checkbox[]"></label></td>';
                    echo '</tr>';
                  }
                  ?>
