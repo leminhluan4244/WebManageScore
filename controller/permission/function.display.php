@@ -9,10 +9,43 @@
   echo "var arrJS = ". $js_array . ";\n";
  ?>
  $(document).ready(function() {
-   arrJS.toString();
-   if(arrJS == 'Sinh viên'){
-    $("#div-schedule-manage").show();
-  }
-   });
+   arrJS = arrJS.toString();
+   switch (arrJS) {
+     case 'Admin':
+       $("#div-student-manage").show();
+       $("#div-academy-manage").show();
+       $("#div-staff-manage").show();
+       $("#div-branch-manage").show();
+       $("#div-structure-editor").show();
+       $("#div-class-manage").show();
+       $("#div-permission-manage").show();
+       $("#div-permission").show();
+       $("#div-schedule-manage").show();
+       $("#quan-ly-thanh-vien-chi-hoi").show();
+       $("#them-bang-cong-tru").show();
+       break;
+     case 'Cố vấn học tập':
 
+       break;
+     case 'Quản lý chi hội':
+
+      break;
+
+      case 'Quản lý khoa':
+
+       break;
+
+     case 'Sinh viên':
+       //cham-diem-ren-luyen
+       break;
+
+     case 'default':
+
+       break;
+
+     default:
+
+       break;
+   }
+   });
 </script>
