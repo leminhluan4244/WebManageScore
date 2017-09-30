@@ -21,8 +21,9 @@ if (isSubmit('save')) {
 	$itemName = getPOSTValue('itemName');
 	$score = getPOSTValue('score');
 	$idParent = getPOSTValue('idParent');
+	$scoreDefault = getPOSTValue('scoreDefault');
 	$structObj = new StructureObj();
-	$structObj->setStructureObj($idItem, $itemName, $score, "", $idParent);
+	$structObj->setStructureObj($idItem, $itemName, $score, "", $idParent, $scoreDefault);
 	if ($model->updateStructure($structObj)) {
 //		showMessage("Cập nhật thành công!!");
 	} else
@@ -58,6 +59,11 @@ if (isSubmit('save')) {
                 <label>Mức điểm</label>
                 <input type="number" name="score" class="form-control" min="0" max="100"
                        value="<?php echo $struct->getScores(); ?>">
+            </div>
+            <div class="form-group">
+                <label>Điểm mặc định</label>
+                <input type="number" name="scoreDefault" class="form-control" min="0" max="100"
+                       value="<?php echo $struct->getScoreDefault(); ?>">
             </div>
             <div class="form-group text-right">
                 <input type="hidden" name="requestName" value="save">
