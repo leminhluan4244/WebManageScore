@@ -130,14 +130,6 @@
                 </div>
                 <br />
                 <div class="row">
-                  <!-- <?php
-                   if(!empty(($_COOKIE[ 'json']))){
-                     $var=json_decode($_COOKIE['json']);
-                     echo 'value = "'.$var. '"';
-                   }else{
-                     echo 'value = "save"';
-                   }
-                  ?> -->
                   <div class="form-group text-right">
                     <button id="btn-edit" type="submit" name="btn-submit" class="center-block btn btn-success">
                 <span class="glyphicon glyphicon-ok"></span> Lưu lại

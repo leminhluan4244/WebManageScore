@@ -26,7 +26,7 @@ switch ($_POST['btn-submit']) {
    $newPermissionObj = new PermissionObj();
    $newPermissionMod = new PermissionMod();
    #var_dump($_POST['btn-submit']);
-   var_dump($_POST['btn-submit']);
+   #var_dump($_POST['btn-submit']);
    $newPermissionMod->setAllDisplay($_POST['btn-submit'], 0);
    if(!empty($_POST['checkbox'])){
      $checkbox = $_POST['checkbox'];

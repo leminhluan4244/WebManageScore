@@ -1,11 +1,13 @@
 <?php
   require_once("../helper/session.helper.php");
-  #var_dump(getSession("userToken")['permission']);
-  echo '<br />';
+   $js_array = json_encode(getSession("userToken")['permission']);
+   $newPermissionObj = new PermissionObj();
+   $newPermissionMod = new PermissionMod();
+   $arr = $newPermissionMod->selectPower(getSession("userToken")['permission']);
+   #var_dump($arr);
   ?>
   <script type='text/javascript'>
  <?php
-  $js_array = json_encode(getSession("userToken")['permission']);
   echo "var arrJS = ". $js_array . ";\n";
  ?>
  $(document).ready(function() {
@@ -31,7 +33,7 @@
       break;
 
      case 'Quản lý chi hội':
-     $("#quan-ly-thanh-vien-chi-hoi").show();
+      $("#quan-ly-thanh-vien-chi-hoi").show();
       $("#cham-diem-ren-luyen").show();
       $("#them-bang-cong-tru").show();
       break;
@@ -49,6 +51,43 @@
        break;
 
      default:
+       <?php
+        foreach ($arr as $key => $value) {
+          switch ($value) {
+            case 'Chấm điểm rèn luyện cá nhân sinh viên':
+              echo '$("#cham-diem-ren-luyen").show();';
+              break;
+
+            case 'Chấm điểm cho một lớp':
+              echo '$("#cham-diem-ren-luyen").show();';
+              break;
+
+            case 'Chấm điểm rèn luyện cho cả khoa':
+              echo '$("#cham-diem-ren-luyen").show();';
+              break;
+
+            case 'Thêm bảng điểm cộng trừ cho sinh viên theo chi hội':
+              echo '$("#them-bang-cong-tru").show();';
+              break;
+
+            case 'Thêm bảng điểm cộng trừ cho lớp':
+              echo '$("#them-bang-cong-tru").show();';
+              break;
+
+            case 'Thêm bảng điểm cộng trừ cho khoa':
+              echo '$("#them-bang-cong-tru").show();';
+              break;
+
+            case 'Thêm thành viên cho chi hội':
+              echo '$("#quan-ly-thanh-vien-chi-hoi").show();';
+              break;
+
+            default:
+
+              break;
+          }
+        }
+        ?>
        break;
    }
    });

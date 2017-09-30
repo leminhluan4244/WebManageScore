@@ -123,7 +123,7 @@
                   $account->setSex($row["sex"]);
                   $account->setPhone($row["phone"]);
                   $account->setEmail($row["email"]);
-                  $account->setPassword("don't know");
+                  $account->setPassword($row["password"]);
                   $account->setPermission_position($row["Permission_position"]);
                   $list[$k] = $account;
                   $k++;
@@ -246,8 +246,7 @@
     //Minh luan tag - trả danh sách lớp, khoa , chi hoi
       public function getClass($id)
       {
-          $sql = "SELECT class.className FROM account,account_has_class,class WHERE account.idAccount = account_has_class.Account_idAccount AND account_has_class.Class_idClass = class.idClass AND account.idAccount='".$id."';
-";
+          $sql = "SELECT class.className FROM account,account_has_class,class WHERE account.idAccount = account_has_class.Account_idAccount AND account_has_class.Class_idClass = class.idClass AND account.idAccount='".$id."';";
           $this->conn2sql->Connect();
           $result = $this->conn2sql->conn->query($sql);
           $this->conn2sql->Stop();
