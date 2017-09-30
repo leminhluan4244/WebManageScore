@@ -80,8 +80,6 @@ $trTree->PreOderTreeToHtml($root, 0);
 
 ?>
 
-<h4 class="text-center text-primary">Chấm điểm rèn luyện</h4>
-
 <?php require_once '../controller/transcript/transcript.view.php'; ?>
 
 <?php require_once '../controller/footer.php'; ?>

@@ -48,7 +48,7 @@ require_once "../helper/account.helper.php";
             <span class="glyphicon glyphicon-home"></span> Trang chủ</a>
         <a href="../controller/account/account.logout.php" class="btn btn-warning btn-sm">
             <span class="glyphicon glyphicon-log-out"></span> Đăng xuất</a>
-        <p id="accountInfo"><?php echo getLoggedAccountName(); ?></p>
+        <p id="accountInfo"><?php echo getLoggedAccountName() . " (" . getLoggedAccountId() . ")"; ?></p>
     </div>
 
 </div>

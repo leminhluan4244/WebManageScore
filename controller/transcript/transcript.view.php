@@ -9,7 +9,7 @@
 if (empty($trTree))
 	return;
 ?>
-
+<h4 class="text-center text-primary">Chấm điểm rèn luyện</h4>
 <div class="form-grading">
     <form method="post">
         <div class="table-score-wrapper">
@@ -32,6 +32,7 @@ if (empty($trTree))
             <input type="hidden" name="privilege" value="<?php echo $privilege; ?>">
             <input type="hidden" name="requestName" value="saveTranscript">
         </div>
+        <br>
         <div class="text-right div-btn-grading">
             <button class="btn btn-primary">
                 <span class="glyphicon glyphicon-ok"></span>
