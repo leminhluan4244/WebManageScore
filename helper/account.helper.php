@@ -23,3 +23,13 @@ function logout(){
 function getLoggedAccountInfo(){
 	return getSession("userToken");
 }
+
+function getLoggedAccountId(){
+	$account = getLoggedAccountInfo();
+	return $account['idAccount'];
+}
+
+function getLoggedAccountName(){
+	$account = getLoggedAccountInfo();
+	return $account['name'];
+}
