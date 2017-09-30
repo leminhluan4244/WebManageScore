@@ -65,7 +65,7 @@
             </a>
         </div>
         <div class="col-sm-offset-2 col-sm-4 thumbnail">
-            <a href="" class="">
+            <a href="grading.php" class="">
                 <img src="../public/img/mark.png" width="70" alt="">
                 <p>Chấm điểm rèn luyện</p>
             </a>
