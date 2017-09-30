@@ -134,6 +134,7 @@ class PermissionMod
    }
     }
 
+
     /* Kiểm tra hàm có viết đúng hay không ?
     1. Hàm thêm
     require_once 'ConnectToSQL.php';
