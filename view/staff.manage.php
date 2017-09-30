@@ -1,5 +1,15 @@
 <?php
 require_once "../controller/header.php";
+require_once "../helper/common.helper.php";
+require_once "../helper/form.helper.php";
+$accountObj = new AccountObj();
+$accountMod = new AccountMod();
+$academyObj = new AcademyObj();
+$academyMod = new AcademyMod();
+$classObj = new ClassObj();
+$classMod = new ClassMod();
+$perObj = new PermissionObj();
+$perMod = new PermissionMod();
 ?>
 <div class="container-fluid">
     <!--Start content manage student-->

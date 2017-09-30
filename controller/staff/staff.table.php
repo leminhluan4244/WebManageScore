@@ -1,5 +1,4 @@
 <?php
-$name = '';
 if(!isset($_GET['btnfilter'])) {
     $teacherMod = new AccountMod();
     $teacherList = $teacherMod->getAccountStaff();
@@ -12,15 +11,14 @@ else {
     else{
         $teacherMod = new AccountMod();
         $teacherList = $teacherMod->getAccountStaffByAcademy($_GET['academy']);
-        $academy = new AcademyObj();
-        $academyM = new AcademyMod(); $academy=$academyM->findAcademyByID($_GET['academy']);
-        $name =  $academy->getAcademyName();
     }
 }
+
 ?>
+
 <div id="teacher-manage-wrapper">
         <hr>
-        <h4 class="text-primary text-center">Danh sách cán bộ <?php echo $name?></h4>
+        <h4 class="text-primary text-center">Danh sách cán bộ</h4>
     <form action="teacher.manage.php" method="post" id="manageForm">
         <table class="table table-bordered table-condensed" id="table-manage-teacher">
             <thead>
