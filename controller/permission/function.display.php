@@ -25,26 +25,28 @@
        $("#them-bang-cong-tru").show();
        break;
      case 'Cố vấn học tập':
-
-       break;
+      $("#cham-diem-ren-luyen").show();
+      $("#them-bang-cong-tru").show()
+      break;
      case 'Quản lý chi hội':
-
+     $("#quan-ly-thanh-vien-chi-hoi").show();
+      $("#cham-diem-ren-luyen").show();
+      $("#them-bang-cong-tru").show();
       break;
 
-      case 'Quản lý khoa':
+     case 'Quản lý khoa':
+      $("#cham-diem-ren-luyen").show();
+      $("#them-bang-cong-tru").show()
+      break;
 
+      case 'Sinh viên':
+       $("#cham-diem-ren-luyen").show();
        break;
 
-     case 'Sinh viên':
-        $("#cham-diem-ren-luyen").show();
-       break;
-
-     case 'default':
-
+      case 'default':
        break;
 
      default:
-
        break;
    }
    });
