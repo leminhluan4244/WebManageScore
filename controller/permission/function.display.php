@@ -24,10 +24,12 @@
        $("#quan-ly-thanh-vien-chi-hoi").show();
        $("#them-bang-cong-tru").show();
        break;
+
      case 'Cố vấn học tập':
       $("#cham-diem-ren-luyen").show();
       $("#them-bang-cong-tru").show()
       break;
+
      case 'Quản lý chi hội':
      $("#quan-ly-thanh-vien-chi-hoi").show();
       $("#cham-diem-ren-luyen").show();
