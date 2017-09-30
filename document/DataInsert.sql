@@ -88,9 +88,10 @@ INSERT INTO `permission` (`position`, `power`,`selected`) VALUES ('Sinh viên', 
 INSERT INTO `permission` (`position`, `power`,`selected`) VALUES ('Quản lý chi hội', 'Chấm điểm rèn luyện cá nhân sinh viên',1);
 INSERT INTO `permission` (`position`, `power`,`selected`) VALUES ('Cố vấn học tập', 'Chấm điểm cho một lớp',1);
 INSERT INTO `permission` (`position`, `power`,`selected`) VALUES ('Cố vấn học tập', 'Thêm bảng điểm cộng trừ cho lớp',1);
-INSERT INTO `permission` (`position`, `power`,`selected`) VALUES ('Quản lý khoa', 'Chấm điểm rèn luyện cho cả khoa',1);
-INSERT INTO `permission` (`position`, `power`,`selected`) VALUES ('Quản lý khoa', 'Thêm bảng điểm cộng trừ cho khoa',1);
+INSERT INTO `permission` (`position`, `power`,`selected`) VALUES ('Quản lý khoa', 'Chấm điểm rèn luyện cho cả khoa - viện',1);
+INSERT INTO `permission` (`position`, `power`,`selected`) VALUES ('Quản lý khoa', 'Thêm bảng điểm cộng trừ cho khoa - viện',1);
 INSERT INTO `permission` (`position`, `power`,`selected`) VALUES ('Quản lý chi hội', 'Thêm bảng điểm cộng trừ cho sinh viên theo chi hội',1);
+INSERT INTO `permission` (`position`, `power`,`selected`) VALUES ('Quản lý chi hội', 'Quản lý thành viên chi hội',1);
 INSERT INTO `permission` (`position`, `power`,`selected`) VALUES ('Quản trị viên', 'Full ',1);
 INSERT INTO `permission` (`position`, `power`,`selected`) VALUES ('Default', 'Not ',1);
 /*Dữ liệu mẫu 5 Tài khoản*/

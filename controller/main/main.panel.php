@@ -36,7 +36,7 @@
         <div id="div-structure-editor" class="col-sm-offset-2 col-sm-4 thumbnail" style="display: none;">
             <a href="structure.editor.php" class="">
                 <img src="../public/img/structure-edit.png" width="70" alt="">
-                <p>Chỉnh sửa bảng điểm</p>
+                <p>Chỉnh sửa cấu trúc bảng điểm</p>
             </a>
         </div>
 
@@ -62,6 +62,24 @@
             <a href="" class="">
                 <img src="../public/img/schedule.png" width="70" alt="">
                 <p>Quản lý lịch chấm điểm</p>
+            </a>
+        </div>
+        <div class="col-sm-offset-2 col-sm-4 thumbnail">
+            <a href="" class="">
+                <img src="../public/img/mark.png" width="70" alt="">
+                <p>Chấm điểm rèn luyện</p>
+            </a>
+        </div>
+        <div class="col-sm-offset-2 col-sm-4 thumbnail">
+            <a href="" class="">
+                <img src="../public/img/branch-member.png" width="70" alt="">
+                <p>Quản lý thành viên chi hội</p>
+            </a>
+        </div>
+        <div class="col-sm-offset-2 col-sm-4 thumbnail">
+            <a href="" class="">
+                <img src="../public/img/table-score.png" width="70" alt="">
+                <p>Thêm bảng cộng - trừ điểm</p>
             </a>
         </div>
 	</div>

@@ -14,8 +14,14 @@ class StructureMod {
 	}
 
 	public function addStructure($structureObj){
-		$sql = "insert into structure(`idItem`, `itemName`, `scores`, `describe`, `IDParent`) 
-				values('{$structureObj->getIdItem()}','{$structureObj->getItemName()}','{$structureObj->getScores()}','{$structureObj->getDescribe()}','{$structureObj->getIdParent()}');";
+		$sql = "insert into structure(`idItem`, `itemName`, `scores`, `describe`, `IDParent`, `scoresDefault`) 
+				values(
+					'{$structureObj->getIdItem()}',
+					'{$structureObj->getItemName()}',
+					'{$structureObj->getScores()}',
+					'{$structureObj->getDescribe()}',
+					'{$structureObj->getIdParent()}', 
+					'{$structureObj->getScoreDefault()}');";
 		$this->connSQL->Connect();
 		$result = $this->connSQL->conn->query($sql);
 		$this->connSQL->Stop();
@@ -29,7 +35,13 @@ class StructureMod {
 		$result = $this->connSQL->conn->query($sql);
 		if ($result->num_rows > 0){
 			$structureRow = $result->fetch_assoc();
-			$structureObj->setStructureObj($structureRow['idItem'], $structureRow['itemName'], $structureRow['scores'], $structureRow['describe'], $structureRow['IDParent']);
+			$structureObj->setStructureObj(
+				$structureRow['idItem'],
+				$structureRow['itemName'],
+				$structureRow['scores'],
+				$structureRow['describe'],
+				$structureRow['IDParent'],
+				$structureRow['scoresDefault']);
 		}
 		$this->connSQL->Stop();
 		return $structureObj;
@@ -48,7 +60,8 @@ class StructureMod {
  				`itemName` = '{$structureObj->getItemName()}',
  				`scores` = '{$structureObj->getScores()}',
  				`describe` = '{$structureObj->getDescribe()}',
- 				`IDParent` = '{$structureObj->getIdParent()}'
+ 				`IDParent` = '{$structureObj->getIdParent()}',
+ 				`scoresDefault` = '{$structureObj->getScoreDefault()}' 
 				where `idItem` = '{$structureObj->getIdItem()}'";
 		$this->connSQL->Connect();
 		$result = $this->connSQL->conn->query($sql);
@@ -95,22 +108,9 @@ class StructureMod {
 	}
 
 	/**
-	 * Lấy item trên cùng của bảng điểm
-	 * @return StructureObj
-	 */
-	public function getRootStructure(){
-		$root = new StructureObj();
-		$root->setIdItem(ROOT_STRUCTURE);
-		return $root;
-	}
-
-	public function isRootStructure($structureObj){
-		return $structureObj->getIdItem() == ROOT_STRUCTURE;
-	}
-
-	/**
 	 * Lấy tất cả các con trực tiếp của item đó
 	 * @param $structureObj
+	 * @return array
 	 */
 	public function getAllDirectChildOfStructure($structureObj){
 		$children = array();
@@ -126,7 +126,8 @@ class StructureMod {
 					$row['itemName'],
 					$row['scores'],
 					$row['describe'],
-					$row['IDParent']
+					$row['IDParent'],
+					$row['scoresDefault']
 				);
 				$children[] = $child;
 			}
@@ -134,12 +135,12 @@ class StructureMod {
 		return $children;
 	}
 
-	public function isChildOfRoot($structureObj){
-		return $structureObj->getIdParent() === ROOT_STRUCTURE;
-	}
-
-	public function isLeaf($structureObj){
-//		return $structureObj->getScores() > 0;
-		return empty($this->getAllDirectChildOfStructure($structureObj));
-	}
+//	public function isChildOfRoot($structureObj){
+//		return $structureObj->getIdParent() === ROOT_STRUCTURE;
+//	}
+//
+//	public function isLeaf($structureObj){
+////		return $structureObj->getScores() > 0;
+//		return empty($this->getAllDirectChildOfStructure($structureObj));
+//	}
 }
