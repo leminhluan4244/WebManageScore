@@ -36,7 +36,7 @@
        break;
 
      case 'Sinh viên':
-       //cham-diem-ren-luyen
+        $("#cham-diem-ren-luyen").show();
        break;
 
      case 'default':
