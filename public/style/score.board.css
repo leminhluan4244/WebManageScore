@@ -47,13 +47,16 @@ footer {
 #table-score tbody {
   font-size: 13px; }
   #table-score tbody .section-1 {
-    background-color: #b9dcff; }
+    background-color: #b9dcff;
+    color: orangered; }
   #table-score tbody .section-1 td:first-child {
     color: #000; }
   #table-score tbody .section-1 td:first-child {
     width: 70%; }
   #table-score tbody .section-1, #table-score tbody .section-2 {
     font-weight: bold; }
+  #table-score tbody .section-2 {
+    font-style: italic; }
   #table-score tbody .section-3 td:first-child:before {
     content: " ─ "; }
   #table-score tbody .section-4 td:first-child:before {

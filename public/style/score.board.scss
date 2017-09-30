@@ -95,6 +95,7 @@ footer{
     font-size: 13px;
     .section-1{
       background-color: $section_color;
+      color: orangered;
     }
     
     .section-1 td:first-child{
@@ -107,7 +108,10 @@ footer{
 
     .section-1, .section-2{
       font-weight: bold;
-
+    }
+    
+    .section-2{
+      font-style: italic;
     }
 
     .section-3 td:first-child:before{
