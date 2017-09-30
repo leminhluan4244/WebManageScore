@@ -12,6 +12,7 @@ class StructureObj {
 	private $scores;
 	private $describe;
 	private $idParent;
+	private $scoreDefault;
 
 	public function __construct(){
 		$this->idItem = "";
@@ -19,18 +20,20 @@ class StructureObj {
 		$this->scores = 0;
 		$this->describe = "";
 		$this->idParent = "0";
+		$this->scoreDefault = 0;
 	}
 
 	public function getStructureObj(){
 		return $this;
 	}
 
-	public function setStructureObj($idItem, $itemName, $scores, $describe, $idParent){
+	public function setStructureObj($idItem, $itemName, $scores, $describe, $idParent, $scoreDefault){
 		$this->idItem = $idItem;
 		$this->itemName = $itemName;
 		$this->scores = $scores;
 		$this->describe = $describe;
 		$this->idParent = $idParent;
+		$this->scoreDefault = $scoreDefault;
 	}
 
 	/**
@@ -101,5 +104,19 @@ class StructureObj {
 	 */
 	public function setDescribe($describe) {
 		$this->describe = $describe;
+	}
+
+	/**
+	 * @param int $scoreDefault
+	 */
+	public function setScoreDefault($scoreDefault) {
+		$this->scoreDefault = $scoreDefault;
+	}
+
+	/**
+	 * @return int
+	 */
+	public function getScoreDefault() {
+		return $this->scoreDefault;
 	}
 }

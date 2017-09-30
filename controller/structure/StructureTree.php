@@ -9,10 +9,14 @@
 define("ROOT", "0");
 define("NORM", 1);
 define("EDIT", 2);
+define("STUDENT", 3);
+define("ADVISER", 4);
+
 
 class StructureTree {
 	private $data;
 	private $htmlText;
+	private $privilege;
 
 	public function __construct($data) {
 		$this->data = $data;
@@ -24,6 +28,13 @@ class StructureTree {
 	 */
 	public function getHtmlText() {
 		return $this->htmlText;
+	}
+
+	/**
+	 * @param mixed $privilege
+	 */
+	public function setPrivilege($privilege) {
+		$this->privilege = $privilege;
 	}
 
 	public function getRoot() {
@@ -47,6 +58,12 @@ class StructureTree {
 
 	public function isLeaf($nodeId) {
 		return count($this->getAllDirectChildOf($nodeId)) == 0;
+	}
+
+	public function isLastChildOfRoot($nodeId){
+		$children = $this->getAllDirectChildOf(ROOT);
+		$len = count($children);
+		return strtolower($children[$len-1]['idItem']) == strtolower($nodeId);
 	}
 
 	public function getAllDirectChildOf($nodeId) {
@@ -173,12 +190,23 @@ class StructureTree {
 
 	function getLeafHTMLNormMode($nodeId) {
 		$htmlText = "";
-		$htmlText .= "<td><span class='spacing'></span>" . str_replace("-", "", $this->data[$nodeId]["itemName"]) . "</td>";
+		$htmlText .= "<td>" . str_replace("-", "", $this->data[$nodeId]["itemName"]) . "</td>";
 		$htmlText .= "<td>{$this->data[$nodeId]["scores"]}</td>";
-		$htmlText .= "<td><input type='number' class='input-number' min='0' max='{$this->data[$nodeId]["scores"]}' value='0'></td>";
-		$htmlText .= "<td></td><td></td>";
+		if ($this->isLastChildOfRoot($nodeId))
+			$htmlText .= "<td>0</td><td>0</td>";
+		else if ($this->privilege == STUDENT){
+			$htmlText .= "<td><input type='number' class='input-number' min='0' 
+				max='{$this->data[$nodeId]["scores"]}' value='0'></td>";
+			$htmlText .= "<td>CVHT</td>";
+		} else {
+			$htmlText .= "<td>SV</td>";
+			$htmlText .= "<td><input type='number' class='input-number' min='0' 
+				max='{$this->data[$nodeId]["scores"]}' value='0'></td>";
+		}
+		$htmlText .= "<td></td>";
 		return $htmlText;
 	}
+
 	function getNonLeafHTMLNormMode($nodeId) {
 		return "<td colspan='5'>" . str_replace("-", "", $this->data[$nodeId]["itemName"]) . "</td>";
 	}

@@ -81,7 +81,7 @@ class TranscriptObj {
         $this->scoresStudent;
     }
     public function getScoresTeacher(){
-        $this->getScoresTeacher;
+        $this->scoresTeacher;
     }
     public function setIdItem($idItem){
         $this->idItem=$idItem;

@@ -41,6 +41,7 @@ footer {
   background-color: #337ab7;
   color: #fff; }
   #table-score thead tr th {
+    font-size: 14px !important;
     text-align: center;
     vertical-align: middle; }
 #table-score tbody {
@@ -74,5 +75,8 @@ footer {
   text-align: center; }
 .table-score-editor .btn-sm {
   padding: 2px 5px; }
+
+.table-grading tr td:first-child {
+  text-align: left; }
 
 /*# sourceMappingURL=score.board.css.map */
