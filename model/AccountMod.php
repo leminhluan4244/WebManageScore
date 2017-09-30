@@ -84,7 +84,7 @@
                   $account->setSex($row["sex"]);
                   $account->setPhone($row["phone"]);
                   $account->setEmail($row["email"]);
-                  $account->setPassword("don't know");
+                  $account->setPassword($row["password"]);
                   $account->setPermission_position($row["Permission_position"]);
                   $list[$k] = $account;
                   $k++;
