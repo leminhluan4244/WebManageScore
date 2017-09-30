@@ -6,11 +6,9 @@
  * Date: 18/09/2017
  * Time: 09:58
  */
-define("ROOT", "0");
+define("ST_ROOT", "0");
 define("NORM", 1);
 define("EDIT", 2);
-define("STUDENT", 3);
-define("ADVISER", 4);
 
 
 class StructureTree {
@@ -38,7 +36,7 @@ class StructureTree {
 	}
 
 	public function getRoot() {
-		return ROOT;
+		return ST_ROOT;
 	}
 
 	/**
@@ -61,7 +59,7 @@ class StructureTree {
 	}
 
 	public function isLastChildOfRoot($nodeId){
-		$children = $this->getAllDirectChildOf(ROOT);
+		$children = $this->getAllDirectChildOf(ST_ROOT);
 		$len = count($children);
 		return strtolower($children[$len-1]['idItem']) == strtolower($nodeId);
 	}
@@ -95,6 +93,27 @@ class StructureTree {
 		return null;
 	}
 
+	public function getHighetAncestor($node){
+		if ($node['IDParent'] == ST_ROOT)
+			return $node['idItem'];
+		while ($node['IDParent'] != ST_ROOT)
+			return $this->getHighetAncestor($this->data[$node['IDParent']]);
+	}
+
+	/**
+	 * Lấy tất cả các mục có điểm số
+	 * @param string $separateChar
+	 * @return array
+	 */
+	public function getAllNodeStoreScore($separateChar = "."){
+		$scoreNodeList = [];
+		foreach ($this->data as $node) {
+			if ($this->isLeaf($node['idItem']) && !$this->isLastChildOfRoot($node['idItem']))
+				$scoreNodeList[] = str_replace(".", $separateChar, $node['idItem']);
+		}
+		return $scoreNodeList;
+	}
+	
 	public function PreOrderTreeToGetAllChildIdOf($nodeId, &$listId){
 		$listId[] = $nodeId;
 		$node = $this->getLeftMostChildOf($nodeId)["idItem"];
@@ -105,7 +124,7 @@ class StructureTree {
 	}
 
 	public function PreOderTreeToHtml($nodeId, $level, $mode) {
-		if ($nodeId != ROOT)
+		if ($nodeId != ST_ROOT)
 			$this->htmlText .= $this->generateNodeToHtml($nodeId, $level, $mode);
 		$node = $this->getLeftMostChildOf($nodeId)["idItem"];
 		while (!empty($node)) {
@@ -188,26 +207,26 @@ class StructureTree {
 
 	#-------- Norm mode -------
 
-	function getLeafHTMLNormMode($nodeId) {
-		$htmlText = "";
-		$htmlText .= "<td>" . str_replace("-", "", $this->data[$nodeId]["itemName"]) . "</td>";
-		$htmlText .= "<td>{$this->data[$nodeId]["scores"]}</td>";
-		if ($this->isLastChildOfRoot($nodeId))
-			$htmlText .= "<td>0</td><td>0</td>";
-		else if ($this->privilege == STUDENT){
-			$htmlText .= "<td><input type='number' class='input-number' min='0' 
-				max='{$this->data[$nodeId]["scores"]}' value='0'></td>";
-			$htmlText .= "<td>CVHT</td>";
-		} else {
-			$htmlText .= "<td>SV</td>";
-			$htmlText .= "<td><input type='number' class='input-number' min='0' 
-				max='{$this->data[$nodeId]["scores"]}' value='0'></td>";
-		}
-		$htmlText .= "<td></td>";
-		return $htmlText;
-	}
-
-	function getNonLeafHTMLNormMode($nodeId) {
-		return "<td colspan='5'>" . str_replace("-", "", $this->data[$nodeId]["itemName"]) . "</td>";
-	}
+//	function getLeafHTMLNormMode($nodeId) {
+//		$htmlText = "";
+//		$htmlText .= "<td>" . str_replace("-", "", $this->data[$nodeId]["itemName"]) . "</td>";
+//		$htmlText .= "<td>{$this->data[$nodeId]["scores"]}</td>";
+//		if ($this->isLastChildOfRoot($nodeId))
+//			$htmlText .= "<td>0</td><td>0</td>";
+//		else if ($this->privilege == STUDENT){
+//			$htmlText .= "<td><input type='number' class='input-number' min='0'
+//				max='{$this->data[$nodeId]["scores"]}' value='0'></td>";
+//			$htmlText .= "<td>CVHT</td>";
+//		} else {
+//			$htmlText .= "<td>SV</td>";
+//			$htmlText .= "<td><input type='number' class='input-number' min='0'
+//				max='{$this->data[$nodeId]["scores"]}' value='0'></td>";
+//		}
+//		$htmlText .= "<td></td>";
+//		return $htmlText;
+//	}
+//
+//	function getNonLeafHTMLNormMode($nodeId) {
+//		return "<td colspan='5'>" . str_replace("-", "", $this->data[$nodeId]["itemName"]) . "</td>";
+//	}
 }

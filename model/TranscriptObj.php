@@ -11,7 +11,7 @@ class TranscriptObj {
     private $idItem;
     private $Account_idAccount;
     private $itemName;
-    private $scores;
+    private $finalScores;
     private $describe;
     private $idParent;
     private $scoresDefault;
@@ -24,7 +24,7 @@ class TranscriptObj {
         $this->idItem = '';
         $this->Account_idAccount = '';
         $this->itemName='';
-        $this->scores = 0;
+        $this->finalScores = 0;
         $this->describe = '';
         $this->idParent = '';
         $this->scoresDefault = 0;
@@ -33,15 +33,15 @@ class TranscriptObj {
         $this->scoresTeacher = 0;
     }
 
-    public function getStructureObj(){
+    public function getTranscriptObj() {
         return $this;
     }
 
-    public function setStructureObj($idItem,$Account_idAccount,$itemName,$scores,$describe,$idParent,$scoresDefault,$scoresMax,$scoresStudent,$scoresTeacher){
+    public function setTranscriptObj($idItem, $Account_idAccount, $itemName, $finalScores, $describe, $idParent, $scoresDefault, $scoresMax, $scoresStudent, $scoresTeacher){
         $this->idItem = $idItem;
         $this->Account_idAccount = $Account_idAccount;
         $this->itemName=$itemName;
-        $this->scores = $scores;
+        $this->finalScores = $finalScores;
         $this->describe = $describe;
         $this->idParent = $idParent;
         $this->scoresDefault = $scoresDefault;
@@ -50,69 +50,147 @@ class TranscriptObj {
         $this->scoresTeacher = $scoresTeacher;
     }
 
-    /**
-     * @return mixed
-     */
-    public function getIdItem(){
-        $this->idItem;
-    }
-    public function getAccount_idAccount(){
-        $this->Account_idAccount;
-    }
-    public function getItemName(){
-        $this->itemName;
-    }
-    public function getScores(){
-        $this->scores;
-    }
-    public function getDescribe(){
-        $this->describe;
-    }
-    public function getIdParent(){
-        $this->idParent;
-    }
-    public function getScoresDefault(){
-        $this->scoresDefault;
-    }
-    public function getScoresMax(){
-        $this->scoresMax;
-    }
-    public function getScoresStudent(){
-        $this->scoresStudent;
-    }
-    public function getScoresTeacher(){
-        $this->scoresTeacher;
-    }
-    public function setIdItem($idItem){
-        $this->idItem=$idItem;
-    }
-    public function setAccount_idAccount($Account_idAccount){
-        $this->Account_idAccount=$Account_idAccount;
-    }
-    public function setItemName($it){
-        $this->itemName=$it;
-    }
-    public function setScores($scores){
-        $this->scores=$scores;
-    }
-    public function setDescribe($Describe){
-        $this->describe=$Describe;
-    }
-    public function setIdParent($id){
-        $this->idParent = $id;
-    }
-    public function setScoresDefault($sc){
-        $this->scoresDefault=$sc;
-    }
-    public function setScoresMax($max){
-        $this->scoresMax = $max;
-    }
-    public function setScoresStudent($student){
-        $this->scoresStudent = $student;
-    }
-    public function setScoresTeacher($teacher){
-        $this->scoresTeacher = $teacher;
-    }
+	/**
+	 * @return string
+	 */
+	public function getIdItem() {
+		return $this->idItem;
+	}
+
+	/**
+	 * @param string $idItem
+	 */
+	public function setIdItem($idItem) {
+		$this->idItem = $idItem;
+	}
+
+	/**
+	 * @return string
+	 */
+	public function getAccountIdAccount() {
+		return $this->Account_idAccount;
+	}
+
+	/**
+	 * @param string $Account_idAccount
+	 */
+	public function setAccountIdAccount($Account_idAccount) {
+		$this->Account_idAccount = $Account_idAccount;
+	}
+
+	/**
+	 * @return string
+	 */
+	public function getItemName() {
+		return $this->itemName;
+	}
+
+	/**
+	 * @param string $itemName
+	 */
+	public function setItemName($itemName) {
+		$this->itemName = $itemName;
+	}
+
+	/**
+	 * @return int
+	 */
+	public function getFinalScores() {
+		return $this->finalScores;
+	}
+
+	/**
+	 * @param int $finalScores
+	 */
+	public function setFinalScores($finalScores) {
+		$this->finalScores = $finalScores;
+	}
+
+	/**
+	 * @return string
+	 */
+	public function getDescribe() {
+		return $this->describe;
+	}
+
+	/**
+	 * @param string $describe
+	 */
+	public function setDescribe($describe) {
+		$this->describe = $describe;
+	}
+
+	/**
+	 * @return string
+	 */
+	public function getIdParent() {
+		return $this->idParent;
+	}
+
+	/**
+	 * @param string $idParent
+	 */
+	public function setIdParent($idParent) {
+		$this->idParent = $idParent;
+	}
+
+	/**
+	 * @return int
+	 */
+	public function getScoresDefault() {
+		return $this->scoresDefault;
+	}
+
+	/**
+	 * @param int $scoresDefault
+	 */
+	public function setScoresDefault($scoresDefault) {
+		$this->scoresDefault = $scoresDefault;
+	}
+
+	/**
+	 * @return int
+	 */
+	public function getScoresMax() {
+		return $this->scoresMax;
+	}
+
+	/**
+	 * @param int $scoresMax
+	 */
+	public function setScoresMax($scoresMax) {
+		$this->scoresMax = $scoresMax;
+	}
+
+	/**
+	 * @return int
+	 */
+	public function getScoresStudent() {
+		return $this->scoresStudent;
+	}
+
+	/**
+	 * @param int $scoresStudent
+	 */
+	public function setScoresStudent($scoresStudent) {
+		$this->scoresStudent = $scoresStudent;
+	}
+
+	/**
+	 * @return int
+	 */
+	public function getScoresTeacher() {
+		return $this->scoresTeacher;
+	}
+
+	/**
+	 * @param int $scoresTeacher
+	 */
+	public function setScoresTeacher($scoresTeacher) {
+		$this->scoresTeacher = $scoresTeacher;
+	}
+
+
 
 }
 ?>

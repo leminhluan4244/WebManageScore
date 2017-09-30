@@ -96,6 +96,10 @@ footer{
     .section-1{
       background-color: $section_color;
     }
+    
+    .section-1 td:first-child{
+      color: #000;
+    }
 
     .section-1 td:first-child{
       width: 70%;
@@ -103,6 +107,7 @@ footer{
 
     .section-1, .section-2{
       font-weight: bold;
+
     }
 
     .section-3 td:first-child:before{
