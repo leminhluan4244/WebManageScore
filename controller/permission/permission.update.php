@@ -22,7 +22,7 @@ switch ($_POST['btn-submit']) {
       if(is_array($checkbox)){
         foreach ($checkbox as $key => $value) {
           $arr = (new AccountMod())->findAccountByID($value);
-          $accountMod = (new AccountMod())->updateAccount(new AccountObj($arr['idAccount'], $arr['accountName'], $arr['birthday'], $arr['address'], $arr['sex'], $arr['phone'], $arr['email'], $arr['password'], 'default'));
+          $accountMod = (new AccountMod())->updateAccount(new AccountObj($arr['idAccount'], $arr['accountName'], $arr['birthday'], $arr['address'], $arr['sex'], $arr['phone'], $arr['email'], $arr['password'], 'Default'));
         }
       }
     }

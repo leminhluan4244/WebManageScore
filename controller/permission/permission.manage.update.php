@@ -42,5 +42,5 @@ switch ($_POST['btn-submit']) {
    }
   break;
 }
-#echo '<script>window.location.assign("../../view/permission.manage.php")</script>';
+echo '<script>window.location.assign("../../view/permission.manage.php")</script>';
 ?>

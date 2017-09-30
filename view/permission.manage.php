@@ -9,7 +9,6 @@
     $newPermissionObj = new PermissionObj();
     $newPermissionMod = new PermissionMod();
     $arr = $newPermissionMod->selectPower($_POST['select']);
-    #var_dump($arr);
     echo '<script>
     $(document).ready(function() {
       $("#select").val("'.$_POST['select'].'");';
@@ -36,6 +35,10 @@
       }
       if(strcmp($value, "Thêm bảng điểm cộng trừ cho khoa") == 0){
         echo '$("#id_5").prop("checked", true);';
+        continue;
+      }
+      if(strcmp($value, "Thêm thành viên cho chi hội") == 0){
+        echo '$("#id_6").prop("checked", true);';
         continue;
       }
     }
@@ -120,6 +123,9 @@
                   </div>
                   <div class="col-sm-3">
                     <label><input type="checkbox" id="id_5" name="checkbox[]" value="Thêm bảng điểm cộng trừ cho khoa">&nbsp;Thêm bảng điểm cộng trừ cho khoa</label>
+                  </div>
+                  <div class="col-sm-3">
+                    <label><input type="checkbox" id="id_6" name="checkbox[]" value="Thêm thành viên cho chi hội">&nbsp;Thêm thành viên cho chi hội</label>
                   </div>
                 </div>
                 <br />
