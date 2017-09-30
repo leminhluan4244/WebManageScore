@@ -1,15 +1,15 @@
 <?php
-if(isset($_POST['btnThem'])) {
+if(isset($_POST['btnAdd_staff'])) {
 
-    $staffO = new AccountObj();
-    $staffM = new AccountMod();
-    $staffO->setAccountObj($_POST['addIdAccount'], $_POST['addAccountName'], $_POST['addBirthday'], $_POST['addAddress'], $_POST['addSex'], $_POST['addPhone'], $_POST['addEmail'],'123', $_POST['addPermission_position']);
-    $staffM->addAccount($staffO);
+    $stO = new AccountObj();
+    $stM = new AccountMod();
+    $stO->setAccountObj($_POST['addIdAccount'], $_POST['addAccountName'], $_POST['addBirthday'], $_POST['addAddress'], $_POST['addSex'], $_POST['addPhone'], $_POST['addEmail'],'123', $_POST['addPermission_position']);
+    $stM->addAccount($stO);
     echo'<META http-equiv="refresh" content="0;URL=staff.manage.php">';
 }
 ?>
-<!-- Start add Staff-->
-<div id="addStaff" class="modal fade" tabindex="-1" role="dialog" aria-labelledby aria-hidden="true">
+<!-- Start add student-->
+<div id="addStaff" class="modal fade " tabindex="-1" role="dialog" aria-labelledby aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
@@ -17,58 +17,81 @@ if(isset($_POST['btnThem'])) {
                 <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
                 <h4 class="modal-title">Thêm mới cán bộ</h4>
             </div>
-            <div class="modal-body">
-                <form action="" method="post">
+            <div class="modal-body ">
+                <form action="staff.manage.php" method="post">
 
                     <fieldset class="form-group">
-                        <p class="text-left"><b>MSCB</b></p>
-                        <input type="text" class="form-control" name="idAccount" id="idAccount"
-                               placeholder="Nhập mã số cán bộ">
+                        <p class="text-left "><b>Họ và Tên</b></p>
+                        <input type="text" class="form-control" name="addAccountName" id="addAccountName"
+                               placeholder="Nhập tên sinh viên">
+
                     </fieldset>
 
                     <fieldset class="form-group">
-                        <p class="text-left"><b>Họ và Tên</b></p>
-                        <input type="text" class="form-control" name="accountName" id="accountName"
-                               placeholder="Nhập tên cán bộ">
+                        <p class="text-left"><b>MSSV</b></p>
+                        <input type="text" class="form-control" name="addIdAccount" id="addIdAccount"
+                               placeholder="Nhập mã số sinh viên">
                     </fieldset>
-
 
                     <fieldset class="form-group">
                         <p class="text-left"><b>Ngày Sinh</b></p>
-                        <input type="date" class="form-control" name="birthday" id="birthday"
+                        <input type="date" class="form-control" name="addBirthday" id="addBirthday"
                                placeholder="Ngày Sinh">
                     </fieldset>
 
                     <fieldset class="form-group">
-                        <p class="text-left"><b>Địa Chỉ</b></p>
-                        <input type="text" class="form-control" name="address" id="address"
-                               placeholder="Nhập địa chỉ">
+                        <p class="text-left"><b>Địa chỉ</b></p>
+                        <input type="text" class="form-control" name="addAddress" id="addAddress"
+                               placeholder="Địa chỉ">
                     </fieldset>
 
                     <fieldset class="form-group">
-                        <p class="text-left"><b>Giới Tính</b></p>
-                        <input type="text" class="form-control" name="sex" id="sex"
-                               placeholder="Nhập địa chỉ">
+                        <p class="text-left"><b>Giới tính</b></p>
+                        <select class="form-control" name="addSex" id="addSex">
+                            <option value="Nam">Nam</option>
+                            <option value="Nữ">Nữ</option>
+                        </select>
                     </fieldset>
 
                     <fieldset class="form-group">
                         <p class="text-left"><b>Điện thoại</b></p>
-                        <input type="number" class="form-control" name="phone" id="phone"
+                        <input type="number" class="form-control" name="addPhone" id="addPhone"
                                placeholder="Nhập số điện thoại">
                     </fieldset>
 
                     <fieldset class="form-group">
                         <p class="text-left"><b>Email</b></p>
-                        <input type="mail" class="form-control" name="email" id="email"
-                               placeholder="Nhập email" value="@ctu.edu.vn">
+                        <input type="mail" class="form-control" name="addEmail" id="addEmail"
+                               placeholder="Nhập email" value="@student.ctu.edu.vn">
                     </fieldset>
 
                     <fieldset class="form-group">
-                        <p class="text-left"><b>Mật Khẩu</b></p>
-                        <input type="number" class="form-control" name="password" id="password"
-                               placeholder="Nhập số mật khẩu">
+                        <p class="text-left"><b>Khoa - Viện</b></p>
+                        <select class="form-control" name="addAcademyName" id="addAcademyName">
+                            <option value="NoneAcademy">--Chọn khoa--</option>
+                            <?php
+                            $listAcademy = array();
+                            $listAcademy = $academyMod->getAcademy();
+                            foreach ($list as $key => $value){
+                                echo'<option value="'.$value->getIdAcademy().'">'.$value->getAcademyName().'</option>';
+                            }
+                            ?>
+                        </select>
                     </fieldset>
 
+                    <fieldset class="form-group">
+                        <p class="text-left"><b>Lớp</b></p>
+                        <select class="form-control" name="addClassName" id="addClassName">
+                            <option value="NoneClass">--Chọn Lớp--</option>
+                            <?php
+                            $listClass = array();
+                            $listClass = $classMod->getClass();
+                            foreach ($listClass as $key => $value){
+                                echo'<option value="'.$value->getIdClass().'">'.$value->getClassName().'</option>';
+                            }
+                            ?>
+                        </select>
+                    </fieldset>
                     <fieldset class="form-group">
                         <p class="text-left"><b>Phân quyền</b></p>
                         <select class="form-control" name="addPermission_position" id="addPermission_position">
@@ -81,41 +104,15 @@ if(isset($_POST['btnThem'])) {
                             }
                             ?>
                         </select>
-                    <fieldset class="form-group">
-                        <p class="text-left"><b>Khoa - Viện</b></p>
-                        <select class="form-control" name="Academy_idAcademy" id="Academy_idAcademy">
-                            <option value="Công nghệ thông tin và truyền thông">Công nghệ thông tin và
-                                truyền thông
-                            </option>
-                            <option value="Thủy sản">Thủy sản</option>
-                            <option value="Môi trường">Môi trường</option>
-                            <option value="Công nghệ">Công nghệ</option>
-                        </select>
                     </fieldset>
-
-                        <fieldset class="form-group">
-                            <p class="text-left"><b>Lớp</b></p>
-                            <select class="form-control" name="addClassName" id="addClassName">
-                                <option value="NoneClass">--Chọn Lớp--</option>
-                                <?php
-                                $listClass = array();
-                                $listClass = $classMod->getClass();
-                                foreach ($listClass as $key => $value){
-                                    echo'<option value="'.$value->getIdClass().'">'.$value->getClassName().'</option>';
-                                }
-                                ?>
-                            </select>
-                        </fieldset>
-
                     <div class="modal-footer">
                         <button type="button" class="btn btn-default" data-dismiss="modal">Đóng</button>
-                        <button type="submit" class="btn btn-primary" name="btnThem">Thêm</button>
+                        <button type="submit" class="btn btn-primary" name="btnAdd_staff">Thêm</button>
                     </div>
                 </form>
-
             </div>
-
         </div>
     </div>
 </div>
-<!-- End add Staff-->
+<!-- End add student-->
+<script src="../public/js/student_action.js"></script>

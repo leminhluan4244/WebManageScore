@@ -1,74 +1,109 @@
-<div id="infoStaff" class="modal fade " tabindex="-1" role="dialog" aria-labelledby aria-hidden="true">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header">
+<?php
 
-                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                <h4 class="modal-title">Thông tin Cán Bộ</h4>
-            </div>
-            <div class="modal-body ">
-                <form action="#" method="post">
+$id = getGETValue('id');
+if (!empty($id)) {
+	$accountObj = $accountMod->getAccount($id);
+	?>
 
-                    <fieldset class="form-group">
-                        <p class="text-left "><b>Mã Cán Bộ</b></p>
-                        <p class="text-left form-control"><b>CB001</b></p>
-                    </fieldset>
-
-                    <fieldset class="form-group">
-                        <p class="text-left"><b>Tên Cán Bộ</b></p>
-                        <p class="text-left form-control"><b>Trương Thị Thanh Tuyền</b></p>
-                    </fieldset>
-
-                    <fieldset class="form-group">
-                        <p class="text-left"><b>Ngày Sinh</b></p>
-                        <p class="text-left form-control"><b>27/08/1985</b></p>
-                    </fieldset>
-
-                    <fieldset class="form-group">
-                        <p class="text-left"><b>Địa Chỉ</b></p>
-                        <p class="text-left form-control"><b>Cần Thơ</b></p>
-                    </fieldset>
-
-                    <fieldset class="form-group">
-                        <p class="text-left"><b>Giới Tính</b></p>
-                        <p class="text-left form-control"><b>Nữ</b></p>
-                    </fieldset>
-
-                    <fieldset class="form-group">
-                        <p class="text-left"><b>Điện Thoại</b></p>
-                        <p class="text-left form-control"><b>0936420420</b></p>
-                    </fieldset>
-
-                    <fieldset class="form-group">
-                        <p class="text-left"><b>Email</b></p>
-                        <p class="text-left form-control"><b>ttttuyen@ctu.edu.vn</b></p>
-                    </fieldset>
-
-                    <fieldset class="form-group">
-                        <p class="text-left"><b>Mật Khẩu</b></p>
-                        <p class="text-left form-control"><b>ttttuyen</b></p>
-                    </fieldset>
-
-                    <fieldset class="form-group">
-                        <p class="text-left"><b>Phân Quyền</b></p>
-                        <p class="text-left form-control"><b>Cố vấn học tập</b></p>
-                    </fieldset>
-
-                    <fieldset class="form-group">
-                        <p class="text-left"><b>Khoa Viện</b></p>
-                        <p class="text-left form-control"><b>Công nghệ thông tin và truyền thông</b></p>
-                    </fieldset>
-
-                    <fieldset class="form-group">
-                        <p class="text-left"><b>Lớp</b></p>
-                        <p class="text-left form-control"><b>Kỹ thuật phần mềm A2</b></p>
-                    </fieldset>
-
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-default" data-dismiss="modal">Đóng</button>
+    <div id="infoTeacher" class="modal text-left" tabindex="-1" role="dialog" aria-labelledby aria-hidden="true">
+        <div class="modal-dialog ">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                    <h4 class="modal-title">Thông tin cán bộ</h4>
+                </div>
+                <div class="modal-body ">
+                    <div class="row">
+                        <div class="col-sm-6 form-group">
+                            <label>Họ và tên: </label>
+                            <span class="form-control-static"><?php echo $accountObj->getAccountName(); ?></span>
+                        </div>
+                        <div class="col-sm-6 form-group">
+                            <label>MSSV: </label>
+                            <span class="form-control-static"><?php echo $accountObj->getIdAccount(); ?></span>
+                        </div>
                     </div>
-                </form>
+                    <div class="row">
+                        <div class="col-sm-6 form-group">
+                            <label>Ngày Sinh: </label>
+                            <span class="form-control-static"><?php echo $accountObj->getBirthday(); ?></span>
+                        </div>
+                        <div class="col-sm-6 form-group">
+                            <label>Địa chỉ: </label>
+                            <span class="form-control-static"><?php echo $accountObj->getAddress(); ?></span>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-6 form-group">
+                            <label>Giới tính: </label>
+                            <span class="form-control-static"><?php echo $accountObj->getSex(); ?></span>
+                        </div>
+                        <div class="col-sm-6 form-group">
+                            <label>Điện thoại: </label>
+                            <span class="form-control-static"><?php echo $accountObj->getPhone(); ?></span>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-6 form-group">
+                            <label>Email: </label>
+                            <span class="form-control-static"><?php echo $accountObj->getEmail(); ?></span>
+                        </div>
+                        <div class="col-sm-6 form-group">
+                            <label>Khoa - Viện: </label>
+                            <span class="form-control-static">
+                                <?php
+                                $listInfoAcademy = $accountMod->getAcademy($accountObj->getIdAccount());
+                                foreach ($listInfoAcademy as $key=> $value){
+                                   echo '<br />'.$value ;
+                                }
+                                ?>
+                            </span>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-6 form-group">
+                            <label>Lớp: </label>
+                            <span class="form-control-static">
+                            <?php
+                            $listInfoClass = $accountMod->getClass($accountObj->getIdAccount());
+                            foreach ($listInfoClass as $key=> $value){
+                                echo '<br />'.$value ;
+                            }
+                            ?>
+                            </span>
+                        </div>
+                        <div class="col-sm-6 form-group">
+                            <label>Chi hội: </label>
+                            <span class="form-control-static">
+                            <?php
+                            $listInfoBranch = $accountMod->getBranch($accountObj->getIdAccount());
+                            foreach ($listInfoBranch as $key=> $value){
+                                echo '<br />'.$value ;
+                            }
+                            ?>
+
+                            </span>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-12 form-group">
+                            <label>Phân quyền: </label>
+                            <span class="form-control-static"><?php echo $accountObj->getPermission_position(); ?></span>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Đóng</button>
+                </div>
             </div>
         </div>
     </div>
-</div>
+    <script>
+        $(function () {
+            $('#infoTeacher').modal('toggle');
+            var url = window.location.href;
+            url = url.replace(/\?.+/, '');
+            window.history.pushState({path: url}, '', url);
+        });
+    </script>
+<?php } ?>

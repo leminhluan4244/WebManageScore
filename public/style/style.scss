@@ -10,6 +10,7 @@ $text_color: #ffffff;
 $dark_color: gray;
 
 .banner{
+  //position: relative;
   color: $text_color;
   background-color: $main_color;
   padding: 10px;
@@ -27,6 +28,15 @@ $dark_color: gray;
     padding-top: 30px;
     //border: 1px solid #fff;
     float: right;
+  }
+
+  #accountInfo{
+    //position: absolute;
+    //top: 10px;
+    //right: 10px;
+    padding: 5px 0 0 0 ;
+    margin: 0;
+    font-weight: bold;
   }
 
   @media only screen and (max-width: 768px){
@@ -160,6 +170,6 @@ footer{
   }
 }
 
-#student-manage-wrapper{
-
+.div-btn-grading{
+  margin-right: 10px;
 }

@@ -10,6 +10,10 @@
     width: 220px;
     padding-top: 30px;
     float: right; }
+  .banner #accountInfo {
+    padding: 5px 0 0 0;
+    margin: 0;
+    font-weight: bold; }
   @media only screen and (max-width: 768px) {
     .banner .logo {
       width: 100%;
@@ -86,5 +90,8 @@ footer {
 .academy-action-list .table .btn-sm {
   padding: 3px 7px;
   margin: 0; }
+
+.div-btn-grading {
+  margin-right: 10px; }
 
 /*# sourceMappingURL=style.css.map */

@@ -1,46 +1,48 @@
 <div class="">
 
-    <!--Start list staff-->
+    <!--Start list student-->
     <?php
     require "../controller/staff/staff.table.php";
     ?>
-    <!--End list staff>
+    <!--End list student>
 
-    <!--Start staff add button-->
-    <form action="" class="form-inline">
-        <a class="btn btn-primary col align-self-center " data-toggle="modal" data-target="#addStaff">
-            <span class="glyphicon glyphicon-plus"></span> Thêm mới bộ
-        </a>
-        <a class="btn btn-warning col align-self-center " data-toggle="modal" data-target="#updateStaff">
-            <span class="glyphicon glyphicon-pencil"></span> Sửa đổi
-        </a>
-        <a class="btn btn-danger col align-self-center " data-toggle="modal" data-target="#deleteStaff">
-            <span class="glyphicon glyphicon-trash"></span> Xóa
-        </a>
-    </form>
-    <!-- End staff add button-->
-    <!-- Start add staff-->
-    <?php
-    require "../controller/staff/staff.add.php";
-    ?>
-    <!-- End add staff-->
+    <!--Start student add button-->
+    <div class="text-center">
+        <form action="" class="form-inline">
+            <a class="btn btn-primary col align-self-center " data-toggle="modal" data-target="#addStaff">
+                <span class="glyphicon glyphicon-plus"></span> Thêm mới cán bộ
+            </a>
+<!--            <a class="btn btn-warning col align-self-center " data-toggle="modal" data-target="#updateTeacher">-->
+<!--                <span class="glyphicon glyphicon-pencil"></span> Sửa đổi-->
+<!--            </a>-->
+<!--            <a class="btn btn-danger col align-self-center " data-toggle="modal" data-target="#deleteTeacher">-->
+<!--                <span class="glyphicon glyphicon-trash"></span> Xóa-->
+<!--            </a>-->
+        </form>
+    </div>
+    <!-- End student add button-->
+    <!-- Start add student-->
+<?php
+   require "../controller/staff/staff.add.php";
+   ?>
+    <!-- End add student-->
 
-    <!-- Start infor staff-->
+    <!-- Start infor student-->
     <?php
     require "../controller/staff/staff.info.php";
     ?>
-    <!-- End infor staff-->
+    <!-- End infor student-->
 
-    <!--Start update staff-->
+    <!--Start update student-->
     <?php
     require "../controller/staff/staff.update.php";
     ?>
-    <!--End update staff-->
+    <!--End update student-->
 
-    <!--Start delete staff-->
-    <?php
-    require "../controller/staff/staff.delete.php";
-    ?>
-    <!--End delete staff-->
+    <!--Start delete student-->
+<!--    --><?php
+//    require "../controller/staff/staff.delete.php";
+//    ?>
+    <!--End delete student-->
 
 </div>

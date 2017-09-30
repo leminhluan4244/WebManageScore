@@ -92,7 +92,7 @@ INSERT INTO `permission` (`position`, `power`,`selected`) VALUES ('Quản lý k
 INSERT INTO `permission` (`position`, `power`,`selected`) VALUES ('Quản lý khoa', 'Thêm bảng điểm cộng trừ cho khoa - viện',1);
 INSERT INTO `permission` (`position`, `power`,`selected`) VALUES ('Quản lý chi hội', 'Thêm bảng điểm cộng trừ cho sinh viên theo chi hội',1);
 INSERT INTO `permission` (`position`, `power`,`selected`) VALUES ('Quản lý chi hội', 'Quản lý thành viên chi hội',1);
-INSERT INTO `permission` (`position`, `power`,`selected`) VALUES ('Quản trị viên', 'Full ',1);
+INSERT INTO `permission` (`position`, `power`,`selected`) VALUES ('Admin', 'Full ',1);
 INSERT INTO `permission` (`position`, `power`,`selected`) VALUES ('Default', 'Not ',1);
 /*Dữ liệu mẫu 5 Tài khoản*/
 INSERT INTO `account` (`idAccount`, `accountName`, `birthday`, `address`, `sex`, `phone`, `email`, `password`, `Permission_position`)
