@@ -59,11 +59,12 @@ footer {
   #table-score tbody .section-4 td:first-child:before {
     content: ' ▪ ';
     padding: 0 0 0 20px; }
-  #table-score tbody .input-number {
-    width: 67px;
+  #table-score tbody .input-number, #table-score tbody .select-score {
+    width: 60px;
     border: 1px solid lightgray;
     border-radius: 3px;
-    padding: 3px; }
+    padding: 2px;
+    margin: 0; }
   @media only screen and (min-width: 481px) and (max-width: 768px) {
     #table-score tbody tr td:first-child {
       max-width: 300px !important;

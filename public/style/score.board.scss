@@ -119,12 +119,14 @@ footer{
       padding: 0 0 0 20px;
 
     }
-    .input-number{
-      width: 67px;
+    .input-number, .select-score{
+      width: 60px;
       border: 1px solid lightgray;
       border-radius: 3px;
-      padding: 3px;
+      padding: 2px;
+      margin: 0;
     }
+
     tr{
       @media only screen and (min-width: 481px) and (max-width: 768px) {
         td:first-child{

@@ -74,7 +74,7 @@ class TranscriptTree {
 		return count($this->getAllDirectChildOf($nodeId)) == 0;
 	}
 
-	public function isLastChildOfRoot($nodeId){
+	public function isLastChildOfRoot($nodeId) {
 		$children = $this->getAllDirectChildOf(TR_ROOT);
 		foreach ($children as $child) {
 			if (strtolower($child['idItem']) == strtolower($nodeId) &&
@@ -84,7 +84,7 @@ class TranscriptTree {
 		return false;
 	}
 
-	public function isChildOfRoot($nodeId){
+	public function isChildOfRoot($nodeId) {
 		return $this->data[$nodeId]["IDParent"] == TR_ROOT;
 	}
 
@@ -112,7 +112,7 @@ class TranscriptTree {
 		return $children[0];
 	}
 
-	public function calculateSummaryScore(){
+	public function calculateSummaryScore() {
 		$this->scoreList["finalScore"] = 0;
 		$this->scoreList["studentScore"] = 0;
 		$this->scoreList["adviserScore"] = 0;
@@ -141,10 +141,10 @@ class TranscriptTree {
 		return null;
 	}
 
-	public function PreOrderTreeToGetAllChildIdOf($nodeId, &$listId){
+	public function PreOrderTreeToGetAllChildIdOf($nodeId, &$listId) {
 		$listId[] = $nodeId;
 		$node = $this->getLeftMostChildOf($nodeId)["idItem"];
-		while (!empty($node)){
+		while (!empty($node)) {
 			$this->PreOrderTreeToGetAllChildIdOf($node, $listId);
 			$node = $this->getNextSiblingOf($node)["idItem"];
 		}
@@ -173,39 +173,43 @@ class TranscriptTree {
 	}
 
 	function getLeafHTML($nodeId) {
+		$inputName = str_replace(".", "_", $nodeId);
+		$itemName = $this->data[$nodeId]["itemName"];
+		$min = 0;
+		$max = $this->data[$nodeId]["scoresMax"];
+		$studentScore = $this->data[$nodeId]["scoresStudent"];
+		$adviserScore = $this->data[$nodeId]["scoresTeacher"];
+		$finalScore = $this->data[$nodeId]["scores"];
+
 		$htmlText = "";
-		$htmlText .= "<td>" . str_replace("-", "", $this->data[$nodeId]["itemName"]) . "</td>";
-		$htmlText .= "<td>{$this->data[$nodeId]["scoresMax"]}</td>";
-		$nodeName = str_replace(".", "_", $nodeId);
-		if ($this->isLastChildOfRoot($nodeId)){
+		$htmlText .= "<td>" . str_replace("-", "", $itemName) . "</td>";
+		$htmlText .= "<td>$max</td>";
+		if ($this->isLastChildOfRoot($nodeId)) {
 			$htmlText .= "<td>{$this->scoreList["studentScore"]}</td>";
 			$htmlText .= "<td>{$this->scoreList["adviserScore"]}</td>";
 			$htmlText .= "<td>{$this->scoreList["finalScore"]}</td>";
 			return $htmlText;
 		}
-		if ($this->privilege == STUDENT){
-			$htmlText .= "<td><input type='number' name='{$nodeName}' class='input-number' min='0' 
-				max='{$this->data[$nodeId]["scoresMax"]}' value='{$this->data[$nodeId]["scoresStudent"]}'></td>";
-			$htmlText .= "<td>{$this->data[$nodeId]["scoresTeacher"]}</td>";
-			$htmlText .= "<td>{$this->data[$nodeId]["scores"]}</td>";
+		if ($this->privilege == STUDENT) {
+			$htmlText .= "<td>" . self::generateSelect($inputName, $min, $max, $studentScore, "select-score") . "</td>";
+			$htmlText .= "<td>$adviserScore</td>";
+			$htmlText .= "<td>$finalScore</td>";
 		}
-		if ($this->privilege == ADVISER){
-			$htmlText .= "<td>{$this->data[$nodeId]["scoresStudent"]}</td>";
-			$htmlText .= "<td><input type='number' name='{$nodeName}' class='input-number' min='0' 
-				max='{$this->data[$nodeId]["scoresMax"]}' value='{$this->data[$nodeId]["scoresTeacher"]}'></td>";
-			$htmlText .= "<td>{$this->data[$nodeId]["scores"]}</td>";
+		if ($this->privilege == ADVISER) {
+			$htmlText .= "<td>$studentScore</td>";
+			$htmlText .= "<td>" . self::generateSelect($inputName, $min, $max, $adviserScore, "select-score") . "</td>";
+			$htmlText .= "<td>$finalScore</td>";
 		}
-		if ($this->privilege == ACA_ADMIN){
-			$htmlText .= "<td>{$this->data[$nodeId]["scoresStudent"]}</td>";
-			$htmlText .= "<td>{$this->data[$nodeId]["scoresTeacher"]}</td>";
-			$htmlText .= "<td><input type='number' name='{$nodeName}' class='input-number' min='0' 
-				max='{$this->data[$nodeId]["scoresMax"]}' value='{$this->data[$nodeId]["scores"]}'></td>";
+		if ($this->privilege == ACA_ADMIN) {
+			$htmlText .= "<td>$studentScore</td>";
+			$htmlText .= "<td>$adviserScore</td>";
+			$htmlText .= "<td>" . self::generateSelect($inputName, $min, $max, $finalScore, "select-score") . "</td>";
 		}
 		return $htmlText;
 	}
 
 	function getNonLeafHTML($nodeId) {
-		if ($this->isChildOfRoot($nodeId)){
+		if ($this->isChildOfRoot($nodeId)) {
 			$htmlText = "";
 			$htmlText .= "<td>" . str_replace("-", "", $this->data[$nodeId]["itemName"]) . "</td>";
 			$htmlText .= "<td>{$this->data[$nodeId]["scoresMax"]}</td>";
@@ -215,5 +219,19 @@ class TranscriptTree {
 			return $htmlText;
 		}
 		return "<td colspan='5'>" . str_replace("-", "", $this->data[$nodeId]["itemName"]) . "</td>";
+	}
+
+	static function generateSelect($name, $min, $max, $val, $class) {
+		$htmlText = "";
+		$htmlText .= "<select name='$name' class='$class'>";
+		for ($i = $min; $i <= $max; $i++) {
+			$htmlText .= "<option value='$i' " . (($i == $val) ? "selected" : "") . " >$i</option>";
+		}
+		$htmlText .= "</select>";
+		return $htmlText;
+	}
+
+	static function generateSpinner($name, $min, $max, $val, $class) {
+		return "<input type='number' name='{$name}' class='$class' min='$min' max='{$max}' value='{$val}'>";
 	}
 }
