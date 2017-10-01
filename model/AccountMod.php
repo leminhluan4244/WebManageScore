@@ -256,6 +256,129 @@
           //Trả đối tượng đi, sau này lớp control sẽ sử dụng mảng này để truy xuất
           return $list;
       }
+      public function getAccountStudentByAcademy($id){
+          // Tạo ra một mảng lưu trữ tên list, mặc định bang đầu rỗng
+          $list = array();
+          // Đẩy câu lệnh vào string
+          $sql = "SELECT * FROM account, account_has_academy 
+                    WHERE account.idAccount = account_has_academy.Account_idAccount AND
+                    account_has_academy.Academy_idAcademy = '".$id."' AND (
+                    account.Permission_position == 'Quản lý chi hội' OR
+                    account.Permission_position == 'Sinh viên');";
+          $this->conn2sql->Connect();
+          $result = $this->conn2sql->conn->query($sql);
+          // Kiểm tra số lượng kết quả trả về có lơn hơn 0
+          // Nếu lớn hơn tức là có kết quả, ngược lại sẽ không có kết quả
+          if ($result->num_rows > 0) {
+              // Sử dụng vòng lặp while để lặp kết quả
+              $k = 0;
+              //Tạo một đối tượng chứa
+              while ($row = $result->fetch_assoc()) {
+                  //Cho vào list đối tượng
+                  $account = new AccountObj;
+                  $account->setIdAccount($row["idAccount"]);
+                  $account->setAccountName($row["accountName"]);
+                  $account->setBirthday($row["birthday"]);
+                  $account->setAddress($row["address"]);
+                  $account->setSex($row["sex"]);
+                  $account->setPhone($row["phone"]);
+                  $account->setEmail($row["email"]);
+                  $account->setPassword($row["password"]);
+                  $account->setPermission_position($row["Permission_position"]);
+                  $list[$k] = $account;
+                  $k++;
+              }
+          } else {
+              return 0;
+              //echo "Không có kết quả nào";
+          }
+          //Ngắt kết nối
+          $this->conn2sql->Stop();
+          //Trả đối tượng đi, sau này lớp control sẽ sử dụng mảng này để truy xuất
+          return $list;
+      }
+      public function getAccountStudentByBranch($id){
+          // Tạo ra một mảng lưu trữ tên list, mặc định bang đầu rỗng
+          $list = array();
+          // Đẩy câu lệnh vào string
+          $sql = "SELECT * FROM account, account_has_branch 
+                    WHERE account.idAccount = account_has_branch.Account_idAccount AND
+                    account_has_branch.Branch_idBranch = '".$id."' AND (
+                    account.Permission_position == 'Quản lý chi hội' OR
+                    account.Permission_position == 'Sinh viên');";
+          $this->conn2sql->Connect();
+          $result = $this->conn2sql->conn->query($sql);
+          // Kiểm tra số lượng kết quả trả về có lơn hơn 0
+          // Nếu lớn hơn tức là có kết quả, ngược lại sẽ không có kết quả
+          if ($result->num_rows > 0) {
+              // Sử dụng vòng lặp while để lặp kết quả
+              $k = 0;
+              //Tạo một đối tượng chứa
+              while ($row = $result->fetch_assoc()) {
+                  //Cho vào list đối tượng
+                  $account = new AccountObj;
+                  $account->setIdAccount($row["idAccount"]);
+                  $account->setAccountName($row["accountName"]);
+                  $account->setBirthday($row["birthday"]);
+                  $account->setAddress($row["address"]);
+                  $account->setSex($row["sex"]);
+                  $account->setPhone($row["phone"]);
+                  $account->setEmail($row["email"]);
+                  $account->setPassword($row["password"]);
+                  $account->setPermission_position($row["Permission_position"]);
+                  $list[$k] = $account;
+                  $k++;
+              }
+          } else {
+              return 0;
+              //echo "Không có kết quả nào";
+          }
+          //Ngắt kết nối
+          $this->conn2sql->Stop();
+          //Trả đối tượng đi, sau này lớp control sẽ sử dụng mảng này để truy xuất
+          return $list;
+      }
+      public function getAccountStudentByClass($id){
+          // Tạo ra một mảng lưu trữ tên list, mặc định bang đầu rỗng
+          $list = array();
+          // Đẩy câu lệnh vào string
+          $sql = "SELECT * FROM account, account_has_class 
+                    WHERE account.idAccount = account_has_class.Account_idAccount AND
+                    account_has_class.Class_idClass = '".$id."' AND (
+                    account.Permission_position == 'Quản lý chi hội' OR
+                    account.Permission_position == 'Sinh viên');";
+          $this->conn2sql->Connect();
+          $result = $this->conn2sql->conn->query($sql);
+          // Kiểm tra số lượng kết quả trả về có lơn hơn 0
+          // Nếu lớn hơn tức là có kết quả, ngược lại sẽ không có kết quả
+          if ($result->num_rows > 0) {
+              // Sử dụng vòng lặp while để lặp kết quả
+              $k = 0;
+              //Tạo một đối tượng chứa
+              while ($row = $result->fetch_assoc()) {
+                  //Cho vào list đối tượng
+                  $account = new AccountObj;
+                  $account->setIdAccount($row["idAccount"]);
+                  $account->setAccountName($row["accountName"]);
+                  $account->setBirthday($row["birthday"]);
+                  $account->setAddress($row["address"]);
+                  $account->setSex($row["sex"]);
+                  $account->setPhone($row["phone"]);
+                  $account->setEmail($row["email"]);
+                  $account->setPassword($row["password"]);
+                  $account->setPermission_position($row["Permission_position"]);
+                  $list[$k] = $account;
+                  $k++;
+              }
+          } else {
+              return 0;
+              //echo "Không có kết quả nào";
+          }
+          //Ngắt kết nối
+          $this->conn2sql->Stop();
+          //Trả đối tượng đi, sau này lớp control sẽ sử dụng mảng này để truy xuất
+          return $list;
+      }
     #Cập nhật thông tin tài khoản
 
     public function updateAccount($account){
@@ -342,6 +465,22 @@
           }
           return $list;
       }
+      public function getClassId($id)
+      {
+          $sql = "SELECT class.idClass FROM account,account_has_class,class WHERE account.idAccount = account_has_class.Account_idAccount AND account_has_class.Class_idClass = class.idClass AND account.idAccount='".$id."';";
+          $this->conn2sql->Connect();
+          $result = $this->conn2sql->conn->query($sql);
+          $this->conn2sql->Stop();
+          if ($result->num_rows > 0) {
+              while ($row = $result->fetch_assoc()) {
+                  $list= $row["idClass"];
+              }
+
+          } else {
+              // echo "The result of information processing is data false";
+          }
+          return $list;
+      }
       public function getPermission($id)
       {
           $sql = "SELECT Permission_position FROM account WHERE  account.idAccount='".$id."';";
@@ -378,6 +517,23 @@
           }
           return $list;
       }
+      public function getAcademyId($id)
+      {
+          $sql = "SELECT academy.idAcademy FROM account,account_has_academy,academy WHERE account.idAccount = account_has_academy.Account_idAccount AND account_has_academy.Academy_idAcademy = academy.idAcademy AND account.idAccount='".$id."';
+";
+          $this->conn2sql->Connect();
+          $result = $this->conn2sql->conn->query($sql);
+          $this->conn2sql->Stop();
+          if ($result->num_rows > 0) {
+              while ($row = $result->fetch_assoc()) {
+                  $list = $row["idAcademy"];
+              }
+
+          } else {
+              // echo "The result of information processing is data false";
+          }
+          return $list;
+      }
       public function getBranch($id)
       {
           $sql = "SELECT branch.branchName FROM account,account_has_branch,branch WHERE account.idAccount = account_has_branch.Account_idAccount AND account_has_branch.Branch_idBranch = branch.idBranch AND account.idAccount='".$id."';
@@ -391,6 +547,23 @@
               while ($row = $result->fetch_assoc()) {
                   $list[$k] = $row["branchName"];
                   $k++;
+              }
+
+          } else {
+              // echo "The result of information processing is data false";
+          }
+          return $list;
+      }
+      public function getBranchId($id)
+      {
+          $sql = "SELECT branch.idBranch FROM account,account_has_branch,branch WHERE account.idAccount = account_has_branch.Account_idAccount AND account_has_branch.Branch_idBranch = branch.idBranch AND account.idAccount='".$id."';
+";
+          $this->conn2sql->Connect();
+          $result = $this->conn2sql->conn->query($sql);
+          $this->conn2sql->Stop();
+          if ($result->num_rows > 0) {
+              while ($row = $result->fetch_assoc()) {
+                  $list = $row["idBranch"];
               }
 
           } else {

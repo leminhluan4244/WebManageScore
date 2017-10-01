@@ -105,7 +105,7 @@
               <form id="frm-detail" action="../controller/permission/permission.manage.update.php" method="post">
                 <div class="row">
                   <div class="col-sm-3">
-                    <label class="text-left"><input type="checkbox" id="id_0" name="checkbox[]" value="Chấm điểm rèn luyện cá nhân sinh viên">&nbsp; Chấm điểm rèn luyện cá nhân</labe>
+                    <label class="text-left"><input type="checkbox" id="id_0" name="checkbox[]" value="Chấm điểm rèn luyện cá nhân sinh viên">&nbsp; Chấm điểm rèn luyện cá nhân</label>
                     </div>
           <div class="col-sm-3">
             <label><input type="checkbox" id="id_1" name="checkbox[]" value="Chấm điểm cho một lớp">&nbsp;Chấm điểm cho một lớp</label>

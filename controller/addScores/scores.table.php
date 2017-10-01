@@ -1,20 +1,26 @@
 <hr />
 <?php
-  #trước hết xét xem có truyền id sang không
-    if(isset($_POST['id'])) {
-        #nếu truyền sang thì: (đưa dữ liệu vào mảng temp)
-            $permissionMod = new PermissionMod();
-            $permissionAcc = $accountMod->getPermission($_POST['id']);
-            $list = $permissionMod->selectPower($permissionAcc);
-            foreach ($list as $key => $value){
-                #nếu có là nguoi quản lý thì show ra các bảng điểm mà người đó đã thêm
-                if($value=='Thêm bảng điểm cộng trừ cho lớp' || $value=='Thêm bảng điểm cộng trừ cho khoa' ||$value=='Thêm bảng điểm cộng trừ cho sinh viên theo chi hội'){
-                        $scoreadd = new ScoresAddMod();
-                        $temp = $scoreadd->getScoresAddByAccount($_POST['id']);
-                        break;
-                }
-            }
+    #Khoi tao di tuong chua
+    $accountM  = new AccountMod();
+  #Kiem tra xe thuoc phan quyen nao
+    foreach ($power as $key => $value){
+        #la quan ly khoa thi cho xem danh sach hoc sinh khoa
+        if($value=='Thêm bảng điểm cộng trừ cho khoa - viện'){
+            $tempid = $accountM->getAcademyId($idLogin);
+            $temp = $accountM->getAccountStudentByAcademy($tempid);
+        }
+        #la quan ly chi hoi cho xem danh sach chi hoi va khong co nut loc theo lop
+        if($value=='Thêm bảng điểm cộng trừ cho lớp'){
+            $tempid = $accountM->getCLassId($idLogin);
+            $temp = $accountM->getAccountStudentByClass($tempid);
+        }
+        #la quan ly lop hoc cho xem danh sach cac lop
+        if($value=='Thêm bảng điểm cộng trừ cho sinh viên theo chi hội'){
+            $tempid = $accountM->getBrachId($idLogin);
+            $temp = $accountM->getAccountStudentByBranch($tempid);
+        }
     }
+
 
 ?>
 
@@ -24,10 +30,10 @@
     <thead>
     <tr>
         <th>STT</th>
-        <th>Mã bảng điểm</th>
-        <th>Tên bảng điểm</th>
-        <th>Mô tả</th>
-        <th>Danh mục tác động</th>
+        <th>Mã số sinh viên</th>
+        <th>Tên sinh viên</th>
+        <th>Lớp</th>
+        <th>Khoa</th>
         <th>Tùy chỉnh</th>
         <th>Chọn tất cả <br /><input type="checkbox" onClick="toggle(this)"></th>
     </tr>
@@ -35,31 +41,33 @@
     <tbody class="text-center align-self-center">
     <?php
     $i=0;
-    if($temp>0)
-    foreach ($temp as $key=>$value){
-        echo '<tr>
-        <td>'.++$i.'</td>
+
+    if($temp>0) {
+        $accountTemp = new AccountMod();
+        foreach ($temp as $key => $value) {
+            $class = $accountM->getClass($value->getIdAccount());
+            $academy = $accountM->getAcademy($value->getIdAccount());
+            echo '<tr>
+        <td>' . ++$i . '</td>
         <td>
-            '.$value->getIdScores().'
+            ' . $value->getIdAccount() . '
         </td>
         <td>
-            '.$value->getScoreName().'
+            ' . $value->getAccountName() . '
         </td>
         <td>
-            '.$value->getScores().'
+            ' . $class[0] . '
         </td>
         <td>
-            '.$value->getDecribe().'
+            ' .$academy[0].'
         </td>
         <td>
-            '.$value->getTranscript_idItem().'
+            <a href="?idScoreAdd=' . $value->getIdScore() . '" class="btn btn-primary btn-sm"><span class="glyphicon glyphicon-pencil"></span></a>
         </td>
-        <td>
-            <a href="?idScoreAdd='.$value->getIdScore().'" class="btn btn-primary btn-sm"><span class="glyphicon glyphicon-pencil"></span></a>
-        </td>
-        <td><input type="checkbox" name="xoa[]" id="'.$value->getIdScore().'" value="'.$value->getIdScore().'"/> </td>
+        <td><input type="checkbox" name="xoa[]" id="' . $value->getIdScore() . '" value="' . $value->getIdScore() . '"/> </td>
        
     </tr>';
+        }
     }
 
     ?>
