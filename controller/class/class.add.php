@@ -15,7 +15,7 @@ if(isset($_POST['btnAdd'])) {
                             <div class="modal-header">
 
                                 <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                                <h4 class="modal-title">Thêm mới khoa viện</h4>
+                                <h4 class="modal-title">Thêm mới lớp</h4>
                             </div>
                             <div class="modal-body ">
                                 <form action="class.manage.php" method="post">

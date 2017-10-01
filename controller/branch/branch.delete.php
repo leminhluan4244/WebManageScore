@@ -8,7 +8,7 @@ if(isset($_POST['xoa'])) {
     foreach ($_POST['xoa'] as $key=> $value){
             $branchO->setIdBranch($value);
             $branchM->deleteBranch($branchO);
-        echo'<META http-equiv="refresh" content="0;URL=branch.manage.php">';
+       // echo'<META http-equiv="refresh" content="0;URL=branch.manage.php">';
     }
 
 

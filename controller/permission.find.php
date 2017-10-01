@@ -11,7 +11,7 @@
         {
            $permissionMod = new PermissionMod();
            $power = $permissionMod->selectPower(getLoggedAccountInfo()["permission"]);
-//           var_dump($power);
+//          var_dump($power);
         }
 // Lưu ý : để sử dụng được phần này thì các trang phải đặt id tài khoản đăng nhập vào với tên là $idLogin, khi gọi đến trang khác thì truyền nó đi theo bằng post
 ?>

@@ -33,10 +33,10 @@ class ClassMod {
     public function updateClass($class)
     {
         $sql = "UPDATE Class SET 
-                        idClass='".$class->getIdClass()."',
                         className='".$class->getClassName()."',
-                        schoolYear='".$class->getSchoolYear()."' 
-                        WHERE Academy_idAcademy='".$class->getAcademy_idAcademy()."'";
+                        schoolYear='".$class->getSchoolYear()."',
+                         Academy_idAcademy='".$class->getAcademy_idAcademy()."'
+                        WHERE idClass='".$class->getIdClass()."'";
         $this->connSql->Connect();
         if ($this->connSql->conn->query($sql) === true) {
           //  echo "Updation is successful!";

@@ -9,7 +9,6 @@ else {
     $arrayBranch = $branchMod->findBranchByCity($_GET['city']);
 
 }
-
 ?>
 <table class="table table-bordered table-condensed " id="table-manage-branch">
 
