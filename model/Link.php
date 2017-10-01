@@ -11,6 +11,7 @@ require_once "../model/AccountMod.php";
 require_once "../model/AccountObj.php";
 require_once "../model/BrachMod.php";
 require_once "../model/BranchObj.php";
+require_once "../model/CalendarScoringMod.php";
 require_once "../model/CalendarScoringObj.php";
 require_once "../model/ClassMod.php";
 require_once "../model/ClassObj.php";

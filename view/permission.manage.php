@@ -51,17 +51,30 @@
           $("#btn-person-group").addClass("active");
           $("#div-person-group").show();
           $("#div-add-permission").hide();
+          $("#div-delete-permission").hide();
           $("#btn-person-group").click(function() {
             $("#btn-person-group").addClass("active");
             $("#btn-add-permission").removeClass("active");
+            $("#div-delete-permission").removeClass("active");
             $("#div-person-group").show();
             $("#div-add-permission").hide();
+            $("#div-delete-permission").hide();
           });
           $("#btn-add-permission").click(function() {
             $("#btn-person-group").removeClass("active");
             $("#btn-add-permission").addClass("active");
+            $("#div-delete-permission").removeClass("active");
             $("#div-person-group").hide();
             $("#div-add-permission").show();
+            $("#div-delete-permission").hide();
+          });
+          $("#btn-delete-permission").click(function() {
+            $("#btn-person-group").removeClass("active");
+            $("#btn-add-permission").removeClass("active");
+            $("#div-delete-permission").addClass("active");
+            $("#div-person-group").hide();
+            $("#div-add-permission").hide();
+            $("#div-delete-permission").show();
           });
           $("#btn-edit").prop("value", $("#select").val());
           $("#select").change(function() {
@@ -75,6 +88,7 @@
         <div class="btn-group">
           <button id="btn-person-group" class="btn btn-primary">Cài đặt phân quyền theo nhóm người dùng</button>
           <button id="btn-add-permission" class="btn btn-primary">Thêm mới phân quyền theo nhóm người dùng</button>
+          <button id="btn-delete-permission" class="btn btn-primary">Xóa phân quyền theo nhóm người dùng</button>
         </div>
         <div id="div-person-group" class="academy-action-list">
           <div class="row">

@@ -6,9 +6,6 @@
  * Cập nhật: 21/08/2017
  * Trạng thái: đã test thành công
  */
- require 'ConnectToSQL.php';
- require 'AccountObj.php';
- require 'CalendarScoringObj.php';
   class CalendarScoringMod{
     function __construct(){
       $this->conn2sql = new ConnectToSQL();
@@ -76,6 +73,28 @@
       } else {
         return false;
       }
+    }
+    public function getCalendarWithPermissionPosition($Permission_position){
+      $sql = "SELECT * FROM `calendarscoring` WHERE `Permission_position` = '".$Permission_position."'";
+      $this->conn2sql->Connect();
+      $result = $this->conn2sql->conn->query($sql);
+      if(empty($result)){
+        return [];
+      }
+      $this->conn2sql->Connect();
+      $result = $this->conn2sql->conn->query($sql);
+      $this->conn2sql->Stop();
+      $row = $result->fetch_row();
+      if($result->num_rows == 0){
+        return [];
+      }
+      $i = 0;
+      $arr = array(
+        'openDate'=> $row[$i++],
+        'closeDate'=> $row[$i++],
+        'Permission_position'=> $row[$i++]
+      );
+      return $arr;
     }
   }
   #$newCalendar = new CalendarScoringMod();
