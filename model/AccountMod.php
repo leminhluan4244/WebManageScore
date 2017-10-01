@@ -332,9 +332,9 @@ class AccountMod {
 		// Đẩy câu lệnh vào string
 		$sql = "SELECT * FROM account, account_has_academy
                     WHERE account.idAccount = account_has_academy.Account_idAccount AND
-                    account_has_academy.Academy_idAcademy = '" . $id . "' AND
-                    account.Permission_position = 'Quản lý chi hội' AND
-                    ACCOUNT.Permission_position = 'Sinh viên';";
+                    account_has_academy.Academy_idAcademy = '".$id."' AND (
+                    account.Permission_position = 'Quản lý chi hội'OR
+                    ACCOUNT.Permission_position = 'Sinh viên');";
 		$this->conn2sql->Connect();
 		$result = $this->conn2sql->conn->query($sql);
 		// Kiểm tra số lượng kết quả trả về có lơn hơn 0
@@ -380,9 +380,9 @@ class AccountMod {
 		$sql = "SELECT * FROM account, account_has_class
                     WHERE account.idAccount = account_has_class.Account_idAccount AND
                     account_has_academy.Class_idClass
-                     = '" . $id . "' AND
-                    account.Permission_position = 'Quản lý chi hội' AND
-                    ACCOUNT.Permission_position = 'Sinh viên';";
+                     = '" . $id . "' AND (
+                    account.Permission_position = 'Quản lý chi hội' OR
+                    ACCOUNT.Permission_position = 'Sinh viên');";
 		$this->conn2sql->Connect();
 		$result = $this->conn2sql->conn->query($sql);
 		// Kiểm tra số lượng kết quả trả về có lơn hơn 0
@@ -423,9 +423,9 @@ class AccountMod {
 		$sql = "SELECT * FROM account, account_has_branch
                     WHERE account.idAccount = account_has_branch.Account_idAccount AND
                     account_has_academy.Class_idClass
-                     = '" . $id . "' AND
-                    account.Permission_position = 'Quản lý chi hội' AND
-                    ACCOUNT.Permission_position = 'Sinh viên';";
+                     = '" . $id . "' AND (
+                    account.Permission_position = 'Quản lý chi hội' OR
+                    ACCOUNT.Permission_position = 'Sinh viên');";
 		$this->conn2sql->Connect();
 		$result = $this->conn2sql->conn->query($sql);
 		// Kiểm tra số lượng kết quả trả về có lơn hơn 0
