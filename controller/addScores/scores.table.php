@@ -5,24 +5,26 @@
   #Kiem tra xe thuoc phan quyen nao
     foreach ($power as $key => $value){
         #la quan ly khoa thi cho xem danh sach hoc sinh khoa
-        if($value=='Thêm bảng điểm cộng trừ cho khoa - viện'){
+        if($value=='Thêm bảng điểm cộng trừ cho khoa - viện'){
             $tempid = $accountM->getAcademyId($idLogin);
+            var_dump($tempid);
             $temp = $accountM->getAccountStudentByAcademy($tempid);
-            var_dump($temp);
+          echo ' 1';
+          break;
         }
         #la quan ly chi hoi cho xem danh sach chi hoi va khong co nut loc theo lop
         else if($value=='Thêm bảng điểm cộng trừ cho lớp'){
             $tempid = $accountM->getCLassId($idLogin);
             $temp = $accountM->getAccountStudentByClass($tempid);
+            break;
         }
         #la quan ly lop hoc cho xem danh sach cac lop
-        else if($value=='Thêm bảng điểm cộng trừ cho sinh viên theo chi hội'){
+        else if($value=='Thêm bảng điểm cộng trừ cho sinh viên theo chi hội') {
             $tempid = $accountM->getBrachId($idLogin);
             $temp = $accountM->getAccountStudentByBranch($tempid);
+            echo '3';
+            break;
         }
-         else {
-            $temp=0;
-         }
     }
 
 
