@@ -64,6 +64,10 @@ class StructureTree {
 		return strtolower($children[$len-1]['idItem']) == strtolower($nodeId);
 	}
 
+	public function isChildOfRoot($nodeId){
+		return $this->data[$nodeId]["IDParent"] == ST_ROOT;
+	}
+
 	public function getAllDirectChildOf($nodeId) {
 		$children = [];
 		foreach ($this->data as $child) {
@@ -177,7 +181,7 @@ class StructureTree {
 		$htmlText .= "<td>{$this->data[$nodeId]["scores"]}</td>";
 		$htmlText .=
 			"<td>
-				<form action='../controller/structure/structure.delete.php' method='post'>
+				<form action='?a=delete' method='post'>
 					<input type='hidden' name='id' value='{$this->data[$nodeId]["idItem"]}'>
 					<input type='hidden' name='requestName' value='delete'>
 					<a href='?a=edit&id={$this->data[$nodeId]["idItem"]}' class='btn btn-primary btn-sm'>Sửa</a>
@@ -190,7 +194,12 @@ class StructureTree {
 	}
 
 	function getNonLeafHTMLEditMode($nodeId) {
-		$html = "<td colspan='2'>" . str_replace("-", "", $this->data[$nodeId]["itemName"]) . "</td>";
+		$html = "<td>" . str_replace("-", "", $this->data[$nodeId]["itemName"]) . "</td>";
+		if ($this->isChildOfRoot($nodeId)){
+			$html = "<td>" . str_replace("-", "", $this->data[$nodeId]["itemName"]) . "</td>";
+			$html .= "<td>{$this->data[$nodeId]["scores"]}</td>";
+		} else
+			$html = "<td colspan='2'>" . str_replace("-", "", $this->data[$nodeId]["itemName"]) . "</td>";
 		$html .=
 			"<td>
 				<form action='../controller/structure/structure.delete.php' method='post'>

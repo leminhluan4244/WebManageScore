@@ -9,7 +9,6 @@
 if (empty($trTree))
 	return;
 ?>
-<h4 class="text-center text-primary">Chấm điểm rèn luyện</h4>
 <div class="form-grading">
     <form method="post">
         <div class="table-score-wrapper">
@@ -38,7 +37,7 @@ if (empty($trTree))
                 <span class="glyphicon glyphicon-ok"></span>
                 Lưu lại
             </button>
-            <a class="btn btn-default" href="main.php">
+            <a class="btn btn-default" href="<?php echo $privilege == STUDENT ? 'main.php': 'grading.php' ?>">
                 <span class="glyphicon glyphicon-backward"></span>
                 Quay về
             </a>

@@ -5,6 +5,8 @@
  * Date: 19/9/2017
  * Time: 10:32 PM
  */
+if (!defined("IN_STR"))
+	die("Bad request!!!");
 if (empty($tree))
 	return;
 ?>

@@ -7,247 +7,287 @@
  * Time: 7:55 SA
  */
 class ClassMod {
-    private $connSql;
+	private $connSql;
 
-    function __construct() {
-        $this->connSql = new ConnectToSQL();
-    }
+	function __construct() {
+		$this->connSql = new ConnectToSQL();
+	}
 
-    // 1. Hàm thêm một lớp học
-    public function addClass($class) {
-        $sql = "INSERT INTO Class(idClass, className, schoolYear, Academy_idAcademy) 
+	// 1. Hàm thêm một lớp học
+	public function addClass($class) {
+		$sql = "INSERT INTO Class(idClass, className, schoolYear, Academy_idAcademy) 
 						VALUES('" . $class->getIdClass() . "',
 						'" . $class->getClassName() . "',
 						'" . $class->getSchoolYear() . "',
 						'" . $class->getAcademy_idAcademy() . "');";
-        $this->connSql->Connect();
-        if ($this->connSql->conn->query($sql) === TRUE) {
-           // echo "Addition is successful! ";
-        } else {
-          //  echo "Addition is not successful! " . $this->connSql->error;
-        }
-        $this->connSql->Stop();
-    }
+		$this->connSql->Connect();
+		if ($this->connSql->conn->query($sql) === TRUE) {
+			// echo "Addition is successful! ";
+		} else {
+			//  echo "Addition is not successful! " . $this->connSql->error;
+		}
+		$this->connSql->Stop();
+	}
 
-    //2. Hàm cập nhật một lớp học
-    public function updateClass($class)
-    {
-        $sql = "UPDATE Class SET 
-                        className='".$class->getClassName()."',
-                        schoolYear='".$class->getSchoolYear()."',
-                         Academy_idAcademy='".$class->getAcademy_idAcademy()."'
-                        WHERE idClass='".$class->getIdClass()."'";
-        $this->connSql->Connect();
-        if ($this->connSql->conn->query($sql) === true) {
-          //  echo "Updation is successful!";
-        } else {
-            //echo "Updation is not successful!" . $this->connSql->error;
-        }
-        $this->connSql->Stop();
-    }
+	//2. Hàm cập nhật một lớp học
+	public function updateClass($class) {
+		$sql = "UPDATE Class SET 
+                        className='" . $class->getClassName() . "',
+                        schoolYear='" . $class->getSchoolYear() . "',
+                         Academy_idAcademy='" . $class->getAcademy_idAcademy() . "'
+                        WHERE idClass='" . $class->getIdClass() . "'";
+		$this->connSql->Connect();
+		if ($this->connSql->conn->query($sql) === true) {
+			//  echo "Updation is successful!";
+		} else {
+			//echo "Updation is not successful!" . $this->connSql->error;
+		}
+		$this->connSql->Stop();
+	}
 
-    //3. Hàm xóa một lớp học
-    public function deleteClass($class)
-    {
-        // Đẩy câu lệnh vào string
+	//3. Hàm xóa một lớp học
+	public function deleteClass($class) {
+		// Đẩy câu lệnh vào string
 
-        $sql1 = "DELETE FROM Account_has_Class 
+		$sql1 = "DELETE FROM Account_has_Class 
 						WHERE Class_idClass='" . $class->getIdClass() . "';";
-        $sql2 = "DELETE FROM class 
+		$sql2 = "DELETE FROM class 
 						WHERE idClass='" . $class->getIdClass() . "';";
-        // Thực thi câu lệnh
-        // Thực hiện câu truy vấn
-        $this->connSql->Connect();
-        if ($this->connSql->conn->query($sql1) === true && $this->connSql->conn->query($sql2)===true) {
-            //echo "Xóa thành công";
-            //Ngắt kết nối
-            $this->connSql->Stop();
-            return true;
-        } else {
-            // echo "Lỗi deletebranch";
-            //Ngắt kết nối
-            $this->connSql->Stop();
-            return false;
-        }
-    }
+		// Thực thi câu lệnh
+		// Thực hiện câu truy vấn
+		$this->connSql->Connect();
+		if ($this->connSql->conn->query($sql1) === true && $this->connSql->conn->query($sql2) === true) {
+			//echo "Xóa thành công";
+			//Ngắt kết nối
+			$this->connSql->Stop();
+			return true;
+		} else {
+			// echo "Lỗi deletebranch";
+			//Ngắt kết nối
+			$this->connSql->Stop();
+			return false;
+		}
+	}
 
-    //4. Hàm đếm số sinh viên trong một lớp học
-    public function countAccount($class)
-    {
-        $this->conn = new ConnectToSQL();
-        $sql = "SELECT count(*) FROM Account WHERE Class_idClass='".$class->getIdClass()."'";
-        $this->connSql->Connect();
-        $result = $this->connSql->conn->query($sql);
-        if ($result->num_rows > 0) {
-            while ($row = $result->fetch_assoc()) {
-               // echo $row["count(*)"];
-                return $row["count(*)"];
-            }
-        } else {
-           // echo 'error ';
-            return -1;
-        }
-        $this->connSql->Stop();
-    }
+	//4. Hàm đếm số sinh viên trong một lớp học
+	public function countAccount($class) {
+		$this->conn = new ConnectToSQL();
+		$sql = "SELECT count(*) FROM Account WHERE Class_idClass='" . $class->getIdClass() . "'";
+		$this->connSql->Connect();
+		$result = $this->connSql->conn->query($sql);
+		if ($result->num_rows > 0) {
+			while ($row = $result->fetch_assoc()) {
+				// echo $row["count(*)"];
+				return $row["count(*)"];
+			}
+		} else {
+			// echo 'error ';
+			return -1;
+		}
+		$this->connSql->Stop();
+	}
 
-    //5. Hàm trả về danh sách các lớp hiện có
-    public function getClass()
-    {
-        $sql = "SELECT * FROM Class";
-        $this->connSql->Connect();
-        $result = $this->connSql->conn->query($sql);
-        $list = array();
+	//5. Hàm trả về danh sách các lớp hiện có
+	public function getClass() {
+		$sql = "SELECT * FROM Class";
+		$this->connSql->Connect();
+		$result = $this->connSql->conn->query($sql);
+		$list = array();
 
-        if ($result->num_rows > 0) {
-            $k = 0;
-            while ($row = $result->fetch_assoc()) {
-                $classobj = new ClassObj();
-                $classobj->setIdClass($row["idClass"]);
-                $classobj->setClassName($row["className"]);
-                $classobj->setSchoolYear($row["schoolYear"]);
-                $classobj->setAcademy_idAcademy($row["Academy_idAcademy"]);
-                $list[$k] = $classobj;
-                $k++;
-            }
+		if ($result->num_rows > 0) {
+			$k = 0;
+			while ($row = $result->fetch_assoc()) {
+				$classobj = new ClassObj();
+				$classobj->setIdClass($row["idClass"]);
+				$classobj->setClassName($row["className"]);
+				$classobj->setSchoolYear($row["schoolYear"]);
+				$classobj->setAcademy_idAcademy($row["Academy_idAcademy"]);
+				$list[$k] = $classobj;
+				$k++;
+			}
 
-        } else {
-           // echo "The result of information processing is data false";
-        }
+		} else {
+			// echo "The result of information processing is data false";
+		}
 
-        $this->connSql->Stop();
-        return $list;
-    }
+		$this->connSql->Stop();
+		return $list;
+	}
 
-    //5. Hàm trả về danh sách các lớp hiện có
-    public function getClassNameOf($classId)
-    {
-        $sql = "SELECT className FROM Class where idClass = '$classId'";
-        $this->connSql->Connect();
-        $result = $this->connSql->conn->query($sql);
+	//5. Hàm trả về danh sách các lớp hiện có
+	public function getClassNameOf($classId) {
+		$sql = "SELECT className FROM Class where idClass = '$classId'";
+		$this->connSql->Connect();
+		$result = $this->connSql->conn->query($sql);
 		$this->connSql->Stop();
 		$className = "";
-        if (!empty($result)){
-            $className = $result->fetch_assoc()['className'];
-        }
-        return $className;
-    }
+		if (!empty($result)) {
+			$className = $result->fetch_assoc()['className'];
+		}
+		return $className;
+	}
 
-    //6. Hàm trả về danh sách các tài khoản sinh viên hiện có trong một lớp học
-    public function getListStudent($class)
-    {
+	//6. Hàm trả về danh sách các tài khoản sinh viên hiện có trong một lớp học
+	public function getListStudent($class) {
 
-        $sql = "SELECT * FROM Account,Account_has_Class WHERE Account.idAccount = Account_has_Class.Account_idAccount AND Account_has_Class.Class_idClass = '".$class->getIdClass()."'";
-        $this->connSql->Connect();
-        $result = $this->connSql->conn->query($sql);
+		$sql = "SELECT * FROM Account,Account_has_Class WHERE Account.idAccount = Account_has_Class.Account_idAccount AND Account_has_Class.Class_idClass = '" . $class->getIdClass() . "'";
+		$this->connSql->Connect();
+		$result = $this->connSql->conn->query($sql);
 
 		$list = array();
-        if ($result->num_rows > 0) {
-            $k = 0;
-            while ($row = $result->fetch_assoc()) {
-                $account = new AccountObj;
-                $account->setIdAccount($row["idAccount"]);
-                $account->setAccountName($row["accountName"]);
-                $account -> setBirthday($row["birthday"]);
-                $account -> setAddress($row["address"]);
-                $account -> setSex($row["sex"]);
-                $account -> setPhone($row["phone"]);
-                $account -> setEmail($row["email"]);
-                $account -> setPassword($row["password"]);
-                $account -> setPermission_position($row["Permission_position"]);
-                if($account->getPermission_position()=='Sinh viên' or $account->getPermission_position()=='Quản lý chi hội'){
-                    $list[$k] = $account;
-                    $k++;
-                }
+		if ($result->num_rows > 0) {
+			$k = 0;
+			while ($row = $result->fetch_assoc()) {
+				$account = new AccountObj;
+				$account->setIdAccount($row["idAccount"]);
+				$account->setAccountName($row["accountName"]);
+				$account->setBirthday($row["birthday"]);
+				$account->setAddress($row["address"]);
+				$account->setSex($row["sex"]);
+				$account->setPhone($row["phone"]);
+				$account->setEmail($row["email"]);
+				$account->setPassword($row["password"]);
+				$account->setPermission_position($row["Permission_position"]);
+				if ($account->getPermission_position() == 'Sinh viên' or $account->getPermission_position() == 'Quản lý chi hội') {
+					$list[$k] = $account;
+					$k++;
+				}
 
-            }
-        } else {
-           // echo "The result of information processing is data false";
-        }
-        $this->connSql->Stop();
-        return $list;
-    }
-    public function getListTeacher($class)
-    {
+			}
+		} else {
+			// echo "The result of information processing is data false";
+		}
+		$this->connSql->Stop();
+		return $list;
+	}
 
-        $sql = "SELECT * FROM Account,Account_has_Class WHERE Account_has_Class.Class_idClass = '".$class->getIdClass()."'";
-        $this->connSql->Connect();
-        $result = $this->connSql->conn->query($sql);
-        if ($result->num_rows > 0) {
-            $k = 0;
-            $list = array();
-            while ($row = $result->fetch_assoc()) {
-                $account = new AccountObj;
-                $account->setIdAccount($row["idAccount"]);
-                $account->setAccountName($row["accountName"]);
-                $account -> setBirthday($row["birthday"]);
-                $account -> setAddress($row["address"]);
-                $account -> setSex($row["sex"]);
-                $account -> setPhone($row["phone"]);
-                $account -> setEmail($row["email"]);
-                $account -> setPassword($row["password"]);
-                $account -> setPermission_position($row["permission_position"]);
-                if($account->getPermission_position()=='Cố vấn học tập'){
-                    $list[k] = $account;
-                    $k++;
-                }
-            }
-        } else {
-            // echo "The result of information processing is data false";
-        }
-        $this->connSql->Stop();
-        return $list;
-    }
+	public function getListTeacher($class) {
 
-    //7. Hàm tìm kiếm một lớp theo mã lớp hoc
-    public function findClassByID($classID)
-    {
+		$sql = "SELECT * FROM Account,Account_has_Class WHERE Account_has_Class.Class_idClass = '" . $class->getIdClass() . "'";
+		$this->connSql->Connect();
+		$result = $this->connSql->conn->query($sql);
+		if ($result->num_rows > 0) {
+			$k = 0;
+			$list = array();
+			while ($row = $result->fetch_assoc()) {
+				$account = new AccountObj;
+				$account->setIdAccount($row["idAccount"]);
+				$account->setAccountName($row["accountName"]);
+				$account->setBirthday($row["birthday"]);
+				$account->setAddress($row["address"]);
+				$account->setSex($row["sex"]);
+				$account->setPhone($row["phone"]);
+				$account->setEmail($row["email"]);
+				$account->setPassword($row["password"]);
+				$account->setPermission_position($row["permission_position"]);
+				if ($account->getPermission_position() == 'Cố vấn học tập') {
+					$list[k] = $account;
+					$k++;
+				}
+			}
+		} else {
+			// echo "The result of information processing is data false";
+		}
+		$this->connSql->Stop();
+		return $list;
+	}
 
-        $sql = "SELECT * FROM Class WHERE idClass='".$classID."'";
-        $this->connSql->Connect();
-        $result = $this->connSql->conn->query($sql);
+	//7. Hàm tìm kiếm một lớp theo mã lớp hoc
+	public function findClassByID($classID) {
 
-        if ($result->num_rows > 0) {
-            while ($row = $result->fetch_assoc()) {
-                $class = new ClassObj;
-                $class->setIdClass($row["idClass"]);
-                $class->setClassName($row["className"]);
-                $class->setSchoolYear($row["schoolYear"]);
-                $class->setAcademy_idAcademy($row["Academy_idAcademy"]);
-            }
-        } else {
-           // echo "Not Found";
-        }
-        $this->connSql->Stop();
-        return $class;
-    }
+		$sql = "SELECT * FROM Class WHERE idClass='" . $classID . "'";
+		$this->connSql->Connect();
+		$result = $this->connSql->conn->query($sql);
 
-    //8. Hàm tìm kiếm một lớp theo tên lớp
-    public function findClassByName($class)
-    {
+		if ($result->num_rows > 0) {
+			while ($row = $result->fetch_assoc()) {
+				$class = new ClassObj;
+				$class->setIdClass($row["idClass"]);
+				$class->setClassName($row["className"]);
+				$class->setSchoolYear($row["schoolYear"]);
+				$class->setAcademy_idAcademy($row["Academy_idAcademy"]);
+			}
+		} else {
+			// echo "Not Found";
+		}
+		$this->connSql->Stop();
+		return $class;
+	}
 
-        $sql = "SELECT * FROM Class WHERE className='".$class->getClassName()."'";
-        $this->connSql->Connect();
-        $result = $this->connSql->conn->query($sql);
-        if ($result->num_rows > 0) {
-            $list = array();
-            $k = 0;
-            while ($row = $result->fetch_assoc()) {
-                $class = new ClassObj;
-                $class->setIdClass($row["idClass"]);
-                $class->setClassName($row["className"]);
-                $class->setSchoolYear($row["schoolYear"]);
-                $class->setAcademy_idAcademy($row["Academy_idAcademy"]);
-                $list[k] = $class;
-                $k++;
-            }
-        } else {
-           // echo "Not Found";
-        }
+	//8. Hàm tìm kiếm một lớp theo tên lớp
+	public function findClassByName($class) {
 
-        $this->connSql->Stop();
-        return $list;
-    }
+		$sql = "SELECT * FROM Class WHERE className='" . $class->getClassName() . "'";
+		$this->connSql->Connect();
+		$result = $this->connSql->conn->query($sql);
+		if ($result->num_rows > 0) {
+			$list = array();
+			$k = 0;
+			while ($row = $result->fetch_assoc()) {
+				$class = new ClassObj;
+				$class->setIdClass($row["idClass"]);
+				$class->setClassName($row["className"]);
+				$class->setSchoolYear($row["schoolYear"]);
+				$class->setAcademy_idAcademy($row["Academy_idAcademy"]);
+				$list[k] = $class;
+				$k++;
+			}
+		} else {
+			// echo "Not Found";
+		}
 
+		$this->connSql->Stop();
+		return $list;
+	}
+
+	public function getListStudentInClass($classId) {
+		$sql = "select * from account inner JOIN account_has_class 
+                  on account.idAccount = account_has_class.Account_idAccount
+	              where account_has_class.Class_idClass = '{$classId}' 
+	                    and (account.Permission_position = 'Sinh viên' 
+	                          or account.Permission_position = 'Quản lý chi hội')";
+		$this->connSql->Connect();
+		$result = $this->connSql->conn->query($sql);
+		$this->connSql->Stop();
+		$listStudent = [];
+		if (!empty($result))
+			while ($row = $result->fetch_assoc()) {
+				$account = new AccountObj;
+				$account->setIdAccount($row["idAccount"]);
+				$account->setAccountName($row["accountName"]);
+				$account->setBirthday($row["birthday"]);
+				$account->setAddress($row["address"]);
+				$account->setSex($row["sex"]);
+				$account->setPhone($row["phone"]);
+				$account->setEmail($row["email"]);
+				$account->setPermission_position($row["Permission_position"]);
+				$listStudent[] = $account;
+			}
+		return $listStudent;
+	}
+
+	public function getListClassIdOfAdviser($adviserId){
+		$sql = "select Class_idClass as classId from account_has_class
+				WHERE Account_idAccount = '$adviserId'";
+		$this->connSql->Connect();
+		$result = $this->connSql->conn->query($sql);
+		$this->connSql->Stop();
+		$listCLassId = [];
+		if (!empty($result))
+			while ($row = $result->fetch_assoc()){
+				$listCLassId[] = $row["classId"];
+			}
+		return $listCLassId;
+	}
+
+	public function getListStudentManagedByAdviser($adviserId){
+		$listClassId = $this->getListClassIdOfAdviser($adviserId);
+		$listStudent = [];
+		foreach ($listClassId as $classId) {
+			$listStudent = array_merge($listStudent, $this->getListStudentInClass($classId));
+		}
+		return $listStudent;
+	}
 }
 
 /* Kiểm tra hàm có viết đúng hay không ?
