@@ -65,7 +65,7 @@ class PermissionMod
     //4. Hàm trả về danh sách các phân quyền hiện có
     public function getPermission()
     {
-        $sql = "SELECT DISTINCT * FROM Permission WHERE `selected` = 1 GROUP BY Position";
+        $sql = "SELECT DISTINCT * FROM Permission GROUP BY Position";
         $this->connSql->Connect();
         $result = $this->connSql->conn->query($sql);
 

@@ -18,8 +18,8 @@ switch ($_POST['btn-submit']) {
     if(is_array($checkbox)){
       foreach ($checkbox as $key => $value) {
         $arr = (new AccountMod())->getAllPermission($value);
-        foreach ($arr as $key => $value) {
-          $acc = (new AccountMod())->findAccountByID($value->getIdAccount());
+        foreach ($arr as $key => $val) {
+          $acc = (new AccountMod())->findAccountByID($val->getIdAccount());
           $accountMod = (new AccountMod())->updateAccount(new AccountObj($acc['idAccount'], $acc['accountName'], $acc['birthday'], $acc['address'], $acc['sex'], $acc['phone'], $acc['email'], $acc['password'], 'Default'));
         }
         $newCalendar = new CalendarScoringMod();

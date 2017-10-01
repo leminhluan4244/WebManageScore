@@ -843,13 +843,14 @@ class AccountMod {
 	}
 	public function getAllPermission($position) {
 		$arr = array();
-		$sql = "SELECT * FROM Account WHERE Permission_position='" . $position . "';";
+		$sql = "SELECT * FROM Account WHERE Permission_position='" . $position . "'";
 		$this->conn2sql->Connect();
 		$result = $this->conn2sql->conn->query($sql);
 		$this->conn2sql->Stop();
 		if ($result->num_rows > 0) {
 			$k = 0;
 			while ($row = $result->fetch_assoc()) {
+				$account = new AccountObj();
 				$account->setIdAccount($row["idAccount"]);
 				$account->setAccountName($row["accountName"]);
 				$account->setBirthday($row["birthday"]);
