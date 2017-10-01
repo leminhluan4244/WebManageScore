@@ -841,6 +841,32 @@ class AccountMod {
 		//Ngắt kết nối
 		$this->conn->Stop();
 	}
+	public function getAllPermission($position) {
+		$arr = array();
+		$sql = "SELECT * FROM Account WHERE Permission_position='" . $position . "';";
+		$this->conn2sql->Connect();
+		$result = $this->conn2sql->conn->query($sql);
+		$this->conn2sql->Stop();
+		if ($result->num_rows > 0) {
+			$k = 0;
+			while ($row = $result->fetch_assoc()) {
+				$account->setIdAccount($row["idAccount"]);
+				$account->setAccountName($row["accountName"]);
+				$account->setBirthday($row["birthday"]);
+				$account->setAddress($row["address"]);
+				$account->setSex($row["sex"]);
+				$account->setPhone($row["phone"]);
+				$account->setEmail($row["email"]);
+				$account->setPassword($row["password"]);
+				$account->setPermission_position($row["Permission_position"]);
+				$arr[$k] = $account;
+				$k++;
+			}
+		} else {
+			return [];
+		}
+		return $arr;
+	}
 }
 
 

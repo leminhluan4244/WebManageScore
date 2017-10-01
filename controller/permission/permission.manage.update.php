@@ -4,6 +4,7 @@ require_once("../../model/AccountObj.php");
 require_once("../../model/AccountMod.php");
 require_once("../../model/PermissionObj.php");
 require_once("../../model/PermissionMod.php");
+require_once("../../model/CalendarScoringMod.php");
 switch ($_POST['btn-submit']) {
   case 'add':
     $newPermissionObj = new PermissionObj();
@@ -16,8 +17,18 @@ switch ($_POST['btn-submit']) {
     $checkbox = $_POST['checkbox'];
     if(is_array($checkbox)){
       foreach ($checkbox as $key => $value) {
-        $arr = (new AccountMod())->findAccountByID($value);
-        $accountMod = (new AccountMod())->updateAccount(new AccountObj($arr['idAccount'], $arr['accountName'], $arr['birthday'], $arr['address'], $arr['sex'], $arr['phone'], $arr['email'], $arr['password'], 'default'));
+        $arr = (new AccountMod())->getAllPermission($value);
+        foreach ($arr as $key => $value) {
+          $acc = (new AccountMod())->findAccountByID($value->getIdAccount());
+          $accountMod = (new AccountMod())->updateAccount(new AccountObj($acc['idAccount'], $acc['accountName'], $acc['birthday'], $acc['address'], $acc['sex'], $acc['phone'], $acc['email'], $acc['password'], 'Default'));
+        }
+        $newCalendar = new CalendarScoringMod();
+        $newCalendar->deleteWithPermission($value);
+        $newPermissionObj = new PermissionObj();
+        $newPermissionObj->setPermissionObj($value, 'EMPTY', 0);
+        $newPermissionMod = new PermissionMod();
+        $newPermissionMod->setAllDisplay($value, 0);
+        $newPermissionMod->deletePermission($newPermissionObj);
       }
     }
   }
@@ -25,8 +36,6 @@ switch ($_POST['btn-submit']) {
   default:
    $newPermissionObj = new PermissionObj();
    $newPermissionMod = new PermissionMod();
-   #var_dump($_POST['btn-submit']);
-   #var_dump($_POST['btn-submit']);
    $newPermissionMod->setAllDisplay($_POST['btn-submit'], 0);
    if(!empty($_POST['checkbox'])){
      $checkbox = $_POST['checkbox'];

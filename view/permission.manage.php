@@ -81,6 +81,15 @@
             $("#btn-edit").prop("value", $("#select").val());
             console.log($("#btn-edit").val());
           });
+          var bool = false;
+          $("#checkAll").change(function() {
+            bool = !bool;
+            if(bool){
+              $(".isCheck").prop("checked", true);
+            } else{
+              $(".isCheck").prop("checked", false);
+            }
+          });
         });
       </script>
       <div id="div-main" class="container main-academy-container">
@@ -171,6 +180,49 @@
                         <button type="submit" name="btn-submit" value="add" class="center-block btn btn-success">
                     <span class="glyphicon glyphicon-ok"></span> Lưu lại
                     </button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+        <div id="div-delete-permission" class="academy-action-list" style="display: none;">
+          <div class="row">
+            <div class="col-sm-12">
+              <h4>Xóa nhóm quyền người dùng vào hệ thống</h4>
+              <hr>
+              <form action="../controller/permission/permission.manage.update.php" method="post">
+                <div class="row">
+                  <div class="col-sm-8 col-sm-offset-2">
+                    <table id="tbl-delete" class="table table-hover table-condensed table-bordered">
+                      <thead>
+                        <tr>
+                          <th>Phân quyền<br /><label></label></th>
+                          <th>
+                              Xóa
+                              <br />
+                              <label><input style="margin-left:0px" type="checkbox" id="checkAll"></label>
+                            </th>
+                        </tr>
+                      </thead>
+                      <tbody class="text-center">
+                        <?php
+                         foreach ($permissionArr as $key => $value) {
+                           echo '<tr>';
+                           echo '<td>'.$permissionArr[$key]->getPosition().'</td>';
+                           echo '<td><label><input class="isCheck" type="checkbox" value="'.$permissionArr[$key]->getPosition().'" name="checkbox[]"></label></td>';
+                           echo '</tr>';
+                         }
+                         ?>
+                      </tbody>
+                    </table>
+                    <div class="row">
+                      <div class="form-group text-right">
+                        <button type="submit" name="btn-submit" value="delete" class="center-block btn btn-danger">
+                                      <span class="glyphicon glyphicon-trash"></span> Xóa
+                                  </button>
                       </div>
                     </div>
                   </div>
