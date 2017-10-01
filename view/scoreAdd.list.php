@@ -15,7 +15,7 @@
                 <form action="" method="get">
                     <!--Begin table-->
                     <?php
-                    require_once "../controller/addScores/score.content.php";
+                    require_once "../controller/addScores/list.student.php";
                     ?>
                     <!--End table-->
                 </form>
