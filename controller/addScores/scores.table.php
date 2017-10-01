@@ -2,8 +2,6 @@
 <?php
     #Khoi tao di tuong chua
     $accountM  = new AccountMod();
-    var_dump($power);
-    var_dump($idLogin);
   #Kiem tra xe thuoc phan quyen nao
     foreach ($power as $key => $value){
         #la quan ly khoa thi cho xem danh sach hoc sinh khoa

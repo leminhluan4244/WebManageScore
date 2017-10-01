@@ -11,6 +11,7 @@
         {
            $permissionMod = new PermissionMod();
            $power = $permissionMod->selectPower(getLoggedAccountInfo()["permission"]);
+            var_dump($power);
            $idLogin = getLoggedAccountId();
 //          var_dump($power);
         }
