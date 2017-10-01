@@ -32,15 +32,22 @@
       <div class="row">
         <div class="col-sm-12">
           <div class="col-sm-4">
-            <select>
-
-            </select>
+            <select id="select" class="form-control" name="select">
+            <option selected hidden>-- Chọn một phân quyền người dùng --</option>
+            <option selected disabled>-- Chọn một phân quyền người dùng --</option>
+            <?php
+            $permissionArr = (new PermissionMod())->getPermission();
+              foreach ($permissionArr as $key => $value) {
+                echo '<option value="'.$permissionArr[$key]->getPosition().'">'.$permissionArr[$key]->getPosition().'</option>';
+              }
+             ?>
+          </select>
           </div>
           <div class="col-sm-4">
-            <input />
+            <input class="form-control" />
           </div>
           <div class="col-sm-4">
-            <input />
+            <input class="form-control" />
           </div>
         </div>
       </div>

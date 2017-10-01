@@ -84,7 +84,7 @@
               <div class="row">
                 <div class="col-sm-4">
                   <form action="#" method="post">
-                    <select id="select" class="form-control" name="select">
+                  <select id="select" class="form-control" name="select">
                   <option selected hidden>-- Chọn một phân quyền người dùng --</option>
                   <option selected disabled>-- Chọn một phân quyền người dùng --</option>
                   <?php
