@@ -5,7 +5,18 @@ if(isset($_POST['btnAdd_staff'])) {
     $stM = new AccountMod();
     $stO->setAccountObj($_POST['addIdAccount'], $_POST['addAccountName'], $_POST['addBirthday'], $_POST['addAddress'], $_POST['addSex'], $_POST['addPhone'], $_POST['addEmail'],'123', $_POST['addPermission_position']);
     $stM->addAccount($stO);
+
+    $objAcademy = new AcademyObj();
+    $objAcademy->setIdAcademy($_POST['addAcademyName']);
+    $mod = new AccountHasAcademyMod();
+//   var_dump($objAcademy->getIdAcademy($_POST['addAcademyName']));
+//   var_dump($stO->getIdAccount($_POST['addIdAccount']));
+    $mod->addAccountHasAcademy($stO,$objAcademy);
     echo'<META http-equiv="refresh" content="0;URL=staff.manage.php">';
+
+
+
+
 }
 ?>
 <!-- Start add student-->
@@ -28,7 +39,7 @@ if(isset($_POST['btnAdd_staff'])) {
                     </fieldset>
 
                     <fieldset class="form-group">
-                        <p class="text-left"><b>MSSV</b></p>
+                        <p class="text-left"><b>MSCB</b></p>
                         <input type="text" class="form-control" name="addIdAccount" id="addIdAccount"
                                placeholder="Nhập mã số sinh viên">
                     </fieldset>
@@ -79,19 +90,7 @@ if(isset($_POST['btnAdd_staff'])) {
                         </select>
                     </fieldset>
 
-                    <fieldset class="form-group">
-                        <p class="text-left"><b>Lớp</b></p>
-                        <select class="form-control" name="addClassName" id="addClassName">
-                            <option value="NoneClass">--Chọn Lớp--</option>
-                            <?php
-                            $listClass = array();
-                            $listClass = $classMod->getClass();
-                            foreach ($listClass as $key => $value){
-                                echo'<option value="'.$value->getIdClass().'">'.$value->getClassName().'</option>';
-                            }
-                            ?>
-                        </select>
-                    </fieldset>
+
                     <fieldset class="form-group">
                         <p class="text-left"><b>Phân quyền</b></p>
                         <select class="form-control" name="addPermission_position" id="addPermission_position">
@@ -102,6 +101,7 @@ if(isset($_POST['btnAdd_staff'])) {
                             foreach ($listPermissionM as $key => $value){
                                 echo'<option value="'.$value->getPosition().'">'.$value->getPosition().'</option>';
                             }
+
                             ?>
                         </select>
                     </fieldset>
