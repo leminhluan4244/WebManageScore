@@ -2,23 +2,29 @@
 <?php
     #Khoi tao di tuong chua
     $accountM  = new AccountMod();
+    var_dump($power);
+    var_dump($idLogin);
   #Kiem tra xe thuoc phan quyen nao
     foreach ($power as $key => $value){
         #la quan ly khoa thi cho xem danh sach hoc sinh khoa
         if($value=='Thêm bảng điểm cộng trừ cho khoa - viện'){
             $tempid = $accountM->getAcademyId($idLogin);
             $temp = $accountM->getAccountStudentByAcademy($tempid);
+            var_dump($temp);
         }
         #la quan ly chi hoi cho xem danh sach chi hoi va khong co nut loc theo lop
-        if($value=='Thêm bảng điểm cộng trừ cho lớp'){
+        else if($value=='Thêm bảng điểm cộng trừ cho lớp'){
             $tempid = $accountM->getCLassId($idLogin);
             $temp = $accountM->getAccountStudentByClass($tempid);
         }
         #la quan ly lop hoc cho xem danh sach cac lop
-        if($value=='Thêm bảng điểm cộng trừ cho sinh viên theo chi hội'){
+        else if($value=='Thêm bảng điểm cộng trừ cho sinh viên theo chi hội'){
             $tempid = $accountM->getBrachId($idLogin);
             $temp = $accountM->getAccountStudentByBranch($tempid);
         }
+         else {
+            $temp=0;
+         }
     }
 
 
