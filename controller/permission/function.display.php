@@ -23,8 +23,6 @@
        $("#div-permission-manage").show();
        $("#div-permission").show();
        $("#div-schedule-manage").show();
-       $("#quan-ly-thanh-vien-chi-hoi").show();
-       $("#them-bang-cong-tru").show();
        break;
 
      case 'Cố vấn học tập':
