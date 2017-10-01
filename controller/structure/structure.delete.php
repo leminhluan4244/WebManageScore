@@ -5,12 +5,13 @@
  * Date: 19/9/2017
  * Time: 10:58 PM
  */
-
-require_once '../../helper/common.helper.php';
-require_once '../../helper/form.helper.php';
-require_once '../../model/StructureMod.php';
-require_once '../../model/ConnectToSQL.php';
-require_once 'StructureTree.php';
+if (!defined("IN_STR"))
+	die("Bad request!!!");
+require_once '../helper/common.helper.php';
+require_once '../helper/form.helper.php';
+require_once '../model/StructureMod.php';
+require_once '../model/ConnectToSQL.php';
+require_once '../controller/structure/StructureTree.php';
 $model = new StructureMod();
 $tree = new StructureTree($model->getEntireStructureTable());
 if (isSubmit("delete")){
@@ -24,5 +25,5 @@ if (isSubmit("delete")){
 	if (!$result){
 		showMessage("Xóa thất bại, hãy thử lại sau!");
 	}
-	softRedirect("../../view/structure.editor.php");
+	softRedirect("../view/structure.editor.php");
 }

@@ -8,7 +8,7 @@ if(isset($_POST['btnAdd'])) {
 }
 ?>
                 <!-- Start add Class-->
-<div id="addScoreAdd" class="modal fade " tabindex="-1" role="dialog" aria-labelledby aria-hidden="true">
+<div id="addScore" class="modal fade " tabindex="-1" role="dialog" aria-labelledby aria-hidden="true">
                     <div class="modal-dialog">
                         <div class="modal-content">
                             <div class="modal-header">
@@ -17,7 +17,7 @@ if(isset($_POST['btnAdd'])) {
                                 <h4 class="modal-title">Thêm mới bảng điểm</h4>
                             </div>
                             <div class="modal-body ">
-                                <form action="class.manage.php" method="post">
+                                <form action="scoreAdd.manage.php" method="post">
 
                                     <fieldset class="form-group">
                                         <p class="text-left "><b>Mã bảng</b></p>
@@ -44,10 +44,25 @@ if(isset($_POST['btnAdd'])) {
                                         <textarea type="" class="form-control" name="addDesribe" id="addDesribe"
                                               placeholder="Nhập mô tả lý do thêm bảng này"></textarea>
                                     </fieldset>
-                                    <?php
-                                    #tạo biến lưu trữ id người thực hiện
-                                    $id = $_POST['id'];
-                                    ?>
+                                    <fieldset class="form-group">
+                                        <p class="text-left "><b>Mã người lập bảng điểm</b></p>
+                                        <input type="text" class="form-control" name="addScore" id="addScore"
+                                               value="<?php echo $idLogin?>" readonly>
+
+                                    </fieldset>
+                                    <fieldset class="form-group">
+                                        <p class="text-left"><b>Mục tác động trong bảng điểm</b></p>
+                                        <select class="form-control" name="addAcademyName" id="addAcademyName">
+                                            <option value="NoneAcademy">--Chọn mục--</option>
+                                            <?php
+                                            $transMod = new TranscriptMod();
+                                            $listAcademy = $transMod->getTranscriptAllObj();
+                                            foreach ($listAcademy as $key => $value){
+                                                echo '<option value="'.$value->getIdItem().'">'.$value->getItemName().'</option>';
+                                            }
+                                            ?>
+                                        </select>
+                                    </fieldset>
                                     <div class="modal-footer">
                                         <button type="button" class="btn btn-default" data-dismiss="modal">Đóng</button>
                                         <button type="submit" class="btn btn-primary" name="btnAdd">Thêm</button>

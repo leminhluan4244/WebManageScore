@@ -5,6 +5,8 @@
  * Date: 19/9/2017
  * Time: 11:11 PM
  */
+if (!defined("IN_STR"))
+	die("Bad request!!!");
 
 $id = getGETValue("id");
 if (!empty($id)) {

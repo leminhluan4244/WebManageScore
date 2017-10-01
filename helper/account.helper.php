@@ -33,3 +33,8 @@ function getLoggedAccountName(){
 	$account = getLoggedAccountInfo();
 	return $account['name'];
 }
+
+function getInfo($key){
+	$account = getLoggedAccountInfo();
+	return isset($account[$key]) ? $account[$key]: false;
+}

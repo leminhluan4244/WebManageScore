@@ -7,9 +7,7 @@
         #la quan ly khoa thi cho xem danh sach hoc sinh khoa
         if($value=='Thêm bảng điểm cộng trừ cho khoa - viện'){
             $tempid = $accountM->getAcademyId($idLogin);
-            var_dump($tempid);
             $temp = $accountM->getAccountStudentByAcademy($tempid);
-          echo ' 1';
           break;
         }
         #la quan ly chi hoi cho xem danh sach chi hoi va khong co nut loc theo lop
@@ -31,6 +29,35 @@
 ?>
 
 <form action="scoresAdd.manage.php" method="post" id="manageForm">
+    <!--Start class add button-->
+
+    <!-- End class add button-->
+    <div class="row">
+        <a class="btn btn-primary align-self-center col" data-toggle="modal" data-target="#addScore">
+            <span class="glyphicon glyphicon-plus"></span> Thêm bảng điểm
+        </a>
+        <a class="btn btn-success align-self-center  col " data-toggle="modal" data-target="#updateScore">
+            <span class="glyphicon glyphicon-pencil"></span> Sửa bảng điểm
+        </a>
+        <a class="btn btn-danger col align-self-center " data-toggle="modal" data-target="#deleteClass">
+            <span class="glyphicon glyphicon-trash"></span> Xóa bảng điểm
+        </a>
+        <div class="col-sm-4">
+            <select name="academy" id="" class="form-control">
+                <option value="NoneAcademy">--Chọn bảng điểm để chỉnh sửa--</option>
+                <?php
+                $scoreMod = new ScoresAddMod();
+                $listScore = $scoreMod->getScoresAddByAccount($idLogin);
+                foreach ($listScore as $key => $value){
+                    echo'<option value="'.$value->getIdScore().'">'.$value->getScoreName().'</option>';
+                }
+                ?>
+            </select>
+        </div>
+    </div>
+
+    <br />
+
 <table class="table table-bordered table-condensed" id="table-manage-scoreAdd">
 
     <thead>
@@ -39,8 +66,6 @@
         <th>Mã số sinh viên</th>
         <th>Tên sinh viên</th>
         <th>Lớp</th>
-        <th>Khoa</th>
-        <th>Tùy chỉnh</th>
         <th>Chọn tất cả <br /><input type="checkbox" onClick="toggle(this)"></th>
     </tr>
     </thead>
@@ -52,7 +77,9 @@
         $accountTemp = new AccountMod();
         foreach ($temp as $key => $value) {
             $class = $accountM->getClass($value->getIdAccount());
+            if(empty($class)) $class[0] ="";
             $academy = $accountM->getAcademy($value->getIdAccount());
+            if(empty($academy)) $academy[0]="";
             echo '<tr>
         <td>' . ++$i . '</td>
         <td>
@@ -65,13 +92,8 @@
             ' . $class[0] . '
         </td>
         <td>
-            ' .$academy[0].'
-        </td>
-        <td>
-            <a href="?idScoreAdd=' . $value->getIdScore() . '" class="btn btn-primary btn-sm"><span class="glyphicon glyphicon-pencil"></span></a>
-        </td>
-        <td><input type="checkbox" name="xoa[]" id="' . $value->getIdScore() . '" value="' . $value->getIdScore() . '"/> </td>
-       
+            Lựa chọn 
+        </td>       
     </tr>';
         }
     }

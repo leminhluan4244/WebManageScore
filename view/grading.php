@@ -5,6 +5,7 @@
  * Date: 25/9/2017
  * Time: 10:40 AM
  */
+define("IN_TRS", true);
 ?>
 
 
@@ -14,6 +15,8 @@
 <?php require_once '../helper/form.helper.php'; ?>
 
 <?php
+if (!isLogged())
+	redirect("../controller/account/account.login.php");
 require_once '../controller/transcript/TranscriptTree.php';
 $privilege = -1;
 $lvStudent = false;
@@ -43,43 +46,21 @@ if ($privilege < 0){
 $structureMod = new StructureMod();
 $transcriptMod = new TranscriptMod();
 
-#lưu điểm
-if (isSubmit("saveTranscript")){
-	require_once '../controller/structure/StructureTree.php';
-	require_once '../controller/transcript/transcript.save.php';
-}
-
 $accountId = getLoggedAccountId();
 
 if ($privilege == STUDENT){
-    #phải kiểm tra xem có bảng điểm của sinh viên đó chưa rồi mới load lên
-	if (!$transcriptMod->isTranscriptExist($accountId))
-		$transcriptMod->generateTranscript($accountId, $structureMod->getEntireStructureTable());
-	$trTree = new TranscriptTree($transcriptMod->getEntireTranscript($accountId));
-	$trTree->setPrivilege(STUDENT);
+    require_once '../controller/transcript/transcript.student.grading.php';
 } else {
     #ông này là cố vấn hoặc quản lý khoa
-    $studentId = getGETValue('sid');
-    $stdTranscript = $transcriptMod->getEntireTranscript($studentId);
-    if (!empty($stdTranscript)){
-        $trTree = new TranscriptTree($stdTranscript);
-		$trTree->setPrivilege($privilege);
-    } else {
-		showMessage("Không có sinh viên này!!!");
-		softRedirect("main.php");
-    }
+    $action = isset($_GET['a']) ? $_GET['a']: 'view';
+    if (!preg_match("/^[a-zA-Z]+$/", $action))
+        $action = 'view';
+    $type = $privilege == ADVISER ? 'adviser' : 'acad';
+    $path = "../controller/transcript/transcript.$type.$action.php";
+    if (file_exists($path))
+        require_once $path;
+    else
+        redirect('main.php');
 }
-
-if (empty($trTree)){
-    showMessage("Bạn không có quyền chấm điểm!!!");
-    softRedirect("main.php");
-}
-
-$root = $trTree->getRoot();
-$trTree->PreOderTreeToHtml($root, 0);
-
 ?>
-
-<?php require_once '../controller/transcript/transcript.view.php'; ?>
-
 <?php require_once '../controller/footer.php'; ?>

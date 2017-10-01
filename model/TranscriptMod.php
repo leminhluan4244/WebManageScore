@@ -38,6 +38,27 @@ class TranscriptMod {
 		$this->connSQL->Stop();
 		return $TranscriptObj;
 	}
+    public function getTranscriptAllObj(){ # trả ra tất cả các mục
+        $sql = "select DISTINCT idItem,itemName from transcript;";
+        $this->connSQL->Connect();
+        $result = $this->connSQL->conn->query($sql);
+        if ($result->num_rows > 0) {
+            $k=0;
+            // Nếu có thì trả về đối tượng đo
+            while ($TranscriptRow = $result->fetch_assoc()) {
+                $TranscriptObj = new TranscriptObj();
+                $TranscriptObj->setIdItem($TranscriptRow['idItem']);
+                $TranscriptObj->setItemName($TranscriptRow['itemName']);
+                $list[$k] =  $TranscriptObj;
+                $k++;
+            }
+
+	    }else{
+            $this->connSQL->Stop();
+            return 0;
+        }
+        return $list;
+    }
 
 	public function deleteTranscript($TranscriptId){
 		$sql = "delete from Transcript where idItem = '{$TranscriptId}'";

@@ -5,7 +5,8 @@
  * Date: 20/9/2017
  * Time: 3:13 PM
  */
-
+if (!defined("IN_STR"))
+    die("Bad request!!!");
 $structures = $tree->getData();
 if (isSubmit('save')){
 	$idItem = getPOSTValue('idItem');

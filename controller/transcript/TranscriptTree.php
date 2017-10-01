@@ -6,6 +6,8 @@
  * Time: 4:49 PM
  */
 
+if (!defined("IN_TRS"))
+	die("Bad request!");
 
 define("TR_ROOT", "0");
 define("STUDENT", "cd73502828457d15655bbd7a63fb0bc8");

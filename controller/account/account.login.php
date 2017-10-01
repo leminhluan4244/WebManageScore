@@ -9,8 +9,10 @@
 $rootUri = dirname(dirname(__DIR__));
 require_once $rootUri . '/helper/common.helper.php';
 require_once $rootUri . '/helper/form.helper.php';
+require_once $rootUri . '/helper/account.helper.php';
+if (isLogged())
+	redirect("../../view/main.php");
 if (isSubmit('login')){
-	require_once $rootUri . '/helper/account.helper.php';
 	$error = false;
 	$username = getPOSTValue('username');
 	$username = strtolower($username);

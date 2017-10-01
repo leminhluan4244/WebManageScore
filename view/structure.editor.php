@@ -5,11 +5,18 @@
  * Date: 16/09/2017
  * Time: 21:06
  */
+define("IN_STR", true);
 require_once '../helper/account.helper.php';
 require_once '../helper/common.helper.php';
 if (!isLogged()) {
 	redirect('../controller/account/account.login.php');
 }
+
+$privilege = getInfo("permission");
+if ($privilege !== "Admin"){
+	redirect('../controller/account/account.login.php');
+}
+
 $a = empty($_GET['a']) ? 'editor.view': $_GET['a'];
 
 $path = "../controller/structure/structure.$a.php";

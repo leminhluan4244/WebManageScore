@@ -152,8 +152,10 @@ footer{
   }
 }
 
-.academy-action-list{
+.academy-action-list, .table-view{
   .table {
+
+    font-size: 14px !important;
     thead{
       background-color: $main_color;
       color: $text_color;
@@ -165,12 +167,16 @@ footer{
     tbody{
       tr td:first-child, tr td:last-child{
         text-align: center;
+        //vertical-align: middle;
       }
     }
 
     .btn-sm{
       padding: 3px 7px;
       margin: 0;
+    }
+    tr td {
+      vertical-align: middle;
     }
   }
 }

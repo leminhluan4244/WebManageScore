@@ -83,16 +83,20 @@ footer {
 .main-academy-container .delete-academy-container .checkbox {
   margin: 0; }
 
-.academy-action-list .table thead {
-  background-color: #1066A2;
-  color: #ffffff; }
-  .academy-action-list .table thead th {
-    text-align: center !important; }
-.academy-action-list .table tbody tr td:first-child, .academy-action-list .table tbody tr td:last-child {
-  text-align: center; }
-.academy-action-list .table .btn-sm {
-  padding: 3px 7px;
-  margin: 0; }
+.academy-action-list .table, .table-view .table {
+  font-size: 14px !important; }
+  .academy-action-list .table thead, .table-view .table thead {
+    background-color: #1066A2;
+    color: #ffffff; }
+    .academy-action-list .table thead th, .table-view .table thead th {
+      text-align: center !important; }
+  .academy-action-list .table tbody tr td:first-child, .academy-action-list .table tbody tr td:last-child, .table-view .table tbody tr td:first-child, .table-view .table tbody tr td:last-child {
+    text-align: center; }
+  .academy-action-list .table .btn-sm, .table-view .table .btn-sm {
+    padding: 3px 7px;
+    margin: 0; }
+  .academy-action-list .table tr td, .table-view .table tr td {
+    vertical-align: middle; }
 
 .div-btn-grading {
   margin-right: 10px; }
