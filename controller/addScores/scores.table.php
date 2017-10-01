@@ -38,7 +38,7 @@
         <a class="btn btn-primary align-self-center col" data-toggle="modal" data-target="#addScore">
             <span class="glyphicon glyphicon-plus"></span> Thêm bảng điểm
         </a>
-        <a class="btn btn-success align-self-center  col " data-toggle="modal" data-target="#updateScore">
+        <a type="submit" class="btn btn-success align-self-center  col " data-toggle="modal" data-target="#updateScore" >
             <span class="glyphicon glyphicon-pencil"></span> Sửa bảng điểm
         </a>
         <a class="btn btn-danger col align-self-center " data-toggle="modal" data-target="#deleteClass">

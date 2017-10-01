@@ -9,6 +9,7 @@ if(isset($_POST['btnUpdate'])) {
 ?>
 <?php
     $scoresupdateMT = new ScoresAddMod();
+    var_dump($_POST);
     if(isset($_POST['score'])){
         echo "co duoc";
         if($_POST['score']!='NoneScore')
