@@ -18,14 +18,14 @@ class ScoresAddMod
 
     //1. Hàm thêm
     public function addScoresAdd($cores){
-        $sql = "INSERT INTO ScoresAdd (idScore, scoreName, scores, decribe, Transcipt_idItem,idAccountManage)
-						VALUES('".$cores->getIdScore()."',
-						'".$cores->getScoreName()."',
-						'".$cores->getScores()."',
-						'".$cores->getDecribe()."',
-						'".$cores->getTranscript_idItem()."',
-						'".$cores->getIdAccountManage()."')";
-
+        $sql = "INSERT INTO `scoresadd` (`idScore`, `scoreName`, `scores`, `describe`, `Transcript_idItem`, `idAccountManage`)
+        VALUES (
+          '".$cores->getIdScore()."',
+         '".$cores->getScoreName()."',
+         ".$cores->getScores().",
+         '".$cores->getDescribe()."',
+         '".$cores->getTranscript_idItem()."',
+         '".$cores->getIdAccountManage()."');";
         $this->connSql->Connect();
         if ($this->connSql->conn->query($sql) === true) {
            // echo "Updation is successful!";
@@ -41,7 +41,7 @@ class ScoresAddMod
         $sql = "UPDATE ScoresAdd SET
                   scoreName='".$cores->getScoreName(). "',
                   scores='".$cores->getScores(). "',
-                  decribe='".$cores->getDecribe(). "',
+                  decribe='".$cores->getDescribe(). "',
                   Transcript_idItem ='".$cores->getTranscript_idItem()."',
 				  idAccountManage='".$cores->getIdAccountManage()."'
                   WHERE idScore='".$cores->getIdScore()."'";
@@ -116,7 +116,7 @@ class ScoresAddMod
                 $obj->setScoreName($row["scoreName"]);
                 $obj->setIdScore($row["idScore"]);
                 $obj->setScores($row["scores"]);
-                $obj->setDecribe($row["decribe"]);
+                $obj->setDescribe($row["decribe"]);
                 $obj->setTranscript_idItem($row["Transcript_idItem"]);
                 $obj->setIdAccountManage($row["idAccountManage"]);
                 $list[$k] = $obj;
@@ -129,6 +129,31 @@ class ScoresAddMod
 
         $this->connSql->Stop();
         return $list;
+    }
+    public function getScoresAddById($id)
+    {
+        $sql = "SELECT * FROM ScoresAdd WHERE idScore='".$id."'";
+        $this->connSql->Connect();
+        $result = $this->connSql->conn->query($sql);
+
+        if ($result->num_rows > 0) {
+            while ($row = $result->fetch_assoc()) {
+                $obj = new ScoresAddObj();
+                $obj->setScoreName($row["scoreName"]);
+                $obj->setIdScore($row["idScore"]);
+                $obj->setScores($row["scores"]);
+                $obj->setDecribe($row["decribe"]);
+                $obj->setTranscript_idItem($row["Transcript_idItem"]);
+                $obj->setIdAccountManage($row["idAccountManage"]);
+            }
+
+        } else {
+            // echo "The result of information processing is data false";
+            return 0;
+        }
+
+        $this->connSql->Stop();
+        return $obj;
     }
 
 }
