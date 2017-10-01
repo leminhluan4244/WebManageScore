@@ -19,7 +19,7 @@ else {
 <div id="teacher-manage-wrapper">
         <hr>
         <h4 class="text-primary text-center">Danh sách cán bộ</h4>
-    <form action="teacher.manage.php" method="post" id="manageForm">
+    <form action="staff.manage.php" method="post" id="manageForm">
         <table class="table table-bordered table-condensed" id="table-manage-teacher">
             <thead>
             <tr>
