@@ -38,7 +38,11 @@ if ($lvStudent){
         $privilege = ACA_ADMIN;
 }
 
-if ($privilege < 0){
+$permission = getInfo("permission");
+$isStudent = $permission == "Sinh viên" || $permission == "Quản lý chi hội";
+
+# CHỈ có quyền chấm điểm cho sinh viên nhưng ko phải là sinh viên
+if ($privilege < 0 || ($privilege == STUDENT && !$isStudent)){
     showMessage("Bạn không có quyền chấm điểm !!!");
     softRedirect("main.php");
 }
