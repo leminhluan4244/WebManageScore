@@ -83,6 +83,7 @@ class PermissionMod
 
         } else {
              //echo "The result of information processing is data false";
+             return [];
         }
 
         $this->connSql->Stop();

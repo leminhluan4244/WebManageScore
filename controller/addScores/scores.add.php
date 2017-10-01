@@ -1,8 +1,12 @@
 <?php
 if(isset($_POST['btnAdd'])) {
 
-    $ScoresAddO = new ScoresAddObj();
-    $ScoresAddM = new ScoresAddMod();
+    $scoresAddO = new ScoresAddObj();
+    $scoresAddM = new ScoresAddMod();
+    if($_POST['addTranscript']!= 'NoneTranscript'){
+        $scoresAddO->setScoresAddObj($_POST['addScoreID'],$_POST['addScoreName'],$_POST['addScore'],$_POST['addDescribe'],$_POST['addTranscript'],$_POST['addID']);
+        $scoresAddM->addScoresAdd($scoresAddO);
+    }
     #thêm dữ liệu và truyền đi
     echo'<META http-equiv="refresh" content="0;URL=scoreAdd.manage.php">';
 }
@@ -34,35 +38,38 @@ if(isset($_POST['btnAdd'])) {
 
                                     <fieldset class="form-group">
                                         <p class="text-left "><b>Điểm</b></p>
-                                        <input type="text" class="form-control" name="addScore" id="addScore"
-                                               placeholder="Nhập điểm (nếu là điểm trừ vui lòng nhập số âm)">
+                                        <input type="number" class="form-control" name="addScore" id="addScore"
+                                               placeholder="Nhập điểm (nếu là điểm trừ vui lòng nhập số âm)" min="-20" max="20">
 
                                     </fieldset>
 
                                     <area class="form-group">
                                         <p class="text-left "><b>Mô tả</b></p>
-                                        <textarea type="" class="form-control" name="addDesribe" id="addDesribe"
+                                        <textarea type="" class="form-control" name="addDescribe" id="addDescribe"
                                               placeholder="Nhập mô tả lý do thêm bảng này"></textarea>
                                     </fieldset>
-                                    <fieldset class="form-group">
-                                        <p class="text-left "><b>Mã người lập bảng điểm</b></p>
-                                        <input type="text" class="form-control" name="addScore" id="addScore"
-                                               value="<?php echo $idLogin?>" readonly>
 
-                                    </fieldset>
                                     <fieldset class="form-group">
                                         <p class="text-left"><b>Mục tác động trong bảng điểm</b></p>
-                                        <select class="form-control" name="addAcademyName" id="addAcademyName">
-                                            <option value="NoneAcademy">--Chọn mục--</option>
+                                        <select class="form-control" name="addTranscript" id="addTranscript">
+                                            <option value="NoneTranscript">--Chọn mục--</option>
                                             <?php
                                             $transMod = new TranscriptMod();
-                                            $listAcademy = $transMod->getTranscriptAllObj();
-                                            foreach ($listAcademy as $key => $value){
+                                            $listTr = $transMod->getTranscriptAllObj();
+                                            foreach ($listTr as $key => $value){
                                                 echo '<option value="'.$value->getIdItem().'">'.$value->getItemName().'</option>';
                                             }
                                             ?>
                                         </select>
                                     </fieldset>
+
+                                    <fieldset class="form-group">
+                                        <p class="text-left "><b>Mã người lập bảng điểm</b></p>
+                                        <input type="text" class="form-control" name="addID" id="addID"
+                                               value="<?php echo $idLogin?>" readonly>
+
+                                    </fieldset>
+
                                     <div class="modal-footer">
                                         <button type="button" class="btn btn-default" data-dismiss="modal">Đóng</button>
                                         <button type="submit" class="btn btn-primary" name="btnAdd">Thêm</button>

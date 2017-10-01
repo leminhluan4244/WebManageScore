@@ -20,7 +20,6 @@
         else if($value=='Thêm bảng điểm cộng trừ cho sinh viên theo chi hội') {
             $tempid = $accountM->getBrachId($idLogin);
             $temp = $accountM->getAccountStudentByBranch($tempid);
-            echo '3';
             break;
         }
     }
@@ -28,23 +27,26 @@
 
 ?>
 
-<form action="scoresAdd.manage.php" method="post" id="manageForm">
     <!--Start class add button-->
 
     <!-- End class add button-->
+
+
+
+<form action="scoresAdd.manage.php" method="post" id="manageForm">
     <div class="row">
         <a class="btn btn-primary align-self-center col" data-toggle="modal" data-target="#addScore">
             <span class="glyphicon glyphicon-plus"></span> Thêm bảng điểm
         </a>
-        <a class="btn btn-success align-self-center  col " data-toggle="modal" data-target="#updateScore">
+        <a type="submit" class="btn btn-success align-self-center  col " data-toggle="modal" data-target="#updateScore" >
             <span class="glyphicon glyphicon-pencil"></span> Sửa bảng điểm
         </a>
         <a class="btn btn-danger col align-self-center " data-toggle="modal" data-target="#deleteClass">
             <span class="glyphicon glyphicon-trash"></span> Xóa bảng điểm
         </a>
         <div class="col-sm-4">
-            <select name="academy" id="" class="form-control">
-                <option value="NoneAcademy">--Chọn bảng điểm để chỉnh sửa--</option>
+            <select name="score" id="" class="form-control">
+                <option value="NoneScore">--Chọn bảng điểm để chỉnh sửa--</option>
                 <?php
                 $scoreMod = new ScoresAddMod();
                 $listScore = $scoreMod->getScoresAddByAccount($idLogin);
@@ -55,9 +57,7 @@
             </select>
         </div>
     </div>
-
     <br />
-
 <table class="table table-bordered table-condensed" id="table-manage-scoreAdd">
 
     <thead>

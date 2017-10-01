@@ -38,7 +38,7 @@
       $this->conn2sql->Connect();
       $result = $this->conn2sql->conn->query($sql);
       $this->conn2sql->Stop();
-      var_dump($sql);
+      #var_dump($sql);
       if($result) {
          return true;
       }else {
@@ -95,6 +95,18 @@
         'Permission_position'=> $row[$i++]
       );
       return $arr;
+    }
+    public function deleteWithPermission($name){
+      $sql = "DELETE FROM `calendarscoring` WHERE `Permission_position`='".$name."'";
+      $this->conn2sql->Connect();
+      $result = $this->conn2sql->conn->query($sql);
+      $this->conn2sql->Stop();
+      #var_dump($sql);
+      if($result) {
+         return true;
+      }else {
+         return false;
+      }
     }
   }
   #$newCalendar = new CalendarScoringMod();

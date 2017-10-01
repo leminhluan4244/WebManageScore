@@ -11,7 +11,7 @@ class ScoresAddObj
     private $idScore;
     private $scoreName;
     private $scores;
-    private $decribe;
+    private $describe;
     private $Transcript_idItem;
     private $idAccountManage;
 
@@ -48,18 +48,18 @@ class ScoresAddObj
     public function getScores(){
         return $this->scores;
     }
-    public function setDecribe($decribe){
-        $this->decribe = $decribe;
+    public function setDescribe($decribe){
+        $this->describe = $decribe;
     }
-    public function getDecribe(){
-        return $this->decribe;
+    public function getDescribe(){
+        return $this->describe;
     }
 
     public function setScoresAddObj($idScore, $scoreName, $scores, $decribe, $Transcript_idItem, $idAccountManage){
         $this->setIdScore($idScore);
         $this->setscoreName($scoreName);
         $this->setScores($scores);
-        $this->setDecribe($decribe);
+        $this->setDescribe($decribe);
         $this->setTranscript_idItem($Transcript_idItem);
         $this->setidAccountManage($idAccountManage);
 

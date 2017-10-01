@@ -1,6 +1,11 @@
 <?php
   require_once "../controller/header.php"
 ?>
+<?php
+ if(getSession("userToken")['permission'] != 'Admin'){
+  echo '<script>window.location.assign("../controller/account/account.login.php")</script>';
+ }
+?>
 <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
 <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
 <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
@@ -12,17 +17,17 @@
     $("#date-open").datepicker();
     $("#date-close").datepicker({dateFormat: 'dd-mm-yy'}).val();
     $("#date-close").datepicker();
-    var json = '';
+    //var json = '';
     $("#select").change(function() {
       $("#date-open").prop('disabled', false);
       $("#date-close").prop('disabled', false);
-      // json = JSON.stringify($("#select").val());
-      // document.cookie = "json=" + json;
-      // <?php
-      // $arr = (new CalendarScoringMod())->getCalendarWithPermissionPosition(json_decode($_COOKIE['json']));
-      // $js_array = json_encode($arr);
-      // echo "var arrJS = ". $js_array .";\n";
-      // ?>
+      json = JSON.stringify($("#select").val());
+      document.cookie = "json=" + json;
+      <?php
+      $arr = (new CalendarScoringMod())->getCalendarWithPermissionPosition(json_decode($_COOKIE['json']));
+      $js_array = json_encode($arr);
+      echo "var arrJS = ". $js_array .";\n";
+      ?>
     });
   });
 </script>
@@ -43,11 +48,11 @@
           </thead>
           <tbody class="text-center">
           <tr>
-            <!-- <?php
-            //  echo '<td>'.$arr['Permission_position'].'</td>';
-            //  echo '<td>'.$arr['openDate'].'</td>';
-            //  echo '<td>'.$arr['closeDate'].'</td>';
-             ?> -->
+            <?php
+             echo '<td>'.$arr['Permission_position'].'</td>';
+             echo '<td>'.$arr['openDate'].'</td>';
+             echo '<td>'.$arr['closeDate'].'</td>';
+             ?>
           </tr>
           </tbody>
         </table>

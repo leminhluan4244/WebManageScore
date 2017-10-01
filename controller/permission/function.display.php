@@ -1,5 +1,5 @@
 <?php
-  require_once("../helper/session.helper.php");
+   require_once("../helper/session.helper.php");
    $js_array = json_encode(getSession("userToken")['permission']);
    $newPermissionObj = new PermissionObj();
    $newPermissionMod = new PermissionMod();

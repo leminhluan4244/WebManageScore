@@ -1,6 +1,11 @@
 <?php
   require_once "../controller/header.php"
 ?>
+<?php
+ if(getSession("userToken")['permission'] != 'Admin'){
+  echo '<script>window.location.assign("../controller/account/account.login.php")</script>';
+ }
+?>
   <script>
     $(document).ready(function() {
       $("#tbl-list").DataTable();

@@ -1,75 +1,89 @@
 <?php
-if(isset($_POST['btnAdd'])) {
+if(isset($_POST['btnUpdate'])) {
 
-    $ScoresAddO = new ScoresAddObj();
-    $ScoresAddM = new ScoresAddMod();
+    $scoresupdateO = new ScoresAddObj();
+    $scoresupdateM = new ScoresAddMod();
     #thêm dữ liệu và truyền đi
-    echo'<META http-equiv="refresh" content="0;URL=scoreAdd.manage.php">';
+  //      echo'<META http-equiv="refresh" content="0;URL=scoreAdd.manage.php">';
 }
 ?>
-<!-- Start add Class-->
+<?php
+    $scoresupdateMT = new ScoresAddMod();
+    var_dump($_POST);
+    if(isset($_POST['score'])){
+        echo "co duoc";
+        if($_POST['score']!='NoneScore')
+            $scoresupdateOT = $scoresupdateMT->getScoresAddById($_POST['score']);
+    }
+    else echo 'khong có';
+
+
+?>
+<!-- Start update Class-->
 <div id="updateScore" class="modal fade " tabindex="-1" role="dialog" aria-labelledby aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
 
                 <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                <h4 class="modal-title">Thêm mới bảng điểm</h4>
+                <h4 class="modal-title">Chỉnh sửa bảng điểm</h4>
             </div>
             <div class="modal-body ">
                 <form action="scoreAdd.manage.php" method="post">
 
                     <fieldset class="form-group">
                         <p class="text-left "><b>Mã bảng</b></p>
-                        <input type="text" class="form-control" name="addScoreID" id="addScoreID"
-                               placeholder="Nhập id cho bảng điểm này">
+                        <input type="text" class="form-control" name="updateScoreID" id="updateScoreID"
+                               placeholder="Nhập id cho bảng điểm này" value="<?php echo $scoresupdateOT->getidScore();?>">
 
                     </fieldset>
 
                     <fieldset class="form-group">
                         <p class="text-left"><b>Tên bảng</b></p>
-                        <input type="text" class="form-control" name="addScoreName" id="addScoreName"
-                               placeholder="Nhập tên bảng">
+                        <input type="text" class="form-control" name="updateScoreName" id="updateScoreName"
+                               placeholder="Nhập tên bảng" value="<?php echo $scoresupdateOT->getScoreName();?>">
                     </fieldset>
 
                     <fieldset class="form-group">
                         <p class="text-left "><b>Điểm</b></p>
-                        <input type="text" class="form-control" name="addScore" id="addScore"
-                               placeholder="Nhập điểm (nếu là điểm trừ vui lòng nhập số âm)">
+                        <input type="text" class="form-control" name="updateScore" id="updateScore"
+                               placeholder="Nhập điểm (nếu là điểm trừ vui lòng nhập số âm)" value="<?php echo $scoresupdateOT->getScores();?>">
 
                     </fieldset>
 
                     <area class="form-group">
                     <p class="text-left "><b>Mô tả</b></p>
-                    <textarea type="" class="form-control" name="addDesribe" id="addDesribe"
-                              placeholder="Nhập mô tả lý do thêm bảng này"></textarea>
+                    <textarea type="" class="form-control" name="updateDesribe" id="updateDesribe"
+                              placeholder="Nhập mô tả lý do thêm bảng này" value="<?php echo $scoresupdateOT->getDescribe();?>"></textarea>
                     </fieldset>
                     <fieldset class="form-group">
                         <p class="text-left "><b>Mã người lập bảng điểm</b></p>
-                        <input type="text" class="form-control" name="addScore" id="addScore"
-                               value="<?php echo $idLogin?>" readonly>
+                        <input type="text" class="form-control" name="updateScore" id="updateScore"
+                               value="value="<?php echo $scoresupdateOT->getIdAccountManage();?>"" readonly>
 
                     </fieldset>
                     <fieldset class="form-group">
                         <p class="text-left"><b>Mục tác động trong bảng điểm</b></p>
-                        <select class="form-control" name="addAcademyName" id="addAcademyName">
+                        <select class="form-control" name="updateItem" id="updateItem">
                             <option value="NoneAcademy">--Chọn mục--</option>
                             <?php
                             $transMod = new TranscriptMod();
                             $listAcademy = $transMod->getTranscriptAllObj();
                             foreach ($listAcademy as $key => $value){
-                                echo '<option value="'.$value->getIdItem().'">'.$value->getItemName().'</option>';
+                                if($value->getIdItem()==$scoresupdateOT->getTranscript_idItem())
+                                    echo '<option selected="selected" value="'.$value->getIdItem().'">'.$value->getItemName().'</option>';
+                                else echo '<option value="'.$value->getIdItem().'">'.$value->getItemName().'</option>';
                             }
                             ?>
                         </select>
                     </fieldset>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-default" data-dismiss="modal">Đóng</button>
-                        <button type="submit" class="btn btn-primary" name="btnAdd">Thêm</button>
+                        <button type="submit" class="btn btn-primary" name="btnUpdate">Sửa</button>
                     </div>
                 </form>
             </div>
         </div>
     </div>
 </div>
-<!-- End add Class-->
+<!-- End update Class-->
