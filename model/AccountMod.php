@@ -84,7 +84,7 @@
                   $account->setSex($row["sex"]);
                   $account->setPhone($row["phone"]);
                   $account->setEmail($row["email"]);
-                  $account->setPassword("don't know");
+                  $account->setPassword($row["password"]);
                   $account->setPermission_position($row["Permission_position"]);
                   $list[$k] = $account;
                   $k++;
@@ -218,7 +218,7 @@
           // Tạo ra một mảng lưu trữ tên list, mặc định bang đầu rỗng
           $list = array();
           // Đẩy câu lệnh vào string
-          $sql = "SELECT * FROM account, account_has_academy 
+          $sql = "SELECT * FROM account, account_has_academy
                     WHERE account.idAccount = account_has_academy.Account_idAccount AND
                     account_has_academy.Academy_idAcademy = '".$id."' AND
                     account.Permission_position <> 'Quản lý chi hội' AND
