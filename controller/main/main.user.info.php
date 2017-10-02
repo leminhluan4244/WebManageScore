@@ -62,7 +62,7 @@ $loggedAccount = getLoggedAccountInfo();
  		            </thead>
  		            <tbody class="text-center align-self-center">
  		      <?php
- 		      $studentId = getSession("stdId");
+ 		      $studentId = getLoggedAccountId();
  		    $tempMod = new ScoresAddMod();
  		    $transMod = new TranscriptMod();
  		    $scoreTable = $tempMod->getScoresForStudent($studentId);
