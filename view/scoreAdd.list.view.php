@@ -1,4 +1,6 @@
 <?php
+if (!defined("IN_TRS"))
+    die("Bad request!");
 if ($privilege == STUDENT)
 	$studentId = $accountId;
 else

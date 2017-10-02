@@ -72,8 +72,9 @@ if ($privilege == STUDENT) {
 		$action = 'view';
 	$type = $privilege == ADVISER ? 'adviser' : 'acad';
 	$path = "../controller/transcript/transcript.$type.$action.php";
-	if (file_exists($path))
+	if (file_exists($path)){
 		require_once $path;
+	}
 	else
 		redirect('main.php');
 }

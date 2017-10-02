@@ -47,3 +47,5 @@ $trTree->PreOderTreeToHtml($root, 0);
 	</h4>
 
 <?php require_once '../controller/transcript/transcript.view.php'; ?>
+
+<?php require_once 'scoreAdd.list.view.php'; ?>
