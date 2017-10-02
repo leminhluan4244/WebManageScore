@@ -41,7 +41,11 @@ $scoreTable = $tempMod->getScoresForStudent($studentId);
                         echo substr($name, 0, 65) . " ..." . $a;
                         ?></td>
                     <td><?php echo $value->getScores(); ?></td>
-                    <td><?php echo $value->getIdAccountManage(); ?></td>
+                    <td><?php
+                        $tempMD = new AccountMod();
+                        $tempAcc = $tempMD->findAccountByID($value->getIdAccountManage());
+                        echo $tempAcc['accountName'];
+                        ?></td>
                 </tr>
 			<?php } } ?>
             </tbody>
