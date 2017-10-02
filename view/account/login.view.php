@@ -62,19 +62,21 @@
 			 require_once("../../model/CalendarScoringMod.php");
 			 require_once("../../model/CalendarScoringObj.php");
 			 $permissionArr = (new PermissionMod())->getPermission();
-			 $today = date("d/m/Y");
+			 $today = date("Y-m-d");
 			 foreach ($permissionArr as $key => $value) {
 				 $arr = (new CalendarScoringMod())->getCalendarWithPermissionPosition($value->getPosition());
-				 if(!empty($arr)){
-					 $open = date("d/m/Y", strtotime($arr['openDate']));
-					 $close = date("d/m/Y", strtotime($arr['closeDate']));
-					 if(!($today < $open || $today > $close)){
-						 echo '<div class="alert alert-info">'.$open;
- 						 echo '- Đã mở đợt chấm điểm rèn luyện cho '.$arr['Permission_position'];
- 						 echo '</div>';
-					 }
-				 }
-			 }
+         if(!empty($arr)){
+					if(strcmp($arr['Permission_position'], "Sinh viên") != 0 && strcmp($arr['Permission_position'], "Quản lý chi hội") != 0){
+						continue;
+				  }
+					$open = date("d/m/Y", strtotime($arr['openDate']));
+					if(!($today < $arr['openDate'] || $today > $arr['closeDate'])){
+						echo '<div class="alert alert-info">'.$open;
+						echo '- Đã mở đợt chấm điểm rèn luyện cho '.$arr['Permission_position'];
+						echo '</div>';
+					}
+			   }
+		    }
 			?>
 		</div>
 	</div>
