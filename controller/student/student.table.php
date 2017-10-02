@@ -1,25 +1,37 @@
 <?php
-$classId = getGETValue('class');
+$acaId = getGETValue('a');
+$classId = getGETValue('c');
 $className = "";
+$acaName = "";
 $studentList = array();
-if (preg_match("/^[a-zA-Z0-9]+$/", $classId)) {
-	$classMod = new ClassMod();
-	$classObj = new ClassObj();
-	$classObj->setIdClass($classId);
-	$className = $classMod->getClassNameOf($classId);
-	$studentList = $classMod->getListStudent($classObj);
+if (preg_match("/^[a-zA-Z0-9]+$/", $acaId)){
+    if (!empty($classId) && preg_match("/^[a-zA-Z0-9]+$/", $classId)) {
+		$classMod = new ClassMod();
+		$classObj = new ClassObj();
+		$classObj->setIdClass($classId);
+		$className = $classMod->getClassNameOf($classId);
+		$studentList = $classMod->getListStudent($classObj);
+	} else {
+        $academyMod = new AcademyMod();
+        $acaName = $academyMod->getAcademyNameOf($acaId);
+        $studentList = $academyMod->getListStudentInAcademy($acaId);
+    }
 }
 if (!is_array($studentList))
 	$studentList = array();
+
 $url = getCurrentUrl();
 $url = preg_replace("/&id.+/", '', $url);
 $url = strpos($url, "?") ? "$url&" : "$url?";
 ?>
 
 <div id="student-manage-wrapper">
-    <?php if (!empty($classId)) {?>
+    <?php if (!empty($className)) {?>
         <hr>
-        <h4 class="text-primary text-center">Danh sách sinh viên lớp: <?php echo $className; ?></h4>
+        <h4 class="text-primary text-center">Danh sách sinh viên lớp: <strong><i><?php echo $className; ?></i></strong></h4>
+    <?php } else if (!empty($acaName)){?>
+        <hr>
+        <h4 class="text-primary text-center">Danh sách sinh viên khoa: <strong><i><?php echo $acaName; ?></i></strong></h4>
     <?php } ?>
 
     <form action="student.manage.php" method="post" id="manageForm">

@@ -82,14 +82,14 @@ if(isset($_POST['btnAdd'])) {
                                     <fieldset class="form-group">
                                         <p class="text-left"><b>Lớp</b></p>
                                         <select class="form-control" name="addClassName" id="addClassName">
-                                            <option value="NoneClass">--Chọn Lớp--</option>
-                                            <?php
-                                            $listClass = array();
-                                            $listClass = $classMod->getClass();
-                                            foreach ($listClass as $key => $value){
-                                                echo'<option value="'.$value->getIdClass().'">'.$value->getClassName().'</option>';
-                                            }
-                                            ?>
+                                            <option value="NoneClass">--Chọn theo Lớp--</option>
+<!--                                            --><?php
+//                                            $listClass = array();
+//                                            $listClass = $classMod->getClass();
+//                                            foreach ($listClass as $key => $value){
+//                                                echo'<option value="'.$value->getIdClass().'">'.$value->getClassName().'</option>';
+//                                            }
+//                                            ?>
                                         </select>
                                     </fieldset>
                                     <fieldset class="form-group">
@@ -116,3 +116,11 @@ if(isset($_POST['btnAdd'])) {
                 </div>
                 <!-- End add student-->
 <script src="../public/js/student_action.js"></script>
+<script>
+    $(function(){
+       $('#addAcademyName').change(function(){
+           var acaId = $(this).val();
+           getClassByAcademy(acaId, "addClassName");
+       }) ;
+    });
+</script>

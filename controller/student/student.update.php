@@ -57,21 +57,24 @@
                                 <fieldset class="form-group">
                                     <p class="text-left"><b>Khoa - Viện</b></p>
                                     <select class="form-control" name="updateAcademyName" id="updateAcademyName">
-                                        <option value="DI">Công nghệ thông tin và
-                                            truyền thông
-                                        </option>
-                                        <option value="TS">Thủy sản</option>
-                                        <option value="MT">Môi trường</option>
-                                        <option value="CṆ">Công nghệ</option>
+                                        <option value="NoneAcademy">--Chọn khoa--</option>
+										<?php
+										$listAcademy = array();
+										$listAcademy = $academyMod->getAcademy();
+										foreach ($list as $key => $value){
+											echo'<option value="'.$value->getIdAcademy().'">'.$value->getAcademyName().'</option>';
+										}
+										?>
                                     </select>
                                 </fieldset>
 
                                 <fieldset class="form-group">
                                     <p class="text-left"><b>Lớp</b></p>
-                                    <select class="form-control" name="updateClassNamer" id="UpdateclassName">
-                                        <option value="DI1496A1">KTPM1 K40</option>
-                                        <option value="DI1496A1">KTPM2 K40</option>
-                                        <option value="DI1496A1">KTPM3 K40</option>
+                                    <select class="form-control" name="updateClassNamer" id="updateClassName">
+                                        <option value="NoneClass">--Chọn theo Lớp--</option>
+<!--                                        <option value="DI1496A1">KTPM1 K40</option>-->
+<!--                                        <option value="DI1496A1">KTPM2 K40</option>-->
+<!--                                        <option value="DI1496A1">KTPM3 K40</option>-->
                                     </select>
                                 </fieldset>
                                 <div class="modal-footer">
@@ -84,3 +87,12 @@
                 </div>
             </div>
             <!-- End update student-->
+
+            <script>
+                $(function(){
+                    $('#updateAcademyName').change(function(){
+                        var acaId = $(this).val();
+                        getClassByAcademy(acaId, "updateClassName");
+                    }) ;
+                });
+            </script>

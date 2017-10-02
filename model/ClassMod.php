@@ -121,7 +121,7 @@ class ClassMod {
 		$result = $this->connSql->conn->query($sql);
 		$this->connSql->Stop();
 		$className = "";
-		if (!empty($result)) {
+		if (!empty($result) && $result->num_rows > 0) {
 			$className = $result->fetch_assoc()['className'];
 		}
 		return $className;

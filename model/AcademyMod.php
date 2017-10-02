@@ -368,6 +368,18 @@ class AcademyMod {
 		return $acaId;
 	}
 
+	public function getAcademyNameOf($academyId){
+		$sql = "SELECT academyName FROM academy where idAcademy = '$academyId'";
+		$this->conn->Connect();
+		$result = $this->conn->conn->query($sql);
+		$this->conn->Stop();
+		$acaName = "";
+		if (!empty($result) && $result->num_rows > 0) {
+			$acaName = $result->fetch_assoc()['academyName'];
+		}
+		return $acaName;
+	}
+
 }
 
 /* test từng gái trị hàm ở đây
