@@ -3,54 +3,73 @@
     #Khoi tao di tuong chua
     $accountM  = new AccountMod();
   #Kiem tra xe thuoc phan quyen nao
+    $number1=false;
+    $number2=false;
+    $number3=false;
     foreach ($power as $key => $value){
+        if($value=='Thêm bảng điểm cộng trừ cho khoa') {
+            $number1 =true;
+        }
+        if($value=='Thêm bảng điểm cộng trừ cho lớp') {
+            $number2 =true;
+        }
+        if($value=='Thêm bảng điểm cộng trừ cho sinh viên theo chi hội') {
+            $number3 =true;
+        }
+
+    }
         #la quan ly khoa thi cho xem danh sach hoc sinh khoa
-        if($value=='Thêm bảng điểm cộng trừ cho khoa - viện'){
+        if($number1){
             $tempid = $accountM->getAcademyId($idLogin);
-            $temp = $accountM->getAccountStudentByAcademy($tempid);
-          break;
+            $temp1 = $accountM->getAccountStudentByAcademy($tempid);
+
         }
         #la quan ly chi hoi cho xem danh sach chi hoi va khong co nut loc theo lop
-        else if($value=='Thêm bảng điểm cộng trừ cho lớp'){
+        if($number2){
             $tempid = $accountM->getCLassId($idLogin);
-            $temp = $accountM->getAccountStudentByClass($tempid);
-            break;
+            $temp2 = $accountM->getAccountStudentByClass($tempid);
+
         }
         #la quan ly lop hoc cho xem danh sach cac lop
-        else if($value=='Thêm bảng điểm cộng trừ cho sinh viên theo chi hội') {
+        if($number3) {
             $tempid = $accountM->getBrachId($idLogin);
-            $temp = $accountM->getAccountStudentByBranch($tempid);
-            break;
+            $temp3 = $accountM->getAccountStudentByBranch($tempid);
         }
-        else $temp=0;
-    }
-
+        $k=0;
+        $list = array();
+        foreach ($temp1 as $key =>$value){
+            $list[$k]=$value;
+            $k++;
+        }
+        foreach ($temp2 as $key =>$value){
+            $list[$k]=$value;
+            $k++;
+        }
+        foreach ($temp3 as $key =>$value){
+            $list[$k]=$value;
+            $k++;
+        }
+        $list=array_unique($list);
 
 ?>
-
-    <!--Start class add button-->
-
-    <!-- End class add button-->
-
-
 <?php
 $scoreMod = new ScoresAddMod();
 $listScore = $scoreMod->getScoresAddByAccount($idLogin);
 ?>
 <form action="scoresAdd.manage.php" method="post" id="manageForm">
     <div class="row">
-        <a class="btn btn-info align-self-center col" data-toggle="modal" href="?">
+        <button class="btn btn-info align-self-center col" data-toggle="modal" >
             <span class="glyphicon glyphicon-filter"></span> Liệt kê
-        </a>
-        <a class="btn btn-primary align-self-center col" data-toggle="modal" data-target="#addScore">
+        </button>
+        <button class="btn btn-primary align-self-center col" data-toggle="modal" data-target="#addScore">
             <span class="glyphicon glyphicon-plus"></span> Thêm
-        </a>
-        <a type="submit" class="btn btn-success align-self-center  col " data-toggle="modal" data-target="#updateScore" >
+        </button>
+        <button type="submit" class="btn btn-success align-self-center  col " data-toggle="modal" data-target="#updateScore" >
             <span class="glyphicon glyphicon-pencil"></span> Sửa
-        </a>
-        <a class="btn btn-danger col align-self-center " data-toggle="modal" data-target="#deleteClass">
+        </button>
+        <button class="btn btn-danger col align-self-center " data-toggle="modal" data-target="#deleteClass">
             <span class="glyphicon glyphicon-trash"></span> Xóa
-        </a>
+        </button>
         <div class="col-sm-8">
             <select name="score" id="" class="form-control">
                 <option value="NoneScore">--Chọn bảng điểm để chỉnh sửa--</option>
@@ -63,7 +82,9 @@ $listScore = $scoreMod->getScoresAddByAccount($idLogin);
             </select>
         </div>
     </div>
+</form>
     <br />
+<form action="scoresAdd.manage.php" method="post" id="manageForm2">
 <table class="table table-bordered table-condensed" id="table-manage-scoreAdd">
 
     <thead>
