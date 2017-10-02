@@ -5,6 +5,8 @@ if(isset($_POST['btnAdd'])) {
     $studentM = new AccountMod();
     $studentO->setAccountObj($_POST['addIdAccount'], $_POST['addAccountName'], $_POST['addBirthday'], $_POST['addAddress'], $_POST['addSex'], $_POST['addPhone'], $_POST['addEmail'],'123', $_POST['addPermission_position']);
     $studentM->addAccount($studentO);
+    $academyTemp = new AccountHasAcademyMod(); $academyTemp->addAccountHasAcademy($_POST['addIdAccount'],$_POST['addAcademyName']);
+    $classTemp = new AccountHasClassMod(); $classTemp->addAccountHasClass($_POST['addIdAccount'],$_POST['addClassName']);
     echo'<META http-equiv="refresh" content="0;URL=student.manage.php">';
 }
 ?>

@@ -54,12 +54,6 @@ $perMod = new PermissionMod();
 </div>
 
 <script src="../public/js/student_action.js"></script>
-<!--<script>-->
-<!--//    $('#form-filter-student').submit(function(){-->
-<!--//        var classId = $('#select-student-class').val();-->
-<!--//        return /^[a-zA-Z0-9]+4/.test(classId);-->
-<!--//    });-->
-<!--</script>-->
 <?php
 require_once "../controller/footer.php";
 ?>

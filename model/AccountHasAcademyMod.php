@@ -21,7 +21,7 @@ class AccountHasAcademyMod
     {
         // Đẩy câu lệnh vào string
         $sql = "INSERT INTO `Account_has_Academy` (`Account_idAccount`, `Academy_idAcademy`) 
-						VALUES('" . $account->getIdAccount() . "','" . $Academy->getIdAcademy() . "');";
+						VALUES('" . $account. "','" . $Academy. "');";
         // Thực thi câu lệnh
         $this->conn->Connect();
         if ($this->conn->conn->multi_query($sql) === true) {
@@ -39,12 +39,11 @@ class AccountHasAcademyMod
     }
 
     //Hàm xóa một sinh viên khỏi chi hội
-    public function deleteAccountHasAcademy($account, $Academy)
+    public function deleteAccountHasAcademy($account)
     {
         // Đẩy câu lệnh vào string
         $sql = "DELETE FROM Account_Has_Academy 
-						WHERE Account_idAccount='" . $account->getIdAccount() . "' 
-						and Academy_idAcademy='" . $Academy->getIdAcademy() . "';";
+						WHERE Account_idAccount='" . $account . "';";
         // Thực thi câu lệnh
         // Thực hiện câu truy vấn
         $this->conn->Connect();

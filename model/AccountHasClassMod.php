@@ -21,7 +21,7 @@ class AccountHasClassMod
     {
         // Đẩy câu lệnh vào string
         $sql = "INSERT INTO `Account_has_Class` (`Account_idAccount`, `Class_idClass`) 
-						VALUES('" . $account->getIdAccount() . "','" . $Class->getIdClass() . "');";
+						VALUES('" . $account . "','" . $Class . "');";
         // Thực thi câu lệnh
         $this->conn->Connect();
         if ($this->conn->conn->multi_query($sql) === true) {
@@ -43,8 +43,7 @@ class AccountHasClassMod
     {
         // Đẩy câu lệnh vào string
         $sql = "DELETE FROM Account_Has_Class 
-						WHERE Account_idAccount='" . $account->getIdAccount() . "' 
-						and Class_idClass='" . $Class->getIdClass() . "';";
+						WHERE Account_idAccount='" . $account. "';";
         // Thực thi câu lệnh
         // Thực hiện câu truy vấn
         $this->conn->Connect();

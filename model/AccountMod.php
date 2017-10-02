@@ -169,9 +169,7 @@ class AccountMod {
 		$this->conn2sql->Connect();
 		$result = $this->conn2sql->conn->query($sql);
 		$this->conn2sql->Stop();
-		$list = array();
 		if ($result->num_rows > 0) {
-			$k = 0;
 			while ($row = $result->fetch_assoc()) {
 				$list = $row["idAcademy"];
 			}

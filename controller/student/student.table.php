@@ -59,10 +59,10 @@ $url = strpos($url, "?") ? "$url&" : "$url?";
                     <td><?php echo $student->getAccountName(); ?></td>
                     <td><input type="checkbox" name="xoa[]" id="<?php echo $student->getIdAccount(); ?>"
                                value="<?php echo $student->getIdAccount(); ?>"/></td>
-                    <td><a class="btn btn-danger btn-sm col align-self-center " data-toggle="modal"
+                    <td><a href="?idAcc=<?php echo $student->getIdAccount(); ?>" class="btn btn-primary btn-sm col align-self-center " data-toggle="modal"
                            data-target="#updateStudent"
                            name="<?php echo $student->getIdAccount() ?>">
-                            <span class=" glyphicon glyphicon-trash"></span> Sửa
+                            <span class=" glyphicon glyphicon-pencil"></span>
                         </a></td>
                 </tr>
 			<?php } ?>
