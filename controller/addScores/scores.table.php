@@ -33,10 +33,13 @@
     <!-- End class add button-->
 
 
-
+<?php
+$scoreMod = new ScoresAddMod();
+$listScore = $scoreMod->getScoresAddByAccount($idLogin);
+?>
 <form action="scoresAdd.manage.php" method="post" id="manageForm">
     <div class="row">
-        <a class="btn btn-info align-self-center col" data-toggle="modal" data-target="#">
+        <a class="btn btn-info align-self-center col" data-toggle="modal" href="?">
             <span class="glyphicon glyphicon-filter"></span> Liệt kê
         </a>
         <a class="btn btn-primary align-self-center col" data-toggle="modal" data-target="#addScore">
@@ -52,8 +55,7 @@
             <select name="score" id="" class="form-control">
                 <option value="NoneScore">--Chọn bảng điểm để chỉnh sửa--</option>
                 <?php
-                $scoreMod = new ScoresAddMod();
-                $listScore = $scoreMod->getScoresAddByAccount($idLogin);
+
                 foreach ($listScore as $key => $value){
                     echo'<option value="'.$value->getIdScore().'">'.$value->getScoreName().'</option>';
                 }
