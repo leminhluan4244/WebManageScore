@@ -36,7 +36,7 @@
    		            </thead>
    		            <tbody class="text-center align-self-center">
    		      <?php
-   		      $studentId = getSession("stdId");
+   		      $studentId = getLoggedAccountId();
    		    $tempMod = new ScoresAddMod();
    		    $transMod = new TranscriptMod();
    		    $scoreTable = $tempMod->getScoresForStudent($studentId);
@@ -70,4 +70,9 @@
      }
     ?>
 </div>
+<script>
+    $(function(){
+        $('[data-toggle="popover"]').popover();
+    });
+</script>
 <?php require_once '../controller/footer.php'; ?>
