@@ -1,61 +1,75 @@
 <?php
 if(!isset($_GET['btnfilter'])) {
-    $teacherMod = new AccountMod();
-    $teacherList = $teacherMod->getAccountStaff();
+    $staffMod = new AccountMod();
+    $arrayStaff = array();
+    $arrayStaff = $staffMod->getAccountStaff();
 }
 else {
     if($_GET['academy']=='NoneAcademy'){
-        $teacherMod = new AccountMod();
-        $teacherList = $teacherMod->getAccountStaff();
+        $staffMod = new AccountMod();
+        $arrayStaff = array();
+        $arrayStaff = $staffMod->getAccountStaff();
     }
     else{
-        $teacherMod = new AccountMod();
-        $teacherList = $teacherMod->getAccountStaffByAcademy($_GET['academy']);
+        $staffMod = new AccountMod();
+        $arrayStaff = $staffMod->getAccountStaffByAcademy($_GET['academy']);
     }
 }
 
 ?>
 
-<div id="teacher-manage-wrapper">
-        <hr>
-        <h4 class="text-primary text-center">Danh sách cán bộ</h4>
+<div id="staff-manage-wrapper">
+    <h4 class="text-primary text-center">Danh sách cán bộ</h4>
     <form action="staff.manage.php" method="post" id="manageForm">
-        <table class="table table-bordered table-condensed" id="table-manage-teacher">
+        <table class="table table-bordered table-condensed " id="table-manage-staff">
             <thead>
             <tr>
                 <th>STT</th>
-                <th>MSSV</th>
-                <th>Họ và tên</th>
-                <th>Sửa<br/></th>
-                <th>Tất cả <br/><input type="checkbox" onClick="toggle(this)"></th>
+                <th>Mã CB</th>
+                <th>Tên CB</th>
+                <th>Tùy Chỉnh</th>
+                <th>Chọn tất cả<br>
+                    <input type="checkbox" onClick="toggle(this)"></th>
             </tr>
             </thead>
             <tbody class="text-center align-self-center">
-			<?php
-            if($teacherList >0)
-			foreach ($teacherList as $order => $teacher) { ?>
+            <?php
+            $i=0;
+            if($arrayStaff<=0) echo 'Không có dữ liệu';
+            else
+                foreach ($arrayStaff as $key => $value) {
+                    $i++;
+                    echo '
+    
                 <tr>
-                    <td><?php echo $order + 1; ?></td>
+                    <td>'.$i.'</td>
+                   
                     <td>
-                        <a href="<?php echo $url . 'id=' . $teacher->getIdAccount(); ?>">
-							<?php echo $teacher->getIdAccount(); ?>
-                        </a>
+                        ' .  $value->getIdAccount() . '
                     </td>
-                    <td><?php echo $teacher->getAccountName(); ?></td>
-                    <td><a class="btn btn-primary btn-sm col align-self-center " data-toggle="modal"
-                           data-target="#updateteacher"
-                           name="<?php echo $teacher->getIdAccount() ?>">
-                            <span class="glyphicon glyphicon-pencil"></span>
-                        </a></td>
-                    <td><input type="checkbox" name="xoa[]" id="<?php echo $teacher->getIdAccount(); ?>"
-                               value="<?php echo $teacher->getIdAccount(); ?>"/></td>
+                    <td>
+                        ' . $value->getAccountName() . '
+                    </td>
+               
+                    <td>
+                        <a href="?idAccount='.$value->getIdAccount().'" class="btn btn-primary btn-sm"><span class="glyphicon glyphicon-pencil"></span></a>
+                    </td>
+                    <td>
+                        <input type="checkbox" name="xoa[]" id="'.$value->getIdAccount().'" value="'.$value->getIdAccount().'"/>
+                    </td>
+                </tr>';
+                }
 
-                </tr>
-			<?php } ?>
+            ?>
             </tbody>
         </table>
     </form>
 </div>
+
+
+
+
+
 <script language="JavaScript">
     function toggle(checkall) {
         checkboxes = document.getElementsByName('xoa[]');
@@ -64,5 +78,5 @@ else {
         }
     }
 
-    $('#table-manage-teacher').DataTable();
+    $('#table-manage-staff').DataTable();
 </script>

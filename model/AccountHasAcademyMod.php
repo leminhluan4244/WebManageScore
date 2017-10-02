@@ -16,7 +16,27 @@ class AccountHasAcademyMod
     {
         $this->conn = new ConnectToSQL();
     }
+//tho
+    public function addStaffHasAcademy($account, $Academy)
+    {
+        // Đẩy câu lệnh vào string
+        $sql = "INSERT INTO `Account_has_Academy` (`Account_idAccount`, `Academy_idAcademy`) 
+						VALUES('" . $account->getIdAccount() . "','" . $Academy->getIdAcademy() . "');";
+        // Thực thi câu lệnh
+        $this->conn->Connect();
+        if ($this->conn->conn->multi_query($sql) === true) {
+            //echo "Thêm thành công";
+            //Ngắt kết nối
+            $this->conn->Stop();
+            return true;
+        } else {
+            //echo "Lỗi add Account to Academy";
+            //Ngắt kết nối
+            $this->conn->Stop();
+            return false;
+        }
 
+    }
     public function addAccountHasAcademy($account, $Academy)
     {
         // Đẩy câu lệnh vào string

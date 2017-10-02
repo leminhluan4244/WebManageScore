@@ -11,7 +11,7 @@ if(isset($_POST['btnAdd_staff'])) {
     $mod = new AccountHasAcademyMod();
 //   var_dump($objAcademy->getIdAcademy($_POST['addAcademyName']));
 //   var_dump($stO->getIdAccount($_POST['addIdAccount']));
-    $mod->addAccountHasAcademy($stO,$objAcademy);
+    $mod->addStaffHasAcademy($stO,$objAcademy);
     echo'<META http-equiv="refresh" content="0;URL=staff.manage.php">';
 
 

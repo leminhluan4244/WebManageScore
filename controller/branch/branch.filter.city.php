@@ -1,7 +1,9 @@
 <div class="col-sm-4">
     <select name="city" id="" class="form-control">
+
         <?php
         echo'               
+                             <option value="NoneCity">-- Chọn theo tỉnh thành --</option>
                             <option value="Cần Thơ">Cần Thơ</option>
                             <option value="An Giang">An Giang</option>
                             <option value="Bà Rịa - Vũng Tàu">Bà Rịa - Vũng Tàu</option>

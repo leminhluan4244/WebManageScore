@@ -1,14 +1,14 @@
 
 <?php
 if(isset($_POST['xoa'])) {
-    var_dump($_POST['xoa']);
+
     $branchO = new BranchObj();
     $branchM = new BranchMod();
 
     foreach ($_POST['xoa'] as $key=> $value){
             $branchO->setIdBranch($value);
             $branchM->deleteBranch($branchO);
-       // echo'<META http-equiv="refresh" content="0;URL=branch.manage.php">';
+       echo'<META http-equiv="refresh" content="0;URL=branch.manage.php">';
     }
 
 
@@ -38,6 +38,7 @@ if(isset($_POST['xoa'])) {
     function submitform() {
         $('#manageForm').submit();
     }
+
 </script>
 <!--End delete Branch-->
 

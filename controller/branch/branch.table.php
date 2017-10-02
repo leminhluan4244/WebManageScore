@@ -1,17 +1,29 @@
 <hr />
 <?php
 if(!isset($_GET['btnfilter'])) {
+    $branchMod = new BranchMod();
     $arrayBranch = array();
     $arrayBranch = $branchMod->getBranch();
 }
 else {
-    $arrayBranch = array();
-    $arrayBranch = $branchMod->findBranchByCity($_GET['city']);
+    if($_GET['city']=='NoneCity') {
+        $branchMod = new BranchMod();
+        $arrayBranch = array();
+        $arrayBranch = $branchMod->getBranch();
+
+    }else{
+        $arrayBranch = array();
+        $arrayBranch = $branchMod->findBranchByCity($_GET['city']);
+    }
+
 
 }
 ?>
-<table class="table table-bordered table-condensed " id="table-manage-branch">
 
+<div id="branch-manage-wrapper">
+    <h4 class="text-primary text-center">Danh sách chi hội</h4>
+    <form action="branch.manage.php" method="post" id="manageForm">
+    <table class="table table-bordered table-condensed " id="table-manage-branch">
     <thead>
     <tr>
         <th>STT</th>
@@ -23,8 +35,7 @@ else {
             <input type="checkbox" onClick="toggle(this)"></th>
     </tr>
     </thead>
-    <tbody>
-    <form action="branch.manage.php" method="post" id="manageForm">
+        <tbody class="text-center align-self-center">
         <?php
               $i=0;
             if($arrayBranch<=0) echo 'Không có dữ liệu';
@@ -55,16 +66,17 @@ else {
         }
 
         ?>
+        </tbody>
+    </table>
     </form>
-    <!-- Kết thúc lấy thuộc tính cho bảng từ CSDL -->
-    </tbody>
-</table>
+</div>
 <script language="JavaScript">
+
     function toggle(checkall) {
         checkboxes = document.getElementsByName('xoa[]');
-        for(var i=0, n=checkboxes.length;i<n;i++) {
-            checkboxes[i].checked = checkall.checked;
+        for(var i=0, n=checkboxes.length;i<n;i++)
+        {checkboxes[i].checked = checkall.checked;
         }
     }
-//   $('#table-manage-branch').DataTable();
+    $('#table-manage-branch').DataTable();
 </script>
