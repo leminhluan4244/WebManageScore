@@ -22,6 +22,7 @@
             $temp = $accountM->getAccountStudentByBranch($tempid);
             break;
         }
+        else $temp=0;
     }
 
 
@@ -35,16 +36,19 @@
 
 <form action="scoresAdd.manage.php" method="post" id="manageForm">
     <div class="row">
+        <a class="btn btn-primary align-self-center col" data-toggle="modal" data-target="#">
+            <span class="glyphicon glyphicon-filter"></span> Liệt kê
+        </a>
         <a class="btn btn-primary align-self-center col" data-toggle="modal" data-target="#addScore">
-            <span class="glyphicon glyphicon-plus"></span> Thêm bảng điểm
+            <span class="glyphicon glyphicon-plus"></span> Thêm
         </a>
         <a type="submit" class="btn btn-success align-self-center  col " data-toggle="modal" data-target="#updateScore" >
-            <span class="glyphicon glyphicon-pencil"></span> Sửa bảng điểm
+            <span class="glyphicon glyphicon-pencil"></span> Sửa
         </a>
         <a class="btn btn-danger col align-self-center " data-toggle="modal" data-target="#deleteClass">
-            <span class="glyphicon glyphicon-trash"></span> Xóa bảng điểm
+            <span class="glyphicon glyphicon-trash"></span> Xóa
         </a>
-        <div class="col-sm-4">
+        <div class="col-sm-8">
             <select name="score" id="" class="form-control">
                 <option value="NoneScore">--Chọn bảng điểm để chỉnh sửa--</option>
                 <?php
@@ -101,6 +105,9 @@
     ?>
     </tbody>
 </table>
+    <a type="submit" class="btn btn-success align-self-center  col " data-toggle="modal" data-target="#" >
+        <span class="glyphicon glyphicon-ok"></span> Lưu
+    </a>
 </form>
 <script language="JavaScript">
     function toggle(checkall) {

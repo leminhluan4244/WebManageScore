@@ -30,6 +30,8 @@ class ScoresAddMod
         if ($this->connSql->conn->query($sql) === true) {
            // echo "Updation is successful!";
         } else {
+            $this->connSql->Stop();
+            return 0;
           //  echo "Updation is not successful!" . $this->connSql->error;
         }
         $this->connSql->Stop();
@@ -41,7 +43,7 @@ class ScoresAddMod
         $sql = "UPDATE ScoresAdd SET
                   scoreName='".$cores->getScoreName(). "',
                   scores='".$cores->getScores(). "',
-                  decribe='".$cores->getDescribe(). "',
+                  describe='".$cores->getDescribe(). "',
                   Transcript_idItem ='".$cores->getTranscript_idItem()."',
 				  idAccountManage='".$cores->getIdAccountManage()."'
                   WHERE idScore='".$cores->getIdScore()."'";
@@ -50,6 +52,8 @@ class ScoresAddMod
         if ($this->connSql->conn->query($sql) === TRUE) {
           //  echo "Updation is successful!";
         } else {
+            $this->connSql->Stop();
+            return 0;
           //  echo "Updation is not successful!" . $this->connSql->error;
         }
         $this->connSql->Stop();
@@ -86,7 +90,7 @@ class ScoresAddMod
                 $obj->setScoreName($row["scoreName"]);
                 $obj->setIdScore($row["idScore"]);
                 $obj->setScores($row["scores"]);
-                $obj->setDecribe($row["decribe"]);
+                $obj->setDescribe($row["describe"]);
                 $obj->setTranscript_idItem($row["Transcript_idItem"]);
                 $obj->setIdAccountManage($row["idAccountManage"]);
                 $list[$k] = $obj;
@@ -94,6 +98,8 @@ class ScoresAddMod
             }
 
         } else {
+            $this->connSql->Stop();
+            return 0;
            // echo "The result of information processing is data false";
         }
 
@@ -116,7 +122,7 @@ class ScoresAddMod
                 $obj->setScoreName($row["scoreName"]);
                 $obj->setIdScore($row["idScore"]);
                 $obj->setScores($row["scores"]);
-                $obj->setDescribe($row["decribe"]);
+                $obj->setDescribe($row["describe"]);
                 $obj->setTranscript_idItem($row["Transcript_idItem"]);
                 $obj->setIdAccountManage($row["idAccountManage"]);
                 $list[$k] = $obj;
@@ -124,6 +130,8 @@ class ScoresAddMod
             }
 
         } else {
+            $this->connSql->Stop();
+            return 0;
             // echo "The result of information processing is data false";
         }
 
@@ -142,12 +150,13 @@ class ScoresAddMod
                 $obj->setScoreName($row["scoreName"]);
                 $obj->setIdScore($row["idScore"]);
                 $obj->setScores($row["scores"]);
-                $obj->setDecribe($row["decribe"]);
+                $obj->setDescribe($row["describe"]);
                 $obj->setTranscript_idItem($row["Transcript_idItem"]);
                 $obj->setIdAccountManage($row["idAccountManage"]);
             }
 
         } else {
+            $this->connSql->Stop();
             // echo "The result of information processing is data false";
             return 0;
         }
@@ -155,6 +164,36 @@ class ScoresAddMod
         $this->connSql->Stop();
         return $obj;
     }
+    public function getScoresForStudent($id)
+    {
+        $sql = "SELECT * FROM scoresadd,scoresadd_has_account WHERE scoresadd.idScore=scoresadd_has_account.ScoresAdd_idScore AND ScoresAdd_has_Account.Account_idAccount-'".$id."'";
+        $this->connSql->Connect();
+        $result = $this->connSql->conn->query($sql);
+
+        if ($result->num_rows > 0) {
+            $k=0;
+            while ($row = $result->fetch_assoc()) {
+                $obj = new ScoresAddObj();
+                $obj->setScoreName($row["scoreName"]);
+                $obj->setIdScore($row["idScore"]);
+                $obj->setScores($row["scores"]);
+                $obj->setDescribe($row["describe"]);
+                $obj->setTranscript_idItem($row["Transcript_idItem"]);
+                $obj->setIdAccountManage($row["idAccountManage"]);
+                $list[$k] = $obj;
+                $k++;
+            }
+
+        } else {
+            // echo "The result of information processing is data false";
+            $this->connSql->Stop();
+            return 0;
+        }
+
+        $this->connSql->Stop();
+        return $list;
+    }
+
 
 }
 ?>
