@@ -554,6 +554,36 @@ class AccountMod {
 		}
 		return true;
 	}
+//tho
+    public function updateStaff($account)
+    {
+        // Đẩy câu lệnh vào string
+        $sql = "UPDATE `account` SET
+        `accountName`='" . $account->getAccountName() . "',
+        `birthday`='" . $account->getBirthday() . "',
+        `address`='" . $account->getAddress() . "',
+        `sex`='" . $account->getSex() . "',
+        `phone`='" . $account->getPhone() . "',
+        `email`='" . $account->getEmail() . "',
+        `password`='" . $account->getPassword() . "',
+        `Permission_position`='" . $account->getPermission_position() . "'
+        WHERE `idAccount`='" . $account->getIdAccount() . "'";
+        // Thực thi câu lệnh
+        // Thực hiện câu truy vấn
+        $this->conn2sql->Connect();
+        if ($this->conn2sql->conn->query($sql) === true) {
+            // echo "Cập nhật thành công";
+            //Ngắt kết nối
+            $this->conn->Stop();
+            return true;
+        } else {
+            // echo "Lỗi updatebranch";
+            //Ngắt kết nối
+            $this->conn2sql->Stop();
+            return false;
+        }
+    }
+
 
 	#Xóa tài khoản
 	public function deleteAccount($account) {

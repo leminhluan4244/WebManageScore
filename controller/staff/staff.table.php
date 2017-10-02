@@ -17,56 +17,47 @@ else {
 }
 
 ?>
+<!-- end loc-->
 
 <div id="staff-manage-wrapper">
     <h4 class="text-primary text-center">Danh sách cán bộ</h4>
     <form action="staff.manage.php" method="post" id="manageForm">
-        <table class="table table-bordered table-condensed " id="table-manage-staff">
+        <table class="table table-bordered table-condensed" id="table-manage-staff">
             <thead>
             <tr>
                 <th>STT</th>
-                <th>Mã CB</th>
-                <th>Tên CB</th>
-                <th>Tùy Chỉnh</th>
-                <th>Chọn tất cả<br>
-                    <input type="checkbox" onClick="toggle(this)"></th>
+                <th>MSCB</th>
+                <th>Họ và tên</th>
+                <th>Sửa<br/></th>
+                <th>Tất cả <br/><input type="checkbox" onClick="toggle(this)"></th>
             </tr>
             </thead>
             <tbody class="text-center align-self-center">
             <?php
-            $i=0;
-            if($arrayStaff<=0) echo 'Không có dữ liệu';
-            else
-                foreach ($arrayStaff as $key => $value) {
-                    $i++;
-                    echo '
-    
-                <tr>
-                    <td>'.$i.'</td>
-                   
-                    <td>
-                        ' .  $value->getIdAccount() . '
-                    </td>
-                    <td>
-                        ' . $value->getAccountName() . '
-                    </td>
-               
-                    <td>
-                        <a href="?idAccount='.$value->getIdAccount().'" class="btn btn-primary btn-sm"><span class="glyphicon glyphicon-pencil"></span></a>
-                    </td>
-                    <td>
-                        <input type="checkbox" name="xoa[]" id="'.$value->getIdAccount().'" value="'.$value->getIdAccount().'"/>
-                    </td>
-                </tr>';
-                }
 
-            ?>
+            foreach ($arrayStaff as $order => $value) { ?>
+                <tr>
+                    <td><?php echo $order + 1; ?></td>
+                    <td>
+                        <a href="<?php echo $url . 'id=' . $value->getIdAccount(); ?>">
+                            <?php echo $value->getIdAccount(); ?>
+                        </a>
+                    </td>
+                    <td><?php echo $value->getAccountName(); ?></td>
+
+
+                    <td><a href="?idAcc=<?php echo $value->getIdAccount(); ?>" class="btn btn-primary btn-sm col align-self-center " data-toggle="modal">
+                            <span class=" glyphicon glyphicon-pencil"></span>
+                        </a></td>
+                    <td><input type="checkbox" name="xoa[]" id="<?php echo $value->getIdAccount(); ?>"
+                               value="<?php echo $value->getIdAccount(); ?>"/></td>
+
+                </tr>
+            <?php } ?>
             </tbody>
         </table>
     </form>
 </div>
-
-
 
 
 
