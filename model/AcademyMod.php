@@ -379,6 +379,38 @@ class AcademyMod {
 		}
 		return $acaName;
 	}
+    public function getListTeacher($academyId) {
+
+        $sql = "SELECT * FROM Account,Account_has_Academy WHERE Account_has_Academy.Academy_idAAcademy = '" . $academyId . "'";
+        $this->connSql->Connect();
+        $result = $this->connSql->conn->query($sql);
+        if ($result->num_rows > 0) {
+            $k = 0;
+            $list = array();
+            while ($row = $result->fetch_assoc()) {
+                $account = new AccountObj;
+                $account->setIdAccount($row["idAccount"]);
+                $account->setAccountName($row["accountName"]);
+                $account->setBirthday($row["birthday"]);
+                $account->setAddress($row["address"]);
+                $account->setSex($row["sex"]);
+                $account->setPhone($row["phone"]);
+                $account->setEmail($row["email"]);
+                $account->setPassword($row["password"]);
+                $account->setPermission_position($row["permission_position"]);
+                if ($account->getPermission_position() == 'Cố vấn học tập') {
+                    $list[$k] = $account;
+                    $k++;
+                }
+            }
+        } else {
+            $this->connSql->Stop();
+            return 0;
+            // echo "The result of information processing is data false";
+        }
+        $this->connSql->Stop();
+        return $list;
+    }
 
 }
 

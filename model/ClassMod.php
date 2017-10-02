@@ -181,11 +181,13 @@ class ClassMod {
 				$account->setPassword($row["password"]);
 				$account->setPermission_position($row["permission_position"]);
 				if ($account->getPermission_position() == 'Cố vấn học tập') {
-					$list[k] = $account;
+					$list[$k] = $account;
 					$k++;
 				}
 			}
 		} else {
+            $this->connSql->Stop();
+            return 0;
 			// echo "The result of information processing is data false";
 		}
 		$this->connSql->Stop();
