@@ -17,17 +17,9 @@
     $("#date-open").datepicker();
     $("#date-close").datepicker({dateFormat: 'dd-mm-yy'}).val();
     $("#date-close").datepicker();
-    //var json = '';
     $("#select").change(function() {
       $("#date-open").prop('disabled', false);
       $("#date-close").prop('disabled', false);
-      json = JSON.stringify($("#select").val());
-      document.cookie = "json=" + json;
-      <?php
-      $arr = (new CalendarScoringMod())->getCalendarWithPermissionPosition(json_decode($_COOKIE['json']));
-      $js_array = json_encode($arr);
-      echo "var arrJS = ". $js_array .";\n";
-      ?>
     });
   });
 </script>
@@ -37,8 +29,7 @@
     <div class="col-sm-12">
       <h4>Cập nhật lịch chấm điểm theo phân quyền</h4>
       <hr>
-      <form action="#" method="post">
-        <table id="tbl-edit" class="table table-hover table-condensed table-bordered">
+      <table id="tbl-edit" class="table table-hover table-condensed table-bordered">
           <thead>
             <tr>
               <th>Phân quyền</th>
@@ -49,9 +40,17 @@
           <tbody class="text-center">
           <tr>
             <?php
-             echo '<td>'.$arr['Permission_position'].'</td>';
-             echo '<td>'.$arr['openDate'].'</td>';
-             echo '<td>'.$arr['closeDate'].'</td>';
+             $permissionArr = (new PermissionMod())->getPermission();
+             foreach ($permissionArr as $key => $value) {
+               $arr = (new CalendarScoringMod())->getCalendarWithPermissionPosition($value->getPosition());
+               if(!empty($arr)){
+                 echo '<tr>';
+                 echo '<td>'.$arr['Permission_position'].'</td>';
+                 echo '<td>'.$arr['openDate'].'</td>';
+                 echo '<td>'.$arr['closeDate'].'</td>';
+                 echo '</tr>';
+               }
+             }
              ?>
           </tr>
           </tbody>
@@ -60,6 +59,7 @@
       <div class="row">
         <div class="col-sm-12">
           <div class="col-sm-4">
+            <form action="../controller/calendar/calendar.update.php" method="post">
               <fieldset class="form-group">
                 <p class="text-left"><b>Tên phân quyền</b></p>
                 <select id="select" class="form-control" name="select">
