@@ -46,8 +46,8 @@
                if(!empty($arr)){
                  echo '<tr>';
                  echo '<td>'.$arr['Permission_position'].'</td>';
-                 echo '<td>'.$arr['openDate'].'</td>';
-                 echo '<td>'.$arr['closeDate'].'</td>';
+                 echo '<td>'.date("d-m-Y", strtotime($arr['openDate'])).'</td>';
+                 echo '<td>'.date("d-m-Y", strtotime($arr['closeDate'])).'</td>';
                  echo '</tr>';
                }
              }
