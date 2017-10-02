@@ -6,6 +6,10 @@ if(isset($_POST['xoa'])) {
     foreach ($_POST['xoa'] as $key=> $value){
         $studentO->setIdAccount($value);
         $studentM->deleteAccount($studentO);
+        $academyTemp = new AccountHasAcademyMod();
+        $academyTemp->deleteAccountHasAcademy($studentO->getIdAccount());
+        $classTemp = new AccountHasClassMod();
+        $classTemp->deleteAccountHasClass($studentO->getIdAccount());
         echo'<META http-equiv="refresh" content="0;URL=student.manage.php">';
     }
 

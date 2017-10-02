@@ -11,13 +11,14 @@ if(isset($_POST['btnUpdate'])) {
     $classTemp = new AccountHasClassMod();
     $classTemp->deleteAccountHasClass($_POST['updateIdAccount']);
     $classTemp->addAccountHasClass($_POST['updateIdAccount'],$_POST['updateClassName']);
-    echo'<META http-equiv="refresh" content="0;URL=student.manage.php">';
+   // echo'<META http-equiv="refresh" content="0;URL=student.manage.php">';
 }
 if(isset($_POST['idAcc'])){
 
     $tempIDAcademy = $studentMT->getAcademy($_POST['idAcc']);
     $studentMT = new AccountMod();
     $studentOT = $studentMT->findAccountByID($_POST['idAcc']);
+    var_dump($studentOT);
 }
 
 
@@ -29,8 +30,6 @@ function checkO($stringA, $temp)
     return "";
 }
 ?>
-
-            <!-- Start update student-->
             <div id="updateStudent" class="modal fade " tabindex="-1" role="dialog" aria-labelledby aria-hidden="true">
                 <div class="modal-dialog">
                     <div class="modal-content">
@@ -52,39 +51,39 @@ function checkO($stringA, $temp)
                                 <fieldset class="form-group">
                                     <p class="text-left"><b>MSSV</b></p>
                                     <input type="text" class="form-control" name="updateIdAccount" id="updateIdAccount"
-                                           value="<?php echo $studentOT['accountName']?>">
+                                           value="<?php echo $studentOT['idAccount']?>">
                                 </fieldset>
 
                                 <fieldset class="form-group">
                                     <p class="text-left"><b>Ngày Sinh</b></p>
                                     <input type="date" class="form-control" name="updateBirthday" id="updateBirthday"
-                                           placeholder="Ngày Sinh">
+                                           placeholder="Ngày Sinh" value="<?php echo $studentOT['birthday']?>">
                                 </fieldset>
 
                                 <fieldset class="form-group">
                                     <p class="text-left"><b>Địa chỉ</b></p>
                                     <input type="text" class="form-control" name="updateAddress" id="updateAddress"
-                                           placeholder="Ngày Sinh">
+                                           placeholder="Ngày Sinh" value="<?php echo $studentOT['address']?>">
                                 </fieldset>
 
                                 <fieldset class="form-group">
                                     <p class="text-left"><b>Giới tính</b></p>
                                     <select class="form-control" name=updateSex" id="updateSex">
-                                        <option value="male">Nam</option>
-                                        <option value="female">Nữ</option>
+                                        <option <?php checkO($studentOT['sex'],'Nam'); ?> value="Nam" >Nam</option>
+                                        <option <?php checkO($studentOT['sex'],'Nữ'); ?> value="Nữ">Nữ</option>
                                     </select>
                                 </fieldset>
 
                                 <fieldset class="form-group">
                                     <p class="text-left"><b>Điện thoại</b></p>
                                     <input type="number" class="form-control" name="updatePhone" id="updatePhone"
-                                           placeholder="Nhập số điện thoại">
+                                           placeholder="Nhập số điện thoại" value="<?php echo $studentOT['phone']; ?>">
                                 </fieldset>
 
                                 <fieldset class="form-group">
                                     <p class="text-left"><b>Email</b></p>
                                     <input type="mail" class="form-control" name="updateEmail" id="updateEmail"
-                                           placeholder="Nhập email" value="@student.ctu.edu.vn">
+                                           placeholder="Nhập email" value="<?php echo $studentOT['email']; ?>">
                                 </fieldset>
 
                                 <fieldset class="form-group">
@@ -107,6 +106,21 @@ function checkO($stringA, $temp)
                                         <option value="NoneClass">--Chọn theo Lớp--</option>
                                     </select>
                                 </fieldset>
+
+                                <fieldset class="form-group">
+                                    <p class="text-left"><b>Phân quyền</b></p>
+                                    <select class="form-control" name="addPermission_position" id="addPermission_position">
+                                        <option value="NonePer">--Chọn phân quyền--</option>
+                                        <?php
+                                        $listPermissionM = array();
+                                        $listPermissionM = $perMod->getPermission();
+                                        foreach ($listPermissionM as $key => $value){
+                                            echo'<option value="'.$value->getPosition().'">'.$value->getPosition().'</option>';
+                                        }
+                                        ?>
+                                    </select>
+                                </fieldset>
+
                                 <div class="modal-footer">
                                     <button type="button" class="btn btn-default" data-dismiss="modal">Đóng</button>
                                     <button type="submit" class="btn btn-warning" name="btnUpdate">Sửa</button>
