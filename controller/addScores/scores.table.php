@@ -36,7 +36,7 @@
 
 <form action="scoresAdd.manage.php" method="post" id="manageForm">
     <div class="row">
-        <a class="btn btn-primary align-self-center col" data-toggle="modal" data-target="#">
+        <a class="btn btn-info align-self-center col" data-toggle="modal" data-target="#">
             <span class="glyphicon glyphicon-filter"></span> Liệt kê
         </a>
         <a class="btn btn-primary align-self-center col" data-toggle="modal" data-target="#addScore">
