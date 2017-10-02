@@ -405,7 +405,7 @@ class AccountMod {
 		$sql = "SELECT * FROM account, account_has_academy
                     WHERE account.idAccount = account_has_academy.Account_idAccount AND
                     account_has_academy.Academy_idAcademy = '".$id."' AND (
-                    account.Permission_position = 'Quản lý chi hội'OR
+                    account.Permission_position = 'Quản lý chi hội' OR
                     ACCOUNT.Permission_position = 'Sinh viên');";
 		$this->conn2sql->Connect();
 		$result = $this->conn2sql->conn->query($sql);

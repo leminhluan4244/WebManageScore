@@ -23,39 +23,40 @@
             $tempid = $accountM->getAcademyId($idLogin);
             $temp1 = $accountM->getAccountStudentByAcademy($tempid);
 
-        }
+        }else $temp1=false;
         #la quan ly chi hoi cho xem danh sach chi hoi va khong co nut loc theo lop
         if($number2){
             $tempid = $accountM->getCLassId($idLogin);
             $temp2 = $accountM->getAccountStudentByClass($tempid);
 
-        }
+        } else $temp2=false;
         #la quan ly lop hoc cho xem danh sach cac lop
         if($number3) {
             $tempid = $accountM->getBrachId($idLogin);
             $temp3 = $accountM->getAccountStudentByBranch($tempid);
-        }
+        } else $temp3=false;
         $k=0;
-        $list = array();
+        $temp = array();
+        if($temp1)
         foreach ($temp1 as $key =>$value){
-            $list[$k]=$value;
+            $temp[$k]=$value;
             $k++;
         }
+        if($temp2)
         foreach ($temp2 as $key =>$value){
-            $list[$k]=$value;
+            $temp[$k]=$value;
             $k++;
         }
+        if($temp3)
         foreach ($temp3 as $key =>$value){
-            $list[$k]=$value;
+            $temp[$k]=$value;
             $k++;
         }
-        $list=array_unique($list);
-
 ?>
-<?php
-$scoreMod = new ScoresAddMod();
-$listScore = $scoreMod->getScoresAddByAccount($idLogin);
-?>
+        <?php
+        $scoreMod = new ScoresAddMod();
+        $listScore = $scoreMod->getScoresAddByAccount($idLogin);
+        ?>
 <form action="scoresAdd.manage.php" method="post" id="manageForm">
     <div class="row">
         <button class="btn btn-info align-self-center col" data-toggle="modal" >

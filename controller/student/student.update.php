@@ -16,24 +16,13 @@ if(isset($_POST['btnUpdate'])) {
 if(isset($_GET['idAcc'])){
 	$studentMT = new AccountMod();
     $tempIDAcademy = $studentMT->getAcademyId($_GET['idAcc']);
-    var_dump($tempIDAcademy);
     $studentOT = $studentMT->findAccountByID($_GET['idAcc']);
-    var_dump($studentOT);
     echo "
     <script> 
         $(function() {
             $('#updateStudent').modal('toggle');
         });
     </script>";
-}
-
-
-function checkO($stringA, $temp)
-{
-    if ($stringA == $temp) {
-        return 'selected="selected"';
-    }
-    return "";
 }
 ?>
             <div id="updateStudent" class="modal fade " tabindex="-1" role="dialog" aria-labelledby aria-hidden="true">
@@ -71,15 +60,13 @@ function checkO($stringA, $temp)
                                     <input type="text" class="form-control" name="updateAddress" id="updateAddress"
                                            placeholder="Ngày Sinh" value="<?php echo $studentOT['address']?>">
                                 </fieldset>
-
                                 <fieldset class="form-group">
                                     <p class="text-left"><b>Giới tính</b></p>
                                     <select class="form-control" name=updateSex" id="updateSex">
-                                        <option <?php checkO($studentOT['sex'],'Nam'); ?> value="Nam" >Nam</option>
-                                        <option <?php checkO($studentOT['sex'],'Nữ'); ?> value="Nữ">Nữ</option>
+                                        <option <?php if($studentOT['sex']=='Nam') echo 'selected="selected"'; ?> value="Nam" >Nam</option>
+                                        <option <?php if($studentOT['sex']=='Nữ'); echo 'selected="selected"'?> value="Nữ">Nữ</option>
                                     </select>
                                 </fieldset>
-
                                 <fieldset class="form-group">
                                     <p class="text-left"><b>Điện thoại</b></p>
                                     <input type="number" class="form-control" name="updatePhone" id="updatePhone"
@@ -100,8 +87,9 @@ function checkO($stringA, $temp)
 										$listAcademy = array();
 										$listAcademy = $academyMod->getAcademy();
 										foreach ($listAcademy as $key => $value){
-
-											echo'<option'.checkO($tempIDAcademy, $value->getIdAcademy()).' value="'.$value->getIdAcademy().'">'.$value->getAcademyName().'</option>';
+                                            if($tempIDAcademy==$value->getIdAcademy())
+											echo'<option selected="selected"'.' value="'.$value->getIdAcademy().'">'.$value->getAcademyName().'</option>';
+                                            else echo'<option '.' value="'.$value->getIdAcademy().'">'.$value->getAcademyName().'</option>';
 										}
 										?>
                                     </select>
@@ -113,7 +101,6 @@ function checkO($stringA, $temp)
                                         <option value="NoneClass">--Chọn theo Lớp--</option>
                                     </select>
                                 </fieldset>
-
                                 <fieldset class="form-group">
                                     <p class="text-left"><b>Phân quyền</b></p>
                                     <select class="form-control" name="addPermission_position" id="addPermission_position">
@@ -122,7 +109,9 @@ function checkO($stringA, $temp)
                                         $listPermissionM = array();
                                         $listPermissionM = $perMod->getPermission();
                                         foreach ($listPermissionM as $key => $value){
-                                            echo'<option value="'.$value->getPosition().'">'.$value->getPosition().'</option>';
+                                            if($studentOT['permission_position']==$value->getPosition())
+                                            echo'<option selected="selected" value="'.$value->getPosition().'">'.$value->getPosition().'</option>';
+                                            else echo'<option value="'.$value->getPosition().'">'.$value->getPosition().'</option>';
                                         }
                                         ?>
                                     </select>
