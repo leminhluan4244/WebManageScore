@@ -6,11 +6,17 @@ require_once("../../model/CalendarScoringMod.php");
 require_once("../../model/CalendarScoringObj.php");
 switch ($_POST['btn-submit']) {
   case 'save':
+    if ($_POST['txt-date-open'] >= $_POST['txt-date-close']){
+      echo '<script>
+        alert("Lỗi ngày cập nhật lịch chấm");
+      </script>';
+      echo '<script>window.location.assign("../../view/calendarScoring.php")</script>';
+      break;
+    }
     $newDate = new CalendarScoringObj(date("Y-m-d", strtotime($_POST['txt-date-open'])), date("Y-m-d", strtotime($_POST['txt-date-close'])), $_POST['select']);
     $newCalendar = new CalendarScoringMod();
     $newCalendar->updateCalendar($newDate);
     break;
-
   default:
     break;
 }
