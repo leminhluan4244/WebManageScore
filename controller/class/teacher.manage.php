@@ -1,18 +1,31 @@
 <?php
-if(isset($_POST['btnTeacher'])) {
-    $classM = new AccountHasClassMod();
-    $classM->changeTeacher();
-    echo'<META http-equiv="refresh" content="0;URL=class.manage.php">';
+if (isset($_POST['btnTeacher'])) {
+    $classTemp = new AccountHasClassMod();
+    $teacher = $classTemp->getTeacher($_POST['updateIdClass']);
+    if(gettype($teacher)!='integer')
+    {
+        $classM = new AccountHasClassMod();
+        $classM->changeTeacher($_POST['updateIdTeacher'],$teacher->getIdAccount(),$_POST['updateIdClass']);
+    } else{
+        $classM = new AccountHasClassMod();
+        $classM->addAccountHasClass($_POST['updateIdTeacher'],$_POST['updateIdClass']);
+    }
+
+    //  echo'<META http-equiv="refresh" content="0;URL=class.manage.php">';
 }
-$classM = new ClassMod();
-$list = $classM->getClass();
+
 $idClass = isset($_GET['changeTeacher']) ? $_GET['changeTeacher'] : false;
 if ($idClass) {
-    $classO = new ClassObj();
     $classO = $classM->findClassByID($idClass);
-}
-?>
-<div id="updateClass" class="modal fade " tabindex="-1" role="dialog" aria-labelledby aria-hidden="true">
+    echo "<script>
+    $(function () {
+        $('#updateTeacher').modal('toggle');
+        window.history.pushState({path: 'class.manage.php'}, '', 'class.manage.php');
+    });
+    </script>";
+    if ($classO) {
+        echo '
+<div id="updateTeacher" class="modal fade " tabindex="-1" role="dialog" aria-labelledby aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
@@ -25,22 +38,33 @@ if ($idClass) {
                     <fieldset class="form-group">
                         <p class="text-left"><b>Lớp</b></p>
                         <input type="text" class="form-control" name="updateIdClass" id="updateIdClass"
-                                value="<?php echo $classO->getIdClass(); ?>" readonly>
+                                value="' . $classO->getIdClass() . '" readonly>
                         <input type="text" class="form-control" name="updateClassName" id="updateClassName"
-                                value="<?php echo $classO->getClassName(); ?>" readonly>
+                                value="' . $classO->getClassName() . '" readonly>
                     </fieldset>
-
+                    
                     <fieldset class="form-group">
                         <p class="text-left"><b>Tên cố vấn</b></p>
                         <select class="form-control" name="updateIdTeacher" id="updateIdTeacher">';
-                            $listTeacher = array();
-                            $ = new AcademyMod();
-                            $academyMod = new AcademyMod();
-                            $listAcademy = $academyMod->getAcademy();
-                            foreach ($listAcademy as $key => $value){
-                            echo'<option '.checkO($value->getIdAcademy(), $classO->getAcademy_idAcademy()).' value="'.$value->getIdAcademy().'">'.$value->getAcademyName().'</option>';
-                            }
-                            echo' </select>
+        $classTemp = new AccountHasClassMod();
+        $teacher = $classTemp->getTeacher($classO->getIdClass());
+        $academyTemp = new AcademyMod();
+        $listTeacher = $academyTemp->getListTeacher($classO->getAcademy_idAcademy());
+        if ($listTeacher > 0) {
+            if(gettype($teacher)!='integer')
+            foreach ($listTeacher as $key => $value) {
+
+                if ($value->getIdAccount() == $teacher->getIdAccount())
+                    echo '<option selected="selected" value="' . $value->getIdAccount() . '">' . $value->getAccountName() . '</option>';
+                else echo '<option   value="' . $value->getIdAccount() . '">' . $value->getAccountName() . '</option>';
+            }
+            else foreach ($listTeacher as $key => $value) {
+
+                 echo '<option   value="' . $value->getIdAccount() . '">' . $value->getAccountName() . '</option>';
+            }
+        }
+        echo '
+                            </select>
                     </fieldset>
                     
                     <div class="modal-footer">
@@ -51,10 +75,8 @@ if ($idClass) {
             </div>
         </div>
     </div>
-</div>
-<script>
-    $(function () {
-        $('#updateClass').modal('toggle');
-        window.history.pushState({path: 'class.manage.php'}, '', 'class.manage.php');
-    });
-</script>
+</div>';
+    }
+}
+?>
+

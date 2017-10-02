@@ -64,7 +64,7 @@ if(isset($_GET['idAcc'])){
                                     <p class="text-left"><b>Giới tính</b></p>
                                     <select class="form-control" name=updateSex" id="updateSex">
                                         <option <?php if($studentOT['sex']=='Nam') echo 'selected="selected"'; ?> value="Nam" >Nam</option>
-                                        <option <?php if($studentOT['sex']=='Nữ'); echo 'selected="selected"'?> value="Nữ">Nữ</option>
+                                        <option <?php if($studentOT['sex']=='Nữ') echo 'selected="selected"';?> value="Nữ">Nữ</option>
                                     </select>
                                 </fieldset>
                                 <fieldset class="form-group">

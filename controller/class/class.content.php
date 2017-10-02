@@ -32,5 +32,10 @@
     require "../controller/class/class.delete.php";
     ?>
     <!--End delete class-->
+    <!--Start delete class-->
+    <?php
+    require "../controller/class/teacher.manage.php";
+    ?>
+    <!--End delete class-->
 
 </div>

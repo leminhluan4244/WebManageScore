@@ -210,7 +210,9 @@ class ClassMod {
 				$class->setAcademy_idAcademy($row["Academy_idAcademy"]);
 			}
 		} else {
+            $this->connSql->Stop();
 			// echo "Not Found";
+			return 0;
 		}
 		$this->connSql->Stop();
 		return $class;

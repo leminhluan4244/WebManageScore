@@ -66,7 +66,7 @@ function getName($id){
             '.getName($value->getAcademy_idAcademy()).'
         </td>
         <td>
-            <a href="?changeTeacher='.$value->getIdClass().'" class="btn btn-primary btn-sm"><span class="glyphicon glyphicon-pencil"></span></a>
+            <a href="?changeTeacher='.$value->getIdClass().'" class="btn btn-primary btn-sm"><span class="glyphicon glyphicon-user"></span></a>
         </td>
         <td>
             <a href="?idClass='.$value->getIdClass().'" class="btn btn-primary btn-sm"><span class="glyphicon glyphicon-pencil"></span></a>
