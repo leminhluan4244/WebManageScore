@@ -3,14 +3,18 @@
 if(isset($_POST['btnUpdate'])) {
     $studentO = new AccountObj();
     $studentM = new AccountMod();
-    $studentO->setAccountObj($_POST['updateIdAccount'], $_POST['updateAccountName'], $_POST['updateBirthday'], $_POST['updateAddress'], $_POST['updateSex'], $_POST['updatePhone'], $_POST['updateEmail'],'123', $_POST['updatePermission_position']);
+    var_dump($_POST);
+    $studentO->setAccountObj($_POST['updateIdAccount'], $_POST['updateAccountName'], $_POST['updateBirthday'], $_POST['updateAddress'], $_POST['updateSex'], $_POST['updatePhone'], $_POST['updateEmail'],'1234', $_POST['updatePermission_position']);
     $studentM->updateAccount($studentO);
     $academyTemp = new AccountHasAcademyMod();
-    $academyTemp->deleteAccountHasAcademy($_POST['updateIdAccount']);
-    $academyTemp->addAccountHasAcademy($_POST['updateIdAccount'],$_POST['updateAcademyName']);
-    $classTemp = new AccountHasClassMod();
-    $classTemp->deleteAccountHasClass($_POST['updateIdAccount']);
-    $classTemp->addAccountHasClass($_POST['updateIdAccount'],$_POST['updateClassName']);
+    if($_POST['updateAcademyName']!='NoneAcademy'){
+        $academyTemp->deleteAccountHasAcademy($_POST['updateIdAccount']);
+        $academyTemp->addAccountHasAcademy($_POST['updateIdAccount'],$_POST['updateAcademyName']);
+        $classTemp = new AccountHasClassMod();
+        $classTemp->deleteAccountHasClass($_POST['updateIdAccount']);
+        $classTemp->addAccountHasClass($_POST['updateIdAccount'],$_POST['updateClassName']);
+    }
+
    // echo'<META http-equiv="refresh" content="0;URL=student.manage.php">';
 }
 if(isset($_GET['idAcc'])){
@@ -62,7 +66,7 @@ if(isset($_GET['idAcc'])){
                                 </fieldset>
                                 <fieldset class="form-group">
                                     <p class="text-left"><b>Giới tính</b></p>
-                                    <select class="form-control" name=updateSex" id="updateSex">
+                                    <select class="form-control" name="updateSex" id="updateSex">
                                         <option <?php if($studentOT['sex']=='Nam') echo 'selected="selected"'; ?> value="Nam" >Nam</option>
                                         <option <?php if($studentOT['sex']=='Nữ') echo 'selected="selected"';?> value="Nữ">Nữ</option>
                                     </select>
@@ -85,12 +89,6 @@ if(isset($_GET['idAcc'])){
                                         <option value="NoneAcademy">--Chọn khoa--</option>
 										<?php
 										$listAcademy = array();
-										$listAcademy = $academyMod->getAcademy();
-//										foreach ($listAcademy as $key => $value){
-//                                            if($tempIDAcademy==$value->getIdAcademy())
-//											echo'<option selected="selected"'.' value="'.$value->getIdAcademy().'">'.$value->getAcademyName().'</option>';
-//                                            else echo'<option '.' value="'.$value->getIdAcademy().'">'.$value->getAcademyName().'</option>';
-//										}
                                         foreach ($listAcademy as $key => $value){
                                             echo'<option '.' value="'.$value->getIdAcademy().'">'.$value->getAcademyName().'</option>';
                                         }
@@ -106,7 +104,7 @@ if(isset($_GET['idAcc'])){
                                 </fieldset>
                                 <fieldset class="form-group">
                                     <p class="text-left"><b>Phân quyền</b></p>
-                                    <select class="form-control" name="addPermission_position" id="addPermission_position">
+                                    <select class="form-control" name="updatePermission_position" id="updatePermission_position">
                                         <option value="NonePer">--Chọn phân quyền--</option>
                                         <?php
                                         $listPermissionM = array();

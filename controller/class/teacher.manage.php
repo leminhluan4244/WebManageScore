@@ -11,7 +11,7 @@ if (isset($_POST['btnTeacher'])) {
         $classM->addAccountHasClass($_POST['updateIdTeacher'],$_POST['updateIdClass']);
     }
 
-    //  echo'<META http-equiv="refresh" content="0;URL=class.manage.php">';
+      echo'<META http-equiv="refresh" content="0;URL=class.manage.php">';
 }
 
 $idClass = isset($_GET['changeTeacher']) ? $_GET['changeTeacher'] : false;
