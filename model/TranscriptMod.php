@@ -158,6 +158,17 @@ class TranscriptMod {
 
 	}
 
+	public function getTranscriptName($accountId, $itemId){
+		$sql = "select itemName from transcript where Account_idAccount = '$accountId' AND idItem = '$itemId'";
+		$this->connSQL->Connect();
+		$result = $this->connSQL->conn->query($sql);
+		$this->connSQL->Stop();
+		if (!empty($result) && $result->num_rows){
+			return str_replace("-", "", $result->fetch_assoc()['itemName']);
+		}
+		return "";
+	}
+
 	/**
 	 * Trả về danh sách id các mục trong bảng điểm
 	 * @return array
@@ -184,8 +195,17 @@ class TranscriptMod {
 		$sql = "select count(*) as total from transcript where Account_idAccount = '$accoundId'";
 		$this->connSQL->Connect();
 		$result = $this->connSQL->conn->query($sql);
+		$currentRow = 0;
+		if (!empty($result) && $result->num_rows){
+			$currentRow = $result->fetch_assoc()["total"];
+		}
+		$sql = "select count(*) as total from structure";
+		$result = $this->connSQL->conn->query($sql);
 		$this->connSQL->Stop();
-		return $result->fetch_assoc()["total"] > 0;
+		if (!empty($result) && $result->num_rows){
+			$totalRow = $result->fetch_assoc()["total"];
+		}
+		return $currentRow == $totalRow;
 	}
 
 	/**
@@ -194,10 +214,10 @@ class TranscriptMod {
 	 * @param array $structure
 	 * @return bool
 	 */
-	public function generateTranscript($accountId, $structure = array()){
+	public function generateTranscript($accountId, $structure = array(), $addScore = array()){
 		$this->connSQL->Connect();
 		foreach ($structure as $id => $item){
-			$sql = "insert into transcript values(
+			$sql = "insert ignore into transcript values(
 				'$id', '$accountId', '{$item['itemName']}', '0', 
 				'{$item['describe']}', '{$item['IDParent']}', '{$item['scoresDefault']}', 
 				'{$item['scores']}', '0', '0'

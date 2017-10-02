@@ -6,194 +6,210 @@
  * Time: 9:55 SA
  */
 
-class ScoresAddMod
-{
-    private $connSql;
+class ScoresAddMod {
+	private $connSql;
 
-    function __construct()
-    {
-        $this->connSql = new ConnectToSQL();
-    }
+	function __construct() {
+		$this->connSql = new ConnectToSQL();
+	}
 
 
-    //1. Hàm thêm
-    public function addScoresAdd($cores){
-        $sql = "INSERT INTO `scoresadd` (`idScore`, `scoreName`, `scores`, `describe`, `Transcript_idItem`, `idAccountManage`)
+	//1. Hàm thêm
+	public function addScoresAdd($cores) {
+		$sql = "INSERT INTO `scoresadd` (`idScore`, `scoreName`, `scores`, `describe`, `Transcript_idItem`, `idAccountManage`)
         VALUES (
-          '".$cores->getIdScore()."',
-         '".$cores->getScoreName()."',
-         ".$cores->getScores().",
-         '".$cores->getDescribe()."',
-         '".$cores->getTranscript_idItem()."',
-         '".$cores->getIdAccountManage()."');";
-        $this->connSql->Connect();
-        if ($this->connSql->conn->query($sql) === true) {
-           // echo "Updation is successful!";
-        } else {
-            $this->connSql->Stop();
-            return 0;
-          //  echo "Updation is not successful!" . $this->connSql->error;
-        }
-        $this->connSql->Stop();
-    }
+          '" . $cores->getIdScore() . "',
+         '" . $cores->getScoreName() . "',
+         " . $cores->getScores() . ",
+         '" . $cores->getDescribe() . "',
+         '" . $cores->getTranscript_idItem() . "',
+         '" . $cores->getIdAccountManage() . "');";
+		$this->connSql->Connect();
+		if ($this->connSql->conn->query($sql) === true) {
+			// echo "Updation is successful!";
+		} else {
+			$this->connSql->Stop();
+			return 0;
+			//  echo "Updation is not successful!" . $this->connSql->error;
+		}
+		$this->connSql->Stop();
+	}
 
-    //2. Hàm cập nhật
-    public function updateScoresAdd($cores)
-    {
-        $sql = "UPDATE ScoresAdd SET
-                  scoreName='".$cores->getScoreName(). "',
-                  scores='".$cores->getScores(). "',
-                  describe='".$cores->getDescribe(). "',
-                  Transcript_idItem ='".$cores->getTranscript_idItem()."',
-				  idAccountManage='".$cores->getIdAccountManage()."'
-                  WHERE idScore='".$cores->getIdScore()."'";
+	//2. Hàm cập nhật
+	public function updateScoresAdd($cores) {
+		$sql = "UPDATE ScoresAdd SET
+                  scoreName='" . $cores->getScoreName() . "',
+                  scores='" . $cores->getScores() . "',
+                  describe='" . $cores->getDescribe() . "',
+                  Transcript_idItem ='" . $cores->getTranscript_idItem() . "',
+				  idAccountManage='" . $cores->getIdAccountManage() . "'
+                  WHERE idScore='" . $cores->getIdScore() . "'";
 
-        $this->connSql->Connect();
-        if ($this->connSql->conn->query($sql) === TRUE) {
-          //  echo "Updation is successful!";
-        } else {
-            $this->connSql->Stop();
-            return 0;
-          //  echo "Updation is not successful!" . $this->connSql->error;
-        }
-        $this->connSql->Stop();
-    }
+		$this->connSql->Connect();
+		if ($this->connSql->conn->query($sql) === TRUE) {
+			//  echo "Updation is successful!";
+		} else {
+			$this->connSql->Stop();
+			return 0;
+			//  echo "Updation is not successful!" . $this->connSql->error;
+		}
+		$this->connSql->Stop();
+	}
 
-    //3. Hàm xóa
-    public function deleteScoresAdd($cores)
-    {
+	//3. Hàm xóa
+	public function deleteScoresAdd($cores) {
 
-        $sql = "DELETE FROM ScoresAdd
-						WHERE idScore='".$cores->getIdScore()."';";
+		$sql = "DELETE FROM ScoresAdd
+						WHERE idScore='" . $cores->getIdScore() . "';";
 
-        $this->connSql->Connect();
-        if ($this->connSql->conn->query($sql) === TRUE) {
-           // echo "Deletion is successful! ";
-        } else {
-          //  echo "Deletion is not successful! " . $this->connSql->error;
-        }
-        $this->connSql->Stop();
-    }
-    //4. Hàm trả về danh sách các điểm cộng trừ
-    public function getScoresAdd()
-    {
-        $sql = "SELECT * FROM ScoresAdd";
-        $this->connSql->Connect();
-        $result = $this->connSql->conn->query($sql);
+		$this->connSql->Connect();
+		if ($this->connSql->conn->query($sql) === TRUE) {
+			// echo "Deletion is successful! ";
+		} else {
+			//  echo "Deletion is not successful! " . $this->connSql->error;
+		}
+		$this->connSql->Stop();
+	}
 
-        if ($result->num_rows > 0) {
-            $k = 0;
+	//4. Hàm trả về danh sách các điểm cộng trừ
+	public function getScoresAdd() {
+		$sql = "SELECT * FROM ScoresAdd";
+		$this->connSql->Connect();
+		$result = $this->connSql->conn->query($sql);
 
-            $list = array();
-            while ($row = $result->fetch_assoc()) {
-                $obj = new ScoresAddObj();
-                $obj->setScoreName($row["scoreName"]);
-                $obj->setIdScore($row["idScore"]);
-                $obj->setScores($row["scores"]);
-                $obj->setDescribe($row["describe"]);
-                $obj->setTranscript_idItem($row["Transcript_idItem"]);
-                $obj->setIdAccountManage($row["idAccountManage"]);
-                $list[$k] = $obj;
-                $k++;
-            }
+		if ($result->num_rows > 0) {
+			$k = 0;
 
-        } else {
-            $this->connSql->Stop();
-            return 0;
-           // echo "The result of information processing is data false";
-        }
+			$list = array();
+			while ($row = $result->fetch_assoc()) {
+				$obj = new ScoresAddObj();
+				$obj->setScoreName($row["scoreName"]);
+				$obj->setIdScore($row["idScore"]);
+				$obj->setScores($row["scores"]);
+				$obj->setDescribe($row["describe"]);
+				$obj->setTranscript_idItem($row["Transcript_idItem"]);
+				$obj->setIdAccountManage($row["idAccountManage"]);
+				$list[$k] = $obj;
+				$k++;
+			}
 
-        $this->connSql->Stop();
-        return $list;
-    }
-    //Trả về các bảng điểm theo một người quản lý đã tạo
-    public function getScoresAddByAccount($idManage)
-    {
-        $sql = "SELECT * FROM ScoresAdd WHERE idAccountManage='".$idManage."'";
-        $this->connSql->Connect();
-        $result = $this->connSql->conn->query($sql);
+		} else {
+			$this->connSql->Stop();
+			return 0;
+			// echo "The result of information processing is data false";
+		}
 
-        if ($result->num_rows > 0) {
-            $k = 0;
+		$this->connSql->Stop();
+		return $list;
+	}
 
-            $list = array();
-            while ($row = $result->fetch_assoc()) {
-                $obj = new ScoresAddObj();
-                $obj->setScoreName($row["scoreName"]);
-                $obj->setIdScore($row["idScore"]);
-                $obj->setScores($row["scores"]);
-                $obj->setDescribe($row["describe"]);
-                $obj->setTranscript_idItem($row["Transcript_idItem"]);
-                $obj->setIdAccountManage($row["idAccountManage"]);
-                $list[$k] = $obj;
-                $k++;
-            }
+	//Trả về các bảng điểm theo một người quản lý đã tạo
+	public function getScoresAddByAccount($idManage) {
+		$sql = "SELECT * FROM ScoresAdd WHERE idAccountManage='" . $idManage . "'";
+		$this->connSql->Connect();
+		$result = $this->connSql->conn->query($sql);
 
-        } else {
-            $this->connSql->Stop();
-            return 0;
-            // echo "The result of information processing is data false";
-        }
+		if ($result->num_rows > 0) {
+			$k = 0;
 
-        $this->connSql->Stop();
-        return $list;
-    }
-    public function getScoresAddById($id)
-    {
-        $sql = "SELECT * FROM ScoresAdd WHERE idScore='".$id."'";
-        $this->connSql->Connect();
-        $result = $this->connSql->conn->query($sql);
+			$list = array();
+			while ($row = $result->fetch_assoc()) {
+				$obj = new ScoresAddObj();
+				$obj->setScoreName($row["scoreName"]);
+				$obj->setIdScore($row["idScore"]);
+				$obj->setScores($row["scores"]);
+				$obj->setDescribe($row["describe"]);
+				$obj->setTranscript_idItem($row["Transcript_idItem"]);
+				$obj->setIdAccountManage($row["idAccountManage"]);
+				$list[$k] = $obj;
+				$k++;
+			}
 
-        if ($result->num_rows > 0) {
-            while ($row = $result->fetch_assoc()) {
-                $obj = new ScoresAddObj();
-                $obj->setScoreName($row["scoreName"]);
-                $obj->setIdScore($row["idScore"]);
-                $obj->setScores($row["scores"]);
-                $obj->setDescribe($row["describe"]);
-                $obj->setTranscript_idItem($row["Transcript_idItem"]);
-                $obj->setIdAccountManage($row["idAccountManage"]);
-            }
+		} else {
+			$this->connSql->Stop();
+			return 0;
+			// echo "The result of information processing is data false";
+		}
 
-        } else {
-            $this->connSql->Stop();
-            // echo "The result of information processing is data false";
-            return 0;
-        }
+		$this->connSql->Stop();
+		return $list;
+	}
 
-        $this->connSql->Stop();
-        return $obj;
-    }
-    public function getScoresForStudent($id)
-    {
-        $sql = "SELECT * FROM scoresadd,scoresadd_has_account WHERE scoresadd.idScore=scoresadd_has_account.ScoresAdd_idScore AND ScoresAdd_has_Account.Account_idAccount='".$id."'";
-        $this->connSql->Connect();
-        $result = $this->connSql->conn->query($sql);
+	public function getScoresAddById($id) {
+		$sql = "SELECT * FROM ScoresAdd WHERE idScore='" . $id . "'";
+		$this->connSql->Connect();
+		$result = $this->connSql->conn->query($sql);
 
-        if ($result->num_rows > 0) {
-            $k=0;
-            while ($row = $result->fetch_assoc()) {
-                $obj = new ScoresAddObj();
-                $obj->setScoreName($row["scoreName"]);
-                $obj->setIdScore($row["idScore"]);
-                $obj->setScores($row["scores"]);
-                $obj->setDescribe($row["describe"]);
-                $obj->setTranscript_idItem($row["Transcript_idItem"]);
-                $obj->setIdAccountManage($row["idAccountManage"]);
-                $list[$k] = $obj;
-                $k++;
-            }
+		if ($result->num_rows > 0) {
+			while ($row = $result->fetch_assoc()) {
+				$obj = new ScoresAddObj();
+				$obj->setScoreName($row["scoreName"]);
+				$obj->setIdScore($row["idScore"]);
+				$obj->setScores($row["scores"]);
+				$obj->setDescribe($row["describe"]);
+				$obj->setTranscript_idItem($row["Transcript_idItem"]);
+				$obj->setIdAccountManage($row["idAccountManage"]);
+			}
 
-        } else {
-            // echo "The result of information processing is data false";
-            $this->connSql->Stop();
-            return 0;
-        }
+		} else {
+			$this->connSql->Stop();
+			// echo "The result of information processing is data false";
+			return 0;
+		}
 
-        $this->connSql->Stop();
-        return $list;
-    }
+		$this->connSql->Stop();
+		return $obj;
+	}
 
+	public function getScoresForStudent($id) {
+		$sql = "SELECT * FROM scoresadd,scoresadd_has_account WHERE scoresadd.idScore=scoresadd_has_account.ScoresAdd_idScore AND ScoresAdd_has_Account.Account_idAccount='" . $id . "'";
+		$this->connSql->Connect();
+		$result = $this->connSql->conn->query($sql);
 
+		if ($result->num_rows > 0) {
+			$k = 0;
+			while ($row = $result->fetch_assoc()) {
+				$obj = new ScoresAddObj();
+				$obj->setScoreName($row["scoreName"]);
+				$obj->setIdScore($row["idScore"]);
+				$obj->setScores($row["scores"]);
+				$obj->setDescribe($row["describe"]);
+				$obj->setTranscript_idItem($row["Transcript_idItem"]);
+				$obj->setIdAccountManage($row["idAccountManage"]);
+				$list[$k] = $obj;
+				$k++;
+			}
+
+		} else {
+			// echo "The result of information processing is data false";
+			$this->connSql->Stop();
+			return 0;
+		}
+
+		$this->connSql->Stop();
+		return $list;
+	}
+
+	public function getListScoreOfStudent($studentId) {
+		$sql = "SELECT
+					Transcript_idItem as idItem, sum(scores) as total
+				FROM
+					scoresadd sa,
+					scoresadd_has_account sha
+				WHERE
+					sa.idScore = sha.ScoresAdd_idScore
+				AND sha.Account_idAccount = 'B1400123' 
+				GROUP BY (Transcript_idItem);";
+		$this->connSql->Connect();
+		$result = $this->connSql->conn->query($sql);
+		$this->connSql->Stop();
+		$listScore = [];
+		if (!empty($result) && $result->num_rows){
+			while ($row = $result->fetch_assoc())
+				$listScore[$row['idItem']] = $row['total'];
+		}
+		return $listScore;
+	}
 }
+
 ?>

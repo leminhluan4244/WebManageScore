@@ -184,3 +184,27 @@ footer{
 .div-btn-grading{
   margin-right: 10px;
 }
+
+.navigator{
+  border: 1px solid #fff;
+  position: fixed;
+  z-index: 1;
+  bottom: 20px;
+  left: 10px;
+  .link-nav{
+    border: 1px solid #fff;
+    border-width: 0px 0px 0px 1px;
+    display: inline-block;
+    float: left;
+    padding: 5px 10px;
+    margin: 0;
+    text-decoration: none !important;
+    color: #fff !important;
+    background-color: $main_color;
+  }
+}
+
+.navigator:after{
+  content: '';
+
+}

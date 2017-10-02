@@ -19,8 +19,14 @@ if (isSubmit("saveTranscript")){
 #phải kiểm tra xem có bảng điểm của sinh viên đó chưa rồi mới load lên
 if (!$transcriptMod->isTranscriptExist($accountId))
 	$transcriptMod->generateTranscript($accountId, $structureMod->getEntireStructureTable());
+
+$saMod = new ScoresAddMod();
+$addScoreList = $saMod->getListScoreOfStudent($accountId);
+
 $trTree = new TranscriptTree($transcriptMod->getEntireTranscript($accountId));
 $trTree->setPrivilege(STUDENT);
+$trTree->setAddScoreList($addScoreList);
+
 $root = $trTree->getRoot();
 $trTree->PreOderTreeToHtml($root, 0);
 

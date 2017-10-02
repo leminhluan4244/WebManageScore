@@ -21,6 +21,7 @@ class TranscriptTree {
 	private $owner;
 	private $privilege;
 	private $scoreList;
+	private $addScoreList = [];
 
 	public function __construct($data) {
 		$this->data = $data;
@@ -59,6 +60,13 @@ class TranscriptTree {
 	 */
 	public function setOwner($owner) {
 		$this->owner = $owner;
+	}
+
+	/**
+	 * @param array $addScoreList
+	 */
+	public function setAddScoreList(array $addScoreList) {
+		$this->addScoreList = $addScoreList;
 	}
 
 	/**
@@ -163,11 +171,15 @@ class TranscriptTree {
 	}
 
 	function generateNodeToHtml($nodeId, $level) {
-		$htmlText = "<tr class='section-$level'>";
+		$htmlText = "<tr class='section-$level'";
 		if ($this->isLeaf($nodeId)) {
+			$htmlText .= ">";
 			$htmlText .= $this->getLeafHTML($nodeId);
 			$htmlText .= "</tr>";
 		} else {
+			if ($this->isChildOfRoot($nodeId))
+				$htmlText .= " id='$nodeId'>";
+			else $htmlText .= ">";
 			$htmlText .= $this->getNonLeafHTML($nodeId);
 			$htmlText .= "</tr>";
 		}
@@ -179,6 +191,14 @@ class TranscriptTree {
 		$itemName = $this->data[$nodeId]["itemName"];
 		$min = 0;
 		$max = $this->data[$nodeId]["scoresMax"];
+		$hintScore = 0;
+		if (isset($this->addScoreList[$nodeId])){
+			$hintScore = $this->data[$nodeId]['scoresDefault'] + $this->addScoreList[$nodeId];
+			if ($hintScore < $min)
+				$hintScore = $min;
+			if ($hintScore > $max)
+				$hintScore = $max;
+		}
 		$studentScore = $this->data[$nodeId]["scoresStudent"];
 		$adviserScore = $this->data[$nodeId]["scoresTeacher"];
 		$finalScore = $this->data[$nodeId]["scores"];
@@ -186,6 +206,7 @@ class TranscriptTree {
 		$htmlText = "";
 		$htmlText .= "<td>" . str_replace("-", "", $itemName) . "</td>";
 		$htmlText .= "<td>$max</td>";
+		$htmlText .= "<td>$hintScore</td>";
 		if ($this->isLastChildOfRoot($nodeId)) {
 			$htmlText .= "<td>{$this->scoreList["studentScore"]}</td>";
 			$htmlText .= "<td>{$this->scoreList["adviserScore"]}</td>";
@@ -215,6 +236,7 @@ class TranscriptTree {
 			$htmlText = "";
 			$htmlText .= "<td>" . str_replace("-", "", $this->data[$nodeId]["itemName"]) . "</td>";
 			$htmlText .= "<td>{$this->data[$nodeId]["scoresMax"]}</td>";
+			$htmlText .= "<td></td>";
 			$htmlText .= "<td>{$this->data[$nodeId]["scoresStudent"]}</td>";
 			$htmlText .= "<td>{$this->data[$nodeId]["scoresTeacher"]}</td>";
 			$htmlText .= "<td>{$this->data[$nodeId]["scores"]}</td>";
