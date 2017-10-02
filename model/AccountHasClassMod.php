@@ -59,6 +59,29 @@ class AccountHasClassMod
             return false;
         }
     }
+
+    public function changeTeacher($account, $Class)
+    {
+        // Đẩy câu lệnh vào string
+        $sql = "DELETE FROM Account_Has_Class 
+						WHERE Class_idClass='" . $account. "';".
+                "INSERT INTO `Account_has_Class` (`Account_idAccount`, `Class_idClass`) 
+						VALUES('" . $account . "','" . $Class . "');";
+        // Thực thi câu lệnh
+        $this->conn->Connect();
+        if ($this->conn->conn->multi_query($sql) === true) {
+            // echo "Thêm thành công";
+            //Ngắt kết nối
+            $this->conn->Stop();
+            return true;
+        } else {
+            //  echo "Lỗi add Account to Class";
+            //Ngắt kết nối
+            $this->conn->Stop();
+            return false;
+        }
+
+    }
 }
 
 //$objAccount = new AccountObj();

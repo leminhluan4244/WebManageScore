@@ -38,6 +38,7 @@ function getName($id){
         <th>Tên lớp</th>
         <th>Niên khóa</th>
         <th>Khoa - viện</th>
+        <th>Cố vấn</th>
         <th>Tùy chỉnh</th>
         <th>Chọn tất cả <br /><input type="checkbox" onClick="toggle(this)"></th>
     </tr>
@@ -63,6 +64,9 @@ function getName($id){
         </td>
         <td>
             '.getName($value->getAcademy_idAcademy()).'
+        </td>
+        <td>
+            <a href="?changeTeacher='.$value->getIdClass().'" class="btn btn-primary btn-sm"><span class="glyphicon glyphicon-pencil"></span></a>
         </td>
         <td>
             <a href="?idClass='.$value->getIdClass().'" class="btn btn-primary btn-sm"><span class="glyphicon glyphicon-pencil"></span></a>
