@@ -8,6 +8,7 @@
 ?>
   <script>
     $(document).ready(function() {
+      var bool = false;
       $("#tbl-list").DataTable();
       $("#tbl-edit").DataTable();
       $("#tbl-delete").DataTable();
@@ -39,7 +40,9 @@
         $("#div-edit-permission").hide();
         $("#div-delete-permission").show();
       });
-      var bool = false;
+      $("#btn-back").click(function() {
+       window.location.assign("main.php");
+      });
       $("#checkAll").change(function() {
         bool = !bool;
         if(bool){
@@ -57,20 +60,11 @@
       <button id="btn-edit-permission" class="btn btn-primary">Sửa phân quyền</button>
       <button id="btn-delete-permission" class="btn btn-primary">Xóa phân quyền</button>
     </div>
-    <!--<div class="row">
-      <div class="col-sm-12">
-        <br />
-        <?php
-          #require_once "../controller/permission/permission.filter.php";
-        ?>
-      </div>
-    </div>-->
     <div id="div-list-permission" class="academy-action-list">
       <div class="row">
         <div class="col-sm-12">
           <h4>Danh sách theo phân quyền của người dùng</h4>
           <hr>
-          <form action="#" method="post">
             <table id="tbl-list" class="table table-hover table-condensed table-bordered">
               <thead>
                 <tr>
@@ -93,11 +87,10 @@
               </tbody>
             </table>
             <div class="form-group text-right">
-              <button type="submit" name="btn-submit" value="list" class="center-block btn btn-primary">
+              <button id="btn-back" class="center-block btn btn-primary">
                             <span class="glyphicon glyphicon-repeat"></span> Trở về
                         </button>
             </div>
-          </form>
         </div>
       </div>
     </div>
