@@ -43,7 +43,7 @@ $loggedAccount = getLoggedAccountInfo();
 		</tbody>
 	</table>
 	<?php
-   if(getSession("userToken")['permission'] == 'Sinh viên'){
+   if(getSession("userToken")['permission'] == 'Sinh viên' || getSession("userToken")['permission'] == 'Quản lý chi hội'){
 		 ?>
 		 <div class="row">
  		  <div class="col-sm-12 well well-lg">
