@@ -55,12 +55,27 @@
 			<span><strong>Tin tức</strong></span>
 		</div>
 		<div class="news-body">
-			<div class="alert alert-success">
-				22/12/2018 - Đã mở đợt chấm điểm rèn luyện
-			</div>
-			<div class="alert alert-warning">
-				22/12/2018 - Đã mở đợt chấm điểm rèn luyện
-			</div>
+      <?php
+			 require_once("../../model/ConnectToSQL.php");
+			 require_once("../../model/PermissionObj.php");
+			 require_once("../../model/PermissionMod.php");
+			 require_once("../../model/CalendarScoringMod.php");
+			 require_once("../../model/CalendarScoringObj.php");
+			 $permissionArr = (new PermissionMod())->getPermission();
+			 $today = date("d/m/Y");
+			 foreach ($permissionArr as $key => $value) {
+				 $arr = (new CalendarScoringMod())->getCalendarWithPermissionPosition($value->getPosition());
+				 if(!empty($arr)){
+					 $open = date("d/m/Y", strtotime($arr['openDate']));
+					 $close = date("d/m/Y", strtotime($arr['closeDate']));
+					 if(!($today < $open || $today > $close)){
+						 echo '<div class="alert alert-info">'.$open;
+ 						 echo '- Đã mở đợt chấm điểm rèn luyện cho '.$arr['Permission_position'];
+ 						 echo '</div>';
+					 }
+				 }
+			 }
+			?>
 		</div>
 	</div>
 </div>
