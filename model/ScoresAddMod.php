@@ -166,7 +166,7 @@ class ScoresAddMod
     }
     public function getScoresForStudent($id)
     {
-        $sql = "SELECT * FROM scoresadd,scoresadd_has_account WHERE scoresadd.idScore=scoresadd_has_account.ScoresAdd_idScore AND ScoresAdd_has_Account.Account_idAccount-'".$id."'";
+        $sql = "SELECT * FROM scoresadd,scoresadd_has_account WHERE scoresadd.idScore=scoresadd_has_account.ScoresAdd_idScore AND ScoresAdd_has_Account.Account_idAccount='".$id."'";
         $this->connSql->Connect();
         $result = $this->connSql->conn->query($sql);
 
