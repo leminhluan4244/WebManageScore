@@ -86,18 +86,21 @@ if(isset($_GET['idAcc'])){
 										<?php
 										$listAcademy = array();
 										$listAcademy = $academyMod->getAcademy();
-										foreach ($listAcademy as $key => $value){
-                                            if($tempIDAcademy==$value->getIdAcademy())
-											echo'<option selected="selected"'.' value="'.$value->getIdAcademy().'">'.$value->getAcademyName().'</option>';
-                                            else echo'<option '.' value="'.$value->getIdAcademy().'">'.$value->getAcademyName().'</option>';
-										}
+//										foreach ($listAcademy as $key => $value){
+//                                            if($tempIDAcademy==$value->getIdAcademy())
+//											echo'<option selected="selected"'.' value="'.$value->getIdAcademy().'">'.$value->getAcademyName().'</option>';
+//                                            else echo'<option '.' value="'.$value->getIdAcademy().'">'.$value->getAcademyName().'</option>';
+//										}
+                                        foreach ($listAcademy as $key => $value){
+                                            echo'<option '.' value="'.$value->getIdAcademy().'">'.$value->getAcademyName().'</option>';
+                                        }
 										?>
                                     </select>
                                 </fieldset>
 
                                 <fieldset class="form-group">
                                     <p class="text-left"><b>Lớp</b></p>
-                                    <select class="form-control" name="updateClassNamer" id="updateClassName">
+                                    <select class="form-control" name="updateClassName" id="updateClassName">
                                         <option value="NoneClass">--Chọn theo Lớp--</option>
                                     </select>
                                 </fieldset>
@@ -109,9 +112,13 @@ if(isset($_GET['idAcc'])){
                                         $listPermissionM = array();
                                         $listPermissionM = $perMod->getPermission();
                                         foreach ($listPermissionM as $key => $value){
-                                            if($studentOT['permission_position']==$value->getPosition())
-                                            echo'<option selected="selected" value="'.$value->getPosition().'">'.$value->getPosition().'</option>';
-                                            else echo'<option value="'.$value->getPosition().'">'.$value->getPosition().'</option>';
+                                            if($value->getPosition()!='Sinh viên' && $value->getPosition()!='Quản lý chi hội');
+                                            else{
+                                                if($studentOT['permission_position']==$value->getPosition())
+                                                    echo'<option selected="selected" value="'.$value->getPosition().'">'.$value->getPosition().'</option>';
+                                                else echo'<option value="'.$value->getPosition().'">'.$value->getPosition().'</option>';
+                                            }
+
                                         }
                                         ?>
                                     </select>
