@@ -13,12 +13,18 @@ if(isset($_POST['btnUpdate'])) {
     $classTemp->addAccountHasClass($_POST['updateIdAccount'],$_POST['updateClassName']);
    // echo'<META http-equiv="refresh" content="0;URL=student.manage.php">';
 }
-if(isset($_POST['idAcc'])){
-
-    $tempIDAcademy = $studentMT->getAcademy($_POST['idAcc']);
-    $studentMT = new AccountMod();
-    $studentOT = $studentMT->findAccountByID($_POST['idAcc']);
+if(isset($_GET['idAcc'])){
+	$studentMT = new AccountMod();
+    $tempIDAcademy = $studentMT->getAcademyId($_GET['idAcc']);
+    var_dump($tempIDAcademy);
+    $studentOT = $studentMT->findAccountByID($_GET['idAcc']);
     var_dump($studentOT);
+    echo "
+    <script> 
+        $(function() {
+            $('#updateStudent').modal('toggle');
+        });
+    </script>";
 }
 
 
@@ -93,8 +99,9 @@ function checkO($stringA, $temp)
 										<?php
 										$listAcademy = array();
 										$listAcademy = $academyMod->getAcademy();
-										foreach ($list as $key => $value){
-											echo'<option'.checkO($tempIDAcademy,$value->getIdAcademy()).' value="'.$value->getIdAcademy().'">'.$value->getAcademyName().'</option>';
+										foreach ($listAcademy as $key => $value){
+
+											echo'<option'.checkO($tempIDAcademy, $value->getIdAcademy()).' value="'.$value->getIdAcademy().'">'.$value->getAcademyName().'</option>';
 										}
 										?>
                                     </select>
@@ -140,7 +147,6 @@ function checkO($stringA, $temp)
                     }) ;
                 });
                 $(function () {
-                    $('#updateStudent').modal('toggle');
                     window.history.pushState({path: 'student.manage.php'}, '', 'student.manage.php');
                 });
             </script>
