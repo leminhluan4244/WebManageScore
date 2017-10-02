@@ -53,7 +53,81 @@ class AccountMod {
 			return false;
 		}
 	}
+	//tho
+    public function findStaffByID($id){
+        // Tạo ra một mảng lưu trữ tên list, mặc định bang đầu rỗng
+        $list = array();
+        // Đẩy câu lệnh vào string
+        $sql = "SELECT * FROM account WHERE idAccount='".$id."' and account.Permission_position <> 'Quản lý chi hội' and account.Permission_position <> 'Sinh viên' AND account.Permission_position <> 'Default';";
+        $this->conn2sql->Connect();
+        $result = $this->conn2sql->conn->query($sql);
+        // Kiểm tra số lượng kết quả trả về có lơn hơn 0
+        // Nếu lớn hơn tức là có kết quả, ngược lại sẽ không có kết quả
+        if ($result->num_rows > 0) {
+            // Sử dụng vòng lặp while để lặp kết quả
+            //Tạo một đối tượng chứa
+            while ($row = $result->fetch_assoc()) {
+                //Cho vào list đối tượng
+                $account = new AccountObj;
+                $account->setIdAccount($row["idAccount"]);
+                $account->setAccountName($row["accountName"]);
+                $account->setBirthday($row["birthday"]);
+                $account->setAddress($row["address"]);
+                $account->setSex($row["sex"]);
+                $account->setPhone($row["phone"]);
+                $account->setEmail($row["email"]);
+                $account->setPassword($row["password"]);
+                $account->setPermission_position($row["Permission_position"]);
+            }
+        } else {
+            return 0;
+            //echo "Không có kết quả nào";
+        }
+        //Ngắt kết nối
+        $this->conn2sql->Stop();
+        //Trả đối tượng đi, sau này lớp control sẽ sử dụng mảng này để truy xuất
+        return $account;
+    }
 
+    //tho
+    public function findSVByID($string){
+        // Tạo ra một mảng lưu trữ tên list, mặc định bang đầu rỗng
+        $list = array();
+        // Đẩy câu lệnh vào string
+        $sql = "SELECT * FROM account WHERE (idAccount='".$string."' or accountName='".$string."')  and account.Permission_position <> 'Quản lý khoa' and account.Permission_position <> 'Cố vấn học tập' AND account.Permission_position <> 'Default';";
+        $this->conn2sql->Connect();
+        $result = $this->conn2sql->conn->query($sql);
+        // Kiểm tra số lượng kết quả trả về có lơn hơn 0
+        // Nếu lớn hơn tức là có kết quả, ngược lại sẽ không có kết quả
+        if ($result->num_rows > 0) {
+            // Sử dụng vòng lặp while để lặp kết quả
+            $k = 0;
+            //Tạo một đối tượng chứa
+            while ($row = $result->fetch_assoc()) {
+                //Cho vào list đối tượng
+                $account = new AccountObj;
+                $account->setIdAccount($row["idAccount"]);
+                $account->setAccountName($row["accountName"]);
+                $account->setBirthday($row["birthday"]);
+                $account->setAddress($row["address"]);
+                $account->setSex($row["sex"]);
+                $account->setPhone($row["phone"]);
+                $account->setEmail($row["email"]);
+                $account->setPassword($row["password"]);
+                $account->setPermission_position($row["Permission_position"]);
+                $list[$k] = $account;
+                $k++;
+            }
+        } else {
+            $this->conn2sql->Stop();
+            return 0;
+            //echo "Không có kết quả nào";
+        }
+        //Ngắt kết nối
+        $this->conn2sql->Stop();
+        //Trả đối tượng đi, sau này lớp control sẽ sử dụng mảng này để truy xuất
+        return $list;
+    }
 	#Trả về đối tượng tài khoản
 	public function getAccount($idAccount) {
 		$sql = "SELECT * FROM `account` WHERE `idAccount` = '" . $idAccount . "'";

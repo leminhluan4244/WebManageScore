@@ -20,25 +20,25 @@
     <!-- End student add button-->
     <!-- Start add student-->
 <?php
-   require "../controller/staff/staff.add.php";
+   require_once "../controller/staff/staff.add.php";
    ?>
     <!-- End add student-->
 
     <!-- Start infor student-->
     <?php
-    require "../controller/staff/staff.info.php";
+    require_once "../controller/staff/staff.info.php";
     ?>
     <!-- End infor student-->
 
     <!--Start update student-->
     <?php
-    require "../controller/staff/staff.update.php";
+    require_once "../controller/staff/staff.update.php";
     ?>
     <!--End update student-->
 
     <!--Start delete student-->
 <!--    --><?php
-    require "../controller/staff/staff.delete.php";
+    require_once "../controller/staff/staff.delete.php";
 //    ?>
     <!--End delete student-->
 

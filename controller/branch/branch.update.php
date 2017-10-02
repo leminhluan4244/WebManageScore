@@ -41,7 +41,7 @@ if (!empty($branchO)) {
                     <fieldset class="form-group">
                         <p class="text-left"><b>Mã Chi Hội</b></p>
                         <input type="text" class="form-control" name="idBranch" id="idBranch"
-                               value="' . $branchO->getidBranch() . '">
+                               value="' . $branchO->getidBranch() . '" readonly>
                     </fieldset>
 
                     <fieldset class="form-group">
