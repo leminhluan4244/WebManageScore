@@ -59,7 +59,7 @@
 			</a>
 		</div>
         <div id="div-schedule-manage" class="col-sm-offset-2 col-sm-4 thumbnail" style="display: none;">
-            <a href="" class="">
+            <a href="calendarScoring.php" class="">
                 <img src="../public/img/schedule.png" width="70" alt="">
                 <p>Quản lý lịch chấm điểm</p>
             </a>
