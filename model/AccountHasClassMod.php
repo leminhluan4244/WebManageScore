@@ -39,7 +39,7 @@ class AccountHasClassMod
     }
 
     //Hàm xóa một sinh viên khỏi chi hội
-    public function deleteAccountHasClass($account, $Class)
+    public function deleteAccountHasClass($account)
     {
         // Đẩy câu lệnh vào string
         $sql = "DELETE FROM Account_Has_Class 
