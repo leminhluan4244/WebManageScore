@@ -4,7 +4,6 @@
    $newPermissionObj = new PermissionObj();
    $newPermissionMod = new PermissionMod();
    $arr = $newPermissionMod->selectPower(getSession("userToken")['permission']);
-   #var_dump($arr);
   ?>
   <script type='text/javascript'>
  <?php
