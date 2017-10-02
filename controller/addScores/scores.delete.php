@@ -11,7 +11,7 @@ if(isset($_POST['xoa'])) {
 }
 ?>
 <!--Start delete Class-->
-<div id="deleteClass" class="modal fade " tabindex="-1" role="dialog" aria-labelledby aria-hidden="true">
+<div id="deleteScore" class="modal fade " tabindex="-1" role="dialog" aria-labelledby aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">

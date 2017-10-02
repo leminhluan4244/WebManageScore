@@ -56,23 +56,12 @@
         <?php
         $scoreMod = new ScoresAddMod();
         $listScore = $scoreMod->getScoresAddByAccount($idLogin);
+        $selected = 'NoneScore';
         ?>
-<form action="scoresAdd.manage.php" method="post" id="manageForm">
+<form action="" method="get" id="manageForm">
     <div class="row">
-        <button class="btn btn-info align-self-center col" data-toggle="modal" >
-            <span class="glyphicon glyphicon-filter"></span> Liệt kê
-        </button>
-        <button class="btn btn-primary align-self-center col" data-toggle="modal" data-target="#addScore">
-            <span class="glyphicon glyphicon-plus"></span> Thêm
-        </button>
-        <button type="submit" class="btn btn-success align-self-center  col " data-toggle="modal" data-target="#updateScore" >
-            <span class="glyphicon glyphicon-pencil"></span> Sửa
-        </button>
-        <button class="btn btn-danger col align-self-center " data-toggle="modal" data-target="#deleteClass">
-            <span class="glyphicon glyphicon-trash"></span> Xóa
-        </button>
         <div class="col-sm-8">
-            <select name="score" id="" class="form-control">
+            <select name="score" id="score" class="form-control">
                 <option value="NoneScore">--Chọn bảng điểm để chỉnh sửa--</option>
                 <?php
 
@@ -82,6 +71,19 @@
                 ?>
             </select>
         </div>
+        <a  class="btn btn-info align-self-center col" data-toggle="modal" >
+            <span class="glyphicon glyphicon-filter"></span> Liệt kê
+        </a>
+        <a href="" class="btn btn-primary col align-self-center " data-toggle="modal" data-target="#addScore">
+            <span class="glyphicon glyphicon-plus"></span> Thêm
+        </a>
+        <button name="btn" type="submit" class="btn btn-success align-self-center  col " data-toggle="modal" data-target="#updateScore" >
+            <span class="glyphicon glyphicon-pencil"></span> Sửa
+        </button>
+        <a class="btn btn-danger col align-self-center " data-toggle="modal" data-target="#deleteScore">
+            <span class="glyphicon glyphicon-trash"></span> Xóa
+        </a>
+
     </div>
 </form>
     <br />
