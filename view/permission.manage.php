@@ -53,6 +53,7 @@
  ?>
       <script>
         $(document).ready(function() {
+          $("#tbl-delete").DataTable();
           $("#btn-person-group").addClass("active");
           $("#div-person-group").show();
           $("#div-add-permission").hide();
@@ -208,7 +209,7 @@
                           <th>
                               Xóa
                               <br />
-                              <label><input style="margin-left:0px" type="checkbox" id="checkAll"></label>
+                              <label><input style="margin-left:15px" type="checkbox" id="checkAll"></label>
                             </th>
                         </tr>
                       </thead>
