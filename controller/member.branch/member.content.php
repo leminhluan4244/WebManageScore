@@ -43,7 +43,11 @@
         }
        }
 ?>
-
+<?php
+    $accTemp =new AccountMod();
+    $idBranch =$accTemp->getBranchId($idLogin);
+    if($idBranch)
+?>
     <div id="memberBranch-manage-wrapper">
 
         <form action="member.branch.php" method="post" id="manageForm">
