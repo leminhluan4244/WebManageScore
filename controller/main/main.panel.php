@@ -71,7 +71,7 @@
             </a>
         </div>
         <div id="quan-ly-thanh-vien-chi-hoi" class="col-sm-offset-2 col-sm-4 thumbnail" style="display: none;">
-            <a href="" class="">
+            <a href="member.branch.php" class="">
                 <img src="../public/img/branch-member.png" width="70" alt="">
                 <p>Quản lý thành viên chi hội</p>
             </a>

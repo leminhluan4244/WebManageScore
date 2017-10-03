@@ -32,7 +32,7 @@
                     </td>
                
                         <td>
-                        <a href="?idStudentAdd='.$value->getIdAccount().'" class="btn btn-primary btn-sm"><span class="glyphicon glyphicon-plus"></span></a>
+                        <a href="?idAcc='.$value->getIdAccount().'" class="btn btn-primary btn-sm"><span class="glyphicon glyphicon-plus"></span></a>
                         </td>
                      </tr>';
             }
@@ -44,7 +44,7 @@
        }
 ?>
 
-    <div id="student-manage-wrapper">
+    <div id="memberBranch-manage-wrapper">
 
         <form action="member.branch.php" method="post" id="manageForm">
 
