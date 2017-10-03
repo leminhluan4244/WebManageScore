@@ -214,19 +214,22 @@ class TranscriptTree {
 			return $htmlText;
 		}
 		if ($this->privilege == STUDENT) {
-			$htmlText .= "<td>" . self::generateSelect($inputName, $min, $max, $studentScore, "select-score") . "</td>";
+//			$htmlText .= "<td>" . self::generateSelect($inputName, $min, $max, $studentScore, "select-score") . "</td>";
+			$htmlText .= "<td>" . self::generateSpinner($inputName, $min, $max, $studentScore, "input-number") . "</td>";
 			$htmlText .= "<td>$adviserScore</td>";
 			$htmlText .= "<td>$finalScore</td>";
 		}
 		if ($this->privilege == ADVISER) {
 			$htmlText .= "<td>$studentScore</td>";
-			$htmlText .= "<td>" . self::generateSelect($inputName, $min, $max, $adviserScore, "select-score") . "</td>";
+//			$htmlText .= "<td>" . self::generateSelect($inputName, $min, $max, $adviserScore, "select-score") . "</td>";
+			$htmlText .= "<td>" . self::generateSpinner($inputName, $min, $max, $adviserScore, "input-number") . "</td>";
 			$htmlText .= "<td>$finalScore</td>";
 		}
 		if ($this->privilege == ACA_ADMIN) {
 			$htmlText .= "<td>$studentScore</td>";
 			$htmlText .= "<td>$adviserScore</td>";
-			$htmlText .= "<td>" . self::generateSelect($inputName, $min, $max, $finalScore, "select-score") . "</td>";
+//			$htmlText .= "<td>" . self::generateSelect($inputName, $min, $max, $finalScore, "select-score") . "</td>";
+			$htmlText .= "<td>" . self::generateSpinner($inputName, $min, $max, $finalScore, "input-number") . "</td>";
 		}
 		return $htmlText;
 	}
