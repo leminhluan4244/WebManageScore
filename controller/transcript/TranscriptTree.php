@@ -242,7 +242,7 @@ class TranscriptTree {
 			$htmlText .= "<td>{$this->data[$nodeId]["scores"]}</td>";
 			return $htmlText;
 		}
-		return "<td colspan='5'>" . str_replace("-", "", $this->data[$nodeId]["itemName"]) . "</td>";
+		return "<td colspan='6'>" . str_replace("-", "", $this->data[$nodeId]["itemName"]) . "</td>";
 	}
 
 	static function generateSelect($name, $min, $max, $val, $class) {
