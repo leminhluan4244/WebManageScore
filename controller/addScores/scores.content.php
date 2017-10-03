@@ -13,9 +13,11 @@
     ?>
     <!-- End add class-->
     <!--Start update class-->
-    <?php
-    require "../controller/addScores/scores.update.php";
-    ?>
+	<?php
+	    if (!empty($update)){
+			require "../controller/addScores/scores.update.php";
+        }
+	?>
     <!--End update class-->
 
     <!--Start delete class-->
