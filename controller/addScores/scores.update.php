@@ -1,8 +1,18 @@
 <?php
-if(isset($_POST['btnUpdate'])) {
+if(!empty($update)) {
+	$scoresupdateO = new ScoresAddObj();
+	$scoresupdateM = new ScoresAddMod();
 
-    $scoresupdateO = new ScoresAddObj();
-    $scoresupdateM = new ScoresAddMod();
+
+    echo "<b>Đã gửi dữ liệu qua đây với dữ liệu {$_POST['score']};</b>";
+
+
+    echo "
+    <script>
+        $(function(){
+            $('#updateScore').modal('show');
+        });
+    </script>";
     #thêm dữ liệu và truyền đi
   //      echo'<META http-equiv="refresh" content="0;URL=scoreAdd.manage.php">';
 }

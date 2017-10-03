@@ -2,7 +2,6 @@
 require_once "../controller/header.php";
 require_once "../controller/permission.find.php";
 $branchMod = new BranchMod();
-
 ?>
 
 <div class="container-fluid">

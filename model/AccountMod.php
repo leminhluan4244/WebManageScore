@@ -94,7 +94,7 @@ class AccountMod {
         // Tạo ra một mảng lưu trữ tên list, mặc định bang đầu rỗng
         $list = array();
         // Đẩy câu lệnh vào string
-        $sql = "SELECT * FROM account WHERE (idAccount='".$string."' or accountName='".$string."')  and account.Permission_position <> 'Quản lý khoa' and account.Permission_position <> 'Cố vấn học tập' AND account.Permission_position <> 'Default';";
+        $sql = "SELECT * FROM account WHERE (idAccount='".$string."' OR accountName='".$string."')  and (account.Permission_position = 'Sinh viên' OR account.Permission_position = 'Quản lý chi hội');";
         $this->conn2sql->Connect();
         $result = $this->conn2sql->conn->query($sql);
         // Kiểm tra số lượng kết quả trả về có lơn hơn 0
