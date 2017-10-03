@@ -4,7 +4,7 @@ if(isset($_POST['btnUpdate'])) {
     $studentO = new AccountObj();
     $studentM = new AccountMod();
     var_dump($_POST);
-    $studentO->setAccountObj($_POST['updateIdAccount'], $_POST['updateAccountName'], $_POST['updateBirthday'], $_POST['updateAddress'], $_POST['updateSex'], $_POST['updatePhone'], $_POST['updateEmail'],'1234', $_POST['updatePermission_position']);
+    $studentO->setAccountObj($_POST['updateIdAccount'], $_POST['updateAccountName'], $_POST['updateBirthday'], $_POST['updateAddress'], $_POST['updateSex'], $_POST['updatePhone'], $_POST['updateEmail'],'notpass', $_POST['updatePermission_position']);
     $studentM->updateAccount($studentO);
     $academyTemp = new AccountHasAcademyMod();
     if($_POST['updateAcademyName']!='NoneAcademy'){
@@ -15,7 +15,7 @@ if(isset($_POST['btnUpdate'])) {
         $classTemp->addAccountHasClass($_POST['updateIdAccount'],$_POST['updateClassName']);
     }
 
-   // echo'<META http-equiv="refresh" content="0;URL=student.manage.php">';
+    echo'<META http-equiv="refresh" content="0;URL=student.manage.php">';
 }
 if(isset($_GET['idAcc'])){
 	$studentMT = new AccountMod();
@@ -89,6 +89,7 @@ if(isset($_GET['idAcc'])){
                                         <option value="NoneAcademy">--Chọn khoa--</option>
 										<?php
 										$listAcademy = array();
+                                        $listAcademy = $academyMod->getAcademy();
                                         foreach ($listAcademy as $key => $value){
                                             echo'<option '.' value="'.$value->getIdAcademy().'">'.$value->getAcademyName().'</option>';
                                         }

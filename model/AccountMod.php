@@ -541,7 +541,6 @@ class AccountMod {
         `sex`='" . $account->getSex() . "',
         `phone`='" . $account->getPhone() . "',
         `email`='" . $account->getEmail() . "',
-        `password`='" . $account->getPassword() . "',
         `Permission_position`='" . $account->getPermission_position() . "'
         WHERE `idAccount`='" . $account->getIdAccount() . "'";
 		$this->conn2sql->Connect();

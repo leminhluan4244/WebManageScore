@@ -1,25 +1,27 @@
 <?php
 
+
 if(isset($_POST['btnUpdate'])) {
-    $staffO = new AccountObj();
-    $staffM = new AccountMod();
-
-    $staffO->setAccountObj($_POST['updateIdAccount'], $_POST['updateAccountName'], $_POST['updateBirthday'], $_POST['updateAddress'], $_POST['updateSex'], $_POST['updatePhone'], $_POST['updateEmail'],'123', $_POST['updatePermission_position']);
-    $staffM->updateStaff($staffO);
-    var_dump($staffO);
+    $studentO = new AccountObj();
+    $studentM = new AccountMod();
+    var_dump($_POST);
+    $studentO->setAccountObj($_POST['updateIdAccount'], $_POST['updateAccountName'], $_POST['updateBirthday'], $_POST['updateAddress'], $_POST['updateSex'], $_POST['updatePhone'], $_POST['updateEmail'],'notpass', $_POST['updatePermission_position']);
+    $studentM->updateAccount($studentO);
     $academyTemp = new AccountHasAcademyMod();
-    $academyTemp->deleteAccountHasAcademy($_POST['updateIdAccount']);
-    $academyTemp->addAccountHasAcademy($_POST['updateIdAccount'],$_POST['updateAcademyName']);
+    if($_POST['updateAcademyName']!='NoneAcademy'){
+        $academyTemp->deleteAccountHasAcademy($_POST['updateIdAccount']);
+        $academyTemp->addAccountHasAcademy($_POST['updateIdAccount'],$_POST['updateAcademyName']);
+        $classTemp = new AccountHasClassMod();
+        $classTemp->deleteAccountHasClass($_POST['updateIdAccount']);
+        $classTemp->addAccountHasClass($_POST['updateIdAccount'],$_POST['updateClassName']);
+    }
 
-
-    // echo'<META http-equiv="refresh" content="0;URL=student.manage.php">';
+    echo'<META http-equiv="refresh" content="0;URL=staff.manage.php">';
 }
 if(isset($_GET['idAcc'])){
     $staffMT = new AccountMod();
     $staffOT = $staffMT->findAccountByID($_GET['idAcc']);
-
     $tempIDAcademy = $staffMT->getAcademyId($_GET['idAcc']);
-    $tempIDPermission = $staffMT->getPermission($_GET['idAcc']);
     echo "
     <script> 
         $(function() {
@@ -75,7 +77,7 @@ function checkO($stringA, $temp)
 
                     <fieldset class="form-group">
                         <p class="text-left"><b>Giới tính</b></p>
-                        <select class="form-control" name=updateSex" id="updateSex">
+                        <select class="form-control" name="updateSex" id="updateSex">
                             <option <?php if($staffOT['sex']=='Nam') echo 'selected="selected"'; ?> value="Nam" >Nam</option>
                             <option <?php if($staffOT['sex']=='Nữ'); echo 'selected="selected"'?> value="Nữ">Nữ</option>
                         </select>
@@ -109,13 +111,26 @@ function checkO($stringA, $temp)
                     </fieldset>
                     <fieldset class="form-group">
                         <p class="text-left"><b>Phân quyền</b></p>
-                        <select class="form-control" name="addPermission_position" id="addPermission_position">
+                        <select class="form-control" name="updatePermission_position" id="updatePermission_position">
                             <option value="NonePer">--Chọn phân quyền--</option>
                             <?php
                             $listPermissionM = array();
                             $listPermissionM = $perMod->getPermission();
                             foreach ($listPermissionM as $key => $value){
                                 echo'<option value="'.$value->getPosition().'">'.$value->getPosition().'</option>';
+                            }
+                            ?>
+                            <?php
+                            $listPermissionM = array();
+                            $listPermissionM = $perMod->getPermission();
+                            foreach ($listPermissionM as $key => $value){
+                                if($value->getPosition()!='Sinh viên' && $value->getPosition()!='Quản lý chi hội');
+                                else{
+                                    if($studentOT['permission_position']==$value->getPosition())
+                                        echo'<option selected="selected" value="'.$value->getPosition().'">'.$value->getPosition().'</option>';
+                                    else echo'<option value="'.$value->getPosition().'">'.$value->getPosition().'</option>';
+                                }
+
                             }
                             ?>
                         </select>
