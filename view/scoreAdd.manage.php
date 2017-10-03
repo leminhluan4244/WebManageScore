@@ -1,6 +1,12 @@
 <?php
     require_once "../controller/header.php";
     require_once "../controller/permission.find.php";
+    if (isset($_POST["btnUpdate"]) && $_POST["btnUpdate"] == "update")
+        $update = true;
+    if (isset($_POST["btnFilter"]) && $_POST["btnFilter"] == "filter")
+        $filter = true;
+    if (isset($_POST["btnDelete"]) && $_POST["btnDelete"] == "delete")
+        $delete = true;
 ?>
 
 
@@ -12,13 +18,9 @@
 
             <h4>Danh sách bảng điểm</h4>
             <div class="form-group">
-                <form action="" method="get">
-                    <!--Begin table-->
-                    <?php
-                    require_once "../controller/addScores/scores.content.php";
-                    ?>
-                    <!--End table-->
-                </form>
+				<?php
+				require_once "../controller/addScores/scores.content.php";
+				?>
             </div>
 
 

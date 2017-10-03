@@ -1,5 +1,13 @@
 <hr />
 <?php
+
+/**
+ * Gửi dữ liệu qua bên này
+ */
+    var_dump($_POST['score']);
+
+
+
     #Khoi tao di tuong chua
     $accountM  = new AccountMod();
   #Kiem tra xe thuoc phan quyen nao
@@ -58,7 +66,7 @@
         $listScore = $scoreMod->getScoresAddByAccount($idLogin);
         $selected = 'NoneScore';
         ?>
-<form action="" method="get" id="manageForm">
+<form action="" id="manageForm" method="post">
     <div class="row">
         <div class="col-sm-8">
             <select name="score" id="score" class="form-control">
@@ -71,18 +79,19 @@
                 ?>
             </select>
         </div>
-        <a  class="btn btn-info align-self-center col" data-toggle="modal" >
+        <input type="hidden" name="a" value="up">
+        <button  class="btn btn-info align-self-center col" data-toggle="modal" name="btnFilter" value="filter">
             <span class="glyphicon glyphicon-filter"></span> Liệt kê
-        </a>
+        </button>
         <a href="" class="btn btn-primary col align-self-center " data-toggle="modal" data-target="#addScore">
             <span class="glyphicon glyphicon-plus"></span> Thêm
         </a>
-        <button name="btn" type="submit" class="btn btn-success align-self-center  col " data-toggle="modal" data-target="#updateScore" >
+        <button class="btn btn-success align-self-center col" name="btnUpdate" value="update">
             <span class="glyphicon glyphicon-pencil"></span> Sửa
         </button>
-        <a class="btn btn-danger col align-self-center " data-toggle="modal" data-target="#deleteScore">
+        <button class="btn btn-danger col align-self-center " data-toggle="modal" data-target="#deleteScore" name="btnDelete" value="delete">
             <span class="glyphicon glyphicon-trash"></span> Xóa
-        </a>
+        </button>
 
     </div>
 </form>

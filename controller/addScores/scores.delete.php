@@ -9,6 +9,14 @@ if(isset($_POST['xoa'])) {
     }
 
 }
+if (!empty($delete))
+    echo "
+    <script>
+        $(function(){
+            $('#deleteScore').modal('show');
+        });
+    </script>";
+var_dump($_POST['score']);
 ?>
 <!--Start delete Class-->
 <div id="deleteScore" class="modal fade " tabindex="-1" role="dialog" aria-labelledby aria-hidden="true">
