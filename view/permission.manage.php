@@ -172,7 +172,7 @@
         <div id="div-add-permission" class="academy-action-list" style="display: none;">
           <div class="row">
             <div class="col-sm-12">
-              <h4>Theo mới nhóm quyền người dùng vào hệ thống</h4>
+              <h4>Thêm mới nhóm quyền người dùng vào hệ thống</h4>
               <hr>
               <form action="../controller/permission/permission.manage.update.php" method="post">
                 <div class="row">
