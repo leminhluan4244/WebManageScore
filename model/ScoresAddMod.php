@@ -38,15 +38,14 @@ class ScoresAddMod {
 	//2. Hàm cập nhật
 	public function updateScoresAdd($cores) {
 		$sql = "UPDATE ScoresAdd SET
-                  scoreName='" . $cores->getScoreName() . "',
-                  scores='" . $cores->getScores() . "',
-                  describe='" . $cores->getDescribe() . "',
-                  Transcript_idItem ='" . $cores->getTranscript_idItem() . "',
-				  idAccountManage='" . $cores->getIdAccountManage() . "'
-                  WHERE idScore='" . $cores->getIdScore() . "'";
-
+                  `scoreName`='" . $cores->getScoreName() . "',
+                  `scores`='" . $cores->getScores() . "',
+                  `describe`='" . $cores->getDescribe() . "',
+                  `Transcript_idItem` ='" . $cores->getTranscript_idItem() . "',
+				  `idAccountManage`='" . $cores->getIdAccountManage() . "'
+                  WHERE `idScore`='" . $cores->getIdScore() . "'";
 		$this->connSql->Connect();
-		if ($this->connSql->conn->query($sql) === TRUE) {
+			if ($this->connSql->conn->query($sql) === TRUE) {
 			//  echo "Updation is successful!";
 		} else {
 			$this->connSql->Stop();

@@ -94,7 +94,7 @@ class AccountMod {
         // Tạo ra một mảng lưu trữ tên list, mặc định bang đầu rỗng
         $list = array();
         // Đẩy câu lệnh vào string
-        $sql = "SELECT * FROM account WHERE (idAccount='".$string."' OR accountName='".$string."')  and (account.Permission_position = 'Sinh viên' OR account.Permission_position = 'Quản lý chi hội');";
+        $sql = "SELECT * FROM account WHERE (idAccount='".$string."' OR accountName='".$string."')  and (account.Permission_position = 'Sinh viên');";
         $this->conn2sql->Connect();
         $result = $this->conn2sql->conn->query($sql);
         // Kiểm tra số lượng kết quả trả về có lơn hơn 0
@@ -269,10 +269,31 @@ class AccountMod {
 			}
 
 		} else {
+			return 0;
 			// echo "The result of information processing is data false";
 		}
 		return $list;
 	}
+    public function getBranchName($id) {
+        $sql = "SELECT branch.branchName FROM account,account_has_branch,branch WHERE account.idAccount = account_has_branch.Account_idAccount AND account_has_branch.Branch_idBranch = branch.idBranch AND account.idAccount='" . $id . "';
+";
+        $this->conn2sql->Connect();
+        $result = $this->conn2sql->conn->query($sql);
+        $this->conn2sql->Stop();
+        $list = array();
+        if ($result->num_rows > 0) {
+            $k = 0;
+            while ($row = $result->fetch_assoc()) {
+                $list[$k] = $row["branchName"];
+                $k++;
+            }
+
+        } else {
+            return 0;
+            // echo "The result of information processing is data false";
+        }
+        return $list;
+    }
 
 	public function getStudentAll() {
 		// Tạo ra một mảng lưu trữ tên list, mặc định bang đầu rỗng

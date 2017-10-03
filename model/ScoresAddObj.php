@@ -38,7 +38,7 @@ class ScoresAddObj
         $this->idScore =  $idScore;
     }
 
-    public function getidScore(){
+    public function getIdScore(){
         return $this->idScore;
     }
 

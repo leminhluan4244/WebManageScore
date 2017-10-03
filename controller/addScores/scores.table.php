@@ -4,10 +4,6 @@
 /**
  * Gửi dữ liệu qua bên này
  */
-    var_dump($_POST['score']);
-
-
-
     #Khoi tao di tuong chua
     $accountM  = new AccountMod();
   #Kiem tra xe thuoc phan quyen nao
@@ -64,13 +60,11 @@
         <?php
         $scoreMod = new ScoresAddMod();
         $listScore = $scoreMod->getScoresAddByAccount($idLogin);
-        $selected = 'NoneScore';
         ?>
 <form action="" id="manageForm" method="post">
     <div class="row">
         <div class="col-sm-8">
             <select name="score" id="score" class="form-control">
-                <option value="NoneScore">--Chọn bảng điểm để chỉnh sửa--</option>
                 <?php
 
                 foreach ($listScore as $key => $value){
@@ -144,12 +138,5 @@
     </a>
 </form>
 <script language="JavaScript">
-    function toggle(checkall) {
-        checkboxes = document.getElementsByName('xoa[]');
-        for(var i=0, n=checkboxes.length;i<n;i++)
-        {
-            checkboxes[i].checked = checkall.checked;
-        }
-    }
     $('#table-manage-scoreAdd').DataTable();
 </script>

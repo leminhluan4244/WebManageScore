@@ -69,9 +69,9 @@ class BranchMod
         // Tạo ra một mảng lưu trữ tên list, mặc định bang đầu rỗng
         $list = array();
         // Đẩy câu lệnh vào string
-        $sql = "SELECT idAccount,accountName,birthday,address,sex,phone,email,Permission_position,Academy_idAcademy 
+        $sql = "SELECT idAccount,accountName,birthday,address,sex,phone,email,Permission_position
                 FROM Account,Account_Has_Branch
-                WHERE Branch_idBranch='" . $branch->getIdBranch() . "' and  idAccount = Account_idAccount;";
+                WHERE Branch_idBranch='" . $branch . "' and  idAccount = Account_idAccount;";
         $this->conn->Connect();
         $result = $this->conn->conn->query($sql);
 
@@ -81,9 +81,8 @@ class BranchMod
             // Sử dụng vòng lặp while để lặp kết quả
             $k = 0;
             //Tạo một đối tượng chứa
-            $account = new AccountObj();
             while ($row = $result->fetch_assoc()) {
-
+                $account = new AccountObj();
                 //Cho vào list đối tượng
                 $account->setIdAccount($row["idAccount"]);
                 $account->setAccountName($row["accountName"]);
@@ -93,12 +92,14 @@ class BranchMod
                 $account->setPhone($row["phone"]);
                 $account->setEmail($row["email"]);
                 $account->setPermission_position($row["Permission_position"]);
-                $account->setAcademy_idAcademy($row["Academy_idAcademy"]);
                 $list[$k] = $account;
                 $k++;
 			    }
         } else {
+            //Ngắt kết nối
+            $this->conn->Stop();
            // echo "Không có kết quả nào";
+            return 0;
         }
         //Ngắt kết nối
         $this->conn->Stop();

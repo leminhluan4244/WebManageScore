@@ -21,7 +21,7 @@ class AccountHasBranchMod
     {
         // Đẩy câu lệnh vào string
         $sql = "INSERT INTO `Account_has_Branch` (`Account_idAccount`, `Branch_idBranch`) 
-						VALUES('" . $account->getIdAccount() . "','" . $branch->getIdBranch() . "');";
+						VALUES('" . $account. "','" . $branch. "');";
         // Thực thi câu lệnh
         $this->conn->Connect();
         if ($this->conn->conn->multi_query($sql) === true) {

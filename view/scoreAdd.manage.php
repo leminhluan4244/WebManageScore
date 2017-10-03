@@ -5,12 +5,11 @@
         $update = true;
     if (isset($_POST["btnFilter"]) && $_POST["btnFilter"] == "filter")
         $filter = true;
-    if (isset($_POST["btnDelete"]) && $_POST["btnDelete"] == "delete")
+    if (isset($_POST["btnDelete"]) && $_POST["btnDelete"] == "delete"){
         $delete = true;
+          }
+
 ?>
-
-
-
 <div class="container-fluid">
     <!Start content manage student-->
     <div class="container main-academy-container">
@@ -32,6 +31,4 @@
 <?php 
 	require_once "../controller/footer.php";
 ?>
-</body>
 
-</html>
