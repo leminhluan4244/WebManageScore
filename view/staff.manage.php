@@ -8,12 +8,9 @@ $academyObj = new AcademyObj();
 $academyMod = new AcademyMod();
 $classObj = new ClassObj();
 $classMod = new ClassMod();
-
-$perObj = new PermissionObj();
-$perMod = new PermissionMod();
 ?>
 <div class="container-fluid">
-    <!--Start content manage student-->
+    <!--Start content manage staff-->
     <div class="container main-academy-container">
         <div class="academy-action-list">
         
@@ -21,16 +18,16 @@ $perMod = new PermissionMod();
             <div class="form-group">
                 <form id="form-filter-teacher"  method="get" action="staff.manage.php">
                     <div class="row">
-                        <!--Start combobox academy for student-->
+                        <!--Start combobox academy for staff-->
 						<?php
 						require "../controller/staff/staff.filter.academy.php";
 						?>
-                        <!--End combobox academy for student-->
+                        <!--End combobox academy for staff-->
 
                         <!---->
-                        <!--Start combobox class for student-->
+                        <!--Start combobox class for staff-->
 
-                        <!--End combobox class for student-->
+                        <!--End combobox class for staff-->
                         <!---->
                         <!--Start buttun filter-->
                         <button class="btn btn-primary col-sm-1" name="btnfilter">Lọc</button>
@@ -49,13 +46,13 @@ $perMod = new PermissionMod();
 
         </div>
     </div>
-    <!--End content manage student-->
+    <!--End content manage staff-->
 </div>
 
-<script src="../public/js/student_action.js"></script>
+<!--<script src="../public/js/student_action.js"></script>-->
 <!--<script>-->
-<!--//    $('#form-filter-student').submit(function(){-->
-<!--//        var classId = $('#select-student-class').val();-->
+<!--//    $('#form-filter-staff').submit(function(){-->
+<!--//        var classId = $('#select-staff-class').val();-->
 <!--//        return /^[a-zA-Z0-9]+4/.test(classId);-->
 <!--//    });-->
 <!--</script>-->

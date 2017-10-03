@@ -1,12 +1,12 @@
 <div class="">
 
-    <!--Start list student-->
+    <!--Start list staff-->
     <?php
     require "../controller/staff/staff.table.php";
     ?>
-    <!--End list student>
+    <!--End list staff>
 
-    <!--Start student add button-->
+    <!--Start staff add button-->
     <div class="text-center">
         <form action="" class="form-inline">
             <a class="btn btn-primary col align-self-center " data-toggle="modal" data-target="#addStaff">
@@ -17,29 +17,29 @@
             </a>
         </form>
     </div>
-    <!-- End student add button-->
-    <!-- Start add student-->
+    <!-- End staff add button-->
+    <!-- Start add staff-->
 <?php
    require_once "../controller/staff/staff.add.php";
    ?>
-    <!-- End add student-->
+    <!-- End add staff-->
 
-    <!-- Start infor student-->
+    <!-- Start infor staff-->
     <?php
     require_once "../controller/staff/staff.info.php";
     ?>
-    <!-- End infor student-->
+    <!-- End infor staff-->
 
-    <!--Start update student-->
+    <!--Start update staff-->
     <?php
     require_once "../controller/staff/staff.update.php";
     ?>
-    <!--End update student-->
+    <!--End update staff-->
 
-    <!--Start delete student-->
+    <!--Start delete staff-->
 <!--    --><?php
     require_once "../controller/staff/staff.delete.php";
 //    ?>
-    <!--End delete student-->
+    <!--End delete staff-->
 
 </div>

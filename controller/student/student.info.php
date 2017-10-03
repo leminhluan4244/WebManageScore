@@ -1,5 +1,4 @@
 <?php
-
 $id = getGETValue('id');
 if (!empty($id)) {
 	$accountObj = $accountMod->getAccount($id);

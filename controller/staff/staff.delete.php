@@ -1,4 +1,4 @@
-<!--Start delete student-->
+<!--Start delete staff-->
 <?php
 if(isset($_POST['xoa'])) {
     $stO = new AccountObj();
@@ -22,7 +22,7 @@ if(isset($_POST['xoa'])) {
                 <h4>Hành động này cần xác nhận: Không thể hoàn tác!</h4>
                 <p>Vui lòng kiểm tra cẩn thận!</p>
                 <div class="modal-footer">
-                    <input type="hidden" name="deleteTeacher" id="deleteStudent">
+                    <input type="hidden" name="deleteTeacher" id="deleteStaff">
                     <button type="submit" name="xoa" onclick="submitform();" class="btn btn-danger">Đồng ý</button>
                     <button type="button" class="btn btn-default" data-dismiss="modal">Không</button>
                 </div>
@@ -30,7 +30,7 @@ if(isset($_POST['xoa'])) {
         </div>
     </div>
 </div>
-<!--End delete student-->
+<!--End delete staff-->
 <!-- Bắt sự kiện check all tất cả checkbox để xóa tất cả dữ liệu  -->
 <script>
     function submitform() {

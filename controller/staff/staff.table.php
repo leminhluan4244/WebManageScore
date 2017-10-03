@@ -39,7 +39,7 @@ else {
                 <tr>
                     <td><?php echo $order + 1; ?></td>
                     <td>
-                        <a href="<?php echo $url . 'id=' . $value->getIdAccount(); ?>">
+                        <a href="<?php echo 'staff.manage.php?idStaff=' . $value->getIdAccount(); ?>">
                             <?php echo $value->getIdAccount(); ?>
                         </a>
                     </td>

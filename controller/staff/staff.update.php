@@ -1,12 +1,10 @@
 <?php
-
-
 if(isset($_POST['btnUpdate'])) {
-    $studentO = new AccountObj();
-    $studentM = new AccountMod();
+    $staffO = new AccountObj();
+    $staffM = new AccountMod();
     var_dump($_POST);
-    $studentO->setAccountObj($_POST['updateIdAccount'], $_POST['updateAccountName'], $_POST['updateBirthday'], $_POST['updateAddress'], $_POST['updateSex'], $_POST['updatePhone'], $_POST['updateEmail'],'notpass', $_POST['updatePermission_position']);
-    $studentM->updateAccount($studentO);
+    $staffO->setAccountObj($_POST['updateIdAccount'], $_POST['updateAccountName'], $_POST['updateBirthday'], $_POST['updateAddress'], $_POST['updateSex'], $_POST['updatePhone'], $_POST['updateEmail'],'notpass', $_POST['updatePermission_position']);
+    $staffM->updateAccount($staffO);
     $academyTemp = new AccountHasAcademyMod();
     if($_POST['updateAcademyName']!='NoneAcademy'){
         $academyTemp->deleteAccountHasAcademy($_POST['updateIdAccount']);
@@ -100,11 +98,14 @@ function checkO($stringA, $temp)
                         <select class="form-control" name="updateAcademyName" id="updateAcademyName">
                             <option value="NoneAcademy">--Chọn khoa--</option>
                             <?php
-                            $listAcademy = array();
+                            $academyObj = new AcademyObj();
+                            $academyMod = new AcademyMod();
                             $listAcademy = $academyMod->getAcademy();
+                            if(gettype($listAcademy)!='integer')
                             foreach ($listAcademy as $key => $value){
-
-                                echo'<option'.checkO($tempIDAcademy, $value->getIdAcademy()).' value="'.$value->getIdAcademy().'">'.$value->getAcademyName().'</option>';
+                                if($tempIDAcademy==$value->getIdAcademy())
+                                    echo'<option selected="selected" value="'.$value->getIdAcademy().'">'.$value->getAcademyName().'</option>';
+                                else echo'<option value="'.$value->getIdAcademy().'">'.$value->getAcademyName().'</option>';
                             }
                             ?>
                         </select>
@@ -114,23 +115,14 @@ function checkO($stringA, $temp)
                         <select class="form-control" name="updatePermission_position" id="updatePermission_position">
                             <option value="NonePer">--Chọn phân quyền--</option>
                             <?php
-                            $listPermissionM = array();
-                            $listPermissionM = $perMod->getPermission();
+                            $perOT = new PermissionObj();
+                            $perMT = new PermissionMod();
+                            $listPermissionM = $perMT->getPermission();
+                            if(gettype($listPermissionM)!='integer')
                             foreach ($listPermissionM as $key => $value){
-                                echo'<option value="'.$value->getPosition().'">'.$value->getPosition().'</option>';
-                            }
-                            ?>
-                            <?php
-                            $listPermissionM = array();
-                            $listPermissionM = $perMod->getPermission();
-                            foreach ($listPermissionM as $key => $value){
-                                if($value->getPosition()!='Sinh viên' && $value->getPosition()!='Quản lý chi hội');
-                                else{
-                                    if($studentOT['permission_position']==$value->getPosition())
+                                    if($staffOT['permission_position']==$value->getPosition())
                                         echo'<option selected="selected" value="'.$value->getPosition().'">'.$value->getPosition().'</option>';
                                     else echo'<option value="'.$value->getPosition().'">'.$value->getPosition().'</option>';
-                                }
-
                             }
                             ?>
                         </select>
@@ -145,7 +137,7 @@ function checkO($stringA, $temp)
         </div>
     </div>
 </div>
-<!-- End update student-->
+<!-- End update staff-->
 
 <script>
     $(function(){

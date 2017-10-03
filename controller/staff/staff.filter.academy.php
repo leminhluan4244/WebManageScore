@@ -1,4 +1,4 @@
-<!--Start combobox academy for student-->
+<!--Start combobox academy for staff-->
 <div class="col-sm-4 form-group">
     <select name="academy" class="form-control">
         <option value="NoneAcademy">-- Chọn theo khoa --</option>
@@ -11,4 +11,4 @@
 		<?php } ?>
     </select>
 </div>
-<!--End combobox academy for student-->
+<!--End combobox academy for staff-->

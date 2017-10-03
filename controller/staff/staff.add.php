@@ -19,7 +19,7 @@ if(isset($_POST['btnAdd_staff'])) {
 
 }
 ?>
-<!-- Start add student-->
+<!-- Start add staff-->
 <div id="addStaff" class="modal fade " tabindex="-1" role="dialog" aria-labelledby aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
@@ -34,14 +34,14 @@ if(isset($_POST['btnAdd_staff'])) {
                     <fieldset class="form-group">
                         <p class="text-left "><b>Họ và Tên</b></p>
                         <input type="text" class="form-control" name="addAccountName" id="addAccountName"
-                               placeholder="Nhập tên sinh viên">
+                               placeholder="Nhập tên cán bộ">
 
                     </fieldset>
 
                     <fieldset class="form-group">
                         <p class="text-left"><b>MSCB</b></p>
                         <input type="text" class="form-control" name="addIdAccount" id="addIdAccount"
-                               placeholder="Nhập mã số sinh viên">
+                               placeholder="Nhập mã số cán bộ">
                     </fieldset>
 
                     <fieldset class="form-group">
@@ -73,7 +73,7 @@ if(isset($_POST['btnAdd_staff'])) {
                     <fieldset class="form-group">
                         <p class="text-left"><b>Email</b></p>
                         <input type="mail" class="form-control" name="addEmail" id="addEmail"
-                               placeholder="Nhập email" value="@student.ctu.edu.vn">
+                               placeholder="Nhập email" value="@ctu.edu.vn">
                     </fieldset>
 
                     <fieldset class="form-group">
@@ -81,8 +81,10 @@ if(isset($_POST['btnAdd_staff'])) {
                         <select class="form-control" name="addAcademyName" id="addAcademyName">
                             <option value="NoneAcademy">--Chọn khoa--</option>
                             <?php
-                            $listAcademy = array();
+                            $academyObj = new AcademyObj();
+                            $academyMod = new AcademyMod();
                             $listAcademy = $academyMod->getAcademy();
+                            if(gettype($listAcademy)!='integer')
                             foreach ($list as $key => $value){
                                 echo'<option value="'.$value->getIdAcademy().'">'.$value->getAcademyName().'</option>';
                             }
@@ -96,8 +98,9 @@ if(isset($_POST['btnAdd_staff'])) {
                         <select class="form-control" name="addPermission_position" id="addPermission_position">
                             <option value="NonePer">--Chọn phân quyền--</option>
                             <?php
-                            $listPermissionM = array();
-                            $listPermissionM = $perMod->getPermission();
+                            $perOT = new PermissionObj();
+                            $perMT = new PermissionMod();
+                            $listPermissionM = $perMT->getPermission();
                             foreach ($listPermissionM as $key => $value){
                                 echo'<option value="'.$value->getPosition().'">'.$value->getPosition().'</option>';
                             }
@@ -114,5 +117,5 @@ if(isset($_POST['btnAdd_staff'])) {
         </div>
     </div>
 </div>
-<!-- End add student-->
-<script src="../public/js/student_action.js"></script>
+<!-- End add staff-->
+<script src="../public/js/staff_action.js"></script>

@@ -1,7 +1,10 @@
 <?php
 
-$id = getGETValue('id');
+if(isset($_GET['idStaff'])){
+    $id = $_GET['idStaff'];
+}
 if (!empty($id)) {
+    $accountMod = new AccountMod();
 	$accountObj = $accountMod->getAccount($id);
 	?>
 
@@ -101,9 +104,7 @@ if (!empty($id)) {
     <script>
         $(function () {
             $('#infoTeacher').modal('toggle');
-            var url = window.location.href;
-            url = url.replace(/\?.+/, '');
-            window.history.pushState({path: url}, '', url);
+            window.history.pushState({path: 'staff.manage.php'}, '','staff.manage.php');
         });
     </script>
 <?php } ?>
