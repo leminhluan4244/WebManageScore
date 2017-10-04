@@ -606,6 +606,10 @@ class AccountMod {
 
 
 	#Xóa tài khoản
+	/* Người sử dụng
+	Minh Luân
+
+	 * */
 	public function deleteAccount($account) {
 		$sql =
 			"DELETE FROM `account_has_class` WHERE `Account_idAccount` = '" . $account->getIdAccount() . "';"
