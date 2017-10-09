@@ -137,6 +137,10 @@ class AccountMod {
           Hoàng Thơ
 
    * */
+
+	/**
+	# Đoàn Minh Nhựt
+	*/
 	public function getAccount($idAccount) {
 		$sql = "SELECT * FROM `account` WHERE `idAccount` = '" . $idAccount . "'";
 		$this->conn2sql->Connect();
@@ -145,7 +149,9 @@ class AccountMod {
 		$row = $result->fetch_row();
 		return new AccountObj($row[0], $row[1], $row[2], $row[3], $row[4], $row[5], $row[6], $row[7], $row[8]);
 	}
-
+	/**
+	# Đoàn Minh Nhựt
+	*/
 	public function getAllAccount() {
 		// Tạo ra một mảng lưu trữ tên list, mặc định bang đầu rỗng
 		$list = array();
@@ -185,7 +191,9 @@ class AccountMod {
 		return $list;
 	}
 
-	#ok
+	/**
+	# Đoàn Minh Nhựt
+	*/
 	public function getAllAccountByPermission($position) {
 		// Tạo ra một mảng lưu trữ tên list, mặc định bang đầu rỗng
 		$list = array();
@@ -306,6 +314,7 @@ class AccountMod {
         }
         return $list;
     }
+
 
 	public function getStudentAll() {
 		// Tạo ra một mảng lưu trữ tên list, mặc định bang đầu rỗng
@@ -576,7 +585,9 @@ class AccountMod {
           Hoàng Thơ
     	  Minh Luân
    	* */
-
+		/**
+		# Đoàn Minh Nhựt
+		*/
 	public function updateAccount($account) {
 		$sql = "UPDATE `account` SET
         `accountName`='" . $account->getAccountName() . "',
@@ -704,7 +715,9 @@ class AccountMod {
 		}
 		return $list;
 	}
-
+	/**
+	# Đoàn Minh Nhựt
+	*/
 	public function getPermission($id) {
 		$sql = "SELECT Permission_position FROM account WHERE  account.idAccount='" . $id . "';";
 		$this->conn2sql->Connect();
@@ -924,6 +937,9 @@ class AccountMod {
 		}
 	}
 
+	/**
+	# Đoàn Minh Nhựt
+	*/
 	#Tìm kiếm tài khoản theo tên,
 	#trả về mảng chứa thông tin tài khoản với các khóa là thuộc tính của tài khoản
 	public function findAccountByName($accountName) {
@@ -954,6 +970,9 @@ class AccountMod {
     /* Người sử dụng
           Hoàng Thơ
    * */
+	 /**
+ 	# Đoàn Minh Nhựt
+ 	*/
 	public function findAccountByID($idAccount) {
 		$this->conn2sql->Connect();
 		$sql = "SELECT * FROM `account` WHERE `idAccount` = '" . $idAccount . "'";

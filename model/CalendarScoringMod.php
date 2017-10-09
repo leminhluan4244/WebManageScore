@@ -10,7 +10,9 @@
     function __construct(){
       $this->conn2sql = new ConnectToSQL();
     }
-    #ok
+    /**
+  	# Đoàn Minh Nhựt
+  	*/
     public function updateCalendar($CalendarScoring){
       $sql = "DELETE FROM `calendarscoring` WHERE
        `Permission_position`='".$CalendarScoring->getPermission_position()."'";
@@ -29,7 +31,9 @@
         return false;
       }
     }
-    #ok
+    /**
+  	# Đoàn Minh Nhựt
+  	*/
     public function deleteCalendar($CalendarScoring){
       $sql = "DELETE FROM `calendarscoring` WHERE
        `openDate` = '".$CalendarScoring->getOpenDate()."' AND
@@ -45,7 +49,9 @@
          return false;
       }
     }
-    #ok
+    /**
+  	# Đoàn Minh Nhựt
+  	*/
     public function addCalendar($CalendarScoring){
       $sql = "INSERT INTO `calendarscoring`(`openDate`, `closeDate`, `Permission_position`) VALUES (
        '".$CalendarScoring->getOpenDate()."',
@@ -60,7 +66,9 @@
         return false;
       }
     }
-    #ok
+    /**
+  	# Đoàn Minh Nhựt
+  	*/
     public function checkCalendar($date, $Account){
       $sql = "SELECT `openDate`, `closeDate` FROM `calendarscoring` WHERE
        `Permission_position` = '".$Account->getPermission_position()."'";
@@ -74,6 +82,9 @@
         return false;
       }
     }
+    /**
+  	# Đoàn Minh Nhựt
+  	*/
     public function getCalendarWithPermissionPosition($Permission_position){
       $sql = "SELECT * FROM `calendarscoring` WHERE `Permission_position` = '".$Permission_position."'";
       $this->conn2sql->Connect();
@@ -96,6 +107,9 @@
       );
       return $arr;
     }
+    /**
+  	# Đoàn Minh Nhựt
+  	*/
     public function deleteWithPermission($name){
       $sql = "DELETE FROM `calendarscoring` WHERE `Permission_position`='".$name."'";
       $this->conn2sql->Connect();
