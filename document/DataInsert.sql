@@ -266,6 +266,7 @@ INSERT INTO `class` (`idClass`, `className`, `schoolYear`, `Academy_idAcademy`) 
 INSERT INTO `class` (`idClass`, `className`, `schoolYear`, `Academy_idAcademy`) VALUES ('MT13ABA1', 'Tài nguyên môi trường 1', '39', 'MT');
 INSERT INTO `class` (`idClass`, `className`, `schoolYear`, `Academy_idAcademy`) VALUES ('MT13ABA2', 'Tài nguyên môi trường 2', '39', 'MT');
 
+
 /*Dữ liệu mẫu 18 tài khoản phân bổ vào các lớp */
 INSERT INTO `account_has_class` (`Account_idAccount`, `Class_idClass`) VALUES ('AAAA', 'DI1496A1');
 INSERT INTO `account_has_class` (`Account_idAccount`, `Class_idClass`) VALUES ('BBBB', 'DI1496A1');
