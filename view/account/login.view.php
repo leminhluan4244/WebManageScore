@@ -42,6 +42,14 @@
 						</div>
 					</div>
 					<br>
+
+                    <label>Admin01 - Test Admin</label><br>
+                    <label>AAAA - Test Student</label><br>
+                    <label>NNNN - Test Branch Manage</label><br>
+                    <label>CB101 - Test Staff</label><br>
+                    <label>QL101 - Test Academy </label><br>
+                    <label>PASS ALL ACCOUNT  - 1234 </label><br>
+
 					<div class="row text-center">
 						<button class="btn btn-primary">Đăng nhập</button>
 						<input type="hidden" name="requestName" value="login">

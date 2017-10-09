@@ -69,9 +69,9 @@ class BranchMod
         // Tạo ra một mảng lưu trữ tên list, mặc định bang đầu rỗng
         $list = array();
         // Đẩy câu lệnh vào string
-        $sql = "SELECT idAccount,accountName,birthday,address,sex,phone,email,Permission_position,Academy_idAcademy 
+        $sql = "SELECT idAccount,accountName,birthday,address,sex,phone,email,Permission_position
                 FROM Account,Account_Has_Branch
-                WHERE Branch_idBranch='" . $branch->getIdBranch() . "' and  idAccount = Account_idAccount;";
+                WHERE Branch_idBranch='" . $branch . "' and  idAccount = Account_idAccount;";
         $this->conn->Connect();
         $result = $this->conn->conn->query($sql);
 
@@ -81,9 +81,8 @@ class BranchMod
             // Sử dụng vòng lặp while để lặp kết quả
             $k = 0;
             //Tạo một đối tượng chứa
-            $account = new AccountObj();
             while ($row = $result->fetch_assoc()) {
-
+                $account = new AccountObj();
                 //Cho vào list đối tượng
                 $account->setIdAccount($row["idAccount"]);
                 $account->setAccountName($row["accountName"]);
@@ -93,12 +92,14 @@ class BranchMod
                 $account->setPhone($row["phone"]);
                 $account->setEmail($row["email"]);
                 $account->setPermission_position($row["Permission_position"]);
-                $account->setAcademy_idAcademy($row["Academy_idAcademy"]);
                 $list[$k] = $account;
                 $k++;
 			    }
         } else {
+            //Ngắt kết nối
+            $this->conn->Stop();
            // echo "Không có kết quả nào";
+            return 0;
         }
         //Ngắt kết nối
         $this->conn->Stop();
@@ -107,6 +108,9 @@ class BranchMod
     }
     //*********************************************************
     //Hàm tìm kiếm một chi hội theo mã
+    /* Người sử dụng
+    Hoàng Thơ
+    * */
     public function findBranchByID($branchS)
     {
         $sql = "SELECT * FROM branch WHERE idBranch='" . $branchS . "';";
@@ -133,6 +137,10 @@ class BranchMod
         //Ngắt kết nối
         $this->conn->Stop();
     }
+    #Tìm kiếm chi hội theo tỉnh
+    /* Người sử dụng
+    Hoàng Thơ
+    * */
     public function findBranchByCity($branchC)
     {
         $sql = "SELECT * FROM branch WHERE city='" . $branchC . "';";
@@ -216,7 +224,11 @@ class BranchMod
         //Ngắt kết nối
         $this->conn->Stop();
     }
-    // tra ve doi tuong chi hoi
+
+    #Trả về danh sách chi hội theo ID
+    /* Người sử dụng
+    Hoàng Thơ
+    * */
     public function getBranchId($i){
         $sql = "SELECT * FROM `branch` WHERE `idBranch` = '".$i."'";
         $this->conn->Connect();
@@ -226,6 +238,9 @@ class BranchMod
         return new BranchObj($row[0], $row[1], $row[2]);
     }
     // Hàm trả về danh sách các chi hội hiện có
+    /* Người sử dụng
+    Hoàng Thơ
+    * */
     public function getBranch()
     {
         // Tạo ra một mảng lưu trữ tên list, mặc định bang đầu rỗng
@@ -294,6 +309,9 @@ class BranchMod
     }
 
     //Hàm thêm một chi hội
+    /* Người sử dụng
+          Hoàng Thơ
+   * */
     public function addBranch($branch)
     {
         // Đẩy câu lệnh vào string
@@ -315,6 +333,9 @@ class BranchMod
     }
 
     //Hàm xóa một chi hội
+    /* Người sử dụng
+      Hoàng Thơ
+    * */
     public function deleteBranch($branch)
     {
         // Đẩy câu lệnh vào string
@@ -340,6 +361,9 @@ class BranchMod
     }
 
     //Hàm cập nhật một chi hội
+    /* Người sử dụng
+    Hoàng Thơ
+    * */
     public function updateBranch($branch)
     {
         // Đẩy câu lệnh vào string

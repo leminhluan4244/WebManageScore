@@ -1,7 +1,6 @@
 <?php
 require_once "../controller/header.php";
 require_once "../controller/permission.find.php";
-$branchMod = new BranchMod();
 ?>
 
 <div class="container-fluid">
@@ -12,21 +11,12 @@ $branchMod = new BranchMod();
             <br>
             <div class="form-group">
                 <form action="" method="get">
-
-
-
-                    <!---->
-                    <!--Start combobox city for branch-->
-
                     <div class="col-sm-4">
-                        <input type="text" class="form-control " name="search" >
+                        <input type="text" class="form-control " name="search" placeholder="Nhập tên hoặc mã số một sinh viên muốn thêm vào chi hôi">
 
                     </div>
                     <!--Start buttun filter-->
-                    <input type="submit" value="Tìm kiếm" class="btn btn-primary col-sm-1" name="btnSearch">
-                    <!--End buttun filter-->
-
-
+                    <input type="submit" value="Tìm kiếm" class="btn btn-primary col-sm-1" name="btnSearch">';
                 </form>
                 <br>
                 <br>

@@ -16,7 +16,11 @@ class AccountHasAcademyMod
     {
         $this->conn = new ConnectToSQL();
     }
-//tho
+
+    #Thêm tài khoản các bộ vào khoa
+    /* Người sử dụng
+       Hoàng Thơ
+        * */
     public function addStaffHasAcademy($account, $Academy)
     {
         // Đẩy câu lệnh vào string
@@ -37,6 +41,10 @@ class AccountHasAcademyMod
         }
 
     }
+    #Thêm tài khoản thuộc khoa
+    /* Người sử dụng
+          Hoàng Thơ
+   * */
     public function addAccountHasAcademy($account, $Academy)
     {
         // Đẩy câu lệnh vào string
@@ -59,6 +67,9 @@ class AccountHasAcademyMod
     }
 
     //Hàm xóa một sinh viên khỏi chi hội
+    /* Người sử dụng
+          Hoàng Thơ
+   * */
     public function deleteAccountHasAcademy($account)
     {
         // Đẩy câu lệnh vào string

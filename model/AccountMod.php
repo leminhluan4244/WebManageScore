@@ -32,6 +32,10 @@ class AccountMod {
 	}
 
 	#Thêm tài khoản
+    /* Người sử dụng
+    Hoàng Thơ
+
+     * */
 	public function addAccount($accountObj) {
 		$sql = "INSERT INTO `account`(`idAccount`, `accountName`, `birthday`, `address`, `sex`, `phone`, `email`, `password`, `Permission_position`) VALUES (
         '" . $accountObj->getIdAccount() . "',
@@ -94,7 +98,7 @@ class AccountMod {
         // Tạo ra một mảng lưu trữ tên list, mặc định bang đầu rỗng
         $list = array();
         // Đẩy câu lệnh vào string
-        $sql = "SELECT * FROM account WHERE (idAccount='".$string."' OR accountName='".$string."')  and (account.Permission_position = 'Sinh viên' OR account.Permission_position = 'Quản lý chi hội');";
+        $sql = "SELECT * FROM account WHERE (idAccount='".$string."' OR accountName='".$string."')  and (account.Permission_position = 'Sinh viên');";
         $this->conn2sql->Connect();
         $result = $this->conn2sql->conn->query($sql);
         // Kiểm tra số lượng kết quả trả về có lơn hơn 0
@@ -129,6 +133,10 @@ class AccountMod {
         return $list;
     }
 	#Trả về đối tượng tài khoản
+    /* Người sử dụng
+          Hoàng Thơ
+
+   * */
 	public function getAccount($idAccount) {
 		$sql = "SELECT * FROM `account` WHERE `idAccount` = '" . $idAccount . "'";
 		$this->conn2sql->Connect();
@@ -237,6 +245,10 @@ class AccountMod {
 		return $list;
 	}
 
+	#Trả về danh sách khoa theo ID
+    /* Người sử dụng
+          Hoàng Thơ
+   * */
 	public function getAcademyId($id) {
 		$sql = "SELECT academy.idAcademy FROM account,account_has_academy,academy WHERE account.idAccount = account_has_academy.Account_idAccount AND account_has_academy.Academy_idAcademy = academy.idAcademy AND account.idAccount='" . $id . "';
 ";
@@ -269,10 +281,31 @@ class AccountMod {
 			}
 
 		} else {
+			return 0;
 			// echo "The result of information processing is data false";
 		}
 		return $list;
 	}
+    public function getBranchName($id) {
+        $sql = "SELECT branch.branchName FROM account,account_has_branch,branch WHERE account.idAccount = account_has_branch.Account_idAccount AND account_has_branch.Branch_idBranch = branch.idBranch AND account.idAccount='" . $id . "';
+";
+        $this->conn2sql->Connect();
+        $result = $this->conn2sql->conn->query($sql);
+        $this->conn2sql->Stop();
+        $list = array();
+        if ($result->num_rows > 0) {
+            $k = 0;
+            while ($row = $result->fetch_assoc()) {
+                $list[$k] = $row["branchName"];
+                $k++;
+            }
+
+        } else {
+            return 0;
+            // echo "The result of information processing is data false";
+        }
+        return $list;
+    }
 
 	public function getStudentAll() {
 		// Tạo ra một mảng lưu trữ tên list, mặc định bang đầu rỗng
@@ -312,6 +345,10 @@ class AccountMod {
 		return $list;
 	}
 
+	#Trả về danh sách các tài khoản cán bộ
+    /* Người sử dụng
+              Hoàng Thơ
+       * */
 	public function getAccountStaff() {
 		// Tạo ra một mảng lưu trữ tên list, mặc định bang đầu rỗng
 		$list = array();
@@ -349,7 +386,10 @@ class AccountMod {
 		//Trả đối tượng đi, sau này lớp control sẽ sử dụng mảng này để truy xuất
 		return $list;
 	}
-
+	#Trả về danh sách các tài khoản cán bộ
+    /* Người sử dụng
+          Hoàng Thơ
+   * */
 	public function getAccountStaffByAcademy($id) {
 		// Tạo ra một mảng lưu trữ tên list, mặc định bang đầu rỗng
 		$list = array();
@@ -532,6 +572,10 @@ class AccountMod {
 	}
 
 	#Cập nhật thông tin tài khoản
+    /* Người sử dụng
+          Hoàng Thơ
+    	  Minh Luân
+   	* */
 
 	public function updateAccount($account) {
 		$sql = "UPDATE `account` SET
@@ -585,6 +629,10 @@ class AccountMod {
 
 
 	#Xóa tài khoản
+	/* Người sử dụng
+	Minh Luân
+	Hoàng Thơ
+	 * */
 	public function deleteAccount($account) {
 		$sql =
 			"DELETE FROM `account_has_class` WHERE `Account_idAccount` = '" . $account->getIdAccount() . "';"
@@ -632,7 +680,12 @@ class AccountMod {
 		return $className;
 	}
 
-	//Minh luan tag - trả danh sách lớp, khoa , chi hoi
+	//trả danh sách lớp, khoa , chi hoi
+    /* Người sử dụng
+          Hoàng Thơ
+    	  Minh Luân
+
+   * */
 	public function getClass($id) {
 		$sql = "SELECT class.className FROM account,account_has_class,class WHERE account.idAccount = account_has_class.Account_idAccount AND account_has_class.Class_idClass = class.idClass AND account.idAccount='" . $id . "';";
 		$this->conn2sql->Connect();
@@ -668,6 +721,10 @@ class AccountMod {
 		return $list;
 	}
 
+    /* Người sử dụng
+              Hoàng Thơ
+
+       * */
 	public function getAcademy($id) {
 		$sql = "SELECT academy.academyName FROM account,account_has_academy,academy WHERE account.idAccount = account_has_academy.Account_idAccount AND account_has_academy.Academy_idAcademy = academy.idAcademy AND account.idAccount='" . $id . "';
 ";
@@ -688,6 +745,10 @@ class AccountMod {
 		return $list;
 	}
 
+    /* Người sử dụng
+              Hoàng Thơ
+
+       * */
 	public function getBranch($id) {
 		$sql = "SELECT branch.branchName FROM account,account_has_branch,branch WHERE account.idAccount = account_has_branch.Account_idAccount AND account_has_branch.Branch_idBranch = branch.idBranch AND account.idAccount='" . $id . "';
 ";
@@ -890,6 +951,9 @@ class AccountMod {
 
 	#Tìm kiếm tài khoản theo mã số,
 	#trả về mảng chứa thông tin tài khoản với khóa là thuộc tính của tài khoản
+    /* Người sử dụng
+          Hoàng Thơ
+   * */
 	public function findAccountByID($idAccount) {
 		$this->conn2sql->Connect();
 		$sql = "SELECT * FROM `account` WHERE `idAccount` = '" . $idAccount . "'";
