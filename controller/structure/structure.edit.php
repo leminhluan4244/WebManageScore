@@ -19,18 +19,25 @@ if (!empty($id)) {
 } else redirect("structure.editor.php");
 
 if (isSubmit('save')) {
+
 	$idItem = getPOSTValue('idItem');
 	$itemName = getPOSTValue('itemName');
-	$score = getPOSTValue('score');
+	$score = (int)getPOSTValue('score');
 	$idParent = getPOSTValue('idParent');
-	$scoreDefault = getPOSTValue('scoreDefault');
+	$scoreDefault = (int)getPOSTValue('scoreDefault');
 	$structObj = new StructureObj();
 	$structObj->setStructureObj($idItem, $itemName, $score, "", $idParent, $scoreDefault);
-	if ($model->updateStructure($structObj)) {
-//		showMessage("Cập nhật thành công!!");
-	} else
-		showMessage("Cập nhật thất bại, thử lại sau!!");
-	softRedirect("structure.editor.php");
+	if (trim($idItem, " ") == "" || empty(trim($itemName, " ")) || trim($idParent, " ") == ""){
+		showMessage("Hãy điền đầy đủ thông tin!");
+	} else if ($tree->isAncestor($idItem, $idParent))
+	    showMessage("Mục cha đang chọn là mục con của mục đang chỉnh sửa");
+    else {
+		if ($model->updateStructure($structObj)) {
+			showMessage("Cập nhật thành công!!");
+		} else
+			showMessage("Cập nhật thất bại, thử lại sau!!");
+		softRedirect("structure.editor.php");
+    }
 }
 ?>
 <div class="structure-edit-item container">
@@ -40,17 +47,17 @@ if (isSubmit('save')) {
         <form method="post">
             <div class="form-group">
                 <label>Mã mục điểm</label>
-                <input readonly value="<?php echo $id; ?>" name="idItem" class="form-control">
+                <input readonly required value="<?php echo $id; ?>" name="idItem" class="form-control">
             </div>
             <div class="form-group">
                 <label>Tên mục điểm</label>
-                <textarea class="form-control" name="itemName" rows="5"><?php
+                <textarea class="form-control" required name="itemName" rows="5"><?php
 					echo $struct->getItemName();
 					?></textarea>
             </div>
             <div class="form-group">
                 <label>Mục cha của mục điểm này</label>
-                <select name="idParent" class="form-control">
+                <select name="idParent" required class="form-control">
                     <option value="0">Không có</option>
 					<?php foreach ($structures as $structure) { ?>
                         <option value="<?php echo $structure['idItem']; ?>"><?php echo $structure['itemName']; ?></option>
@@ -59,12 +66,12 @@ if (isSubmit('save')) {
             </div>
             <div class="form-group">
                 <label>Mức điểm</label>
-                <input type="number" name="score" class="form-control" min="0" max="100"
+                <input type="number" name="score" required class="form-control" min="0" max="100"
                        value="<?php echo $struct->getScores(); ?>">
             </div>
             <div class="form-group">
                 <label>Điểm mặc định</label>
-                <input type="number" name="scoreDefault" class="form-control" min="0" max="100"
+                <input type="number" name="scoreDefault" required class="form-control" min="0" max="100"
                        value="<?php echo $struct->getScoreDefault(); ?>">
             </div>
             <div class="form-group text-right">
