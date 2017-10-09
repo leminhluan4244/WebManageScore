@@ -2,7 +2,6 @@
 if(isset($_POST['btnUpdate'])) {
     $staffO = new AccountObj();
     $staffM = new AccountMod();
-    var_dump($_POST);
     $staffO->setAccountObj($_POST['updateIdAccount'], $_POST['updateAccountName'], $_POST['updateBirthday'], $_POST['updateAddress'], $_POST['updateSex'], $_POST['updatePhone'], $_POST['updateEmail'],'notpass', $_POST['updatePermission_position']);
     $staffM->updateAccount($staffO);
     $academyTemp = new AccountHasAcademyMod();

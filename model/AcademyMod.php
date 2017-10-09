@@ -224,6 +224,9 @@ class AcademyMod {
 	}
 
 	// Hàm trả về danh sách các khoa hiện có
+    /* Người sử dụng
+   		Hoàng Thơ
+    * */
 	public function getAcademy() {
 		// Tạo ra một mảng lưu trữ tên list, mặc định bang đầu rỗng
 		$list = array();
