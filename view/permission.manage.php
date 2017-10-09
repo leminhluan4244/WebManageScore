@@ -218,7 +218,37 @@
                          foreach ($permissionArr as $key => $value) {
                            echo '<tr>';
                            echo '<td>'.$permissionArr[$key]->getPosition().'</td>';
-                           echo '<td><label><input class="isCheck" type="checkbox" value="'.$permissionArr[$key]->getPosition().'" name="checkbox[]"></label></td>';
+                           if(strcmp($permissionArr[$key]->getPosition(), 'Admin') == 0){
+                            echo '<td><label><input disabled type="checkbox" ></label></td>';
+                            echo '</tr>';
+                            continue;
+                           }
+                           if(strcmp($permissionArr[$key]->getPosition(), 'Cố vấn học tập') == 0){
+                            echo '<td><label><input disabled type="checkbox" ></label></td>';
+                            echo '</tr>';
+                            continue;
+                           }
+                           if(strcmp($permissionArr[$key]->getPosition(), 'Default') == 0){
+                            echo '<td><label><input disabled type="checkbox" ></label></td>';
+                            echo '</tr>';
+                            continue;
+                           }
+                           if(strcmp($permissionArr[$key]->getPosition(), 'Quản lý chi hội') == 0){
+                            echo '<td><label><input disabled type="checkbox" ></label></td>';
+                            echo '</tr>';
+                            continue;
+                           }
+                           if(strcmp($permissionArr[$key]->getPosition(), 'Quản lý khoa') == 0){
+                            echo '<td><label><input disabled type="checkbox" ></label></td>';
+                            echo '</tr>';
+                            continue;
+                           }
+                           if(strcmp($permissionArr[$key]->getPosition(), 'Sinh viên') == 0){
+                            echo '<td><label><input disabled type="checkbox" ></label></td>';
+                            echo '</tr>';
+                            continue;
+                           }
+                           echo '<td><label><input id="'.$permissionArr[$key]->getPosition().'" class="isCheck" type="checkbox" value="'.$permissionArr[$key]->getPosition().'" name="checkbox[]"></label></td>';
                            echo '</tr>';
                          }
                          ?>
