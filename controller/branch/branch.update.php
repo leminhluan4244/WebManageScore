@@ -41,13 +41,13 @@ if (!empty($branchO)) {
                     <fieldset class="form-group">
                         <p class="text-left"><b>Mã Chi Hội</b></p>
                         <input type="text" class="form-control" name="idBranch" id="idBranch"
-                               value="' . $branchO->getidBranch() . '" readonly>
+                               value="' . $branchO->getidBranch() . '" readonly >
                     </fieldset>
 
                     <fieldset class="form-group">
                         <p class="text-left"><b>Tên Chi Hội</b></p>
                         <input type="text" class="form-control" name="branchName" id="branchName"
-                               value="' . $branchO->getBranchName() . '">
+                               value="' . $branchO->getBranchName() . '" required autofocus>
                     </fieldset>
 
                     <fieldset class="form-group">
