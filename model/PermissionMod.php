@@ -15,6 +15,9 @@ class PermissionMod
     {
         $this->connSql = new ConnectToSQL();
     }
+    /**
+  	# Đoàn Minh Nhựt
+  	*/
     // 1. Hàm thêm một phân quyền
     public function addPermission($permission)
     {
@@ -29,7 +32,9 @@ class PermissionMod
         }
         $this->connSql->Stop();
     }
-
+    /**
+  	# Đoàn Minh Nhựt
+  	*/
     //2. Hàm cập nhật một phân quyền
     public function updatePermission($permission)
     {
@@ -45,7 +50,9 @@ class PermissionMod
         }
         $this->connSql->Stop();
     }
-
+    /**
+    # Đoàn Minh Nhựt
+    */
     //3. Hàm xóa một lớp học
     public function deletePermission($permission)
     {
@@ -61,7 +68,9 @@ class PermissionMod
         }
         $this->connSql->Stop();
     }
-
+    /**
+  	# Đoàn Minh Nhựt
+  	*/
     //4. Hàm trả về danh sách các phân quyền hiện có
     /* Người sử dụng
           Hoàng Thơ
@@ -92,7 +101,9 @@ class PermissionMod
         $this->connSql->Stop();
         return $list;
     }
-
+    /**
+  	# Đoàn Minh Nhựt
+  	*/
     public function selectPower($selected)
     {
         $sql = "SELECT `power` FROM `Permission` WHERE `position` = '".$selected."' AND `selected` = 1";
@@ -114,6 +125,9 @@ class PermissionMod
         $this->connSql->Stop();
         return $list;
     }
+    /**
+  	# Đoàn Minh Nhựt
+  	*/
      public function setAllDisplay($namePermission, $num){
        $sql = "UPDATE `permission` SET `selected`= $num WHERE `position` = '".$namePermission."'";
        #var_dump($sql);
@@ -125,6 +139,9 @@ class PermissionMod
        }
        $this->connSql->Stop();
     }
+    /**
+  	# Đoàn Minh Nhựt
+  	*/
     public function setDisplay($namePermission, $num, $power){
       $sql = "UPDATE `permission` SET `selected`= $num WHERE `position` = '".$namePermission."' AND `power` = '".$power."'";
       #var_dump($sql);
