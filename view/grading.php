@@ -27,7 +27,9 @@ if($today < $arr['openDate'] || $today > $arr['closeDate']){
 	die();
 }
 
+#để trên nầy để lấy các constant
 require_once '../controller/transcript/TranscriptTree.php';
+
 $privilege = -1;
 $lvStudent = false;
 $lvAdviser = false;
@@ -57,8 +59,14 @@ if ($privilege < 0 || ($privilege == STUDENT && !$isStudent)) {
 	softRedirect("main.php");
 }
 
+require_once '../controller/structure/StructureTree.php';
+
 $structureMod = new StructureMod();
 $transcriptMod = new TranscriptMod();
+
+$structureTree = new StructureTree($structureMod->getEntireStructureTable());
+$structureLeafs = $structureTree->getAllNodeStoreScore();
+$structureNonLeafs = $structureTree->getAllNodeNonLeaf();
 
 $accountId = getLoggedAccountId();
 

@@ -191,7 +191,7 @@ class TranscriptMod {
 	 * @param $accoundId
 	 * @return bool
 	 */
-	public function isTranscriptExist($accoundId){
+	public function isTranscriptExist($accoundId, $structLeafs = []){
 		$sql = "select count(*) as total from transcript where Account_idAccount = '$accoundId'";
 		$this->connSQL->Connect();
 		$result = $this->connSQL->conn->query($sql);
@@ -199,13 +199,7 @@ class TranscriptMod {
 		if (!empty($result) && $result->num_rows){
 			$currentRow = $result->fetch_assoc()["total"];
 		}
-		$sql = "select count(*) as total from structure";
-		$result = $this->connSQL->conn->query($sql);
-		$this->connSQL->Stop();
-		if (!empty($result) && $result->num_rows){
-			$totalRow = $result->fetch_assoc()["total"];
-		}
-		return $currentRow == $totalRow;
+		return $currentRow == count($structLeafs);
 	}
 
 	/**

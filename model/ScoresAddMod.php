@@ -198,7 +198,7 @@ class ScoresAddMod {
 					scoresadd_has_account sha
 				WHERE
 					sa.idScore = sha.ScoresAdd_idScore
-				AND sha.Account_idAccount = 'B1400123' 
+				AND sha.Account_idAccount = '$studentId' 
 				GROUP BY (Transcript_idItem);";
 		$this->connSql->Connect();
 		$result = $this->connSql->conn->query($sql);

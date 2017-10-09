@@ -12,23 +12,27 @@ if ($privilege != STUDENT)
 
 #lưu điểm
 if (isSubmit("saveTranscript")){
-	require_once '../controller/structure/StructureTree.php';
 	require_once '../controller/transcript/transcript.save.php';
 }
 
-#phải kiểm tra xem có bảng điểm của sinh viên đó chưa rồi mới load lên
-if (!$transcriptMod->isTranscriptExist($accountId))
-	$transcriptMod->generateTranscript($accountId, $structureMod->getEntireStructureTable());
+#thêm bảng điểm
+if (!$transcriptMod->isTranscriptExist($accountId, $structureLeafs)){
+	$transcriptMod->generateTranscript($accountId, $structureLeafs);
+	showMessage("Generated.");
+}
 
 $saMod = new ScoresAddMod();
 $addScoreList = $saMod->getListScoreOfStudent($accountId);
 
-$trTree = new TranscriptTree($transcriptMod->getEntireTranscript($accountId));
+$transcriptListScore = $transcriptMod->getEntireTranscript($accountId);
+
+$trTree = new TranscriptTree(array_merge($structureNonLeafs, $transcriptListScore));
 $trTree->setPrivilege(STUDENT);
 $trTree->setAddScoreList($addScoreList);
 
 $root = $trTree->getRoot();
 $trTree->PreOderTreeToHtml($root, 0);
+$trTree->generateLastChildHTML();
 
 ?>
 
