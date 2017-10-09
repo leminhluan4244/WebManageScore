@@ -17,6 +17,10 @@ class AccountHasClassMod
         $this->conn = new ConnectToSQL();
     }
 
+    #Thêm tài khoản thuộc lớp
+    /* Người sử dụng
+          Hoàng Thơ
+   * */
     public function addAccountHasClass($account, $Class)
     {
         // Đẩy câu lệnh vào string
@@ -39,6 +43,9 @@ class AccountHasClassMod
     }
 
     //Hàm xóa một sinh viên khỏi chi hội
+    /* Người sử dụng
+          Hoàng Thơ
+   * */
     public function deleteAccountHasClass($account)
     {
         // Đẩy câu lệnh vào string

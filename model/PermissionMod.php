@@ -63,6 +63,9 @@ class PermissionMod
     }
 
     //4. Hàm trả về danh sách các phân quyền hiện có
+    /* Người sử dụng
+          Hoàng Thơ
+   * */
     public function getPermission()
     {
         $sql = "SELECT DISTINCT * FROM Permission GROUP BY Position";

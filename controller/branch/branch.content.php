@@ -35,8 +35,8 @@
 
     <!--Start delete branch-->
     <?php
-    require "../controller/branch/member.delete.php";
-    ?>
+      require "../controller/branch/branch.delete.php";
+     ?>
     <!--End delete branch-->
 
 </div>
