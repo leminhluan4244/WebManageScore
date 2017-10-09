@@ -30,28 +30,28 @@ if(isset($_POST['btnAdd_staff'])) {
                 <form action="staff.manage.php" method="post">
 
                     <fieldset class="form-group">
-                        <p class="text-left "><b>Họ và Tên</b></p>
-                        <input type="text" class="form-control" name="addAccountName" id="addAccountName"
-                               placeholder="Nhập tên cán bộ">
-
+                        <p class="text-left"><b>MSCB</b></p>
+                        <input type="text" class="form-control" name="addIdAccount" id="addIdAccount"
+                               placeholder="Nhập mã số cán bộ" required autofocus>
                     </fieldset>
 
                     <fieldset class="form-group">
-                        <p class="text-left"><b>MSCB</b></p>
-                        <input type="text" class="form-control" name="addIdAccount" id="addIdAccount"
-                               placeholder="Nhập mã số cán bộ">
+                        <p class="text-left "><b>Họ và Tên</b></p>
+                        <input type="text" class="form-control" name="addAccountName" id="addAccountName"
+                               placeholder="Nhập tên cán bộ" required autofocus>
+
                     </fieldset>
 
                     <fieldset class="form-group">
                         <p class="text-left"><b>Ngày Sinh</b></p>
                         <input type="date" class="form-control" name="addBirthday" id="addBirthday"
-                               placeholder="Ngày Sinh">
+                               placeholder="Ngày Sinh" required autofocus>
                     </fieldset>
 
                     <fieldset class="form-group">
                         <p class="text-left"><b>Địa chỉ</b></p>
                         <input type="text" class="form-control" name="addAddress" id="addAddress"
-                               placeholder="Địa chỉ">
+                               placeholder="Địa chỉ" required autofocus>
                     </fieldset>
 
                     <fieldset class="form-group">
@@ -65,13 +65,13 @@ if(isset($_POST['btnAdd_staff'])) {
                     <fieldset class="form-group">
                         <p class="text-left"><b>Điện thoại</b></p>
                         <input type="number" class="form-control" name="addPhone" id="addPhone"
-                               placeholder="Nhập số điện thoại">
+                               placeholder="Nhập số điện thoại" required autofocus>
                     </fieldset>
 
                     <fieldset class="form-group">
                         <p class="text-left"><b>Email</b></p>
                         <input type="mail" class="form-control" name="addEmail" id="addEmail"
-                               placeholder="Nhập email" value="@ctu.edu.vn">
+                               placeholder="Nhập email" value="@ctu.edu.vn" required autofocus>
                     </fieldset>
 
                     <fieldset class="form-group">
@@ -93,7 +93,7 @@ if(isset($_POST['btnAdd_staff'])) {
 
                     <fieldset class="form-group">
                         <p class="text-left"><b>Phân quyền</b></p>
-                        <select class="form-control" name="addPermission_position" id="addPermission_position">
+                        <select class="form-control" name="addPermission_position" id="addPermission_position" >
                             <option value="NonePer">--Chọn phân quyền--</option>
                             <?php
                             $perOT = new PermissionObj();

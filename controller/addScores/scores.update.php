@@ -37,33 +37,33 @@ if(isset($_POST['btnUpdateSave'])) {
                         <fieldset class="form-group">
                             <p class="text-left "><b>Mã bảng</b></p>
                             <input type="text" class="form-control" name="updateIdScore" id="updateIdScore"
-                                   placeholder="Nhập id cho bảng điểm này" value="<?php echo $scoresupdateOT->getIdScore(); ?>" readonly>
+                                   placeholder="Nhập id cho bảng điểm này" value="<?php echo $scoresupdateOT->getIdScore(); ?>" readonly required autofocus>
     
                         </fieldset>
     
                         <fieldset class="form-group">
                             <p class="text-left"><b>Tên bảng</b></p>
                             <input type="text" class="form-control" name="updateScoreName" id="updateScoreName"
-                                   placeholder="Nhập tên bảng" value="<?php echo $scoresupdateOT->getScoreName(); ?>">
+                                   placeholder="Nhập tên bảng" value="<?php echo $scoresupdateOT->getScoreName(); ?>" required autofocus>
                         </fieldset>
     
                         <fieldset class="form-group">
                             <p class="text-left "><b>Điểm</b></p>
                             <input type="number" class="form-control" name="updateScore" id="updateScore"
-                                   placeholder="Nhập điểm (nếu là điểm trừ vui lòng nhập số âm)" value="<?php echo $scoresupdateOT->getScores(); ?>">
+                                   placeholder="Nhập điểm (nếu là điểm trừ vui lòng nhập số âm)" value="<?php echo $scoresupdateOT->getScores(); ?>" required autofocus>
 
 
                             <fieldset class="form-group">
                                 <p class="text-left "><b>Mô tả</b></p>
                                 <input type="text" class="form-control" name="updateDesribe" id="updateDesribe"
-                                       value="<?php echo $scoresupdateOT->getDescribe(); ?>" >
+                                       value="<?php echo $scoresupdateOT->getDescribe(); ?>" required autofocus>
 
                             </fieldset>
 
                         <fieldset class="form-group">
                             <p class="text-left "><b>Mã người lập bảng điểm</b></p>
                             <input type="text" class="form-control" name="updateScoreManage" id="updateScoreManage"
-                                   value="<?php echo $scoresupdateOT->getIdAccountManage(); ?>" readonly>
+                                   value="<?php echo $scoresupdateOT->getIdAccountManage(); ?>" readonly required autofocus>
 
                         </fieldset>
                         <fieldset class="form-group">

@@ -37,20 +37,20 @@ if (!empty($classO)) {
                     <fieldset class="form-group">
                         <p class="text-left"><b>Mã lớp</b></p>
                         <input type="text" class="form-control" name="updateIdClass" id="updateIdClass"
-                               placeholder="Nhập mã lớp" value="' . $classO->getIdClass() . '" readonly>
+                               placeholder="Nhập mã lớp" value="' . $classO->getIdClass() . '" readonly required autofocus>
                     </fieldset>
 
                     <fieldset class="form-group">
                         <p class="text-left "><b>Tên lớp</b></p>
                         <input type="text" class="form-control" name="updateClassName" id="updateClassName"
-                               placeholder="Nhập tên lớp" value="' . $classO->getClassName() . '">
+                               placeholder="Nhập tên lớp" value="' . $classO->getClassName() . '" required autofocus>
 
                     </fieldset>
                     
                     <fieldset class="form-group">
                         <p class="text-left"><b>Niên khóa</b></p>
                         <input type="text" class="form-control" name="updateSchoolYear" id="updateSchoolYear"
-                               placeholder="Nhập mã niên khóa" value="' . $classO->getSchoolYear() . '">
+                               placeholder="Nhập mã niên khóa" value="' . $classO->getSchoolYear() . '" required autofocus>
                     </fieldset>
                     
                     <fieldset class="form-group">

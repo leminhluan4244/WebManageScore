@@ -50,7 +50,7 @@ function checkO($stringA, $temp)
                     <fieldset class="form-group">
                         <p class="text-left "><b>Họ và Tên</b></p>
                         <input type="text" class="form-control" name="updateAccountName" id="updateAccountName"
-                               value="<?php echo $staffOT['accountName']?>">
+                               value="<?php echo $staffOT['accountName']?>" required autofocus>
 
                     </fieldset>
 
@@ -63,13 +63,13 @@ function checkO($stringA, $temp)
                     <fieldset class="form-group">
                         <p class="text-left"><b>Ngày Sinh</b></p>
                         <input type="date" class="form-control" name="updateBirthday" id="updateBirthday"
-                               placeholder="Ngày Sinh" value="<?php echo $staffOT['birthday']?>">
+                               placeholder="Ngày Sinh" value="<?php echo $staffOT['birthday']?>" required autofocus>
                     </fieldset>
 
                     <fieldset class="form-group">
                         <p class="text-left"><b>Địa chỉ</b></p>
                         <input type="text" class="form-control" name="updateAddress" id="updateAddress"
-                               placeholder="Ngày Sinh" value="<?php echo $staffOT['address']?>">
+                               placeholder="Ngày Sinh" value="<?php echo $staffOT['address']?>" required autofocus>
                     </fieldset>
 
                     <fieldset class="form-group">
@@ -83,13 +83,13 @@ function checkO($stringA, $temp)
                     <fieldset class="form-group">
                         <p class="text-left"><b>Điện thoại</b></p>
                         <input type="number" class="form-control" name="updatePhone" id="updatePhone"
-                               placeholder="Nhập số điện thoại" value="<?php echo $staffOT['phone']; ?>">
+                               placeholder="Nhập số điện thoại" value="<?php echo $staffOT['phone']; ?>" required autofocus>
                     </fieldset>
 
                     <fieldset class="form-group">
                         <p class="text-left"><b>Email</b></p>
                         <input type="mail" class="form-control" name="updateEmail" id="updateEmail"
-                               placeholder="Nhập email" value="<?php echo $staffOT['email']; ?>">
+                               placeholder="Nhập email" value="<?php echo $staffOT['email']; ?>" required autofocus>
                     </fieldset>
 
                     <fieldset class="form-group">

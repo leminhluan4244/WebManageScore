@@ -23,20 +23,20 @@ if(isset($_POST['btnAdd'])) {
                                     <fieldset class="form-group">
                                         <p class="text-left "><b>Tên lớp</b></p>
                                         <input type="text" class="form-control" name="addClassName" id="addClassName"
-                                               placeholder="Nhập tên lớp">
+                                               placeholder="Nhập tên lớp" required autofocus>
 
                                     </fieldset>
 
                                     <fieldset class="form-group">
                                         <p class="text-left"><b>Mã lớp</b></p>
                                         <input type="text" class="form-control" name="addIdClass" id="addIdClass"
-                                               placeholder="Nhập mã lớp">
+                                               placeholder="Nhập mã lớp" required autofocus>
                                     </fieldset>
 
                                     <fieldset class="form-group">
                                         <p class="text-left "><b>Niên khóa</b></p>
                                         <input type="text" class="form-control" name="addSchoolYear" id="addSchoolYear"
-                                               placeholder="Nhập niên khóa cho lớp">
+                                               placeholder="Nhập niên khóa cho lớp" required autofocus>
 
                                     </fieldset>
 
