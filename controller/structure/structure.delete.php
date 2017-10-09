@@ -24,6 +24,8 @@ if (isSubmit("delete")){
 	}
 	if (!$result){
 		showMessage("Xóa thất bại, hãy thử lại sau!");
+	} else {
+//		showMessage("Xóa thành công!");
 	}
 	softRedirect("../view/structure.editor.php");
 }
