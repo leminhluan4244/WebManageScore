@@ -1,5 +1,5 @@
 /*Dữ liệu mẫu phân quyền */
-INSERT INTO `permission` (`position`, `power`,`selected`) VALUES ('Cố vấn học tập', 'Chấm điểm rèn luyện cá nhân sinh viên',1);
+INSERT INTO `permission` (`position`, `power`,`selected`) VALUES ('Cố vấn học tập','Chấm điểm rèn luyện cá nhân sinh viên',1);
 INSERT INTO `permission` (`position`, `power`,`selected`) VALUES ('Sinh viên', 'Chấm điểm rèn luyện cá nhân sinh viên',1);
 INSERT INTO `permission` (`position`, `power`,`selected`) VALUES ('Quản lý chi hội', 'Chấm điểm rèn luyện cá nhân sinh viên',1);
 INSERT INTO `permission` (`position`, `power`,`selected`) VALUES ('Cố vấn học tập', 'Chấm điểm cho một lớp',1);
@@ -99,6 +99,43 @@ VALUES ('CB109', 'Trương Thị Thanh Tuyền', '1980-01-16', 'An Khánh - Ni
 INSERT INTO `account` (`idAccount`, `accountName`, `birthday`, `address`, `sex`, `phone`, `email`, `password`, `Permission_position`)
 VALUES ('CB110', 'Trần Minh Tân', '1980-01-16', 'An Khánh - Ninh Kiều Cần Thơ', 'Nữ', '0964054244', 'pplan@cit.ctu.edu.vn', '81dc9bdb52d04dc20036dbd8313ed055', 'Cố vấn học tập');
 
+INSERT INTO `account` (`idAccount`, `accountName`, `birthday`, `address`, `sex`, `phone`, `email`, `password`, `Permission_position`)
+VALUES ('CB111', 'Nguyễn Hoàng Long', '1980-01-16', 'An Khánh - Ninh Kiều Cần Thơ', 'Nam', '0964054244', 'nhlong@ctu.edu.vn', '81dc9bdb52d04dc20036dbd8313ed055', 'Cố vấn học tập');
+INSERT INTO `account` (`idAccount`, `accountName`, `birthday`, `address`, `sex`, `phone`, `email`, `password`, `Permission_position`)
+VALUES ('CB112', 'Nguyễn Văn Hòa', '1980-01-16', 'An Khánh - Ninh Kiều Cần Thơ', 'Nam', '0964054244', 'nvhoa@ctu.edu.vn', '81dc9bdb52d04dc20036dbd8313ed055', 'Cố vấn học tập');
+INSERT INTO `account` (`idAccount`, `accountName`, `birthday`, `address`, `sex`, `phone`, `email`, `password`, `Permission_position`)
+VALUES ('CB113', 'Trần Văn Hiếu', '1980-01-16', 'An Khánh - Ninh Kiều Cần Thơ', 'Nam', '0964054244', 'nvhieu@ctu.edu.vn', '81dc9bdb52d04dc20036dbd8313ed055', 'Cố vấn học tập');
+INSERT INTO `account` (`idAccount`, `accountName`, `birthday`, `address`, `sex`, `phone`, `email`, `password`, `Permission_position`)
+VALUES ('CB114', 'Bùi Thị Bửu Huê', '1980-01-16', 'An Khánh - Ninh Kiều Cần Thơ', 'Nam', '0964054244', 'btbhue@ctu.edu.vn', '81dc9bdb52d04dc20036dbd8313ed055', 'Cố vấn học tập');
+INSERT INTO `account` (`idAccount`, `accountName`, `birthday`, `address`, `sex`, `phone`, `email`, `password`, `Permission_position`)
+VALUES ('CB115', 'Nguyễn Văn', '1980-01-16', 'An Khánh - Ninh Kiều Cần Thơ', 'Nam', '0964054244', 'btbhue@ctu.edu.vn', '81dc9bdb52d04dc20036dbd8313ed055', 'Cố vấn học tập');
+INSERT INTO `account` (`idAccount`, `accountName`, `birthday`, `address`, `sex`, `phone`, `email`, `password`, `Permission_position`)
+VALUES ('CB116', 'Bùi Thị', '1980-01-16', 'An Khánh - Ninh Kiều Cần Thơ', 'Nam', '0964054244', 'btbhue@ctu.edu.vn', '81dc9bdb52d04dc20036dbd8313ed055', 'Cố vấn học tập');
+INSERT INTO `account` (`idAccount`, `accountName`, `birthday`, `address`, `sex`, `phone`, `email`, `password`, `Permission_position`)
+VALUES ('CB117', 'Lâm Thị', '1980-01-16', 'An Khánh - Ninh Kiều Cần Thơ', 'Nam', '0964054244', 'btbhue@ctu.edu.vn', '81dc9bdb52d04dc20036dbd8313ed055', 'Cố vấn học tập');
+INSERT INTO `account` (`idAccount`, `accountName`, `birthday`, `address`, `sex`, `phone`, `email`, `password`, `Permission_position`)
+VALUES ('CB118', 'Huỳnh Thị', '1980-01-16', 'An Khánh - Ninh Kiều Cần Thơ', 'Nam', '0964054244', 'btbhue@ctu.edu.vn', '81dc9bdb52d04dc20036dbd8313ed055', 'Cố vấn học tập');
+INSERT INTO `account` (`idAccount`, `accountName`, `birthday`, `address`, `sex`, `phone`, `email`, `password`, `Permission_position`)
+VALUES ('CB119', 'Phan Thị', '1980-01-16', 'An Khánh - Ninh Kiều Cần Thơ', 'Nam', '0964054244', 'btbhue@ctu.edu.vn', '81dc9bdb52d04dc20036dbd8313ed055', 'Cố vấn học tập');
+INSERT INTO `account` (`idAccount`, `accountName`, `birthday`, `address`, `sex`, `phone`, `email`, `password`, `Permission_position`)
+VALUES ('CB120', 'Dương Thị', '1980-01-16', 'An Khánh - Ninh Kiều Cần Thơ', 'Nam', '0964054244', 'btbhue@ctu.edu.vn', '81dc9bdb52d04dc20036dbd8313ed055', 'Cố vấn học tập');
+INSERT INTO `account` (`idAccount`, `accountName`, `birthday`, `address`, `sex`, `phone`, `email`, `password`, `Permission_position`)
+VALUES ('CB121', 'Nguyễn Thị', '1980-01-16', 'An Khánh - Ninh Kiều Cần Thơ', 'Nam', '0964054244', 'btbhue@ctu.edu.vn', '81dc9bdb52d04dc20036dbd8313ed055', 'Cố vấn học tập');
+INSERT INTO `account` (`idAccount`, `accountName`, `birthday`, `address`, `sex`, `phone`, `email`, `password`, `Permission_position`)
+VALUES ('CB122', 'Lâm Thị', '1980-01-16', 'An Khánh - Ninh Kiều Cần Thơ', 'Nam', '0964054244', 'btbhue@ctu.edu.vn', '81dc9bdb52d04dc20036dbd8313ed055', 'Cố vấn học tập');
+INSERT INTO `account` (`idAccount`, `accountName`, `birthday`, `address`, `sex`, `phone`, `email`, `password`, `Permission_position`)
+VALUES ('CB123', 'Ngọc Thị', '1980-01-16', 'An Khánh - Ninh Kiều Cần Thơ', 'Nam', '0964054244', 'btbhue@ctu.edu.vn', '81dc9bdb52d04dc20036dbd8313ed055', 'Cố vấn học tập');
+INSERT INTO `account` (`idAccount`, `accountName`, `birthday`, `address`, `sex`, `phone`, `email`, `password`, `Permission_position`)
+VALUES ('CB124', 'Ái Thị', '1980-01-16', 'An Khánh - Ninh Kiều Cần Thơ', 'Nam', '0964054244', 'btbhue@ctu.edu.vn', '81dc9bdb52d04dc20036dbd8313ed055', 'Cố vấn học tập');
+INSERT INTO `account` (`idAccount`, `accountName`, `birthday`, `address`, `sex`, `phone`, `email`, `password`, `Permission_position`)
+VALUES ('CB125', 'Nguyễn Thu', '1980-01-16', 'An Khánh - Ninh Kiều Cần Thơ', 'Nam', '0964054244', 'btbhue@ctu.edu.vn', '81dc9bdb52d04dc20036dbd8313ed055', 'Cố vấn học tập');
+INSERT INTO `account` (`idAccount`, `accountName`, `birthday`, `address`, `sex`, `phone`, `email`, `password`, `Permission_position`)
+VALUES ('CB126', 'Trương Huỳnh Anh', '1980-01-16', 'An Khánh - Ninh Kiều Cần Thơ', 'Nam', '0964054244', 'btbhue@ctu.edu.vn', '81dc9bdb52d04dc20036dbd8313ed055', 'Cố vấn học tập');
+INSERT INTO `account` (`idAccount`, `accountName`, `birthday`, `address`, `sex`, `phone`, `email`, `password`, `Permission_position`)
+VALUES ('CB127', 'Nguyễn Thị Ngọc Yến', '1980-01-16', 'An Khánh - Ninh Kiều Cần Thơ', 'Nam', '0964054244', 'btbhue@ctu.edu.vn', '81dc9bdb52d04dc20036dbd8313ed055', 'Cố vấn học tập');
+INSERT INTO `account` (`idAccount`, `accountName`, `birthday`, `address`, `sex`, `phone`, `email`, `password`, `Permission_position`)
+VALUES ('CB128', 'Võ Huỳnh Diễm', '1980-01-16', 'An Khánh - Ninh Kiều Cần Thơ', 'Nam', '0964054244', 'btbhue@ctu.edu.vn', '81dc9bdb52d04dc20036dbd8313ed055', 'Cố vấn học tập');
+
 /*Dữ liệu mẫu 10 quản lý khoa*/
 INSERT INTO `account` (`idAccount`, `accountName`, `birthday`, `address`, `sex`, `phone`, `email`, `password`, `Permission_position`)
 VALUES ('QL101', 'Dương Văn Lăng', '1980-01-16', 'An Khánh - Ninh Kiều Cần Thơ', 'Nữ', '0964054244', 'pplan@cit.ctu.edu.vn', '81dc9bdb52d04dc20036dbd8313ed055', 'Quản lý khoa');
@@ -142,7 +179,8 @@ INSERT INTO `academy` (`idAcademy`, `academyName`) VALUES ('VNCBDKH', 'Viện N
 INSERT INTO `academy` (`idAcademy`, `academyName`) VALUES ('VNCPT', 'Viện Nghiên cứu Phát triển ĐBSCL');
 INSERT INTO `academy` (`idAcademy`, `academyName`) VALUES ('VNCPTCNSH', 'Viện Nghiên cứu và phát triển công nghệ sinh học');
 INSERT INTO `academy` (`idAcademy`, `academyName`) VALUES ('THSP', 'Trường THPT Thực hành Sư phạm');
-/*Dữ liệu mẫu 20 tài khoản vào khoa*/
+
+/*Dữ liệu mẫu 20 tài khoản thuộc khoa Công nghệ và công nghệ thông tin truyền thông*/
 INSERT INTO `account_has_academy` (`Account_idAccount`, `Academy_idAcademy`) VALUES ('AAAA', 'DI');
 INSERT INTO `account_has_academy` (`Account_idAccount`, `Academy_idAcademy`) VALUES ('BBBB', 'DI');
 INSERT INTO `account_has_academy` (`Account_idAccount`, `Academy_idAcademy`) VALUES ('CCCC', 'DI');
@@ -164,6 +202,26 @@ INSERT INTO `account_has_academy` (`Account_idAccount`, `Academy_idAcademy`) VAL
 INSERT INTO `account_has_academy` (`Account_idAccount`, `Academy_idAcademy`) VALUES ('CB103', 'DI');
 INSERT INTO `account_has_academy` (`Account_idAccount`, `Academy_idAcademy`) VALUES ('CB104', 'DI');
 INSERT INTO `account_has_academy` (`Account_idAccount`, `Academy_idAcademy`) VALUES ('CB105', 'DI');
+
+/*Dữ liệu mẫu tai khoan thuộc tất cả các khoa*/
+INSERT INTO `account_has_academy` (`Account_idAccount`, `Academy_idAcademy`) VALUES ('CB111', 'DBDT');
+INSERT INTO `account_has_academy` (`Account_idAccount`, `Academy_idAcademy`) VALUES ('CB112', 'GDTC');
+INSERT INTO `account_has_academy` (`Account_idAccount`, `Academy_idAcademy`) VALUES ('CB113', 'KHCT');
+INSERT INTO `account_has_academy` (`Account_idAccount`, `Academy_idAcademy`) VALUES ('CB114', 'KHTN');
+INSERT INTO `account_has_academy` (`Account_idAccount`, `Academy_idAcademy`) VALUES ('CB115', 'KHXH');
+INSERT INTO `account_has_academy` (`Account_idAccount`, `Academy_idAcademy`) VALUES ('CB116', 'KT');
+INSERT INTO `account_has_academy` (`Account_idAccount`, `Academy_idAcademy`) VALUES ('CB117', 'L');
+INSERT INTO `account_has_academy` (`Account_idAccount`, `Academy_idAcademy`) VALUES ('CB118', 'MT');
+INSERT INTO `account_has_academy` (`Account_idAccount`, `Academy_idAcademy`) VALUES ('CB119', 'NN');
+INSERT INTO `account_has_academy` (`Account_idAccount`, `Academy_idAcademy`) VALUES ('CB120', 'NNSH');
+INSERT INTO `account_has_academy` (`Account_idAccount`, `Academy_idAcademy`) VALUES ('CB121', 'PTNT');
+INSERT INTO `account_has_academy` (`Account_idAccount`, `Academy_idAcademy`) VALUES ('CB122', 'SDH');
+INSERT INTO `account_has_academy` (`Account_idAccount`, `Academy_idAcademy`) VALUES ('CB123', 'SP');
+INSERT INTO `account_has_academy` (`Account_idAccount`, `Academy_idAcademy`) VALUES ('CB124', 'TS');
+INSERT INTO `account_has_academy` (`Account_idAccount`, `Academy_idAcademy`) VALUES ('CB125', 'VNCBDKH');
+INSERT INTO `account_has_academy` (`Account_idAccount`, `Academy_idAcademy`) VALUES ('CB126', 'VNCPT');
+INSERT INTO `account_has_academy` (`Account_idAccount`, `Academy_idAcademy`) VALUES ('CB127', 'VNCPTCNSH');
+INSERT INTO `account_has_academy` (`Account_idAccount`, `Academy_idAcademy`) VALUES ('CB128', 'THSP');
 
 INSERT INTO `account_has_academy` (`Account_idAccount`, `Academy_idAcademy`) VALUES ('CB106', 'CN');
 INSERT INTO `account_has_academy` (`Account_idAccount`, `Academy_idAcademy`) VALUES ('CB107', 'CN');
