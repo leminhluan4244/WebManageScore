@@ -25,26 +25,26 @@ if(isset($_POST['btnAdd'])) {
                                     <fieldset class="form-group">
                                         <p class="text-left "><b>Họ và Tên</b></p>
                                         <input type="text" class="form-control" name="addAccountName" id="addAccountName"
-                                               placeholder="Nhập tên sinh viên">
+                                               placeholder="Nhập tên sinh viên" required autofocus>
 
                                     </fieldset>
 
                                     <fieldset class="form-group">
                                         <p class="text-left"><b>MSSV</b></p>
                                         <input type="text" class="form-control" name="addIdAccount" id="addIdAccount"
-                                               placeholder="Nhập mã số sinh viên">
+                                               placeholder="Nhập mã số sinh viên" required autofocus>
                                     </fieldset>
 
                                     <fieldset class="form-group">
                                         <p class="text-left"><b>Ngày Sinh</b></p>
                                         <input type="date" class="form-control" name="addBirthday" id="addBirthday"
-                                               placeholder="Ngày Sinh">
+                                               placeholder="Ngày Sinh" required autofocus>
                                     </fieldset>
 
                                     <fieldset class="form-group">
                                         <p class="text-left"><b>Địa chỉ</b></p>
                                         <input type="text" class="form-control" name="addAddress" id="addAddress"
-                                               placeholder="Địa chỉ">
+                                               placeholder="Địa chỉ" required autofocus>
                                     </fieldset>
 
                                     <fieldset class="form-group">
@@ -58,13 +58,13 @@ if(isset($_POST['btnAdd'])) {
                                     <fieldset class="form-group">
                                         <p class="text-left"><b>Điện thoại</b></p>
                                         <input type="number" class="form-control" name="addPhone" id="addPhone"
-                                               placeholder="Nhập số điện thoại">
+                                               placeholder="Nhập số điện thoại" required autofocus>
                                     </fieldset>
 
                                     <fieldset class="form-group">
                                         <p class="text-left"><b>Email</b></p>
                                         <input type="mail" class="form-control" name="addEmail" id="addEmail"
-                                               placeholder="Nhập email" value="@student.ctu.edu.vn">
+                                               placeholder="Nhập email" value="@student.ctu.edu.vn" required autofocus>
                                     </fieldset>
 
                                     <fieldset class="form-group">

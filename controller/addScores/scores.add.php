@@ -25,27 +25,27 @@ if(isset($_POST['btnAdd'])) {
                                     <fieldset class="form-group">
                                         <p class="text-left "><b>Mã bảng</b></p>
                                         <input type="text" class="form-control" name="addScoreID" id="addScoreID"
-                                               placeholder="Nhập id cho bảng điểm này">
+                                               placeholder="Nhập id cho bảng điểm này" required autofocus>
 
                                     </fieldset>
 
                                     <fieldset class="form-group">
                                         <p class="text-left"><b>Tên bảng</b></p>
                                         <input type="text" class="form-control" name="addScoreName" id="addScoreName"
-                                               placeholder="Nhập tên bảng">
+                                               placeholder="Nhập tên bảng" required autofocus>
                                     </fieldset>
 
                                     <fieldset class="form-group">
                                         <p class="text-left "><b>Điểm</b></p>
                                         <input type="number" class="form-control" name="addScore" id="addScore"
-                                               placeholder="Nhập điểm (nếu là điểm trừ vui lòng nhập số âm)" min="-20" max="20">
+                                               placeholder="Nhập điểm (nếu là điểm trừ vui lòng nhập số âm)" min="-20" max="20" required autofocus>
 
                                     </fieldset>
 
                                     <area class="form-group">
                                         <p class="text-left "><b>Mô tả</b></p>
                                         <textarea type="" class="form-control" name="addDescribe" id="addDescribe"
-                                              placeholder="Nhập mô tả lý do thêm bảng này"></textarea>
+                                              placeholder="Nhập mô tả lý do thêm bảng này" required autofocus></textarea>
                                     </fieldset>
 
                                     <fieldset class="form-group">

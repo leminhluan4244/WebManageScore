@@ -43,26 +43,26 @@ if(isset($_GET['idAcc'])){
                                 <fieldset class="form-group">
                                     <p class="text-left "><b>Họ và Tên</b></p>
                                     <input type="text" class="form-control" name="updateAccountName" id="updateAccountName"
-                                           value="<?php echo $studentOT['accountName']?>">
+                                           value="<?php echo $studentOT['accountName']?>" required autofocus>
 
                                 </fieldset>
 
                                 <fieldset class="form-group">
                                     <p class="text-left"><b>MSSV</b></p>
                                     <input type="text" class="form-control" name="updateIdAccount" id="updateIdAccount"
-                                           value="<?php echo $studentOT['idAccount']?>">
+                                           value="<?php echo $studentOT['idAccount']?>" required autofocus>
                                 </fieldset>
 
                                 <fieldset class="form-group">
                                     <p class="text-left"><b>Ngày Sinh</b></p>
                                     <input type="date" class="form-control" name="updateBirthday" id="updateBirthday"
-                                           placeholder="Ngày Sinh" value="<?php echo $studentOT['birthday']?>">
+                                           placeholder="Ngày Sinh" value="<?php echo $studentOT['birthday']?>" required autofocus>
                                 </fieldset>
 
                                 <fieldset class="form-group">
                                     <p class="text-left"><b>Địa chỉ</b></p>
                                     <input type="text" class="form-control" name="updateAddress" id="updateAddress"
-                                           placeholder="Ngày Sinh" value="<?php echo $studentOT['address']?>">
+                                           placeholder="Ngày Sinh" value="<?php echo $studentOT['address']?>" required autofocus>
                                 </fieldset>
                                 <fieldset class="form-group">
                                     <p class="text-left"><b>Giới tính</b></p>
@@ -74,13 +74,13 @@ if(isset($_GET['idAcc'])){
                                 <fieldset class="form-group">
                                     <p class="text-left"><b>Điện thoại</b></p>
                                     <input type="number" class="form-control" name="updatePhone" id="updatePhone"
-                                           placeholder="Nhập số điện thoại" value="<?php echo $studentOT['phone']; ?>">
+                                           placeholder="Nhập số điện thoại" value="<?php echo $studentOT['phone']; ?>" required autofocus>
                                 </fieldset>
 
                                 <fieldset class="form-group">
                                     <p class="text-left"><b>Email</b></p>
                                     <input type="mail" class="form-control" name="updateEmail" id="updateEmail"
-                                           placeholder="Nhập email" value="<?php echo $studentOT['email']; ?>">
+                                           placeholder="Nhập email" value="<?php echo $studentOT['email']; ?>" required autofocus>
                                 </fieldset>
 
                                 <fieldset class="form-group">

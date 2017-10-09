@@ -68,6 +68,16 @@ class StructureTree {
 		return $this->data[$nodeId]["IDParent"] == ST_ROOT;
 	}
 
+	public function isAncestor($ancestor, $descendant){
+		$listDescendant = [];
+		$this->PreOrderTreeToGetAllChildIdOf($ancestor, $listDescendant);
+		foreach ($listDescendant as $des) {
+			if ($des == $descendant)
+				return true;
+		}
+		return false;
+	}
+
 	public function getAllDirectChildOf($nodeId) {
 		$children = [];
 		foreach ($this->data as $child) {
@@ -97,11 +107,25 @@ class StructureTree {
 		return null;
 	}
 
-	public function getHighetAncestor($node){
+	public function getHighestAncestor($node){
 		if ($node['IDParent'] == ST_ROOT)
 			return $node['idItem'];
 		while ($node['IDParent'] != ST_ROOT)
-			return $this->getHighetAncestor($this->data[$node['IDParent']]);
+			return $this->getHighestAncestor($this->data[$node['IDParent']]);
+	}
+
+	/**
+	 * Lấy tất cả các mục có điểm số dưới dạng Id
+	 * @param string $separateChar
+	 * @return array
+	 */
+	public function getAllNodeIdStoreScore($separateChar = "."){
+		$scoreNodeList = [];
+		foreach ($this->data as $node) {
+			if ($this->isLeaf($node['idItem']) && !$this->isLastChildOfRoot($node['idItem']))
+				$scoreNodeList[] = str_replace(".", $separateChar, $node['idItem']);
+		}
+		return $scoreNodeList;
 	}
 
 	/**
@@ -109,13 +133,27 @@ class StructureTree {
 	 * @param string $separateChar
 	 * @return array
 	 */
-	public function getAllNodeStoreScore($separateChar = "."){
+	public function getAllNodeStoreScore(){
 		$scoreNodeList = [];
 		foreach ($this->data as $node) {
 			if ($this->isLeaf($node['idItem']) && !$this->isLastChildOfRoot($node['idItem']))
-				$scoreNodeList[] = str_replace(".", $separateChar, $node['idItem']);
+				$scoreNodeList[$node['idItem']] = $node;
 		}
 		return $scoreNodeList;
+	}
+
+	/**
+	 * Lấy tất cả các mục có điểm số
+	 * @param string $separateChar
+	 * @return array
+	 */
+	public function getAllNodeNonLeaf(){
+		$output = [];
+		foreach ($this->data as $node) {
+			if (!$this->isLeaf($node['idItem']) || $this->isLastChildOfRoot($node['idItem']))
+				$output[$node['idItem']] = $node;
+		}
+		return $output;
 	}
 	
 	public function PreOrderTreeToGetAllChildIdOf($nodeId, &$listId){

@@ -33,13 +33,24 @@ if (empty($student))
 #lưu vào session để load lại sau khi chấm xong
 setSession("stdId", $studentId);
 
-if (!$transcriptMod->isTranscriptExist($studentId))
-	$transcriptMod->generateTranscript($studentId, $structureMod->getEntireStructureTable());
+#thêm bảng điểm
+if (!$transcriptMod->isTranscriptExist($studentId, $structureLeafs)){
+	$transcriptMod->generateTranscript($studentId, $structureLeafs);
+	showMessage("Generated.");
+}
 
-$trTree = new TranscriptTree($transcriptMod->getEntireTranscript($studentId));
+$saMod = new ScoresAddMod();
+$addScoreList = $saMod->getListScoreOfStudent($studentId);
+
+$transcriptListScore = $transcriptMod->getEntireTranscript($studentId);
+
+$trTree = new TranscriptTree(array_merge($structureNonLeafs, $transcriptListScore));
 $trTree->setPrivilege($privilege);
+$trTree->setAddScoreList($addScoreList);
+
 $root = $trTree->getRoot();
 $trTree->PreOderTreeToHtml($root, 0);
+$trTree->generateLastChildHTML();
 ?>
     <h4 class="text-center text-primary">
         Chấm điểm rèn luyện cho sinh viên:

@@ -21,7 +21,7 @@ if ($privilege != $sentPrivilege)
 #lấy các mục có chứa điểm
 $structureMod = new StructureMod();
 $stTree = new StructureTree($structureMod->getEntireStructureTable());
-$listId = $stTree->getAllNodeStoreScore("_");
+$listId = $stTree->getAllNodeIdStoreScore("_");
 $scoreList = [];
 foreach ($listId as $id) {
 	$score = getPOSTValue($id);
@@ -52,7 +52,7 @@ $complete = true;
 $summaryScore = 0;
 $ancestorId = "";
 foreach ($scoreList as $id => $score) {
-	$ancId = $stTree->getHighetAncestor($stTree->getData()[$id]);
+	$ancId = $stTree->getHighestAncestor($stTree->getData()[$id]);
 	if ($ancestorId != $ancId){
 		$complete = $transcriptMod->updateTranscriptScore($accountId, $ancestorId, $summaryScore, $updateCol);
 		$ancestorId = $ancId;

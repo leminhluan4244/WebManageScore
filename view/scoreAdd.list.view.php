@@ -37,10 +37,14 @@ $scoreTable = $tempMod->getScoresForStudent($studentId);
                     <td class="text-left"><?php echo $value->getScoreName(); ?></td>
                     <td class="text-left"><?php
 						$name = $transMod->getTranscriptName($studentId, $value->getTranscript_idItem());
-                        $a = "<a data-toggle='popover' data-trigger='hover' 
+                        if (strlen($name) < 65)
+                            echo  $name;
+                        else {
+							$a = "<a data-toggle='popover' data-trigger='hover' 
                                     data-content='$name' href='#' onclick='return false;'
                                     data-placement='top'>Xem</a>";
-                        echo substr($name, 0, 65) . " ..." . $a;
+							echo substr($name, 0, 65) . " ..." . $a;
+                        }
                         ?></td>
                     <td><?php echo $value->getScores(); ?></td>
                     <td><?php

@@ -29,14 +29,14 @@ if (!empty($academyO)) {
                     <fieldset class="form-group">
                         <p class="text-left "><b>Tên khoa - viện</b></p>
                         <input type="text" class="form-control" name="updateAcademyName" id="updateAcademyName"
-                               placeholder="Nhập tên khoa - viện" value="' . $academyO->getAcademyName() . '">
+                               placeholder="Nhập tên khoa - viện" value="' . $academyO->getAcademyName() . '" required autofocus>
 
                     </fieldset>
 
                     <fieldset class="form-group">
                         <p class="text-left"><b>Mã khoa - viện</b></p>
                         <input type="text" class="form-control" name="updateIdAcademy" id="updateIdAcademy"
-                               placeholder="Nhập mã khoa viện" value="' . $academyO->getIdAcademy() . '" readonly>
+                               placeholder="Nhập mã khoa viện" value="' . $academyO->getIdAcademy() . '" readonly required autofocus>
                     </fieldset>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-default" data-dismiss="modal">Đóng</button>

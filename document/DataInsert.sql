@@ -1,5 +1,5 @@
 /*Dữ liệu mẫu phân quyền */
-INSERT INTO `permission` (`position`, `power`,`selected`) VALUES ('Cố vấn học tập', 'Chấm điểm rèn luyện cá nhân sinh viên',1);
+INSERT INTO `permission` (`position`, `power`,`selected`) VALUES ('Cố vấn học tập','Chấm điểm rèn luyện cá nhân sinh viên',1);
 INSERT INTO `permission` (`position`, `power`,`selected`) VALUES ('Sinh viên', 'Chấm điểm rèn luyện cá nhân sinh viên',1);
 INSERT INTO `permission` (`position`, `power`,`selected`) VALUES ('Quản lý chi hội', 'Chấm điểm rèn luyện cá nhân sinh viên',1);
 INSERT INTO `permission` (`position`, `power`,`selected`) VALUES ('Cố vấn học tập', 'Chấm điểm cho một lớp',1);
@@ -99,6 +99,43 @@ VALUES ('CB109', 'Trương Thị Thanh Tuyền', '1980-01-16', 'An Khánh - Ni
 INSERT INTO `account` (`idAccount`, `accountName`, `birthday`, `address`, `sex`, `phone`, `email`, `password`, `Permission_position`)
 VALUES ('CB110', 'Trần Minh Tân', '1980-01-16', 'An Khánh - Ninh Kiều Cần Thơ', 'Nữ', '0964054244', 'pplan@cit.ctu.edu.vn', '81dc9bdb52d04dc20036dbd8313ed055', 'Cố vấn học tập');
 
+INSERT INTO `account` (`idAccount`, `accountName`, `birthday`, `address`, `sex`, `phone`, `email`, `password`, `Permission_position`)
+VALUES ('CB111', 'Nguyễn Hoàng Long', '1980-01-16', 'An Khánh - Ninh Kiều Cần Thơ', 'Nam', '0964054244', 'nhlong@ctu.edu.vn', '81dc9bdb52d04dc20036dbd8313ed055', 'Cố vấn học tập');
+INSERT INTO `account` (`idAccount`, `accountName`, `birthday`, `address`, `sex`, `phone`, `email`, `password`, `Permission_position`)
+VALUES ('CB112', 'Nguyễn Văn Hòa', '1980-01-16', 'An Khánh - Ninh Kiều Cần Thơ', 'Nam', '0964054244', 'nvhoa@ctu.edu.vn', '81dc9bdb52d04dc20036dbd8313ed055', 'Cố vấn học tập');
+INSERT INTO `account` (`idAccount`, `accountName`, `birthday`, `address`, `sex`, `phone`, `email`, `password`, `Permission_position`)
+VALUES ('CB113', 'Trần Văn Hiếu', '1980-01-16', 'An Khánh - Ninh Kiều Cần Thơ', 'Nam', '0964054244', 'nvhieu@ctu.edu.vn', '81dc9bdb52d04dc20036dbd8313ed055', 'Cố vấn học tập');
+INSERT INTO `account` (`idAccount`, `accountName`, `birthday`, `address`, `sex`, `phone`, `email`, `password`, `Permission_position`)
+VALUES ('CB114', 'Bùi Thị Bửu Huê', '1980-01-16', 'An Khánh - Ninh Kiều Cần Thơ', 'Nam', '0964054244', 'btbhue@ctu.edu.vn', '81dc9bdb52d04dc20036dbd8313ed055', 'Cố vấn học tập');
+INSERT INTO `account` (`idAccount`, `accountName`, `birthday`, `address`, `sex`, `phone`, `email`, `password`, `Permission_position`)
+VALUES ('CB115', 'Nguyễn Văn', '1980-01-16', 'An Khánh - Ninh Kiều Cần Thơ', 'Nam', '0964054244', 'btbhue@ctu.edu.vn', '81dc9bdb52d04dc20036dbd8313ed055', 'Cố vấn học tập');
+INSERT INTO `account` (`idAccount`, `accountName`, `birthday`, `address`, `sex`, `phone`, `email`, `password`, `Permission_position`)
+VALUES ('CB116', 'Bùi Thị', '1980-01-16', 'An Khánh - Ninh Kiều Cần Thơ', 'Nam', '0964054244', 'btbhue@ctu.edu.vn', '81dc9bdb52d04dc20036dbd8313ed055', 'Cố vấn học tập');
+INSERT INTO `account` (`idAccount`, `accountName`, `birthday`, `address`, `sex`, `phone`, `email`, `password`, `Permission_position`)
+VALUES ('CB117', 'Lâm Thị', '1980-01-16', 'An Khánh - Ninh Kiều Cần Thơ', 'Nam', '0964054244', 'btbhue@ctu.edu.vn', '81dc9bdb52d04dc20036dbd8313ed055', 'Cố vấn học tập');
+INSERT INTO `account` (`idAccount`, `accountName`, `birthday`, `address`, `sex`, `phone`, `email`, `password`, `Permission_position`)
+VALUES ('CB118', 'Huỳnh Thị', '1980-01-16', 'An Khánh - Ninh Kiều Cần Thơ', 'Nam', '0964054244', 'btbhue@ctu.edu.vn', '81dc9bdb52d04dc20036dbd8313ed055', 'Cố vấn học tập');
+INSERT INTO `account` (`idAccount`, `accountName`, `birthday`, `address`, `sex`, `phone`, `email`, `password`, `Permission_position`)
+VALUES ('CB119', 'Phan Thị', '1980-01-16', 'An Khánh - Ninh Kiều Cần Thơ', 'Nam', '0964054244', 'btbhue@ctu.edu.vn', '81dc9bdb52d04dc20036dbd8313ed055', 'Cố vấn học tập');
+INSERT INTO `account` (`idAccount`, `accountName`, `birthday`, `address`, `sex`, `phone`, `email`, `password`, `Permission_position`)
+VALUES ('CB120', 'Dương Thị', '1980-01-16', 'An Khánh - Ninh Kiều Cần Thơ', 'Nam', '0964054244', 'btbhue@ctu.edu.vn', '81dc9bdb52d04dc20036dbd8313ed055', 'Cố vấn học tập');
+INSERT INTO `account` (`idAccount`, `accountName`, `birthday`, `address`, `sex`, `phone`, `email`, `password`, `Permission_position`)
+VALUES ('CB121', 'Nguyễn Thị', '1980-01-16', 'An Khánh - Ninh Kiều Cần Thơ', 'Nam', '0964054244', 'btbhue@ctu.edu.vn', '81dc9bdb52d04dc20036dbd8313ed055', 'Cố vấn học tập');
+INSERT INTO `account` (`idAccount`, `accountName`, `birthday`, `address`, `sex`, `phone`, `email`, `password`, `Permission_position`)
+VALUES ('CB122', 'Lâm Thị', '1980-01-16', 'An Khánh - Ninh Kiều Cần Thơ', 'Nam', '0964054244', 'btbhue@ctu.edu.vn', '81dc9bdb52d04dc20036dbd8313ed055', 'Cố vấn học tập');
+INSERT INTO `account` (`idAccount`, `accountName`, `birthday`, `address`, `sex`, `phone`, `email`, `password`, `Permission_position`)
+VALUES ('CB123', 'Ngọc Thị', '1980-01-16', 'An Khánh - Ninh Kiều Cần Thơ', 'Nam', '0964054244', 'btbhue@ctu.edu.vn', '81dc9bdb52d04dc20036dbd8313ed055', 'Cố vấn học tập');
+INSERT INTO `account` (`idAccount`, `accountName`, `birthday`, `address`, `sex`, `phone`, `email`, `password`, `Permission_position`)
+VALUES ('CB124', 'Ái Thị', '1980-01-16', 'An Khánh - Ninh Kiều Cần Thơ', 'Nam', '0964054244', 'btbhue@ctu.edu.vn', '81dc9bdb52d04dc20036dbd8313ed055', 'Cố vấn học tập');
+INSERT INTO `account` (`idAccount`, `accountName`, `birthday`, `address`, `sex`, `phone`, `email`, `password`, `Permission_position`)
+VALUES ('CB125', 'Nguyễn Thu', '1980-01-16', 'An Khánh - Ninh Kiều Cần Thơ', 'Nam', '0964054244', 'btbhue@ctu.edu.vn', '81dc9bdb52d04dc20036dbd8313ed055', 'Cố vấn học tập');
+INSERT INTO `account` (`idAccount`, `accountName`, `birthday`, `address`, `sex`, `phone`, `email`, `password`, `Permission_position`)
+VALUES ('CB126', 'Trương Huỳnh Anh', '1980-01-16', 'An Khánh - Ninh Kiều Cần Thơ', 'Nam', '0964054244', 'btbhue@ctu.edu.vn', '81dc9bdb52d04dc20036dbd8313ed055', 'Cố vấn học tập');
+INSERT INTO `account` (`idAccount`, `accountName`, `birthday`, `address`, `sex`, `phone`, `email`, `password`, `Permission_position`)
+VALUES ('CB127', 'Nguyễn Thị Ngọc Yến', '1980-01-16', 'An Khánh - Ninh Kiều Cần Thơ', 'Nam', '0964054244', 'btbhue@ctu.edu.vn', '81dc9bdb52d04dc20036dbd8313ed055', 'Cố vấn học tập');
+INSERT INTO `account` (`idAccount`, `accountName`, `birthday`, `address`, `sex`, `phone`, `email`, `password`, `Permission_position`)
+VALUES ('CB128', 'Võ Huỳnh Diễm', '1980-01-16', 'An Khánh - Ninh Kiều Cần Thơ', 'Nam', '0964054244', 'btbhue@ctu.edu.vn', '81dc9bdb52d04dc20036dbd8313ed055', 'Cố vấn học tập');
+
 /*Dữ liệu mẫu 10 quản lý khoa*/
 INSERT INTO `account` (`idAccount`, `accountName`, `birthday`, `address`, `sex`, `phone`, `email`, `password`, `Permission_position`)
 VALUES ('QL101', 'Dương Văn Lăng', '1980-01-16', 'An Khánh - Ninh Kiều Cần Thơ', 'Nữ', '0964054244', 'pplan@cit.ctu.edu.vn', '81dc9bdb52d04dc20036dbd8313ed055', 'Quản lý khoa');
@@ -142,7 +179,8 @@ INSERT INTO `academy` (`idAcademy`, `academyName`) VALUES ('VNCBDKH', 'Viện N
 INSERT INTO `academy` (`idAcademy`, `academyName`) VALUES ('VNCPT', 'Viện Nghiên cứu Phát triển ĐBSCL');
 INSERT INTO `academy` (`idAcademy`, `academyName`) VALUES ('VNCPTCNSH', 'Viện Nghiên cứu và phát triển công nghệ sinh học');
 INSERT INTO `academy` (`idAcademy`, `academyName`) VALUES ('THSP', 'Trường THPT Thực hành Sư phạm');
-/*Dữ liệu mẫu 20 tài khoản vào khoa*/
+
+/*Dữ liệu mẫu 20 tài khoản thuộc khoa Công nghệ và công nghệ thông tin truyền thông*/
 INSERT INTO `account_has_academy` (`Account_idAccount`, `Academy_idAcademy`) VALUES ('AAAA', 'DI');
 INSERT INTO `account_has_academy` (`Account_idAccount`, `Academy_idAcademy`) VALUES ('BBBB', 'DI');
 INSERT INTO `account_has_academy` (`Account_idAccount`, `Academy_idAcademy`) VALUES ('CCCC', 'DI');
@@ -164,6 +202,26 @@ INSERT INTO `account_has_academy` (`Account_idAccount`, `Academy_idAcademy`) VAL
 INSERT INTO `account_has_academy` (`Account_idAccount`, `Academy_idAcademy`) VALUES ('CB103', 'DI');
 INSERT INTO `account_has_academy` (`Account_idAccount`, `Academy_idAcademy`) VALUES ('CB104', 'DI');
 INSERT INTO `account_has_academy` (`Account_idAccount`, `Academy_idAcademy`) VALUES ('CB105', 'DI');
+
+/*Dữ liệu mẫu tai khoan thuộc tất cả các khoa*/
+INSERT INTO `account_has_academy` (`Account_idAccount`, `Academy_idAcademy`) VALUES ('CB111', 'DBDT');
+INSERT INTO `account_has_academy` (`Account_idAccount`, `Academy_idAcademy`) VALUES ('CB112', 'GDTC');
+INSERT INTO `account_has_academy` (`Account_idAccount`, `Academy_idAcademy`) VALUES ('CB113', 'KHCT');
+INSERT INTO `account_has_academy` (`Account_idAccount`, `Academy_idAcademy`) VALUES ('CB114', 'KHTN');
+INSERT INTO `account_has_academy` (`Account_idAccount`, `Academy_idAcademy`) VALUES ('CB115', 'KHXH');
+INSERT INTO `account_has_academy` (`Account_idAccount`, `Academy_idAcademy`) VALUES ('CB116', 'KT');
+INSERT INTO `account_has_academy` (`Account_idAccount`, `Academy_idAcademy`) VALUES ('CB117', 'L');
+INSERT INTO `account_has_academy` (`Account_idAccount`, `Academy_idAcademy`) VALUES ('CB118', 'MT');
+INSERT INTO `account_has_academy` (`Account_idAccount`, `Academy_idAcademy`) VALUES ('CB119', 'NN');
+INSERT INTO `account_has_academy` (`Account_idAccount`, `Academy_idAcademy`) VALUES ('CB120', 'NNSH');
+INSERT INTO `account_has_academy` (`Account_idAccount`, `Academy_idAcademy`) VALUES ('CB121', 'PTNT');
+INSERT INTO `account_has_academy` (`Account_idAccount`, `Academy_idAcademy`) VALUES ('CB122', 'SDH');
+INSERT INTO `account_has_academy` (`Account_idAccount`, `Academy_idAcademy`) VALUES ('CB123', 'SP');
+INSERT INTO `account_has_academy` (`Account_idAccount`, `Academy_idAcademy`) VALUES ('CB124', 'TS');
+INSERT INTO `account_has_academy` (`Account_idAccount`, `Academy_idAcademy`) VALUES ('CB125', 'VNCBDKH');
+INSERT INTO `account_has_academy` (`Account_idAccount`, `Academy_idAcademy`) VALUES ('CB126', 'VNCPT');
+INSERT INTO `account_has_academy` (`Account_idAccount`, `Academy_idAcademy`) VALUES ('CB127', 'VNCPTCNSH');
+INSERT INTO `account_has_academy` (`Account_idAccount`, `Academy_idAcademy`) VALUES ('CB128', 'THSP');
 
 INSERT INTO `account_has_academy` (`Account_idAccount`, `Academy_idAcademy`) VALUES ('CB106', 'CN');
 INSERT INTO `account_has_academy` (`Account_idAccount`, `Academy_idAcademy`) VALUES ('CB107', 'CN');
@@ -266,6 +324,7 @@ INSERT INTO `class` (`idClass`, `className`, `schoolYear`, `Academy_idAcademy`) 
 INSERT INTO `class` (`idClass`, `className`, `schoolYear`, `Academy_idAcademy`) VALUES ('MT13ABA1', 'Tài nguyên môi trường 1', '39', 'MT');
 INSERT INTO `class` (`idClass`, `className`, `schoolYear`, `Academy_idAcademy`) VALUES ('MT13ABA2', 'Tài nguyên môi trường 2', '39', 'MT');
 
+
 /*Dữ liệu mẫu 18 tài khoản phân bổ vào các lớp */
 INSERT INTO `account_has_class` (`Account_idAccount`, `Class_idClass`) VALUES ('AAAA', 'DI1496A1');
 INSERT INTO `account_has_class` (`Account_idAccount`, `Class_idClass`) VALUES ('BBBB', 'DI1496A1');
@@ -364,73 +423,43 @@ INSERT INTO `calendarscoring` (`openDate`, `closeDate`, `Permission_position`) V
 ('2017-10-02', '2017-10-25', 'Quản lý khoa'),
 ('2017-10-04', '2017-10-25', 'Sinh viên');
 
-
 INSERT INTO `transcript` (`idItem`, `Account_idAccount`, `itemName`, `scores`, `describe`, `IDParent`, `scoresDefault`, `scoresMax`, `scoresStudent`, `scoresTeacher`) VALUES
-('I', 'AAAA', 'Điều 4. Đánh giá về ý thức tham gia học tập', 0, '', '0', 0, 20, 0, 0),
-('I.a', 'AAAA', 'a. Ý thức và thái độ trong học tập.', 0, '', 'I', 0, 0, 0, 0),
-('I.a.1', 'AAAA', '- Đi học đầy đủ, đúng giờ, nghiêm túc trong giờ học (Mỗi môn bị cấm thi trừ 03 điểm)', 0, '', 'I.a', 6, 6, 0, 0),
-('I.b', 'AAAA', 'b. Ý thức và thái độ tham gia các câu lạc bộ học thuật, các hoạt động học thuật, hoạt động ngoại khóa, hoạt động nghiên cứu khoa học.', 0, '', 'I', 0, 0, 0, 0),
-('I.b.1', 'AAAA', 'Nghiên cứu khoa học (NCKH)', 0, '', 'I.b', 0, 0, 0, 0),
-('I.b.1.1', 'AAAA', '- Có tham gia đề tài NCKH của sinh viên hoặc của Khoa và cấp tương đương, có xác nhận của Chủ nhiệm đề tài (Không tính bài tập, tiểu luận, đồ án môn học, luận văn...)', 0, '', 'I.b.1', 5, 5, 0, 0),
+('I.a.1', 'AAAA', '- Đi học đầy đủ, đúng giờ, nghiêm túc trong giờ học (Mỗi môn bị cấm thi trừ 03 điểm)', 0, '', 'I.a', 6, 6, 6, 0),
+('I.b.1.1', 'AAAA', '- Có tham gia đề tài NCKH của sinh viên hoặc của Khoa và cấp tương đương, có xác nhận của Chủ nhiệm đề tài (Không tính bài tập, tiểu luận, đồ án môn học, luận văn...)', 0, '', 'I.b.1', 5, 5, 5, 0),
 ('I.b.1.2', 'AAAA', '- Có giấy khen về NCKH', 0, '', 'I.b.1', 0, 8, 0, 0),
 ('I.b.1.3', 'AAAA', '- Có bài báo trong và ngoài nước trong hoạt động NCKH.', 0, '', 'I.b.1', 0, 8, 0, 0),
-('I.b.2', 'AAAA', 'Hoàn thành chứng chỉ ngoại ngữ, tin học.', 0, '', 'I.b', 0, 0, 0, 0),
 ('I.b.2.1', 'AAAA', '- Ngoại ngữ không chuyên/chứng chỉ A/chuẩn khung Châu Âu.', 0, '', 'I.b.2', 0, 3, 0, 0),
 ('I.b.2.2', 'AAAA', '- Chứng chỉ B/chuẩn khung Châu Âu.', 0, '', 'I.b.2', 0, 5, 0, 0),
 ('I.b.2.3', 'AAAA', '- Chứng chỉ C/chuẩn khung Châu Âu', 0, '', 'I.b.2', 0, 7, 0, 0),
 ('I.b.2.4', 'AAAA', '- Riếng chứng chỉ ngoại ngữ, Chứng nhận Toefl >= 500 điểm; IELTS >= 5.0', 0, '', 'I.b.2', 0, 10, 0, 0),
-('I.b.3', 'AAAA', 'Tham gia các kỳ thi chuyên ngành, thi Olympic...', 0, '', 'I.b', 0, 0, 0, 0),
 ('I.b.3.1', 'AAAA', '- Có tham gia kỳ thi', 0, '', 'I.b.3', 0, 2, 0, 0),
 ('I.b.3.2', 'AAAA', '- Đạt giải cấp Trường', 0, '', 'I.b.3', 0, 4, 0, 0),
 ('I.b.3.3', 'AAAA', '- Đạt giải cấp cao hơn.', 0, '', 'I.b.3', 0, 7, 0, 0),
-('I.c', 'AAAA', 'c. Ý thức và thái độ tham gia các kỳ thi, cuộc thi.', 0, '', 'I', 0, 0, 0, 0),
 ('I.c.1', 'AAAA', '- Không vi phạm quy chế về thi, kiểm tra (Mỗi lần vi phạm trừ 03 điểm)', 0, '', 'I.c', 6, 6, 0, 0),
-('I.d', 'AAAA', 'd. Tinh thần vượt khó, phấn đấu vươn lên trong học tập.', 0, '', 'I', 0, 0, 0, 0),
 ('I.d.1', 'AAAA', '- Có cố gắng, vượt khó trong học tập (có ĐTB học kỳ sau lớn hơn học kỳ trước đó; đối với SV năm thứ nhất, học kỳ I không có điểm dưới 4)', 0, '', 'I.d', 2, 2, 0, 0),
-('I.e', 'AAAA', 'e. Kết quả học tập', 0, '', 'I', 0, 0, 0, 0),
-('I.e.1', 'AAAA', 'Kết quả học tập trong học kỳ:', 0, '', 'I.e', 0, 0, 0, 0),
 ('I.e.1.1', 'AAAA', '- Điểm trung bình chung học kỳ (ĐTBCHK) đạt >= 3,60', 0, '', 'I.e.1', 0, 8, 0, 0),
 ('I.e.1.2', 'AAAA', '- ĐTBCHK đạt từ 3,20 đến 3,59', 0, '', 'I.e.1', 6, 6, 0, 0),
 ('I.e.1.3', 'AAAA', '- ĐTBCHK đạt từ 2,50 đến 3,19', 0, '', 'I.e.1', 0, 4, 0, 0),
 ('I.e.1.4', 'AAAA', '- ĐTBCHK đạt từ 2,00 đến 2,49', 0, '', 'I.e.1', 0, 2, 0, 0),
-('II', 'AAAA', 'Điều 5. Đánh giá về ý thức và kết quả chấp hành nội quy, quy chế, quy định trong nhà trường', 0, '', '0', 0, 25, 0, 0),
-('II.a', 'AAAA', 'a. Ý thức chấp hành các văn bản chỉ đạo của ngành, của cơ quan chỉ đạo cấp trên được thực hiện trong nhà trường.', 0, '', 'II', 0, 0, 0, 0),
 ('II.a.1', 'AAAA', '- Không vi phạm và có ý thức tham gia thực hiện nghiêm túc các quy định của Lớp, nội quy, quy chế của trường, Khoa và các tổ chức trong nhà trường (Mỗi lần vắng trừ 03 điểm)', 0, '', 'II.a', 15, 15, 0, 0),
-('II.b', 'AAAA', 'b. Ý thức chấp hành các nội quy, quy chế và các quy định khác được áp dụng trong nhà trường.', 0, '', 'II', 0, 0, 0, 0),
-('II.b.1', 'AAAA', 'Sinh viên có tích cực tham gia các hoạt động tuyên truyền, vận động mọi người xung quanh thực hiện nghiêm túc nội quy, quy chế, các quy định của nhà trường về:', 0, '', 'II.b', 0, 0, 0, 0),
 ('II.b.1.1', 'AAAA', '- Giữ gìn an ninh, trật tự nơi công cộng có xác nhận của Đoàn khoa.', 0, '', 'II.b.1', 0, 10, 0, 0),
 ('II.b.1.2', 'AAAA', '- Giữ gìn vệ sinh, bảo vệ cảnh quan môi trường, nếp sống văn minh (có xác nhận của đoàn thể, Khoa, trường ...)', 0, '', 'II.b.1', 0, 10, 0, 0),
-('III', 'AAAA', 'Điều 6. Đánh giá về ý thức tham gia các hoạt động chính trị, xã hội, văn hóa, văn nghệ, thể thao, phòng chống tội phạm và các tệ nạn xã hội', 0, '', '0', 0, 20, 0, 0),
-('III.a', 'AAAA', 'a. Ý thức và hiệu quả tham gia các hoạt động rèn luyện về chính trị, xã hội, văn hóa, văn nghệ, thể thao.', 0, '', 'III', 0, 0, 0, 0),
 ('III.a.1', 'AAAA', ' - Tham gia đầy đủ các hoạt động chính trị, xã hội, văn hóa, văn nghệ, thể thao các cấp từ Lớp, Chi hội, Chi đoàn trở lên tổ chức (Mỗi lần vắng trừ 02 điểm từ cấp đơn vị lớp trở lên).', 0, '', 'III.a', 12, 12, 0, 0),
 ('III.a.2', 'AAAA', ' - Lực lượng nồng cốt của phong trào', 0, '', 'III.a', 0, 5, 0, 0),
-('III.b', 'AAAA', 'b. Ý thức tham gia các hoạt động công ích tình nguyện, công tác xã hội.', 0, '', 'III', 0, 0, 0, 0),
-('III.b.1', 'AAAA', 'Là lực lượng nồng cốt trong các phong trào văn hóa, văn nghệ, thể thao:', 0, '', 'III.b', 0, 0, 0, 0),
 ('III.b.1.1', 'AAAA', '- Cấp Bộ môn, Chi đoàn, Chi hội, Đội, Nhóm', 0, '', 'III.b.1', 0, 3, 0, 0),
 ('III.b.1.2', 'AAAA', '- Cấp Khoa (và tương đương), trường.', 0, '', 'III.b.1', 0, 5, 0, 0),
 ('III.c', 'AAAA', 'c. Tham gia tuyên truyền, phòng chống tội phạm và các tệ nạn xã hội.', 0, '', 'III', 0, 0, 0, 0),
-('III.c.1', 'AAAA', 'Được khen thưởng trong các hoạt động phong trào.', 0, '', 'III', 0, 0, 0, 0),
 ('III.c.1.1', 'AAAA', '- Quyết định khen thưởng của Đoàn Khoa (và tương đương)', 0, '', 'III.c.1', 0, 6, 0, 0),
 ('III.c.1.2', 'AAAA', '- Giấy khen cấp Trường.', 0, '', 'III.c.1', 0, 8, 0, 0),
 ('III.c.1.3', 'AAAA', '- Giấy khen cấp cao hơn.', 0, '', 'III.c.1', 0, 10, 0, 0),
-('IV', 'AAAA', 'Điều 7. Đánh giá về ý thức công dân trong quan hệ cộng đồng', 0, '', '0', 0, 25, 0, 0),
-('IV.a', 'AAAA', 'a. Ý thức chấp hành và tham gia tuyên truyền các chủ trương của Đảng, chính sách, pháp luật của Nhà nước trong cộng đồng.', 0, '', 'IV', 0, 0, 0, 0),
 ('IV.a.1', 'AAAA', '- Không vi phạm pháp luật của Nhà nước (Nếu vi phạm pháp luật sẽ bị điểm 00 (điểm không)).', 0, '', 'IV.a', 10, 10, 0, 0),
 ('IV.a.2', 'AAAA', '- Tích cực tham gia tuyên truyền các chủ trương của Đảng, chính sách, pháp luật của Nhà nước trong cộng đồng.', 0, '', 'IV.a', 5, 5, 0, 0),
-('IV.b', 'AAAA', 'b. Ý thức tham gia các hoạt động xã hội có thành tích được ghi nhận, biểu dương, khen thưởng.', 0, '', 'IV', 0, 0, 0, 0),
 ('IV.b.1', 'AAAA', '  - Tham gia đội nhóm sinh hoạt hướng đên lợi ích cộng đồng (tham gia công tác xã hội ở trường, nơi cư trú, địa phương). (Mỗi đợt tham gia được cộng 02 điểm).', 0, '', 'IV.b', 2, 10, 0, 0),
-('IV.c', 'AAAA', 'c. Có tinh thần chia sẽ, giúp đỡ người thân, người có khó khăn, hoạn nạn.', 0, '', 'IV', 0, 0, 0, 0),
 ('IV.c.1', 'AAAA', '- Có tinh thần giúp đỡ bạn bè trong học tập, trong cuộc sống.', 0, '', 'IV.c', 5, 5, 0, 0),
-('V', 'AAAA', 'Điều 8. Đánh giá về ý thức và kết quả khi tham gia công tác cán bộ lớp, các đoàn thể, tổ chức trong nhà trường hoặc người học đạt được thành tích đặc biệt trong học tập, rèn luyện.', 0, '', '0', 0, 10, 0, 0),
-('V.a', 'AAAA', 'a. Ý thức, tinh thần thái độ, uy tín và hiệu quả công việc của người học được phân công nhiệm vụ quản lý lớp, các tổ chức Đảng, Đoàn thanh niên, Hội sinh viên và các tổ chức khác trong nhà trường.', 0, '', 'V', 0, 0, 0, 0),
 ('V.a.1', 'AAAA', '- Lớp trưởng, Bí thư Chi đoàn, Ủy viên BCH đoàn thể cấp cao hơn Chi đoàn, BCH Hội sinh viên Trường, Liên Chi hội trưởng, Chi hội trưởng, Đội trưởng các Đội, Nhóm, Câu lạc bộ từ cấp khoa và tương đương.', 0, '', 'V.a', 10, 10, 0, 0),
-('V.b', 'AAAA', 'b. Kỹ năng tổ chức, quản lý lớp, quản lý các tổ chức Đảng, Đoàn thanh niên, Hội sinh viên và các tổ chức khác trong nhà trường.', 0, '', 'V', 0, 0, 0, 0),
 ('V.b.1', 'AAAA', ' - Là thành viên của Ban Cán sự lớp, Ban Chấp hành chi đoàn, Ban chấp hành Liên Chi hội SV, Chi hội SV Trường (trừ các thành viên nêu mục trên), Đội SV an ninh xung kích (KTX), Hội đồng tự quản KTX (gồm Chủ tịch và các Trưởng nhóm chuyên môn), Hội đồng tự quản ngoại trú, Nhà trưởng KTX, Cụm trưởng khu nhà trọ đã hoàn thành nhiệm vụ được giao', 0, '', 'V.b', 0, 8, 0, 0),
 ('V.b.2', 'AAAA', ' - Là thành viên của các Ban chuyên môn Đoàn, Hội sinh viên trường hoàn thành nhiệm vụ có xác nhận của Đoàn hoặc Hội sinh viên.', 0, '', 'V.b', 0, 8, 0, 0),
-('V.c', 'AAAA', 'c. Hỗ trợ và tham gia tích cực vào các hoạt động chung của lớp, tập thể, khoa và nhà trường.', 0, '', 'V', 0, 0, 0, 0),
 ('V.c.1', 'AAAA', '  - Tích cực tham gia hỗ trợ các hoạt động, phong trào của cấp Khoa, sự kiện chung của nhà trường có xác nhận của đơn vị tổ chức sự kiện (Mỗi đợt tham gia được cộng 01 điểm).', 0, '', 'V.c', 0, 6, 0, 0),
-('V.d', 'AAAA', 'd. Người học đạt được các thành tích đặc biệt trong học tập, rèn luyện.', 0, '', 'V', 0, 0, 0, 0),
 ('V.d.1', 'AAAA', '- Được kết nạp Đảng, hoặc được công nhận Đoàn viên ưu tú.', 0, '', 'V.d', 0, 6, 0, 0),
 ('V.d.2', 'AAAA', '- Đạt danh hiệu sinh viên 5 tốt cấp trường trở lên.', 0, '', 'V.d', 0, 6, 0, 0),
-('V.d.3', 'AAAA', '- Phân loại Đảng viên được xếp loại mức 2', 0, '', 'V.d', 0, 5, 0, 0),
-('VI', 'AAAA', 'Tổng điểm các điều', 0, '', '0', 0, 100, 0, 0);
+('V.d.3', 'AAAA', '- Phân loại Đảng viên được xếp loại mức 2', 0, '', 'V.d', 0, 5, 0, 0);

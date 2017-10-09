@@ -23,14 +23,14 @@ if(isset($_POST['btnAdd'])) {
                                     <fieldset class="form-group">
                                         <p class="text-left "><b>Tên khoa - viện</b></p>
                                         <input type="text" class="form-control" name="addAcademyName" id="addAcademyName"
-                                               placeholder="Nhập tên khoa - viện">
+                                               placeholder="Nhập tên khoa - viện" required autofocus>
 
                                     </fieldset>
 
                                     <fieldset class="form-group">
                                         <p class="text-left"><b>Mã khoa - viện</b></p>
                                         <input type="text" class="form-control" name="addIdAcademy" id="addIdAcademy"
-                                               placeholder="Nhập mã khoa viện">
+                                               placeholder="Nhập mã khoa viện" required autofocus>
                                     </fieldset>
                                     <div class="modal-footer">
                                         <button type="button" class="btn btn-default" data-dismiss="modal">Đóng</button>
