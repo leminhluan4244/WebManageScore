@@ -21,7 +21,7 @@ if (!isLogged())
 require_once("../model/CalendarScoringMod.php");
 $today = date("Y-m-d");
 $arr = (new CalendarScoringMod())->getCalendarWithPermissionPosition(getSession("userToken")['permission']);
-if($today < $arr['openDate'] || $today > $arr['closeDate']){
+if(empty($arr) || $today < $arr['openDate'] || $today > $arr['closeDate']){
 	showMessage("Hệ thống chấm điểm chưa mở");
 	softRedirect("main.php");
 	die();

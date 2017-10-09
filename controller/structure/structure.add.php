@@ -11,16 +11,21 @@ $structures = $tree->getData();
 if (isSubmit('save')){
 	$idItem = getPOSTValue('idItem');
 	$itemName = getPOSTValue('itemName');
-	$score = getPOSTValue('score');
+	$score = (int)getPOSTValue('score');
 	$idParent = getPOSTValue('idParent');
-	$scoreDefault = getPOSTValue('scoreDefault');
-	$structObj = new StructureObj();
-	$structObj->setStructureObj($idItem, $itemName, $score, "", $idParent, $scoreDefault);
-	if ($model->addStructure($structObj)) {
-//		showMessage("Thêm thành công!!");
-	} else
-		showMessage("Thêm thất bại, thử lại sau!!");
-	softRedirect("structure.editor.php");
+	$scoreDefault = (int)getPOSTValue('scoreDefault');
+	if (trim($idItem, " ") == "" ||
+            empty(trim($itemName, " ")) || trim($idParent, " ") == ""){
+	    showMessage("Hãy điền đầy đủ thông tin!");
+    } else {
+		$structObj = new StructureObj();
+		$structObj->setStructureObj($idItem, $itemName, $score, "", $idParent, $scoreDefault);
+		if ($model->addStructure($structObj)) {
+		    showMessage("Thêm thành công!!");
+		} else
+			showMessage("Thêm thất bại, thử lại sau!!");
+		softRedirect("structure.editor.php");
+	}
 }
 ?>
 <div class="structure-edit-item container">
@@ -30,15 +35,15 @@ if (isSubmit('save')){
 		<form method="post">
 			<div class="form-group">
 				<label>Mã mục điểm</label>
-				<input class="form-control" name="idItem">
+				<input class="form-control" required name="idItem">
 			</div>
 			<div class="form-group">
 				<label>Tên mục điểm</label>
-				<textarea class="form-control" rows="5" name="itemName"></textarea>
+				<textarea class="form-control" required rows="5" name="itemName"></textarea>
 			</div>
 			<div class="form-group">
 				<label>Mục cha của mục điểm này</label>
-				<select name="idParent" class="form-control">
+				<select name="idParent" required class="form-control">
 					<option value="0">Không có</option>
 					<?php foreach ($structures as $structure) { ?>
 						<option value="<?php echo $structure['idItem']; ?>"><?php echo $structure['itemName']; ?></option>
@@ -47,11 +52,11 @@ if (isSubmit('save')){
 			</div>
 			<div class="form-group">
 				<label>Mức điểm</label>
-				<input type="number" name="score" class="form-control" min="0" max="100" value="0">
+				<input type="number" name="score" required class="form-control" min="0" max="100" value="0">
 			</div>
             <div class="form-group">
                 <label>Điểm mặc định</label>
-                <input type="number" name="scoreDefault" class="form-control" min="0" max="100" value="0">
+                <input type="number" name="scoreDefault" required class="form-control" min="0" max="100" value="0">
             </div>
 			<div class="form-group text-right">
 				<input type="hidden" name="requestName" value="save">

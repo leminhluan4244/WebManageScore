@@ -68,6 +68,16 @@ class StructureTree {
 		return $this->data[$nodeId]["IDParent"] == ST_ROOT;
 	}
 
+	public function isAncestor($ancestor, $descendant){
+		$listDescendant = [];
+		$this->PreOrderTreeToGetAllChildIdOf($ancestor, $listDescendant);
+		foreach ($listDescendant as $des) {
+			if ($des == $descendant)
+				return true;
+		}
+		return false;
+	}
+
 	public function getAllDirectChildOf($nodeId) {
 		$children = [];
 		foreach ($this->data as $child) {
