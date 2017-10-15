@@ -22,6 +22,8 @@
        $("#div-permission-manage").show();
        $("#div-permission").show();
        $("#div-schedule-manage").show();
+       $("#import-export").show();
+       $("#xem-diem").show();
        break;
 
      case 'Cố vấn học tập':
