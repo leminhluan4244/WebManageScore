@@ -1052,6 +1052,7 @@ class AccountMod {
 		}
 		return $arr;
 	}
+	#json[]
 	public function getArray() {
     $arr = $this->getAllAccount();
 		if (!empty($arr)){
