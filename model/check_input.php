@@ -13,6 +13,7 @@ define("PATTERN_NAME", "/^[a-zA-Z 0-9àảãáạằẳẵắặầẩẫấậ�
  * @param $name
  * @return boolean
  */
+
 function checkValidName($name){
 	return preg_match(PATTERN_NAME, $name) == 1;
 }
