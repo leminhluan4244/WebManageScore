@@ -87,32 +87,4 @@ if ($privilege == STUDENT) {
 		redirect('main.php');
 }
 ?>
-
-    <div class="navigator" id="nav">
-        <a href="#viewScoreAdd" class="link-nav">Điểm cộng</a>
-    </div>
-
-    <script>
-        $(function(){
-            $('[data-toggle="tooltip]').tooltip();
-            var provisions = $('.section-1');
-            var html = "";
-            $.each(provisions, function(i, provision){
-                if (provision.id !== "")
-                    html += '<a href="#' + provision.id + '" class="link-nav">' + toNumber(provision.id) + '</a>';
-            });
-            $('#nav').prepend(html);
-        });
-        function toNumber(str){
-            var number = {
-                I: 4,
-                II: 5,
-                III: 6,
-                IV: 7,
-                V: 8
-            };
-            return number[str];
-        }
-    </script>
-
 <?php require_once '../controller/footer.php'; ?>

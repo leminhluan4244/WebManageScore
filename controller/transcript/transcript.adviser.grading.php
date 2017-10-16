@@ -36,7 +36,7 @@ setSession("stdId", $studentId);
 #thêm bảng điểm
 if (!$transcriptMod->isTranscriptExist($studentId, $structureLeafs)){
 	$transcriptMod->generateTranscript($studentId, $structureLeafs);
-	showMessage("Generated.");
+//	showMessage("Generated.");
 }
 
 $saMod = new ScoresAddMod();

@@ -149,15 +149,6 @@ class TranscriptMod {
 //		return $result;
 //	}
 
-	/**
-	 * Cập nhật mục điểm cuối cùng
-	 * @param $accountId
-	 * @param string $col
-	 */
-	public function updateEntireScore($accountId, $col = COL_STUDENT_SCORE){
-
-	}
-
 	public function getTranscriptName($accountId, $itemId){
 		$sql = "select itemName from transcript where Account_idAccount = '$accountId' AND idItem = '$itemId'";
 		$this->connSQL->Connect();

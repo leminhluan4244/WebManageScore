@@ -93,6 +93,26 @@ class PractiseScoresMod {
 		return $pcObj;
 	}
 
+    /**
+     * Kiểm tra điểm đã tồn tại chưa
+     * @param $accountId
+     * @param $semester
+     * @param $year
+     */
+	public function isPractiseScoresExisted($accountId, $semester, $year){
+        $sql = "select count(*) as total from practisescores 
+				where Account_idAccount = '$accountId' 
+				and semester = '$semester' 
+				and years = '$year'";
+        $this->connSQL->Connect();
+        $result = $this->connSQL->conn->query($sql);
+        $this->connSQL->Stop();
+        if (!empty($result) && $result->num_rows){
+            return $result->fetch_assoc()['total'] > 0;
+        }
+        return true;
+    }
+
 	/**
 	 * Thêm điểm cho account trong năm học, học kỳ đó
 	 * @param $pcObj - PractiseScoresObj

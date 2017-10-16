@@ -49,19 +49,30 @@ $transcriptMod = new TranscriptMod();
 
 $transcriptMod->resetSummaryScore($accountId, $updateCol);
 $complete = true;
-$summaryScore = 0;
+$eachSummaryScore = 0;
+$finalScore = 0;
 $ancestorId = "";
 foreach ($scoreList as $id => $score) {
 	$ancId = $stTree->getHighestAncestor($stTree->getData()[$id]);
 	if ($ancestorId != $ancId){
-		$complete = $transcriptMod->updateTranscriptScore($accountId, $ancestorId, $summaryScore, $updateCol);
+	    $struct = $structureMod->getStructure($ancestorId);
+//		$complete = $transcriptMod->updateTranscriptScore($accountId, $ancestorId, $eachSummaryScore, $updateCol);
 		$ancestorId = $ancId;
-		$summaryScore = 0;
+		$maxScore = $struct->getScores();
+		$finalScore += ($eachSummaryScore > $maxScore ? $maxScore: $eachSummaryScore);
+		$eachSummaryScore = 0;
 	}
 	$complete = $transcriptMod->updateTranscriptScore($accountId, $id, $score, $updateCol);
-	$summaryScore += $score;
+	$eachSummaryScore += $score;
 }
-$complete = $transcriptMod->updateTranscriptScore($accountId, $ancestorId, $summaryScore, $updateCol);
+//$complete = $transcriptMod->updateTranscriptScore($accountId, $ancestorId, $eachSummaryScore, $updateCol);
+#the last item
+$struct = $structureMod->getStructure($ancestorId);
+$maxScore = $struct->getScores();
+$finalScore += ($eachSummaryScore > $maxScore ? $maxScore: $eachSummaryScore);
+
 if (!$complete){
 	showMessage("Có thể có lỗi trong lúc lưu lại!!");
 }
+
+require_once '../controller/transcript/transcript.acad.update.final.score.php';
