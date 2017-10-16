@@ -31,4 +31,6 @@ require_once "../model/CheckTool.php";
 require_once "../helper/common.helper.php";
 require_once "../model/ScoresAddHasAccountObj.php";
 require_once "../model/ScoresAddHasAccountMod.php";
+require_once "../model/yearsSemesterMod.php";
+require_once "../model/yearsSemesterObj.php";
 ?>

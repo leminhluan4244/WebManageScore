@@ -27,7 +27,7 @@ if (isSubmit("adviserGrading")) {
 #kiểm tra xem sinh viên được chấm có tồn tại chưa
 $md = new AccountMod();
 $student = $md->getAccount($studentId);
-if (empty($student))
+if (empty($student->getAccountName()))
 	redirect('grading.php');
 
 #lưu vào session để load lại sau khi chấm xong

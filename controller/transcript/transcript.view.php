@@ -9,6 +9,17 @@
 if (empty($trTree))
 	return;
 ?>
+<div class="text-right div-btn-grading">
+    <button class="btn btn-primary btn-sm">
+        <span class="glyphicon glyphicon-ok"></span>
+        Lưu lại
+    </button>
+    <a class="btn btn-default btn-sm" href="<?php echo $privilege == STUDENT ? 'main.php': 'grading.php' ?>">
+        <span class="glyphicon glyphicon-backward"></span>
+        Quay về
+    </a>
+</div>
+<br>
 <div class="form-grading" id="div-grading">
     <form method="post">
         <div class="table-score-wrapper">
@@ -46,6 +57,11 @@ if (empty($trTree))
     </form>
 </div>
 <div class="navigator" id="nav">
+<!--    <a href="" id="top" class="link-nav"><span class="glyphicon glyphicon-chevron-up"></span> </a>-->
+<!--    <a href="" id="prev" class="link-nav"></a>-->
+<!--    <a href="" id="next" class="link-nav"></a>-->
+<!--    <a href="" id="bot" class="link-nav"><span class="glyphicon glyphicon-chevron-down"></span> </a>-->
+
     <a href="#viewScoreAdd" class="link-nav">Điểm cộng</a>
 </div>
 

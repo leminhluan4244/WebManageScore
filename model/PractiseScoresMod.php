@@ -20,7 +20,7 @@ class PractiseScoresMod {
 	 * @return array - danh sách điểm dưới dạng các mảng của tài khoản đó
 	 */
 	public function getListAllScores($idAccount){
-		$sql = "select * from practisescores where Account_idAccount = '$idAccount'";
+		$sql = "select * from practisescores where Account_idAccount = '$idAccount' order by beginDate desc";
 		$this->connSQL->Connect();
 		$result = $this->connSQL->conn->query($sql);
 		$listRow = array();

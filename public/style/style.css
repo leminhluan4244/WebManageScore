@@ -109,8 +109,8 @@ footer {
   border: 1px solid #fff;
   position: fixed;
   z-index: 1;
-  bottom: 20px;
-  left: 10px; }
+  bottom: 10px;
+  right: 10px; }
   .navigator .link-nav {
     border: 1px solid #fff;
     border-width: 0px 0px 0px 1px;
@@ -121,6 +121,10 @@ footer {
     text-decoration: none !important;
     color: #fff !important;
     background-color: #1066A2; }
+  .navigator .link-nav:first-child {
+    border-radius: 5px 0 0 5px; }
+  .navigator .link-nav:last-child {
+    border-radius: 0 5px 5px 0; }
 
 .navigator:after {
   content: ''; }

@@ -9,17 +9,20 @@ if (!defined("IN_TRS"))
     die("Bad request!");
 $csm = new CalendarScoringMod();
 $psm = new PractiseScoresMod();
+$ysm = new yearsSemesterMod();
 
 $cso = $csm->getCalendarWithPermissionPosition("Quản lý khoa");
-$semester = 1;
-$year = date("Y");
+
+$practiceScoreObj = $ysm->getData();
+
+$semester = $practiceScoreObj->getSemester();
+$year = $practiceScoreObj->getYears();
 $startDate = $cso['openDate'];
 $endDate = $cso['closeDate'];
 
-$pso = new PractiseScoresObj();
-$pso->setPractiseScoresObj($finalScore, $semester, $year, $accountId, $startDate, $endDate);
+$practiceScoreObj->setPractiseScoresObj($finalScore, $semester, $year, $accountId, $startDate, $endDate);
 if ($psm->isPractiseScoresExisted($accountId, $semester, $year)){
-    $psm->updatePractiseScores($pso);
+    $psm->updatePractiseScores($practiceScoreObj);
 } else {
-    $psm->addPractiseScores($pso);
+    $psm->addPractiseScores($practiceScoreObj);
 }

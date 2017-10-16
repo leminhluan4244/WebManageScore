@@ -16,7 +16,7 @@ class yearsSemesterMod {
 
 
     public function getData(){
-        $sql = "SELECT *  FROM year_semester";
+        $sql = "SELECT *  FROM years_semester";
         $this->connSQL->Connect();
         $result = $this->connSQL->conn->query($sql);
         $practices = new PractiseScoresObj();

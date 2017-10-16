@@ -13,8 +13,7 @@ $loggedAccount = getLoggedAccountInfo();
 	<table class="table">
 		<thead>
 		<tr>
-			<th colspan="2" class="text-center">Thông tin người dùng <a href="#user-info" data-toggle="collapse"
-																		class="close">&raquo;</a></th>
+			<th colspan="2" class="text-center">Thông tin người dùng <a href="" id="toggle-user-info" class="close">&raquo;</a></th>
 		</tr>
 		</thead>
 		<tbody id="user-info">

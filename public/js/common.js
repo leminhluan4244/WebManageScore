@@ -1,11 +1,16 @@
 $(function () {
     if ($(window).width() <= 768){
-        $('#user-info').addClass('collapse');
+        $('#user-info').hide();
     }
     $(window).resize(function () {
         if ($(window).width() <= 768){
-            $('#user-info').addClass('collapse');
+            $('#user-info').hide();
         } else
-            $('#user-info').removeClass('collapse');
+            $('#user-info').show();
+    });
+
+    $('#toggle-user-info').click(function () {
+        $('#user-info').fadeToggle(100);
+        return false;
     });
 });
