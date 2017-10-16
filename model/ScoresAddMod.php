@@ -164,19 +164,19 @@ class ScoresAddMod {
 		$sql = "SELECT * FROM scoresadd,scoresadd_has_account WHERE scoresadd.idScore=scoresadd_has_account.ScoresAdd_idScore AND ScoresAdd_has_Account.Account_idAccount='" . $id . "'";
 		$this->connSql->Connect();
 		$result = $this->connSql->conn->query($sql);
-
+        $obj = new ScoresAddObj();
 		if ($result->num_rows > 0) {
 			$k = 0;
 			while ($row = $result->fetch_assoc()) {
-				$obj = new ScoresAddObj();
+
 				$obj->setScoreName($row["scoreName"]);
 				$obj->setIdScore($row["idScore"]);
 				$obj->setScores($row["scores"]);
 				$obj->setDescribe($row["describe"]);
 				$obj->setTranscript_idItem($row["Transcript_idItem"]);
 				$obj->setIdAccountManage($row["idAccountManage"]);
-				$list[$k] = $obj;
-				$k++;
+
+
 			}
 
 		} else {
@@ -186,7 +186,7 @@ class ScoresAddMod {
 		}
 
 		$this->connSql->Stop();
-		return $list;
+		return $obj;
 	}
 
 	public function getListScoreOfStudent($studentId) {
