@@ -8,10 +8,10 @@
 
     <!--Start class add button-->
     <form action="DEMO.php" class="form-inline">
-        <a class="btn btn-primary col align-self-center " data-toggle="modal" data-target="#add">
+        <a class="btn btn-primary col align-self-center " data-toggle="modal" data-target="#addScore">
             <span class="glyphicon glyphicon-plus"></span> Thêm mới một bảng cộng trừ điểm sinh viên
         </a>
-        <a class="btn btn-danger col align-self-center " data-toggle="modal" data-target="#delete">
+        <a class="btn btn-danger col align-self-center " data-toggle="modal" data-target="#deleteScore">
             <span class="glyphicon glyphicon-trash"></span> Xóa bảng
         </a>
     </form>

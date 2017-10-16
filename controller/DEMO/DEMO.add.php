@@ -8,7 +8,7 @@ if(isset($_POST['btnAdd'])) {
         $scoresAddM->addScoresAdd($scoresAddO);
     }
     #thêm dữ liệu và truyền đi
-    echo'<META http-equiv="refresh" content="0;URL=scoreAdd.manage.php">';
+    echo'<META http-equiv="refresh" content="0;URL=DEMO.php">';
 }
 ?>
 <div id="addScore" class="modal fade " tabindex="-1" role="dialog" aria-labelledby aria-hidden="true">

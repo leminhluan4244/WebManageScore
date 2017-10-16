@@ -7,7 +7,6 @@
     * Gửi dữ liệu qua bên này
     */
     #Khoi tao di tuong chua
-    $idLogin = getLoggedAccountId();
     $power = new PermissionMod();
     $power->getPermissionByAccount($idLogin);
     #Kiem tra xe thuoc phan quyen nao
@@ -62,21 +61,20 @@
     }
     ?>
     <?php
+    $idLogin = getLoggedAccountId();
     $scoreMod = new ScoresAddMod();
     $listScore = $scoreMod->getScoresAddByAccount($idLogin);
     ?>
 
 <form action="DEMO.php" method="post" id="manageForm">
-<table class="table table-bordered table-condensed" id="table-manage-class">
+<table class="table table-bordered table-condensed" id="table-manage-score">
 
     <thead>
     <tr>
         <th>STT</th>
-        <th>Mã Lớp</th>
-        <th>Tên lớp</th>
-        <th>Niên khóa</th>
-        <th>Khoa - viện</th>
-        <th>Cố vấn</th>
+        <th>Mã bảng điểm</th>
+        <th>Tên bảng điểm</th>
+        <th>Điểm</th>
         <th>Tùy chỉnh</th>
         <th>Chọn tất cả <br /><input type="checkbox" onClick="toggle(this)"></th>
     </tr>
@@ -87,29 +85,23 @@
     <tbody class="text-center align-self-center">
     <?php
     $i=0;
-    if($arrayClass>0)
-    foreach ($arrayClass as $key=>$value){
+    if(gettype($listScore)!='integer')
+    foreach ($listScore as $key=>$value){
         echo '<tr>
         <td>'.++$i.'</td>
         <td>
-            '.$value->getIdClass().'
+            '.$value->getIdScore().'
         </td>
         <td>
-            '.$value->getClassName().'
+            '.$value->getScoreName().'
         </td>
         <td>
-            '.$value->getSchoolYear().'
+            '.$value->setScores().'
         </td>
         <td>
-            '.getName($value->getAcademy_idAcademy()).'
+            <a href="?idScore='.$value->getIdScore().'" class="btn btn-primary btn-sm"><span class="glyphicon glyphicon-pencil"></span></a>
         </td>
-        <td>
-            <a href="?changeTeacher='.$value->getIdClass().'" class="btn btn-primary btn-sm"><span class="glyphicon glyphicon-user"></span></a>
-        </td>
-        <td>
-            <a href="?idClass='.$value->getIdClass().'" class="btn btn-primary btn-sm"><span class="glyphicon glyphicon-pencil"></span></a>
-        </td>
-        <td><input type="checkbox" name="xoa[]" id="'.$value->getIdClass().'" value="'.$value->getIdClass().'"/> </td>
+        <td><input type="checkbox" name="xoa[]" id="'.$value->getIdScore().'" value="'.$value->getIdScore().'"/> </td>
        
     </tr>';
     }
@@ -125,5 +117,5 @@
         {checkboxes[i].checked = checkall.checked;
         }
     }
-    $('#table-manage-class').DataTable();
+    $('#table-manage-score').DataTable();
 </script>

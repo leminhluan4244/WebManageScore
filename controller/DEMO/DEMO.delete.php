@@ -38,7 +38,6 @@ if (!empty($delete)){
     </div>
     <?php
     if(isset($_POST['deleteYes'])) {
-        echo 'hello';
         $scoresdeleteMT = new ScoresAddMod();
         $scoresdeleteOT = new ScoresAddObj();
         $scoresdeleteOT->getIdScore($_POST['score']);
