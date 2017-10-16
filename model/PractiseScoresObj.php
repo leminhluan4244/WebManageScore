@@ -73,7 +73,7 @@ class PractiseScoresObj {
 	 * @return mixed
 	 */
 	public function getAccount_IdAccount() {
-		return $this->accountIdAccount;
+		return $this->Account_IdAccount;
 	}
 
 	/**
