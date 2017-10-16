@@ -2,7 +2,11 @@
 require_once "../controller/header.php";
 require_once "../controller/permission.find.php";
 ?>
-
+<?php
+if(getSession("userToken")['permission'] != 'Quản lý chi hội'){
+    echo '<script>window.location.assign("../controller/account/account.login.php")</script>';
+}
+?>
 <div class="container-fluid">
     <!Start content manage branch-->
     <div class="container main-academy-container">

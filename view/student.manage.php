@@ -11,6 +11,11 @@ $classMod = new ClassMod();
 $perObj = new PermissionObj();
 $perMod = new PermissionMod();
 ?>
+<?php
+if(getSession("userToken")['permission'] != 'Admin'){
+    echo '<script>window.location.assign("../controller/account/account.login.php")</script>';
+}
+?>
 <div class="container-fluid">
     <!--Start content manage student-->
     <div class="container main-academy-container">

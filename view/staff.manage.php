@@ -9,6 +9,11 @@ $academyMod = new AcademyMod();
 $classObj = new ClassObj();
 $classMod = new ClassMod();
 ?>
+<?php
+if(getSession("userToken")['permission'] != 'Admin'){
+    echo '<script>window.location.assign("../controller/account/account.login.php")</script>';
+}
+?>
 <div class="container-fluid">
     <!--Start content manage staff-->
     <div class="container main-academy-container">
