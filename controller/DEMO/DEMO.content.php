@@ -24,6 +24,7 @@
     <!--Start update class-->
     <?php
     require "../controller/DEMO/DEMO.update.php";
+
     ?>
     <!--End update class-->
 
