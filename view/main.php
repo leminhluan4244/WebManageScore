@@ -9,9 +9,8 @@
 <?php require_once '../controller/header.php'; ?>
 <?php require_once '../controller/permission/function.display.php'; ?>
 <?php
- if(empty(getSession("userToken")['permission'])){
-  echo '<script>window.location.assign("../controller/account/account.login.php")</script>';
- }
+ if(empty(getSession("userToken")['permission']))
+  redirect("../controller/account/account.login.php");
 ?>
 <div class="container main-container">
     <?php require_once '../controller/main/main.user.info.php'; ?>
