@@ -17,10 +17,12 @@ if (!empty($update) && ($_POST['score'] != 'NoneScore')) {
 
 <?php
 if(isset($_POST['btnUpdateSave'])) {
+    echo '<script> alert("hello");</script>';
     $scoresupdateOTP = new ScoresAddObj();
     $scoresupdateOTP->setScoresAddObj($_POST['updateIdScore'], $_POST['updateScoreName'], $_POST['updateScore'], $_POST['updateDesribe'], $_POST['updateItem'], $_POST['updateScoreManage']);
-    echo'<META http-equiv="refresh" content="0;URL=scoreAdd.manage.php">';
+   // echo'<META http-equiv="refresh" content="0;URL=scoreAdd.manage.php">';
 }
+else echo '<script> alert("không nhận được nút này");</script>';
 ?>
 
         <div id="updateScore" class="modal fade " tabindex="-1" role="dialog" aria-labelledby aria-hidden="true">

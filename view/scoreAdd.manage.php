@@ -10,8 +10,13 @@
           }
 
 ?>
+<?php
+//if(getSession("userToken")['permission'] != 'Admin'){
+//    echo '<script>window.location.assign("../controller/account/account.login.php")</script>';
+//}
+//?>
 <div class="container-fluid">
-    <!Start content manage student-->
+    <!--Start content manage student-->
     <div class="container main-academy-container">
         <div class="academy-action-list text-center">
 
