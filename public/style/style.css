@@ -51,6 +51,10 @@ footer {
 .div-login .form-control:focus {
   border-bottom: 1px solid #094E7E;
   transition: all 1s; }
+@media only screen and (max-width: 768px) {
+  .div-login #captcha-img {
+    margin-top: 5px;
+    text-align: center; } }
 
 .div-news .news-header {
   padding: 10px;

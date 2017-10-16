@@ -74,5 +74,5 @@ $finalScore += ($eachSummaryScore > $maxScore ? $maxScore: $eachSummaryScore);
 if (!$complete){
 	showMessage("Có thể có lỗi trong lúc lưu lại!!");
 }
-
-require_once '../controller/transcript/transcript.acad.update.final.score.php';
+if ($privilege == ACA_ADMIN)
+    require_once '../controller/transcript/transcript.acad.update.final.score.php';

@@ -7,6 +7,7 @@ require_once "../helper/account.helper.php";
 
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Quản Lý Điểm Rèn Luyệṇ</title>
     <title>Quản Lý Điểm rèn luyện Sinh viên</title>
     <link rel="stylesheet" href="../public/bootstrap/css/bootstrap.min.css">

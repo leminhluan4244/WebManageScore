@@ -98,6 +98,7 @@ class PractiseScoresMod {
      * @param $accountId
      * @param $semester
      * @param $year
+     * @return bool
      */
 	public function isPractiseScoresExisted($accountId, $semester, $year){
         $sql = "select count(*) as total from practisescores 

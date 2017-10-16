@@ -99,6 +99,13 @@ footer{
     border-bottom: 1px solid $main_darker;
     transition: all 1s;
   }
+
+  @media only screen and (max-width: 768px) {
+    #captcha-img{
+      margin-top: 5px;
+      text-align: center;
+    }
+  }
 }
 
 .div-news{

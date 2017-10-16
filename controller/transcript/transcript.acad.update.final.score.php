@@ -5,8 +5,8 @@
  * Date: 16/10/2017
  * Time: 10:40 AM
  */
-if ($privilege != ACA_ADMIN)
-    die();
+if (!defined("IN_TRS"))
+    die("Bad request!");
 $csm = new CalendarScoringMod();
 $psm = new PractiseScoresMod();
 

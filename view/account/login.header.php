@@ -10,7 +10,8 @@
 <html lang="en">
 <head>
 	<meta charset="UTF-8">
-	<!--	<title>Heje</title>-->
+		<title>Đăng nhập hệ thống</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
 	<script src="../../public/bootstrap/jquery-3.2.1.min.js"></script>
 	<script src="../../public/bootstrap/js/bootstrap.min.js"></script>
 <!--	<link rel="stylesheet" href="--><?php //echo $baseUrl; ?><!--/public/bootstrap/css/bootstrap.min.css">-->

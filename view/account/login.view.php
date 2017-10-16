@@ -37,7 +37,7 @@
 								<input name="captcha" required placeholder="Mã xác nhận" class="form-control">
 							</div>
 						</div>
-						<div class="col-sm-6">
+						<div class="col-sm-6" id="captcha-img">
 							<img src="../../controller/account/security/captcha.img.php" alt="Captcha" title="Click vào để đổi" data-toggle="tooltip" id="captcha">
 						</div>
 					</div>
