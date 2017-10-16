@@ -7,6 +7,7 @@
  */
 
 define("PATTERN_NAME", "/^[a-zA-Z 0-9àảãáạằẳẵắặầẩẫấậèẻẽéẹềểễếệìỉĩíịòỏõóọồổỗốộờởỡớợùủũúụừửữứựỳỷỹýỵoôơđưăâê]+$/i");
+define("SQL_STR", "/(select|insert|update|delete|from|where|into|and|or|values|order by)/i");
 
 /**
  * Hàm kiểm tra tên nhập vào có hợp lệ: bao gồm Khoảng trắng, Chữ Cái và Số
@@ -15,7 +16,7 @@ define("PATTERN_NAME", "/^[a-zA-Z 0-9àảãáạằẳẵắặầẩẫấậ�
  */
 
 function checkValidName($name){
-	return preg_match(PATTERN_NAME, $name) == 1;
+	return preg_match(PATTERN_NAME, $name) && !preg_match(SQL_STR, $name);
 }
 
 /**
