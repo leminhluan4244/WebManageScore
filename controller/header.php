@@ -14,7 +14,7 @@ require_once "../helper/account.helper.php";
 <!--    <link rel="stylesheet" href="../public/bootstrap/css/bootstrap-theme.min.css">-->
     <link rel="stylesheet" type="text/css" href="../public/style/dataTables.bootstrap.min.css">
     <script type="text/javascript" src="../public/bootstrap/jquery-3.2.1.min.js"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<!--    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>-->
     <script src="../public/js/jquery.dataTables.min_2.js"></script>
     <script src="../public/js/dataTables.bootstrap.min.js"></script>
     <script src="../public/bootstrap/js/bootstrap.min.js"></script>
