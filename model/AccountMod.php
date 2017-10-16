@@ -1052,11 +1052,29 @@ class AccountMod {
 		}
 		return $arr;
 	}
+	#json[]
+	public function getArray() {
+    $arr = $this->getAllAccount();
+		if (!empty($arr)){
+			$i = 0;
+			$json = [];
+			foreach ($arr as $key => $value) {
+				$json[$i++] = $this->findAccountByID($value->getIdAccount());
+			}
+		} else {
+    	return [];
+		}
+		return $json;
+	}
 }
 
 
 #*************************************************************************************************************************
+#require_once 'ConnectToSQL.php';
+#$require_once 'AccountObj.php';
 #$newStudent = new accountMod();
+#$arr = $newStudent->getAllAccount();
+#var_dump(json_encode($newStudent->getArray()));
 #$newPerson = new AccountObj('NoId', 'username', 'unknow', 'VN', 'Male', 113, '_@email.com', 'password', 'Quản lý chi hội');
 #var_dump($newStudent->checkLogin('NoId', 'password'));
 #echo '<br />';
@@ -1143,15 +1161,12 @@ class AccountMod {
 
 #var_dump($newStudent->findAccountByName('Đoàn Minh Nhựt'));
 
-//  #var_dump($newStudent->findAccountByID('B'));
-//require_once 'ConnectToSQL.php';
-//require_once 'AccountObj.php';
-//    $newacc = new AccountMod();
-//  $row=array();
-//  $row=$newacc->getClass("B1400704");
-//    foreach ($row as $key => $value) {
-//    echo $key . "->" . $value." <br>";
-//    }
+// $newacc = new AccountMod();
+// $row=array();
+// $row=$newacc->getClass("B1400704");
+// foreach ($row as $key => $value) {
+//  echo $key . "->" . $value." <br>";
+// }
 
 #var_dump($newStudent->findAccountByID('B1400704'));
 #*************************************************************************************************************************

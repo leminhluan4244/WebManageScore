@@ -107,5 +107,4 @@
    }
  }
  #$newStudent = new AccountObj();
- #var_dump($newStudent->get());
  ?>

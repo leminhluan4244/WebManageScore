@@ -88,7 +88,7 @@
                 <p>Nhập xuất dữ liệu</p>
             </a>
         </div>
-        <div id="import-export" class="col-sm-offset-2 col-sm-4 thumbnail" style="display: none;">
+        <div id="xem-diem" class="col-sm-offset-2 col-sm-4 thumbnail" style="display: none;">
             <a href="scoreAdd.manage.php" class="">
                 <img src="../public/img/score.png" width="70" alt="">
                 <p>Xem điểm</p>
@@ -96,19 +96,3 @@
         </div>
 	</div>
 </div>
-<?php
-echo '
-  <div id="import-export" class="col-sm-offset-2 col-sm-4 thumbnail" >
-            <a href="scoreAdd.manage.php" class="">
-                <img src="../public/img/import.png" width="70" alt="">
-                <p>Nhập xuất dữ liệu</p>
-            </a>
-        </div>
-        <div id="score-view" class="col-sm-offset-2 col-sm-4 thumbnail" >
-            <a href="scoreAdd.manage.php" class="">
-                <img src="../public/img/score.png" width="70" alt="">
-                <p>Xem điểm</p>
-            </a>
-        </div>
-  ';
-?>
