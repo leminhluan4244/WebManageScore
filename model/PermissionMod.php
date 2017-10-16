@@ -87,8 +87,8 @@ class PermissionMod
             while ($row = $result->fetch_assoc()) {
                 $permission = new PermissionObj();
                 $permission->setPosition($row["position"]);
-                $permission->getPower($row["power"]);
-                $permission->getSelected($row["selected"]);
+                $permission->setPower($row["power"]);
+                $permission->setSelected($row["selected"]);
                 $list[$k] = $permission;
                 $k++;
             }
@@ -96,6 +96,31 @@ class PermissionMod
         } else {
              //echo "The result of information processing is data false";
              return [];
+        }
+
+        $this->connSql->Stop();
+        return $list;
+    }
+    public function getPermissionByAccount($acc)
+    {
+        $sql = "SELECT * FROM Permission,Account WHERE Account.Permission_position = Permission.position and Account.idAccount = '".$acc."'";
+        $this->connSql->Connect();
+        $result = $this->connSql->conn->query($sql);
+
+        if ($result->num_rows > 0) {
+            $k = 0;
+            $list = array();
+            while ($row = $result->fetch_assoc()) {
+                $permission = new PermissionObj();
+                $permission->setPosition($row["position"]);
+                $permission->setPower($row["power"]);
+                $permission->setSelected($row["selected"]);
+                $list[$k] = $permission;
+                $k++;
+            }
+        } else {
+            //echo "The result of information processing is data false";
+            return [];
         }
 
         $this->connSql->Stop();
