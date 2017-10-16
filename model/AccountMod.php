@@ -1052,19 +1052,58 @@ class AccountMod {
 		}
 		return $arr;
 	}
-	#json[]
-	public function getArray() {
-    $arr = $this->getAllAccount();
-		if (!empty($arr)){
-			$i = 0;
-			$json = [];
-			foreach ($arr as $key => $value) {
-				$json[$i++] = $this->findAccountByID($value->getIdAccount());
-			}
-		} else {
-    	return [];
+
+	/*
+	* Phương thức findInformationAccountById: 
+	* Cung cấp thông tin chi tiết của một Account thông qua idAccount
+ 	* Coder: Phạm Hoài An
+ 	* Date: 15/07/2017
+ 	* Cập nhật: 15/07/2017
+ 	* Trạng thái: đã test thành công
+	*/
+	public function findInformationAccountByID($idAccount) {
+		$this->conn2sql->Connect();
+		$sql = "SELECT DISTINCT ac.idAccount
+								,ac.accountName
+								,ac.birthday
+								,ac.address
+								,ac.sex
+								,ac.phone
+								,ac.email
+								,ahc.Class_idClass
+								,c.className
+								,acm.academyName
+								,c.schoolYear 
+				from account ac, academy acm , account_has_class ahc, class c 
+				where ac.idAccount= '" . $idAccount . "' and 
+						ahc.Account_idAccount = '" . $idAccount . "' and
+						c.idClass = (SELECT Class_idClass 
+										from account_has_class 
+										WHERE Account_idAccount = '" . $idAccount . "') and 
+						acm.idAcademy = (SELECT Academy_idAcademy 
+											from account_has_academy 
+											WHERE Account_idAccount = '" . $idAccount . "')";
+		$result = $this->conn2sql->conn->query($sql);
+		$this->conn2sql->Stop();
+		$row = $result->fetch_row();
+		if ($result->num_rows == 0) {
+			return array();
 		}
-		return $json;
+		$i = 0;
+		$accountArr = array(
+			'idAccount' => $row[$i++],
+			'accountName' => $row[$i++],
+			'birthday' => $row[$i++],
+			'address' => $row[$i++],
+			'sex' => $row[$i++],
+			'phone' => $row[$i++],
+			'email' => $row[$i++],
+			'Class_idClass' => $row[$i++],
+			'className' => $row[$i++],
+			'academyName' => $row[$i++],
+			'schoolYear' => $row[$i++]
+		);
+		return $accountArr;
 	}
 }
 
