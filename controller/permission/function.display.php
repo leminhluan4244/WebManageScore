@@ -23,27 +23,30 @@
        $("#div-permission").show();
        $("#div-schedule-manage").show();
        $("#import-export").show();
-       $("#xem-diem").show();
        break;
 
      case 'Cố vấn học tập':
       $("#cham-diem-ren-luyen").show();
-      $("#them-bang-cong-tru").show()
+      $("#them-bang-cong-tru").show();
+      $("#xem-diem").show();
       break;
 
      case 'Quản lý chi hội':
       $("#quan-ly-thanh-vien-chi-hoi").show();
       $("#cham-diem-ren-luyen").show();
       $("#them-bang-cong-tru").show();
+      $("#xem-diem").show();
       break;
 
      case 'Quản lý khoa':
       $("#cham-diem-ren-luyen").show();
-      $("#them-bang-cong-tru").show()
+      $("#them-bang-cong-tru").show();
+      $("#xem-diem").show();
       break;
 
       case 'Sinh viên':
        $("#cham-diem-ren-luyen").show();
+       $("#xem-diem").show();
        break;
 
       case 'default':
@@ -55,6 +58,7 @@
           switch ($value) {
             case 'Chấm điểm rèn luyện cá nhân sinh viên':
               echo '$("#cham-diem-ren-luyen").show();';
+              echo '$("#xem-diem").show();';
               break;
 
             case 'Chấm điểm cho một lớp':
