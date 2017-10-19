@@ -61,6 +61,7 @@
 //    }
 //?>
 <?php
-    echo ;
+    echo $_GET['idScore'];
+
 ?>
 

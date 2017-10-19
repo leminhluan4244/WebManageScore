@@ -98,7 +98,7 @@
     </div>';
             }
     }
-echo '<a class="btn btn-danger col align-self-center " data-toggle="modal" data-target="#deleteClass">
+echo '<a class="btn btn-danger col align-self-center " data-toggle="modal" data-target="#deleteBranch">
             <span class="glyphicon glyphicon-trash"></span> Xóa
         </a>';
 ?>

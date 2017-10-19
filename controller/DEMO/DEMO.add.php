@@ -20,7 +20,7 @@ if(isset($_POST['btnAdd'])) {
                 <h4 class="modal-title">Thêm mới bảng điểm</h4>
             </div>
             <div class="modal-body ">
-                <form action="scoreAdd.manage.php" method="post">
+                <form action="DEMO.php" method="post">
 
                     <fieldset class="form-group">
                         <p class="text-left "><b>Mã bảng</b></p>
