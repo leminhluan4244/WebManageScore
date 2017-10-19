@@ -8,5 +8,10 @@
 ?>
 <script src="../../public/js/common.js"></script>
 <script src="../../public/js/account.js"></script>
+<script>
+    $(function(){
+        $('[data-toggle="tooltip"]').tooltip();
+    });
+</script>
 </body>
 </html>

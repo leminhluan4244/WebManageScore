@@ -22,6 +22,6 @@ $(function () {
         return true;
     });
     $('#captcha').click(function () {
-        $(this).attr('src', '../../controller/account/security/captcha.img.php');
+        $(this).attr('src', '../../controller/account/security/captcha.img.php?a=' + Math.random());
     });
 });

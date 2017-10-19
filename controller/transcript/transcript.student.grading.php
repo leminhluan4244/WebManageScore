@@ -18,7 +18,7 @@ if (isSubmit("saveTranscript")){
 #thêm bảng điểm
 if (!$transcriptMod->isTranscriptExist($accountId, $structureLeafs)){
 	$transcriptMod->generateTranscript($accountId, $structureLeafs);
-	showMessage("Generated.");
+//	showMessage("Generated.");
 }
 
 $saMod = new ScoresAddMod();

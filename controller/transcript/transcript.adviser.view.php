@@ -10,11 +10,13 @@ if (!defined("IN_TRS"))
 if ($privilege != ADVISER)
 	redirect("main.php");
 
-$clsMod = new ClassMod();
-$listStudent = $clsMod->getListStudentManagedByAdviser(getLoggedAccountId());
+$listStudent = [];//$clsMod->getListStudentManagedByAdviser(getLoggedAccountId());
+require_once "../controller/transcript/load.list.student.by.class.php";
 ?>
 <div class="container">
-    <h4 class="text-center text-primary">Danh sách sinh viên</h4>
+    <h4 class="text-center text-primary">Danh sách sinh viên
+        <?php echo !empty($className) ? " lớp: " . $className: "" ?>
+    </h4>
     <div class="table-view">
         <table id="table-grading-student-by-adviser" class="table table-condensed table-bordered table-striped">
             <thead>
@@ -49,7 +51,5 @@ $listStudent = $clsMod->getListStudentManagedByAdviser(getLoggedAccountId());
 </div>
 
 <script>
-    $(function () {
-        $('#table-grading-student-by-adviser').dataTable();
-    })
+    $('#table-grading-student-by-adviser').dataTable();
 </script>

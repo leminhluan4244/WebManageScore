@@ -89,7 +89,7 @@
             </a>
         </div>
         <div id="xem-diem" class="col-sm-offset-2 col-sm-4 thumbnail" style="display: none;">
-            <a href="scoreAdd.manage.php" class="">
+            <a href="practise.manage.php" class="">
                 <img src="../public/img/score.png" width="70" alt="">
                 <p>Xem điểm</p>
             </a>

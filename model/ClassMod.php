@@ -270,6 +270,7 @@ class ClassMod {
 		return $listStudent;
 	}
 
+	# có thể không dùng
 	public function getListClassIdOfAdviser($adviserId){
 		$sql = "select Class_idClass as classId from account_has_class
 				WHERE Account_idAccount = '$adviserId'";
@@ -284,6 +285,7 @@ class ClassMod {
 		return $listCLassId;
 	}
 
+	# có thể không dùng
 	public function getListStudentManagedByAdviser($adviserId){
 		$listClassId = $this->getListClassIdOfAdviser($adviserId);
 		$listStudent = [];
@@ -291,6 +293,25 @@ class ClassMod {
 			$listStudent = array_merge($listStudent, $this->getListStudentInClass($classId));
 		}
 		return $listStudent;
+	}
+
+	public function getListClassOfAdviser($adviserId){
+		$sql = "select idClass, className, schoolYear from account_has_class ac inner join class c 
+				on ac.Class_idClass = c.idClass
+				where ac.Account_idAccount = '$adviserId';";
+		$this->connSql->Connect();
+		$result = $this->connSql->conn->query($sql);
+		$this->connSql->Stop();
+		$output = [];
+		if (!empty($result))
+			while ($row = $result->fetch_assoc()){
+				$class = new ClassObj();
+				$class->setIdClass($row["idClass"]);
+				$class->setClassName($row["className"]);
+				$class->setSchoolYear($row["schoolYear"]);
+				$output[] = $class;
+			}
+		return $output;
 	}
 }
 
