@@ -4,7 +4,7 @@ if(isset($_POST['btnUpdate'])) {
     $classM = new ClassMod();
     $classO->setClassObj($_POST['updateIdClass'], $_POST['updateClassName'],$_POST['updateSchoolYear'], $_POST['updateAcademy']);
     $classM->updateClass($classO);
-    echo'<META http-equiv="refresh" content="0;URL=class.manage.php">';
+    echo'<META http-equiv="refresh" content="0;URL=DEMO.php">';
 }
 $classM = new ClassMod();
 $list = $classM->getClass();
@@ -80,6 +80,6 @@ if (!empty($classO)) {
 <script>
     $(function () {
         $('#updateClass').modal('toggle');
-        window.history.pushState({path: 'class.manage.php'}, '', 'class.manage.php');
+        window.history.pushState({path: 'DEMO.php'}, '', 'DEMO.php');
     });
 </script>

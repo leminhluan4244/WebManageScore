@@ -38,7 +38,7 @@
             '.$value->getScores().'
         </td>
         <td>
-            <a href="?idScore='.$value->getIdScore().'" class="btn btn-primary btn-sm"><span class="glyphicon glyphicon-pencil"></span></a>
+            <a href="DEMO2.php?idScore='.$value->getIdScore().'" class="btn btn-primary btn-sm"><span class="glyphicon glyphicon-pencil"></span></a>
         </td>
         <td><input type="checkbox" name="xoa[]" id="'.$value->getIdScore().'" value="'.$value->getIdScore().'"/> </td>
        

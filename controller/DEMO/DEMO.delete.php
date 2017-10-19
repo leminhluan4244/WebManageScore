@@ -1,19 +1,15 @@
+
 <?php
-
-if (!empty($delete)){
-    echo "
-    <script>
-        $(function(){
-            $('#deleteScore').modal('show');
-        });
-    </script>";
-
-
+if(isset($_POST['xoa'])) {
+    $scoresdeleteMT = new ScoresAddMod();
+foreach ($_POST['xoa'] as $key=> $value) {
+    $scoresdeleteOT = new ScoresAddObj();
+    $scoresdeleteOT->setIdScore($value);
+    $scoresdeleteMT->deleteScoresAdd($scoresdeleteOT);
 }
-
-
+    echo'<META http-equiv="refresh" content="0;URL=DEMO.php">';
+}
 ?>
-
 <!--Start delete Class-->
 <div id="deleteScore" class="modal fade " tabindex="-1" role="dialog" aria-labelledby aria-hidden="true">
     <div class="modal-dialog">
@@ -25,29 +21,18 @@ if (!empty($delete)){
             <div class="modal-body">
                 <h4>Hành động này cần xác nhận: Không thể hoàn tác!</h4>
                 <p>Vui lòng kiểm tra cẩn thận!</p>
-                <form action="" method="post">
-
-                    <div class="modal-footer">
-                        <input type="hidden" name="deleteClass" id="deleteClass">
-                        <button type="submit" name="deleteYes" class="btn btn-danger">Đồng ý</button>
-                        <button type="button" class="btn btn-default" data-dismiss="modal">Không</button>
-                    </div>
-                </form>
+                <div class="modal-footer">
+                    <input type="hidden" name="deleteClass" id="deleteClass">
+                    <button type="submit" name="deleteYes" onclick="submitform();" class="btn btn-danger">Đồng ý</button>
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Không</button>
+                </div>
             </div>
         </div>
     </div>
-    <?php
-    if(isset($_POST['deleteYes'])) {
-        $scoresdeleteMT = new ScoresAddMod();
-        $scoresdeleteOT = new ScoresAddObj();
-        $scoresdeleteOT->getIdScore($_POST['score']);
-        $scoresdeleteMT->deleteScoresAdd($scoresdeleteOT);
-
-        //  echo'<META http-equiv="refresh" content="0;URL=scoreAdd.manage.php">';
-
-    }
-    ?>
 </div>
-
-
+<script>
+    function submitform() {
+        $('#manageForm').submit();
+    }
+</script>
 <!--End delete Class-->

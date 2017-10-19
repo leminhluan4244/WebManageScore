@@ -60,7 +60,6 @@ class ScoresAddMod {
 
 		$sql = "DELETE FROM ScoresAdd
 						WHERE idScore='" . $cores->getIdScore() . "';";
-
 		$this->connSql->Connect();
 		if ($this->connSql->conn->query($sql) === TRUE) {
 			// echo "Deletion is successful! ";
