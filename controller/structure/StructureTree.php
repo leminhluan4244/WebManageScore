@@ -240,7 +240,7 @@ class StructureTree {
 			$html = "<td colspan='2'>" . str_replace("-", "", $this->data[$nodeId]["itemName"]) . "</td>";
 		$html .=
 			"<td>
-				<form action='../controller/structure/structure.delete.php' method='post'>
+				<form action='?a=delete' method='post'>
 					<input type='hidden' name='id' value='{$this->data[$nodeId]["idItem"]}'>
 					<input type='hidden' name='requestName' value='delete'>
 					<a href=\"?a=edit&id={$this->data[$nodeId]["idItem"]}\" class='btn btn-primary btn-sm'>Sửa</a>

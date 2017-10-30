@@ -19,7 +19,7 @@ if (!empty($id)) {
 } else redirect("structure.editor.php");
 
 if (isSubmit('save')) {
-
+    $error = false;
 	$idItem = getPOSTValue('idItem');
 	$itemName = getPOSTValue('itemName');
 	$score = (int)getPOSTValue('score');
@@ -28,10 +28,24 @@ if (isSubmit('save')) {
 	$structObj = new StructureObj();
 	$structObj->setStructureObj($idItem, $itemName, $score, "", $idParent, $scoreDefault);
 	if (trim($idItem, " ") == "" || empty(trim($itemName, " ")) || trim($idParent, " ") == ""){
+	    $error = true;
 		showMessage("Hãy điền đầy đủ thông tin!");
-	} else if ($tree->isAncestor($idItem, $idParent))
+	} else if ($tree->isAncestor($idItem, $idParent)){
 	    showMessage("Mục cha đang chọn là mục con của mục đang chỉnh sửa");
-    else {
+	    $error = true;
+	}
+	if ($idParent != ST_ROOT){
+		$parentNode = $structures[$idParent];
+		$maxScoreAllowed = $structures[$tree->getHighestAncestor($parentNode)]["scores"];
+	} else {
+		$maxScoreAllowed = 100;
+	}
+	if ($score > $maxScoreAllowed){
+		$error = true;
+		showMessage("Điểm số của mục này không được lớn hơn quy định là $maxScoreAllowed");
+	}
+	
+    if (!$error) {
 		if ($model->updateStructure($structObj)) {
 			showMessage("Cập nhật thành công!!");
 		} else

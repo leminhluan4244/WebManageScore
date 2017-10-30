@@ -15,17 +15,25 @@ if (isSubmit('save')){
 	$score = (int)getPOSTValue('score');
 	$idParent = getPOSTValue('idParent');
 	$scoreDefault = (int)getPOSTValue('scoreDefault');
+	if (!preg_match('/[A-Za-z0-9._]+/', $idItem)){
+	    $error = true;
+	    showMessage("Mã mục điểm không hợp lệ!");
+    }
 	if (trim($idItem, " ") == "" ||
 		empty(trim($itemName, " ")) || trim($idParent, " ") == ""){
 	    $error = true;
 		showMessage("Hãy điền đầy đủ thông tin!");
 	}
-    $parentNode = $structures[$idParent];
-	$maxScoreAllowed = $structures[$tree->getHighestAncestor($parentNode)]["scores"];
-	if (trim($score > $maxScoreAllowed)){
+    if ($idParent != ST_ROOT){
+		$parentNode = $structures[$idParent];
+		$maxScoreAllowed = $structures[$tree->getHighestAncestor($parentNode)]["scores"];
+    } else {
+        $maxScoreAllowed = 100;
+    }
+	if ($score > $maxScoreAllowed){
 		$error = true;
 		showMessage("Điểm số của mục này không được lớn hơn quy định là $maxScoreAllowed");
-    }
+	}
 	if (empty($error)){
 		$structObj = new StructureObj();
 		$structObj->setStructureObj($idItem, $itemName, $score, "", $idParent, $scoreDefault);
@@ -43,8 +51,9 @@ if (isSubmit('save')){
 	<div class="col-sm-offset-2 col-sm-8">
 		<form method="post">
 			<div class="form-group">
-				<label>Mã mục điểm</label>
-				<input class="form-control" required name="idItem">
+				<label>Mã mục điểm </label>
+                <span class="help-block">(Chỉ chấp nhận ký tự số, chữ, đấu chấm (.) và gạch dưới (_))</span>
+				<input class="form-control" required name="idItem" pattern="[a-zA-Z0-9._]+">
 			</div>
 			<div class="form-group">
 				<label>Tên mục điểm</label>
