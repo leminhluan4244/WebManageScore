@@ -15,6 +15,7 @@
         <th>Tên bảng điểm</th>
         <th>Điểm</th>
         <th>Tùy chỉnh</th>
+        <th>Sinh viên chịu tác động</th>
         <th>Chọn tất cả <br /><input type="checkbox" onClick="toggle(this)"></th>
     </tr>
     </thead>
@@ -39,6 +40,9 @@
         </td>
         <td>
             <a href="DEMO2.php?idScore='.$value->getIdScore().'" class="btn btn-primary btn-sm"><span class="glyphicon glyphicon-pencil"></span></a>
+        </td>
+        <td>
+            <a href="DEMO2.php?idScore='.$value->getIdScore().'" class="btn btn-primary btn-sm"><span class="glyphicon glyphicon-user"></span></a>
         </td>
         <td><input type="checkbox" name="xoa[]" id="'.$value->getIdScore().'" value="'.$value->getIdScore().'"/> </td>
        
