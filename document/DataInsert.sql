@@ -13,15 +13,15 @@ INSERT INTO `permission` (`position`, `power`,`selected`) VALUES ('Default', 'No
 
 /* Dữ liệu mẫu 4 Admin  */
 INSERT INTO `account` (`idAccount`, `accountName`, `birthday`, `address`, `sex`, `phone`, `email`, `password`, `Permission_position`)
-VALUES ('Admin01', 'Lê Minh Luân', '1980-01-16', 'An Khánh - Ninh Kiều Cần Thơ', 'Nữ', '0964054244', 'pplan@cit.ctu.edu.vn', '81dc9bdb52d04dc20036dbd8313ed055', 'Admin');
+VALUES ('Admin01', 'Lê Minh Luân', '1980-01-16', 'An Khánh - Ninh Kiều Cần Thơ', 'Nam', '0964054244', 'pplan@cit.ctu.edu.vn', '81dc9bdb52d04dc20036dbd8313ed055', 'Admin');
 INSERT INTO `account` (`idAccount`, `accountName`, `birthday`, `address`, `sex`, `phone`, `email`, `password`, `Permission_position`)
-VALUES ('Admin02', 'Nguyễn Minh Nhựt', '1980-01-16', 'An Khánh - Ninh Kiều Cần Thơ', 'Nữ', '0964054244', 'pplan@cit.ctu.edu.vn', '81dc9bdb52d04dc20036dbd8313ed055', 'Admin');
+VALUES ('Admin02', 'Nguyễn Minh Nhựt', '1980-01-16', 'An Khánh - Ninh Kiều Cần Thơ', 'Nam', '0964054244', 'pplan@cit.ctu.edu.vn', '81dc9bdb52d04dc20036dbd8313ed055', 'Admin');
 INSERT INTO `account` (`idAccount`, `accountName`, `birthday`, `address`, `sex`, `phone`, `email`, `password`, `Permission_position`)
-VALUES ('Admin03', 'Nguyễn Tấn Phát', '1980-01-16', 'An Khánh - Ninh Kiều Cần Thơ', 'Nữ', '0964054244', 'pplan@cit.ctu.edu.vn', '81dc9bdb52d04dc20036dbd8313ed055', 'Admin');
+VALUES ('Admin03', 'Nguyễn Tấn Phát', '1980-01-16', 'An Khánh - Ninh Kiều Cần Thơ', 'Nam', '0964054244', 'pplan@cit.ctu.edu.vn', '81dc9bdb52d04dc20036dbd8313ed055', 'Admin');
 INSERT INTO `account` (`idAccount`, `accountName`, `birthday`, `address`, `sex`, `phone`, `email`, `password`, `Permission_position`)
-VALUES ('Admin04', 'Pham Hoài An', '1980-01-16', 'An Khánh - Ninh Kiều Cần Thơ', 'Nữ', '0964054244', 'pplan@cit.ctu.edu.vn', '81dc9bdb52d04dc20036dbd8313ed055', 'Admin');
+VALUES ('Admin04', 'Pham Hoài An', '1980-01-16', 'An Khánh - Ninh Kiều Cần Thơ', 'Nam', '0964054244', 'pplan@cit.ctu.edu.vn', '81dc9bdb52d04dc20036dbd8313ed055', 'Admin');
 INSERT INTO `account` (`idAccount`, `accountName`, `birthday`, `address`, `sex`, `phone`, `email`, `password`, `Permission_position`)
-VALUES ('Admin05', 'Huỳnh Hoàng Thơ', '1980-01-16', 'An Khánh - Ninh Kiều Cần Thơ', 'Nữ', '0964054244', 'pplan@cit.ctu.edu.vn', '81dc9bdb52d04dc20036dbd8313ed055', 'Admin');
+VALUES ('Admin05', 'Huỳnh Hoàng Thơ', '1980-01-16', 'An Khánh - Ninh Kiều Cần Thơ', 'Nam', '0964054244', 'pplan@cit.ctu.edu.vn', '81dc9bdb52d04dc20036dbd8313ed055', 'Admin');
 
 /*Dữ liệu mẫu 30 Tài khoản sinh viên*/
 INSERT INTO `account` (`idAccount`, `accountName`, `birthday`, `address`, `sex`, `phone`, `email`, `password`, `Permission_position`)

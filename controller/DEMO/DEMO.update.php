@@ -1,85 +1,81 @@
 <?php
 if(isset($_POST['btnUpdate'])) {
-    $classO = new classObj();
-    $classM = new ClassMod();
-    $classO->setClassObj($_POST['updateIdClass'], $_POST['updateClassName'],$_POST['updateSchoolYear'], $_POST['updateAcademy']);
-    $classM->updateClass($classO);
+
+    $scoresAddO = new ScoresAddObj();
+    $scoresAddM = new ScoresAddMod();
+    if($_POST['addTranscript']!= 'NoneTranscript'){
+        $scoresAddO->setScoresAddObj($_POST['addScoreID'],$_POST['addScoreName'],$_POST['addScore'],$_POST['addDescribe'],$_POST['addTranscript'],$_POST['addID']);
+        $scoresAddM->addScoresAdd($scoresAddO);
+    }
+    #thêm dữ liệu và truyền đi
     echo'<META http-equiv="refresh" content="0;URL=DEMO.php">';
 }
-$classM = new ClassMod();
-$list = $classM->getClass();
-$idClass = isset($_GET['idClass']) ? $_GET['idClass'] : false;
-if ($idClass) {
-    $classO = new ClassObj();
-    $classO = $classM->findClassByID($idClass);
-}
-
-
-function checkO($stringA, $temp)
-{
-    if ($stringA == $temp) {
-        return 'selected="selected"';
-    }
-    return "";
-}
-if (!empty($classO)) {
-    echo '
-<div id="updateClass" class="modal fade " tabindex="-1" role="dialog" aria-labelledby aria-hidden="true">
+?>
+<div id="addScore" class="modal fade " tabindex="-1" role="dialog" aria-labelledby aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
+
                 <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                <h4 class="modal-title">Cập nhật lớp</h4>
+                <h4 class="modal-title">Thêm mới bảng điểm</h4>
             </div>
             <div class="modal-body ">
-                <form action="class.manage.php" method="post">
-                
+                <form action="DEMO.php" method="post">
+
                     <fieldset class="form-group">
-                        <p class="text-left"><b>Mã lớp</b></p>
-                        <input type="text" class="form-control" name="updateIdClass" id="updateIdClass"
-                               placeholder="Nhập mã lớp" value="' . $classO->getIdClass() . '" readonly required autofocus>
+                        <p class="text-left "><b>Mã bảng</b></p>
+                        <input type="text" class="form-control" name="addScoreID" id="addScoreID"
+                               placeholder="Nhập id cho bảng điểm này" required autofocus>
+
                     </fieldset>
 
                     <fieldset class="form-group">
-                        <p class="text-left "><b>Tên lớp</b></p>
-                        <input type="text" class="form-control" name="updateClassName" id="updateClassName"
-                               placeholder="Nhập tên lớp" value="' . $classO->getClassName() . '" required autofocus>
+                        <p class="text-left"><b>Tên bảng</b></p>
+                        <input type="text" class="form-control" name="addScoreName" id="addScoreName"
+                               placeholder="Nhập tên bảng" required autofocus>
+                    </fieldset>
+
+                    <fieldset class="form-group">
+                        <p class="text-left "><b>Điểm</b></p>
+                        <input type="number" class="form-control" name="addScore" id="addScore"
+                               placeholder="Nhập điểm (nếu là điểm trừ vui lòng nhập số âm)" min="-20" max="20" required autofocus>
 
                     </fieldset>
-                    
-                    <fieldset class="form-group">
-                        <p class="text-left"><b>Niên khóa</b></p>
-                        <input type="text" class="form-control" name="updateSchoolYear" id="updateSchoolYear"
-                               placeholder="Nhập mã niên khóa" value="' . $classO->getSchoolYear() . '" required autofocus>
+
+                    <area class="form-group">
+                    <p class="text-left "><b>Mô tả</b></p>
+                    <textarea type="" class="form-control" name="addDescribe" id="addDescribe"
+                              placeholder="Nhập mô tả lý do thêm bảng này" required autofocus></textarea>
                     </fieldset>
-                    
+
                     <fieldset class="form-group">
-                        <p class="text-left"><b>Khoa - viện</b></p>
-                        <select class="form-control" name="updateAcademy" id="updateAcademy">';
-                            $listAcademy = array();
-                            $academyMod = new AcademyMod();
-                            $academyMod = new AcademyMod();
-                            $listAcademy = $academyMod->getAcademy();
-                            foreach ($listAcademy as $key => $value){
-                                echo'<option '.checkO($value->getIdAcademy(), $classO->getAcademy_idAcademy()).' value="'.$value->getIdAcademy().'">'.$value->getAcademyName().'</option>';
+                        <p class="text-left"><b>Mục tác động trong bảng điểm</b></p>
+                        <select class="form-control" name="addTranscript" id="addTranscript">
+                            <option value="NoneTranscript">--Chọn mục--</option>
+                            <?php
+                            $transMod = new TranscriptMod();
+                            $listTr = $transMod->getTranscriptAllObj();
+                            foreach ($listTr as $key => $value){
+                                echo '<option value="'.$value->getIdItem().'">'.$value->getItemName().'</option>';
                             }
-                       echo' </select>
+                            ?>
+                        </select>
                     </fieldset>
+
+                    <fieldset class="form-group">
+                        <p class="text-left "><b>Mã người lập bảng điểm</b></p>
+                        <input type="text" class="form-control" name="addID" id="addID"
+                               value="<?php echo $idLogin?>" readonly>
+
+                    </fieldset>
+
                     <div class="modal-footer">
                         <button type="button" class="btn btn-default" data-dismiss="modal">Đóng</button>
-                        <button type="submit" class="btn btn-primary" name="btnUpdate">Sửa</button>
+                        <button type="submit" class="btn btn-primary" name="btnAdd">Thêm</button>
                     </div>
                 </form>
             </div>
         </div>
     </div>
-</div>';
-
-}
-?>
-<script>
-    $(function () {
-        $('#updateClass').modal('toggle');
-        window.history.pushState({path: 'DEMO.php'}, '', 'DEMO.php');
-    });
-</script>
+</div>
+<!-- End add Class-->
