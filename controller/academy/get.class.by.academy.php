@@ -11,6 +11,11 @@ require_once $rootUri . '/helper/common.helper.php';
 
 if (isAjaxRequest()){
 	require_once $rootUri . '/helper/form.helper.php';
+	require_once $rootUri . '/helper/account.helper.php';
+	if (!isLogged() || getInfo('permission') !== "Admin"){
+		die();
+	}
+
 	$acaId = getGETValue('id');
 	if (!isValidAcademyId($acaId))
 		die('{}');

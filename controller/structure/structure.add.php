@@ -9,19 +9,28 @@ if (!defined("IN_STR"))
     die("Bad request!!!");
 $structures = $tree->getData();
 if (isSubmit('save')){
+    $error = false;
 	$idItem = getPOSTValue('idItem');
 	$itemName = getPOSTValue('itemName');
 	$score = (int)getPOSTValue('score');
 	$idParent = getPOSTValue('idParent');
 	$scoreDefault = (int)getPOSTValue('scoreDefault');
 	if (trim($idItem, " ") == "" ||
-            empty(trim($itemName, " ")) || trim($idParent, " ") == ""){
-	    showMessage("Hãy điền đầy đủ thông tin!");
-    } else {
+		empty(trim($itemName, " ")) || trim($idParent, " ") == ""){
+	    $error = true;
+		showMessage("Hãy điền đầy đủ thông tin!");
+	}
+    $parentNode = $structures[$idParent];
+	$maxScoreAllowed = $structures[$tree->getHighestAncestor($parentNode)]["scores"];
+	if (trim($score > $maxScoreAllowed)){
+		$error = true;
+		showMessage("Điểm số của mục này không được lớn hơn quy định là $maxScoreAllowed");
+    }
+	if (empty($error)){
 		$structObj = new StructureObj();
 		$structObj->setStructureObj($idItem, $itemName, $score, "", $idParent, $scoreDefault);
 		if ($model->addStructure($structObj)) {
-		    showMessage("Thêm thành công!!");
+			showMessage("Thêm thành công!!");
 		} else
 			showMessage("Thêm thất bại, thử lại sau!!");
 		softRedirect("structure.editor.php");
