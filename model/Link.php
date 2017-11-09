@@ -33,4 +33,6 @@ require_once "../model/ScoresAddHasAccountObj.php";
 require_once "../model/ScoresAddHasAccountMod.php";
 require_once "../model/yearsSemesterMod.php";
 require_once "../model/yearsSemesterObj.php";
+require_once "../model/ImageMod.php";
+require_once "../model/ImageObj.php";
 ?>

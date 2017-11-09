@@ -72,7 +72,6 @@ $accountId = getLoggedAccountId();
 
 if ($privilege == STUDENT) {
 	require_once '../controller/transcript/transcript.student.grading.php';
-	require_once 'scoreAdd.list.view.php';
 } else {
 	#ông này là cố vấn hoặc quản lý khoa
 	$action = isset($_GET['a']) ? $_GET['a'] : 'view';

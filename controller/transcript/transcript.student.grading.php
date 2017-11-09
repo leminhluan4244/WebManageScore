@@ -39,3 +39,9 @@ $trTree->generateLastChildHTML();
 <h4 class="text-center text-primary">Chấm điểm rèn luyện cá nhân</h4>
 
 <?php require_once '../controller/transcript/transcript.view.php'; ?>
+
+<?php require_once 'scoreAdd.list.view.php'; ?>
+
+<?php require_once '../controller/transcript/evidence.image/upload.php'; ?>
+<?php require_once '../controller/transcript/evidence.image/view.php'; ?>
+

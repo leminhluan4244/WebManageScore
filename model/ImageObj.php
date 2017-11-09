@@ -11,51 +11,60 @@ class ImageObj
     private $Account_idAccount;
     private $Transcript_idItem;
 
-    //Thêm một hình ảnh vào trường hình ảnh
-    public function setImage($Image)
-    {
-        $this->Image = $Image;
-    }
+	/**
+	 * @return mixed
+	 */
+	public function getImage() {
+		return $this->Image;
+	}
 
-    //Trả ra hình ảnh
-    public function getImage()
-    {
-        return $this->Image;
-    }
+	/**
+	 * @param mixed $Image
+	 */
+	public function setImage($Image) {
+		$this->Image = $Image;
+	}
 
-    //Thêm dữ liệu cho trường mã sinh viên
-    public function setAccount_idAccount($id)
-    {
-        $this->Account_idAccount = $id;
-    }
+	/**
+	 * @return mixed
+	 */
+	public function getAccountIdAccount() {
+		return $this->Account_idAccount;
+	}
 
-    //Trả ra dữ liệu kiểu chuỗi trường mã sinh viên
-    public function getAccount_idAccount()
-    {
-        return $this->Account_idAccount;
-    }
-    //Thêm dữ liệu kiểu chuỗi cho trường mục điểm
-    public function setTranscript_idItem($id)
-    {
-        $this->Structure_idItem = $id;
-    }
+	/**
+	 * @param mixed $Account_idAccount
+	 */
+	public function setAccountIdAccount($Account_idAccount) {
+		$this->Account_idAccount = $Account_idAccount;
+	}
 
-    //Trả ra dữ liệu kiểu chuỗi cho trường mục điểm
-    public function getStructure_idItem()
-    {
-        return $this->Transcript_idItem;
-    }
+	/**
+	 * @return mixed
+	 */
+	public function getTranscriptIdItem() {
+		return $this->Transcript_idItem;
+	}
+
+	/**
+	 * @param mixed $Transcript_idItem
+	 */
+	public function setTranscriptIdItem($Transcript_idItem) {
+		$this->Transcript_idItem = $Transcript_idItem;
+	}
+
+
 
     //Nhận dữ liệu cho tất cả các trường của ảnh
     public function setImageObj($Image, $Account_idAccount, $tran)
     {
         $this->setImage($Image);
-        $this->setAccount_idAccount($Account_idAccount);
-        $this->setTranscript_idItem($tran);
+        $this->setAccountIdAccount($Account_idAccount);
+        $this->setTranscriptIdItem($tran);
     }
 
     //Trả về dữ liệu kiểu đối tượng ảnh
-    public function getIamgeObj()
+    public function getImageObj()
     {
         return $this;
     }

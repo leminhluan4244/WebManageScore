@@ -41,6 +41,8 @@ footer {
     font-size: 14px !important;
     text-align: center;
     vertical-align: middle; }
+  #table-score thead tr th:last-child {
+    min-width: 100px; }
 #table-score tbody {
   font-size: 13px; }
   #table-score tbody .section-1 {

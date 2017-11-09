@@ -34,12 +34,19 @@ if (isSubmit('save')) {
 	    showMessage("Mục cha đang chọn là mục con của mục đang chỉnh sửa");
 	    $error = true;
 	}
+
+	if ($scoreDefault > $score){
+		$error = true;
+		showMessage("Điểm mặc định không được lớn hơn điểm quy định");
+	}
+
 	if ($idParent != ST_ROOT){
 		$parentNode = $structures[$idParent];
 		$maxScoreAllowed = $structures[$tree->getHighestAncestor($parentNode)]["scores"];
 	} else {
 		$maxScoreAllowed = 100;
 	}
+
 	if ($score > $maxScoreAllowed){
 		$error = true;
 		showMessage("Điểm số của mục này không được lớn hơn quy định là $maxScoreAllowed");

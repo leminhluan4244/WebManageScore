@@ -57,33 +57,47 @@ if (empty($trTree))
     </form>
 </div>
 <div class="navigator" id="nav">
-<!--    <a href="" id="top" class="link-nav"><span class="glyphicon glyphicon-chevron-up"></span> </a>-->
-<!--    <a href="" id="prev" class="link-nav"></a>-->
-<!--    <a href="" id="next" class="link-nav"></a>-->
-<!--    <a href="" id="bot" class="link-nav"><span class="glyphicon glyphicon-chevron-down"></span> </a>-->
-
-    <a href="#viewScoreAdd" class="link-nav">Điểm cộng</a>
+    <a href="" id="prev" class="link-nav">Trước</a>
+    <a href="" id="next" class="link-nav">Sau</a>
+    <a href="#diem-cong" class="link-nav">Điểm cộng</a>
+    <a href="#minh-chung" class="link-nav">Minh chứng</a>
 </div>
 
 <script>
+    var currentProvIdx = 0;
+    var provisionRef = [];
     $(function(){
         $('[data-toggle="tooltip]').tooltip();
         var provisions = $('.section-1');
         var html = "";
         $.each(provisions, function(i, provision){
             if (provision.id !== "")
-                html += '<a href="#' + provision.id + '" class="link-nav">' + toNumber(provision.id) + '</a>';
+                provisionRef[i] = provision.id;
+//                html += '<a href="#' + provision.id + '" class="link-nav">' + toNumber(provision.id) + '</a>';
         });
-        $('#nav').prepend(html);
+        $('#prev').attr('href', '#' + provisionRef[currentProvIdx]);
+        $('#next').attr('href', '#' + provisionRef[currentProvIdx]);
+        $('#prev').click(function () {
+            if (currentProvIdx > 0)
+                currentProvIdx--;
+            $(this).attr('href', '#' + provisionRef[currentProvIdx]);
+        });
+        $('#next').click(function () {
+            if (currentProvIdx < provisionRef.length - 1)
+                currentProvIdx++;
+            $(this).attr('href', '#' + provisionRef[currentProvIdx]);
+        });
+//        $('#nav').prepend(html);
+
     });
-    function toNumber(str){
-        var number = {
-            I: 4,
-            II: 5,
-            III: 6,
-            IV: 7,
-            V: 8
-        };
-        return number[str];
-    }
+//    function toNumber(str){
+//        var number = {
+//            I: 4,
+//            II: 5,
+//            III: 6,
+//            IV: 7,
+//            V: 8
+//        };
+//        if (isNaN(number[str]))
+//    }
 </script>

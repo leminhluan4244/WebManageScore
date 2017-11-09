@@ -11,7 +11,7 @@ $scoreTable = $tempMod->getScoresForStudent($studentId);
 ?>
 
 <hr>
-<div class="container container-no-height" id="viewScoreAdd">
+<div class="container container-no-height" id="diem-cong">
     <h4 class="text-center text-primary">Danh sách các mục điểm cộng trừ</h4>
     <!--End filter table-->
     <div class="table-view">

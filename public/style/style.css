@@ -118,12 +118,12 @@ footer {
     text-decoration: none !important;
     color: #fff !important;
     background-color: #1066A2; }
-  .navigator .link-nav:first-child {
-    border-radius: 5px 0 0 5px; }
-  .navigator .link-nav:last-child {
-    border-radius: 0 5px 5px 0; }
 
 .navigator:after {
   content: ''; }
+
+#table-manage-evidence-img form {
+  margin: 0;
+  padding: 0; }
 
 /*# sourceMappingURL=style.css.map */

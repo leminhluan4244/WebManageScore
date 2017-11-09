@@ -211,15 +211,22 @@ footer{
   }
 
   .link-nav:first-child{
-    border-radius: 5px 0 0 5px;
+    //border-radius: 5px 0 0 5px;
   }
 
   .link-nav:last-child{
-    border-radius: 0 5px 5px 0;
+    //border-radius: 0 5px 5px 0;
   }
 }
 
 .navigator:after{
   content: '';
 
+}
+
+#table-manage-evidence-img{
+  form{
+    margin: 0;
+    padding: 0;
+  }
 }

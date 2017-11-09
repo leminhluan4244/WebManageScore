@@ -24,6 +24,12 @@ if (isSubmit('save')){
 	    $error = true;
 		showMessage("Hãy điền đầy đủ thông tin!");
 	}
+
+	if ($scoreDefault > $score){
+	    $error = true;
+	    showMessage("Điểm mặc định không được lớn hơn điểm quy định");
+    }
+
     if ($idParent != ST_ROOT){
 		$parentNode = $structures[$idParent];
 		$maxScoreAllowed = $structures[$tree->getHighestAncestor($parentNode)]["scores"];

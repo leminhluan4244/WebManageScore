@@ -87,6 +87,10 @@ footer{
         text-align: center;
         vertical-align: middle;
       }
+
+      th:last-child{
+        min-width: 100px;
+      }
       //@media only screen and (max-width: 480px) {
       //	th:first-child{
       //		max-width: 300px;
