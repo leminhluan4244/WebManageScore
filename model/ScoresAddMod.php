@@ -106,38 +106,36 @@ class ScoresAddMod {
 		$sql = "SELECT * FROM ScoresAdd WHERE idAccountManage='" . $idManage . "'";
 		$this->connSql->Connect();
 		$result = $this->connSql->conn->query($sql);
-
-		if ($result->num_rows > 0) {
-			$k = 0;
-
-			$list = array();
+		$k=0;
+       		if ($result->num_rows > 0) {
 			while ($row = $result->fetch_assoc()) {
-				$obj = new ScoresAddObj();
+                $obj = new ScoresAddObj();
 				$obj->setScoreName($row["scoreName"]);
 				$obj->setIdScore($row["idScore"]);
 				$obj->setScores($row["scores"]);
 				$obj->setDescribe($row["describe"]);
 				$obj->setTranscript_idItem($row["Transcript_idItem"]);
 				$obj->setIdAccountManage($row["idAccountManage"]);
-				$list[$k] = $obj;
-				$k++;
+				$list[$k++]=$obj;
+
 			}
+            $this->connSql->Stop();
+            return $list;
 
 		} else {
 			$this->connSql->Stop();
+			$list=0;
 			return 0;
 			// echo "The result of information processing is data false";
 		}
 
-		$this->connSql->Stop();
-		return $list;
+
 	}
 
 	public function getScoresAddById($id) {
 		$sql = "SELECT * FROM ScoresAdd WHERE idScore='" . $id . "'";
 		$this->connSql->Connect();
 		$result = $this->connSql->conn->query($sql);
-
 		if ($result->num_rows > 0) {
 			while ($row = $result->fetch_assoc()) {
 				$obj = new ScoresAddObj();
@@ -148,6 +146,8 @@ class ScoresAddMod {
 				$obj->setTranscript_idItem($row["Transcript_idItem"]);
 				$obj->setIdAccountManage($row["idAccountManage"]);
 			}
+            $this->connSql->Stop();
+            return $obj;
 
 		} else {
 			$this->connSql->Stop();
@@ -155,8 +155,7 @@ class ScoresAddMod {
 			return 0;
 		}
 
-		$this->connSql->Stop();
-		return $obj;
+
 	}
 
 	public function getScoresForStudent($id) {

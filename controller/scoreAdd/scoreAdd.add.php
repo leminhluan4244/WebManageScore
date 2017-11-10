@@ -1,14 +1,14 @@
 <?php
-if(isset($_POST['btnUpdate'])) {
+if(isset($_POST['btnAdd'])) {
 
     $scoresAddO = new ScoresAddObj();
     $scoresAddM = new ScoresAddMod();
     if($_POST['addTranscript']!= 'NoneTranscript'){
-        $scoresAddO->setScoresAddObj($_POST['addScoreID'],$_POST['addScoreName'],$_POST['addScore'],$_POST['addDescribe'],$_POST['addTranscript'],$_POST['addID']);
+        $scoresAddO->setScoresAddObj($_POST['addIDScore'],$_POST['addScoreName'],$_POST['addScore'],$_POST['addDescribe'],$_POST['addTranscript'],$_POST['addID']);
         $scoresAddM->addScoresAdd($scoresAddO);
     }
     #thêm dữ liệu và truyền đi
-    echo'<META http-equiv="refresh" content="0;URL=DEMO.php">';
+    echo'<META http-equiv="refresh" content="0;URL=scoreAdd.php">';
 }
 ?>
 <div id="addScore" class="modal fade " tabindex="-1" role="dialog" aria-labelledby aria-hidden="true">
@@ -20,13 +20,17 @@ if(isset($_POST['btnUpdate'])) {
                 <h4 class="modal-title">Thêm mới bảng điểm</h4>
             </div>
             <div class="modal-body ">
-                <form action="DEMO.php" method="post">
-
+                <form action="scoreAdd.php" method="post">
                     <fieldset class="form-group">
-                        <p class="text-left "><b>Mã bảng</b></p>
-                        <input type="text" class="form-control" name="addScoreID" id="addScoreID"
-                               placeholder="Nhập id cho bảng điểm này" required autofocus>
-
+                        <p class="text-left"><b>ID</b></p>
+                        <input type="text" class="form-control" name="addIDScore" id="addIDScore"
+                               placeholder="Nhập tên bảng" required autofocus readonly value="<?php
+                        $micro_date = microtime();
+                        $date_array = explode(" ",$micro_date);
+                        $date = date("Y-m-d H:i:s",$date_array[1]);
+                        $id = strval($date_array[0]* 1000000).$idLogin;
+                        echo $id;
+                        ?>">
                     </fieldset>
 
                     <fieldset class="form-group">
@@ -59,6 +63,7 @@ if(isset($_POST['btnUpdate'])) {
                                 echo '<option value="'.$value->getIdItem().'">'.$value->getItemName().'</option>';
                             }
                             ?>
+
                         </select>
                     </fieldset>
 

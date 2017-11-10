@@ -7,7 +7,7 @@ foreach ($_POST['xoa'] as $key=> $value) {
     $scoresdeleteOT->setIdScore($value);
     $scoresdeleteMT->deleteScoresAdd($scoresdeleteOT);
 }
-    echo'<META http-equiv="refresh" content="0;URL=DEMO.php">';
+    echo'<META http-equiv="refresh" content="0;URL=scoreAdd.php">';
 }
 ?>
 <!--Start delete Class-->

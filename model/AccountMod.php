@@ -498,12 +498,12 @@ class AccountMod {
 		// Tạo ra một mảng lưu trữ tên list, mặc định bang đầu rỗng
 		$list = array();
 		// Đẩy câu lệnh vào string
-		$sql = "SELECT * FROM account, account_has_class
-                    WHERE account.idAccount = account_has_class.Account_idAccount AND
-                    account_has_academy.Class_idClass
+		$sql = "SELECT * FROM Account, Account_Has_Class
+                    WHERE Account.idAccount = Account_Has_Class.Account_idAccount AND
+                    Account_Has_Academy.Class_idClass
                      = '" . $id . "' AND (
-                    account.Permission_position = 'Quản lý chi hội' OR
-                    ACCOUNT.Permission_position = 'Sinh viên');";
+                     Account.Permission_position = 'Quản lý chi hội' OR
+                    Account.Permission_position = 'Sinh viên');";
 		$this->conn2sql->Connect();
 		$result = $this->conn2sql->conn->query($sql);
 		// Kiểm tra số lượng kết quả trả về có lơn hơn 0
@@ -543,10 +543,10 @@ class AccountMod {
 		// Đẩy câu lệnh vào string
 		$sql = "SELECT * FROM account, account_has_branch
                     WHERE account.idAccount = account_has_branch.Account_idAccount AND
-                    account_has_academy.Class_idClass
+                    account_has_branch.Branch_idBranch
                      = '" . $id . "' AND (
-                    account.Permission_position = 'Quản lý chi hội' OR
-                    ACCOUNT.Permission_position = 'Sinh viên');";
+                     Account.Permission_position = 'Quản lý chi hội' OR
+                    Account.Permission_position = 'Sinh viên');";
 		$this->conn2sql->Connect();
 		$result = $this->conn2sql->conn->query($sql);
 		// Kiểm tra số lượng kết quả trả về có lơn hơn 0

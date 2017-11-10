@@ -5,7 +5,7 @@
     $listScore = $scoreMod->getScoresAddByAccount($idLogin);
     ?>
 
-<form action="DEMO.php" method="post" id="manageForm">
+<form action="scoreAdd.php" method="post" id="manageForm">
 <table class="table table-bordered table-condensed" id="table-manage-score">
 
     <thead>
@@ -19,8 +19,6 @@
         <th>Chọn tất cả <br /><input type="checkbox" onClick="toggle(this)"></th>
     </tr>
     </thead>
-
-
 
     <tbody class="text-center align-self-center">
     <?php
@@ -39,16 +37,15 @@
             '.$value->getScores().'
         </td>
         <td>
-            <a href="DEMO2.php?idScore='.$value->getIdScore().'" class="btn btn-primary btn-sm"><span class="glyphicon glyphicon-pencil"></span></a>
+            <a href="scoreAdd.php?idScore='.$value->getIdScore().'" class="btn btn-primary btn-sm"><span class="glyphicon glyphicon-pencil"></span></a>
         </td>
         <td>
-            <a href="DEMO2.php?idScore='.$value->getIdScore().'" class="btn btn-primary btn-sm"><span class="glyphicon glyphicon-user"></span></a>
+            <a href="scoreAdd.manage.php?idScore='.$value->getIdScore().'" class="btn btn-primary btn-sm"><span class="glyphicon glyphicon-user"></span></a>
         </td>
         <td><input type="checkbox" name="xoa[]" id="'.$value->getIdScore().'" value="'.$value->getIdScore().'"/> </td>
        
     </tr>';
     }
-
     ?>
     </tbody>
 </table>

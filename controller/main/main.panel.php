@@ -77,7 +77,7 @@
             </a>
         </div>
         <div id="them-bang-cong-tru" class="col-sm-offset-2 col-sm-4 thumbnail" style="display: none;">
-            <a href="DEMO.php" class="">
+            <a href="scoreAdd.php" class="">
                 <img src="../public/img/table-score.png" width="70" alt="">
                 <p>Thêm bảng cộng - trừ điểm</p>
             </a>
