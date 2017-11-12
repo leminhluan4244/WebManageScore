@@ -42,7 +42,7 @@ function checkO($stringA, $temp)
             <div class="modal-header">
 
                 <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                <h4 class="modal-title">Cập nhật sinh viên</h4>
+                <h4 class="modal-title">Cập nhật cán bộ</h4>
             </div>
             <div class="modal-body ">
                 <form action="#" method="post">
