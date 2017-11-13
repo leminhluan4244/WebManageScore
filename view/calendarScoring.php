@@ -28,6 +28,37 @@
   <div class="row">
     <div class="col-sm-12">
       <h4>Cập nhật lịch chấm điểm theo phân quyền</h4>
+
+        <form action="" method="post">
+            <div class="row">
+                <div class="col-sm-4">
+                    <fieldset class="form-group col-6">
+                        <p class="text-left"><b>Học kỳ</b></p>
+                        <input type="text" class="form-control" name="branchName" id="addbranchName"
+                               placeholder="Nhập học kỳ" required autofocus>
+                    </fieldset>
+                </div>
+                <div class="col-sm-4">
+                    <fieldset class="form-group col-6">
+                        <p class="text-left"><b>Năm học</b></p>
+                        <input type="text" class="form-control" name="branchName" id="addbranchName"
+                               placeholder="Nhập niên khóa" required autofocus>
+                    </fieldset>
+                </div>
+                <div class="col-sm-4">
+                    <div class="form-group text-right">
+                        <br />
+                        <button type="submit" name="btn-submit" value="save" class="center-block btn btn-danger">
+                            <span class="glyphicon glyphicon-ok"></span> Lưu điểm và tái cấu trúc dữ liệu
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+
+
+        </form>
+
       <hr>
       <table id="tbl-edit" class="table table-hover table-condensed table-bordered">
           <thead>
