@@ -1,4 +1,3 @@
-@charset "UTF-8";
 .main-panel {
   box-shadow: 0 0 10px grey; }
   .main-panel table thead tr {
@@ -56,10 +55,7 @@ footer {
     font-weight: bold; }
   #table-score tbody .section-2 {
     font-style: italic; }
-  #table-score tbody .section-3 td:first-child:before {
-    content: " ─ "; }
   #table-score tbody .section-4 td:first-child:before {
-    content: ' ▪ ';
     padding: 0 0 0 20px; }
   #table-score tbody .input-number, #table-score tbody .select-score {
     width: 60px;

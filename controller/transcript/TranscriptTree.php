@@ -240,7 +240,7 @@ class TranscriptTree {
 		}
 
 		$htmlText = "";
-		$htmlText .= "<td>" . str_replace("-", "", $itemName) . "</td>";
+		$htmlText .= "<td>&nbsp;&nbsp;&nbsp;&nbsp;&blacksquare;" . str_replace("-", "", $itemName) . "</td>";
 		$htmlText .= "<td>$max</td>";
 		$htmlText .= "<td>$hintScore</td>";
 
@@ -258,7 +258,7 @@ class TranscriptTree {
 	private function getStudentLeafHTML($studentScore, $adviserScore, $finalScore, $inputName, $min, $max) {
 		$htmlText = "";
 //		$htmlText .= "<td>" . self::generateSelect($inputName, $min, $max, $studentScore, "select-score") . "</td>";
-		$htmlText .= "<td>" . self::generateSpinner($inputName, $min, $max, $studentScore, "input-number") . "</td>";
+		$htmlText .= "<td>" . self::generateSpinnerAndHiddenValue($inputName, $min, $max, $studentScore, "input-number") . "</td>";
 		$htmlText .= "<td>$adviserScore</td>";
 		$htmlText .= "<td>$finalScore</td>";
 		return $htmlText;
@@ -268,7 +268,7 @@ class TranscriptTree {
 		$htmlText = "";
 		$htmlText .= "<td><span class='std-score' data-name='{$inputName}'>{$studentScore}</span></td>";
 //		$htmlText .= "<td>" . self::generateSelect($inputName, $min, $max, $adviserScore, "select-score") . "</td>";
-		$htmlText .= "<td>" . self::generateSpinner($inputName, $min, $max, $adviserScore, "input-number") . "</td>";
+		$htmlText .= "<td>" . self::generateSpinnerAndHiddenValue($inputName, $min, $max, $adviserScore, "input-number") . "</td>";
 		$htmlText .= "<td>$finalScore</td>";
 		return $htmlText;
 	}
@@ -278,17 +278,20 @@ class TranscriptTree {
 		$htmlText .= "<td><span class='std-score' data-name='{$inputName}'>{$studentScore}</span></td>";
 		$htmlText .= "<td>$adviserScore</td>";
 //		$htmlText .= "<td>" . self::generateSelect($inputName, $min, $max, $finalScore, "select-score") . "</td>";
-		$htmlText .= "<td>" . self::generateSpinner($inputName, $min, $max, $finalScore, "input-number") . "</td>";
+		$htmlText .= "<td>" . self::generateSpinnerAndHiddenValue($inputName, $min, $max, $finalScore, "input-number") . "</td>";
 		return $htmlText;
 	}
 
+	/**
+	 * Mục tổng kết điểm
+	 */
 	public function generateLastChildHTML() {
 		$lastChild = $this->getLastChildOfRoot();
 		if (empty($lastChild))
 			return;
 		$this->calculateSummaryScore();
 		$htmlText = "<tr class='section-1'>";
-		$htmlText .= "<td>" . str_replace("-", "", $lastChild['itemName']) . "</td>";
+		$htmlText .= "<td><strong>" . str_replace("-", "", $lastChild['itemName']) . "</strong></td>";
 		$htmlText .= "<td>{$lastChild['scores']}</td>";
 		$htmlText .= "<td></td>";
 		$htmlText .= "<td>{$this->scoreList["sum"]["studentScore"]}</td>";
@@ -298,11 +301,16 @@ class TranscriptTree {
 		$this->htmlText .= $htmlText;
 	}
 
+	/**
+	 * Các mục không có điểm
+	 * @param $nodeId
+	 * @return string
+	 */
 	function getNonLeafHTML($nodeId) {
+		$htmlText = "";
 		if ($this->isChildOfRoot($nodeId)) {
 			$this->calculateScoreInNode($nodeId);
-			$htmlText = "";
-			$htmlText .= "<td>" . str_replace("-", "", $this->data[$nodeId]["itemName"]) . "</td>";
+			$htmlText .= "<td><strong>" . str_replace("-", "", $this->data[$nodeId]["itemName"]) . "</strong></td>";
 			$htmlText .= "<td>{$this->data[$nodeId]["scores"]}</td>";
 			$htmlText .= "<td></td>";
 			$htmlText .= "<td>{$this->scoreList[$nodeId]['studentScore']}</td>";
@@ -310,7 +318,21 @@ class TranscriptTree {
 			$htmlText .= "<td>{$this->scoreList[$nodeId]['finalScore']}</td>";
 			return $htmlText;
 		}
-		return "<td colspan='6'>" . str_replace("-", "", $this->data[$nodeId]["itemName"]) . "</td>";
+		if (preg_match('/(a|b|c|d|e)\./i', $this->data[$nodeId]["itemName"]))
+			$htmlText = "<td colspan='6'><strong>"
+				. str_replace("-", "", $this->data[$nodeId]["itemName"])
+				. "</strong></td>";
+		else
+			$htmlText = "<td colspan='6'><strong> &boxh; "
+				. str_replace("-", "", $this->data[$nodeId]["itemName"])
+				. "</strong></td>";
+//		$htmlText = "<th colspan='6'>" . str_replace("-", "", $this->data[$nodeId]["itemName"]) . "</th>
+//					<th style='display: none'></th>
+//					<th style='display: none'></th>
+//					<th style='display: none'></th>
+//					<th style='display: none'></th>
+//					<th style='display: none'></th>";
+		return $htmlText;
 	}
 
 	private function calculateScoreInNode($nodeId) {
@@ -333,7 +355,10 @@ class TranscriptTree {
 		return $htmlText;
 	}
 
-	static function generateSpinner($name, $min, $max, $val, $class) {
-		return "<input type='number' name='{$name}' class='$class' min='$min' max='{$max}' value='{$val}'>";
+	static function generateSpinnerAndHiddenValue($name, $min, $max, $val, $class) {
+		$htmlText = "";
+		$htmlText .= "<input type='number' name='{$name}' class='$class' min='$min' max='{$max}' value='{$val}'>";
+		$htmlText .= "<span style='display: none'>{$val}</span>";
+		return $htmlText;
 	}
 }

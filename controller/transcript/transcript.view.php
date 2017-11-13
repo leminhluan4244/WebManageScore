@@ -10,10 +10,6 @@ if (empty($trTree))
 	return;
 ?>
 <div class="text-right div-btn-grading">
-    <!--    <button class="btn btn-primary btn-sm">-->
-    <!--        <span class="glyphicon glyphicon-ok"></span>-->
-    <!--        Lưu lại-->
-    <!--    </button>-->
     <a class="btn btn-default btn-sm" href="<?php echo $privilege == STUDENT ? 'main.php' : 'grading.php' ?>">
         <span class="glyphicon glyphicon-backward"></span>
         Quay về
@@ -25,12 +21,16 @@ if (empty($trTree))
             Chép điểm của sinh viên
         </a>
 	<?php } ?>
+    <a href="" class="btn btn-primary btn-sm" id="btn-export">
+        <span class="glyphicon glyphicon-export"></span>
+        Excel
+    </a>
 </div>
 <br>
 <div class="form-grading" id="div-grading">
     <form method="post">
-        <div class="table-score-wrapper">
-            <table id="table-score" class="table-bordered table-responsive table-condensed table-grading">
+        <div class="table-score-wrapper" id="table-score-wrapper">
+            <table id="table-score" class="table-bordered table-responsive table-condensed table-grading" border="1" cellspacing="0">
                 <thead>
                 <tr>
                     <th><strong>Nội dung đánh giá (Thông tư 16)</strong></th>
@@ -70,48 +70,4 @@ if (empty($trTree))
     <a href="#minh-chung" class="btn btn-primary">Minh chứng</a>
 </div>
 
-<script>
-
-    var currentProvIdx = 0;
-    var provisionRef = [];
-    $(function () {
-        $('[data-toggle="tooltip"]').tooltip();
-        var provisions = $('.section-1');
-        var html = "";
-        $.each(provisions, function (i, provision) {
-            if (provision.id !== "")
-                provisionRef[i] = provision.id;
-//                html += '<a href="#' + provision.id + '" class="link-nav">' + toNumber(provision.id) + '</a>';
-        });
-        $('#prev').attr('href', '#' + provisionRef[currentProvIdx]);
-        $('#next').attr('href', '#' + provisionRef[currentProvIdx]);
-        $('#prev').click(function () {
-            if (currentProvIdx > 0)
-                currentProvIdx--;
-            $(this).attr('href', '#' + provisionRef[currentProvIdx]);
-        });
-        $('#next').click(function () {
-            if (currentProvIdx < provisionRef.length - 1)
-                currentProvIdx++;
-            $(this).attr('href', '#' + provisionRef[currentProvIdx]);
-        });
-
-        $('#copy-from-student-score').click(copyFromStudentScore);
-    });
-
-    function copyFromStudentScore() {
-        var provisionScores = $('.std-score');
-        $.each(provisionScores, function (i, provisionScore) {
-            var score = $(provisionScore).text();
-            var prName = $(provisionScore).data('name');
-            $('[name="' + prName + '"]').val(score);
-            console.log($('[name="' + prName + '"]'));
-			<?php if ($privilege == ADVISER) {?>
-
-			<?php } else {?>
-			<?php }?>
-
-        });
-        return false;
-    }
-</script>
+<script src="../public/js/transcript.js"></script>
