@@ -32,7 +32,7 @@ $images = $imgMod->getImages(getLoggedAccountId());
 			<tr>
 				<th>STT</th>
 				<th>Mục điểm xác nhận</th>
-				<th>Hành động</th>
+				<th style="min-width: 140px;">Hành động</th>
 			</tr>
 			</thead>
 			<tbody class="text-center">
@@ -42,7 +42,7 @@ $images = $imgMod->getImages(getLoggedAccountId());
                     <td class="text-left"><?php echo $image['transcriptName']; ?></td>
                     <td>
                         <form method="post">
-                            <a target="_blank" href="../cham-diem/hinh-anh/<?php echo $image['img']; ?>.jpg"
+                            <a target="_blank" href="../hinh-anh/<?php echo $image['img']; ?>.jpg"
                                class="btn btn-sm btn-primary">
                                 Xem ảnh
                             </a>

@@ -26,7 +26,7 @@ if (isSubmit("upload-img")){
 
 	$fileName = $_FILES['image-evidence']['name'];
 
-	if (empty($error) && (!preg_match('/(jpg|png)/', $fileName, $matches) || empty($matches[1]))) {
+	if (empty($error) && (!preg_match('/(jpg|png|PNG|JPG)/', $fileName, $matches) || empty($matches[1]))) {
 		$error = true;
 		showMessage("Chỉ chấp nhận tập tin hình ảnh PNG hoặc JPEG");
 	}
@@ -36,8 +36,11 @@ if (isSubmit("upload-img")){
 	if (empty($error)){
 		$img = resize_image($_FILES['image-evidence']['tmp_name'], $matches[1]);
 		$fileName = md5(sha1(sha1(md5($fileName))));
+		$location = '../upload';
 		if ($imgMod->addImage(getLoggedAccountId(), $transId, $fileName)){
-		    saveImage($img, "./upload/$fileName.jpg");
+		    if (!file_exists($location))
+		        mkdir($location);
+		    saveImage($img, "$location/$fileName.jpg");
 			showMessage("Thêm ảnh thành công!!!");
 		} else {
 		    showMessage("Thêm ảnh thất bại, hãy thử lại sau!!!");

@@ -193,30 +193,10 @@ footer{
 }
 
 .navigator{
-  border: 1px solid #fff;
   position: fixed;
   z-index: 1;
   bottom: 10px;
   right: 10px;
-  .link-nav{
-    border: 1px solid #fff;
-    border-width: 0px 0px 0px 1px;
-    display: inline-block;
-    float: left;
-    padding: 5px 10px;
-    margin: 0;
-    text-decoration: none !important;
-    color: #fff !important;
-    background-color: $main_color;
-  }
-
-  .link-nav:first-child{
-    //border-radius: 5px 0 0 5px;
-  }
-
-  .link-nav:last-child{
-    //border-radius: 0 5px 5px 0;
-  }
 }
 
 .navigator:after{

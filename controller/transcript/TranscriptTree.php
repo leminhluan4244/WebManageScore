@@ -222,10 +222,10 @@ class TranscriptTree {
 		$inputName = str_replace(".", "_", $nodeId);
 		$itemName = $this->data[$nodeId]["itemName"];
 		$min = 0;
-		$max = $this->data[$nodeId]['scoresMax'];
-		$studentScore = $this->data[$nodeId]["scoresStudent"];
-		$adviserScore = $this->data[$nodeId]["scoresTeacher"];
-		$finalScore = $this->data[$nodeId]["scores"];
+		$max = empty($this->data[$nodeId]['scoresMax']) ? 0: $this->data[$nodeId]['scoresMax'];
+		$studentScore = empty($this->data[$nodeId]["scoresStudent"]) ? 0: $this->data[$nodeId]["scoresStudent"];
+		$adviserScore = empty($this->data[$nodeId]["scoresTeacher"]) ? 0: $this->data[$nodeId]["scoresTeacher"];
+		$finalScore = empty($this->data[$nodeId]["scores"]) ? 0: $this->data[$nodeId]["scores"];
 
 		$hintScore = 0;
 		if ($this->data[$nodeId]['scoresDefault']) {

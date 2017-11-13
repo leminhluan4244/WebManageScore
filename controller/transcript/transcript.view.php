@@ -56,11 +56,11 @@ if (empty($trTree))
         </div>
     </form>
 </div>
-<div class="navigator" id="nav">
-    <a href="" id="prev" class="link-nav">Trước</a>
-    <a href="" id="next" class="link-nav">Sau</a>
-    <a href="#diem-cong" class="link-nav">Điểm cộng</a>
-    <a href="#minh-chung" class="link-nav">Minh chứng</a>
+<div class="navigator btn-group btn-group-sm" id="nav">
+    <a href="" id="prev" class="btn btn-primary">Trước</a>
+    <a href="" id="next" class="btn btn-primary">Sau</a>
+    <a href="#diem-cong" class="btn btn-primary">Điểm cộng</a>
+    <a href="#minh-chung" class="btn btn-primary">Minh chứng</a>
 </div>
 
 <script>

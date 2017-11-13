@@ -13,6 +13,8 @@ define("IMG_SIZE_MAX", 1000);
 
 function resize_image($file, $ext, $w = IMG_SIZE_MAX, $h = IMG_SIZE_MAX, $crop = false) {
 	list($width, $height) = getimagesize($file);
+	$w = ($w > $width) ? $width: IMG_SIZE_MAX;
+	$h = ($h > $height) ? $height: IMG_SIZE_MAX;
 	$r = $width / $height;
 	if ($crop) {
 		if ($width > $height) {
