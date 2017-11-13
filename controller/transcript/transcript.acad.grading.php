@@ -60,3 +60,4 @@ $trTree->generateLastChildHTML();
 <?php require_once '../controller/transcript/transcript.view.php'; ?>
 
 <?php require_once 'scoreAdd.list.view.php'; ?>
+<?php require_once '../controller/transcript/evidence.image/view.php'; ?>
