@@ -18,8 +18,7 @@ if(getSession("userToken")['permission'] != 'Admin'){
     <!--Start content manage staff-->
     <div class="container main-academy-container">
         <div class="academy-action-list">
-        
-            <h4>Danh sách cán bộ</h4>
+            <br />  
             <div class="form-group">
                 <form id="form-filter-teacher"  method="get" action="staff.manage.php">
                     <div class="row">
