@@ -266,7 +266,7 @@ class TranscriptTree {
 
 	private function getAdviserLeafHTML($studentScore, $adviserScore, $finalScore, $inputName, $min, $max) {
 		$htmlText = "";
-		$htmlText .= "<td>$studentScore</td>";
+		$htmlText .= "<td><span class='std-score' data-name='{$inputName}'>{$studentScore}</span></td>";
 //		$htmlText .= "<td>" . self::generateSelect($inputName, $min, $max, $adviserScore, "select-score") . "</td>";
 		$htmlText .= "<td>" . self::generateSpinner($inputName, $min, $max, $adviserScore, "input-number") . "</td>";
 		$htmlText .= "<td>$finalScore</td>";
@@ -275,7 +275,7 @@ class TranscriptTree {
 
 	private function getFinalLeafHTML($studentScore, $adviserScore, $finalScore, $inputName, $min, $max) {
 		$htmlText = "";
-		$htmlText .= "<td>$studentScore</td>";
+		$htmlText .= "<td><span class='std-score' data-name='{$inputName}'>{$studentScore}</span></td>";
 		$htmlText .= "<td>$adviserScore</td>";
 //		$htmlText .= "<td>" . self::generateSelect($inputName, $min, $max, $finalScore, "select-score") . "</td>";
 		$htmlText .= "<td>" . self::generateSpinner($inputName, $min, $max, $finalScore, "input-number") . "</td>";

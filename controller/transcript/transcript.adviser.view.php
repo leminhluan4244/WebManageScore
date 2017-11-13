@@ -15,7 +15,7 @@ require_once "../controller/transcript/load.list.student.by.class.php";
 ?>
 <div class="container">
     <h4 class="text-center text-primary">Danh sách sinh viên
-        <?php echo !empty($className) ? " lớp: " . $className: "" ?>
+        <?php echo !empty($className) ? " lớp: " . "<i><strong>$className</strong></i>": "" ?>
     </h4>
     <div class="table-view">
         <table id="table-grading-student-by-adviser" class="table table-condensed table-bordered table-striped">

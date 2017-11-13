@@ -10,14 +10,21 @@ if (empty($trTree))
 	return;
 ?>
 <div class="text-right div-btn-grading">
-    <button class="btn btn-primary btn-sm">
-        <span class="glyphicon glyphicon-ok"></span>
-        Lưu lại
-    </button>
-    <a class="btn btn-default btn-sm" href="<?php echo $privilege == STUDENT ? 'main.php': 'grading.php' ?>">
+    <!--    <button class="btn btn-primary btn-sm">-->
+    <!--        <span class="glyphicon glyphicon-ok"></span>-->
+    <!--        Lưu lại-->
+    <!--    </button>-->
+    <a class="btn btn-default btn-sm" href="<?php echo $privilege == STUDENT ? 'main.php' : 'grading.php' ?>">
         <span class="glyphicon glyphicon-backward"></span>
         Quay về
     </a>
+
+	<?php if ($privilege != STUDENT) { ?>
+        <a id="copy-from-student-score" class="btn btn-sm btn-primary">
+            <span class="glyphicon glyphicon-copy"></span>
+            Chép điểm của sinh viên
+        </a>
+	<?php } ?>
 </div>
 <br>
 <div class="form-grading" id="div-grading">
@@ -49,7 +56,7 @@ if (empty($trTree))
                 <span class="glyphicon glyphicon-ok"></span>
                 Lưu lại
             </button>
-            <a class="btn btn-default" href="<?php echo $privilege == STUDENT ? 'main.php': 'grading.php' ?>">
+            <a class="btn btn-default" href="<?php echo $privilege == STUDENT ? 'main.php' : 'grading.php' ?>">
                 <span class="glyphicon glyphicon-backward"></span>
                 Quay về
             </a>
@@ -64,13 +71,14 @@ if (empty($trTree))
 </div>
 
 <script>
+
     var currentProvIdx = 0;
     var provisionRef = [];
-    $(function(){
-        $('[data-toggle="tooltip]').tooltip();
+    $(function () {
+        $('[data-toggle="tooltip"]').tooltip();
         var provisions = $('.section-1');
         var html = "";
-        $.each(provisions, function(i, provision){
+        $.each(provisions, function (i, provision) {
             if (provision.id !== "")
                 provisionRef[i] = provision.id;
 //                html += '<a href="#' + provision.id + '" class="link-nav">' + toNumber(provision.id) + '</a>';
@@ -87,17 +95,23 @@ if (empty($trTree))
                 currentProvIdx++;
             $(this).attr('href', '#' + provisionRef[currentProvIdx]);
         });
-//        $('#nav').prepend(html);
 
+        $('#copy-from-student-score').click(copyFromStudentScore);
     });
-//    function toNumber(str){
-//        var number = {
-//            I: 4,
-//            II: 5,
-//            III: 6,
-//            IV: 7,
-//            V: 8
-//        };
-//        if (isNaN(number[str]))
-//    }
+
+    function copyFromStudentScore() {
+        var provisionScores = $('.std-score');
+        $.each(provisionScores, function (i, provisionScore) {
+            var score = $(provisionScore).text();
+            var prName = $(provisionScore).data('name');
+            $('[name="' + prName + '"]').val(score);
+            console.log($('[name="' + prName + '"]'));
+			<?php if ($privilege == ADVISER) {?>
+
+			<?php } else {?>
+			<?php }?>
+
+        });
+        return false;
+    }
 </script>
