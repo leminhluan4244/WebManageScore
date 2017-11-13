@@ -12,8 +12,12 @@ if (empty($imgMod))
 if (isSubmit('remove-image')){
     $img = getPOSTValue('img-value');
     $accountId = getLoggedAccountId();
-    if ($imgMod->removeImage($accountId, $img))
-        showMessage("Xóa thành công");
+    if ($imgMod->removeImage($accountId, $img)){
+        $path = "../upload/$img.jpg";
+        if (file_exists($path))
+			unlink($path);
+		showMessage("Xóa thành công");
+    }
 }
 
 $images = [];

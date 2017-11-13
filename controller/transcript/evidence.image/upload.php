@@ -35,7 +35,7 @@ if (isSubmit("upload-img")){
 
 	if (empty($error)){
 		$img = resize_image($_FILES['image-evidence']['tmp_name'], $matches[1]);
-		$fileName = md5(sha1(sha1(md5($fileName))));
+		$fileName = md5($fileName . random_int(1, 10000));
 		$location = '../upload';
 		if ($imgMod->addImage(getLoggedAccountId(), $transId, $fileName)){
 		    if (!file_exists($location))
