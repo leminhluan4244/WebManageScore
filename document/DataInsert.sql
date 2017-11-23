@@ -84,7 +84,7 @@ CREATE TABLE `account` (
 INSERT INTO `account` (`idAccount`, `accountName`, `birthday`, `address`, `sex`, `phone`, `email`, `password`, `Permission_position`) VALUES
 ('AAAA', 'Nguyễn Văn A', '1996-01-16', 'An Khánh - Ninh Kiều Cần Thơ', 'Nam', 964054244, 'ab1400701@student.ctu.edu.vn', '81dc9bdb52d04dc20036dbd8313ed055', 'Sinh viên'),
 ('Admin01', 'Lê Minh Luân', '1980-01-16', 'An Khánh - Ninh Kiều Cần Thơ', 'Nam', 964054244, 'pplan@cit.ctu.edu.vn', '81dc9bdb52d04dc20036dbd8313ed055', 'Admin'),
-('Admin02', 'Nguyễn Minh Nhựt', '1980-01-16', 'An Khánh - Ninh Kiều Cần Thơ', 'Nữ', 964054244, 'pplan@cit.ctu.edu.vn', '81dc9bdb52d04dc20036dbd8313ed055', 'Admin'),
+('Admin02', 'Đoàn Minh Nhựt', '1980-01-16', 'An Khánh - Ninh Kiều Cần Thơ', 'Nữ', 964054244, 'pplan@cit.ctu.edu.vn', '81dc9bdb52d04dc20036dbd8313ed055', 'Admin'),
 ('Admin03', 'Nguyễn Tấn Phát', '1980-01-16', 'An Khánh - Ninh Kiều Cần Thơ', 'Nam', 964054244, 'pplan@cit.ctu.edu.vn', '81dc9bdb52d04dc20036dbd8313ed055', 'Admin'),
 ('Admin04', 'Pham Hoài An', '1980-01-16', 'An Khánh - Ninh Kiều Cần Thơ', 'Nam', 964054244, 'pplan@cit.ctu.edu.vn', '81dc9bdb52d04dc20036dbd8313ed055', 'Admin'),
 ('Admin05', 'Huỳnh Hoàng Thơ', '1980-01-16', 'An Khánh - Ninh Kiều Cần Thơ', 'Nam', 964054244, 'pplan@cit.ctu.edu.vn', '81dc9bdb52d04dc20036dbd8313ed055', 'Admin'),

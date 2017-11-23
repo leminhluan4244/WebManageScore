@@ -47,6 +47,7 @@
                 </div>
                 <div class="col-sm-4">
                     <div class="form-group text-right">
+                        <p></p>
                         <br />
                         <button type="submit" name="btn-submit" value="save" class="center-block btn btn-danger">
                             <span class="glyphicon glyphicon-ok"></span> Lưu điểm và tái cấu trúc dữ liệu
