@@ -6,7 +6,7 @@
  * Time: 5:42 PM
  */
 
-class StructureObj {
+class StructureObj implements \JsonSerializable{
 	private $idItem;
 	private $itemName;
 	private $scores;
@@ -119,4 +119,8 @@ class StructureObj {
 	public function getScoreDefault() {
 		return $this->scoreDefault;
 	}
+
+	public function jsonSerialize() {
+        return get_object_vars($this);
+    }
 }

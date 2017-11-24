@@ -225,4 +225,44 @@ class TranscriptMod {
 				$transcript[$row['idItem']] = $row;
 		return $transcript;
 	}
+
+	public function getEntireTranscript2($accountId) {
+		$sql = "select * from transcript where Account_idAccount = '$accountId'";
+		$this->connSQL->Connect();
+		$result = $this->connSQL->conn->query($sql);
+		$this->connSQL->Stop();
+
+		$entire = array();
+		if (!empty($result))
+			while ($row = $result->fetch_assoc()){
+				$respone = new TranscriptObj();
+				$respone->setTranscriptObj(
+					$row['idItem'],
+					$row['Account_idAccount'],
+					$row['itemName'],
+					$row['scores'],
+					$row['describe'],
+					$row['IDParent'],
+					$row['scoresDefault'],
+					$row['scoresMax'],
+					$row['scoresStudent'],
+					$row['scoresTeacher']
+				);
+				$entire[] = $respone;
+			}
+		return $entire;
+	}
+
+	public function getTotalScoreOfItem($accountId,$item) {
+		$sql = "SELECT sum(scoresStudent)as total from transcript WHERE idItem LIKE '$item.%' and Account_idAccount = '$accountId'";
+		$this->connSQL->Connect();
+		$result = $this->connSQL->conn->query($sql);
+		$this->connSQL->Stop();
+		if (!empty($result)){
+			while ($row = $result->fetch_assoc()){
+				$respone = array('Total' => (int) $row['total']);
+			}
+		}
+		return $respone;
+	}
 }

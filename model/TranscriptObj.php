@@ -6,7 +6,7 @@
  * Time: 5:42 PM
  */
 
-class TranscriptObj {
+class TranscriptObj implements \JsonSerializable{
 
     private $idItem;
     private $Account_idAccount;
@@ -190,7 +190,9 @@ class TranscriptObj {
 		$this->scoresTeacher = $scoresTeacher;
 	}
 
-
+	public function jsonSerialize() {
+        return get_object_vars($this);
+    }
 
 }
 ?>
