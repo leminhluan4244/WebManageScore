@@ -20,7 +20,7 @@ class PractiseScoresMod {
 	 * @return array - danh sách điểm dưới dạng các mảng của tài khoản đó
 	 */
 	public function getListAllScores($idAccount){
-		$sql = "select * from practisescores where Account_idAccount = '$idAccount' order by beginDate desc";
+		$sql = "select * from Practisescores where Account_idAccount = '$idAccount' order by beginDate desc";
 		$this->connSQL->Connect();
 		$result = $this->connSQL->conn->query($sql);
 		$listRow = array();
@@ -39,7 +39,7 @@ class PractiseScoresMod {
 	 * @return array - danh sách các mảng chứa điểm của tài khoản đó
 	 */
 	public function getListAllScoresByYear($idAccount, $year){
-		$sql = "select * from practisescores where Account_idAccount = '$idAccount' and years = '$year'";
+		$sql = "select * from Practisescores where Account_idAccount = '$idAccount' and years = '$year'";
 		$this->connSQL->Connect();
 		$result = $this->connSQL->conn->query($sql);
 		$listRow = array();
@@ -79,7 +79,7 @@ class PractiseScoresMod {
 	 * @return PractiseScoresObj
 	 */
 	public function getPractiseScores($pcObj){
-		$sql = "select * from practisescores 
+		$sql = "select * from Practisescores 
 				where Account_idAccount = '{$pcObj->getAccount_IdAccount()}' 
 				and semester = '{$pcObj->getSemester()}' 
 				and years = '{$pcObj->getYears()}'";
@@ -101,7 +101,7 @@ class PractiseScoresMod {
      * @return bool
      */
 	public function isPractiseScoresExisted($accountId, $semester, $year){
-        $sql = "select count(*) as total from practisescores 
+        $sql = "select count(*) as total from Practisescores 
 				where Account_idAccount = '$accountId' 
 				and semester = '$semester' 
 				and years = '$year'";
@@ -120,7 +120,7 @@ class PractiseScoresMod {
 	 * @return bool
 	 */
 	public function addPractiseScores($pcObj){
-		$sql = "insert into practisescores 
+		$sql = "insert into Practisescores 
 				values(
 					'{$pcObj->getScores()}', 
 					'{$pcObj->getSemester()}',
@@ -141,7 +141,7 @@ class PractiseScoresMod {
 	 * @return bool
 	 */
 	public function deletePractiseScores($pcObj){
-		$sql = "delete from practisescores 
+		$sql = "delete from Practisescores 
 				where Account_idAccount = '{$pcObj->getAccount_IdAccount()}'
 				and semester = '{$pcObj->getSemester()}'
 				and years = '{$pcObj->getYears()}'";
@@ -157,7 +157,7 @@ class PractiseScoresMod {
 	 * @return bool
 	 */
 	public function updatePractiseScores($pcObj){
-		$sql = "update practisescores set scores = '{$pcObj->getScores()}',beginDate = '{$pcObj->getbeginDate()}',endDate = '{$pcObj->getEndDate()}'
+		$sql = "update Practisescores set scores = '{$pcObj->getScores()}',beginDate = '{$pcObj->getbeginDate()}',endDate = '{$pcObj->getEndDate()}'
 				where Account_idAccount = '{$pcObj->getAccount_IdAccount()}'
 				and semester = '{$pcObj->getSemester()}'
 				and years = '{$pcObj->getYears()}'";

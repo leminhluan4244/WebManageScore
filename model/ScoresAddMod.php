@@ -16,7 +16,7 @@ class ScoresAddMod {
 
 	//1. Hàm thêm
 	public function addScoresAdd($cores) {
-		$sql = "INSERT INTO `scoresadd` (`idScore`, `scoreName`, `scores`, `describe`, `Transcript_idItem`, `idAccountManage`)
+		$sql = "INSERT INTO `ScoresAdd` (`idScore`, `scoreName`, `scores`, `describe`, `Transcript_idItem`, `idAccountManage`)
         VALUES (
           '" . $cores->getIdScore() . "',
          '" . $cores->getScoreName() . "',
@@ -159,7 +159,7 @@ class ScoresAddMod {
 	}
 
 	public function getScoresForStudent($id) {
-		$sql = "SELECT * FROM scoresadd,scoresadd_has_account WHERE scoresadd.idScore=scoresadd_has_account.ScoresAdd_idScore AND ScoresAdd_has_Account.Account_idAccount='" . $id . "'";
+		$sql = "SELECT * FROM ScoresAdd,ScoresAdd_has_Account WHERE ScoresAdd.idScore=ScoresAdd_has_Account.ScoresAdd_idScore AND ScoresAdd_has_Account.Account_idAccount='" . $id . "'";
 		$this->connSql->Connect();
 		$result = $this->connSql->conn->query($sql);
         $obj = new ScoresAddObj();
@@ -191,8 +191,8 @@ class ScoresAddMod {
 		$sql = "SELECT
 					Transcript_idItem as idItem, sum(scores) as total
 				FROM
-					scoresadd sa,
-					scoresadd_has_account sha
+					ScoresAdd sa,
+					ScoresAdd_has_Account sha
 				WHERE
 					sa.idScore = sha.ScoresAdd_idScore
 				AND sha.Account_idAccount = '$studentId' 
