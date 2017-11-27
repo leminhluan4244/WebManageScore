@@ -42,7 +42,7 @@ class AccountHasBranchMod
     public function deleteAccountHasBranch($account, $branch)
     {
         // Đẩy câu lệnh vào string
-        $sql = "DELETE FROM Account_Has_Branch 
+        $sql = "DELETE FROM Account_has_Branch 
 						WHERE Account_idAccount='" . $account->getIdAccount() . "' 
 						and Branch_idBranch='" . $branch->getIdBranch() . "';";
         // Thực thi câu lệnh

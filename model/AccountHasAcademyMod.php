@@ -73,7 +73,7 @@ class AccountHasAcademyMod
     public function deleteAccountHasAcademy($account)
     {
         // Đẩy câu lệnh vào string
-        $sql = "DELETE FROM Account_Has_Academy 
+        $sql = "DELETE FROM Account_has_Academy 
 						WHERE Account_idAccount='" . $account . "';";
         // Thực thi câu lệnh
         // Thực hiện câu truy vấn

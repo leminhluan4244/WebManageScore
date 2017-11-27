@@ -196,7 +196,7 @@ class AcademyMod {
 
 	//Hàm tìm kiếm một khoa theo tên
 	public function findAcademyByName($academy) {
-		$sql = "SELECT * FROM Academy WHERE AcademyName=N'" . $academy->getAcademyName() . "';";
+		$sql = "SELECT * FROM Academy WHERE academyName=N'" . $academy->getAcademyName() . "';";
 		// Thực thi truy vấn
 		$this->conn->Connect();
 		$result = $this->conn->conn->query($sql);
@@ -261,7 +261,7 @@ class AcademyMod {
 	//Hàm thêm một khoa
 	public function addAcademy($academy) {
 		// Đẩy câu lệnh vào string
-		$sql = "INSERT INTO Academy(idAcademy, AcademyName) 
+		$sql = "INSERT INTO Academy(idAcademy, academyName) 
 						VALUES('" . $academy->getIdAcademy() . "','" .
 			$academy->getAcademyName() . "');";
 		// Thực thi câu lệnh
@@ -333,7 +333,7 @@ class AcademyMod {
 	}
 
 	public function getListStudentInAcademy($academyId) {
-		$sql = "SELECT * FROM account_has_academy aha INNER JOIN account a
+		$sql = "SELECT * FROM Account_has_Academy aha INNER JOIN Account a
 					ON aha.Account_idAccount = a.idAccount
 					WHERE aha.Academy_idAcademy = '{$academyId}' 
 						  AND (a.Permission_position = 'Sinh viên' 
@@ -372,7 +372,7 @@ class AcademyMod {
 	}
 
 	public function getAcademyNameOf($academyId){
-		$sql = "SELECT academyName FROM academy where idAcademy = '$academyId'";
+		$sql = "SELECT academyName FROM Academy where idAcademy = '$academyId'";
 		$this->conn->Connect();
 		$result = $this->conn->conn->query($sql);
 		$this->conn->Stop();
@@ -387,8 +387,8 @@ class AcademyMod {
         $sql = "SELECT DISTINCT `idAccount`, `accountName`, `birthday`, `address`, `sex`, `phone`, `email`, `password`, `Permission_position` 
 				FROM Account,Account_has_Academy 
 				WHERE Account_has_Academy.Academy_idAcademy = '".$academyId."' AND
-				 account.idAccount = account_has_academy.Account_idAccount AND
-				  account.Permission_position='Cố vấn học tập';";
+				 Account.idAccount = Account_has_Academy.Account_idAccount AND
+				  Account.Permission_position='Cố vấn học tập';";
         $this->conn->Connect();
         $result = $this->conn->conn->query($sql);
         if ($result->num_rows > 0) {
