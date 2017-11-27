@@ -77,7 +77,7 @@ class PermissionMod
    * */
     public function getPermission()
     {
-        $sql = "SELECT DISTINCT * FROM Permission GROUP BY Position";
+        $sql = "SELECT DISTINCT * FROM Permission GROUP BY position";
         $this->connSql->Connect();
         $result = $this->connSql->conn->query($sql);
 
@@ -154,7 +154,7 @@ class PermissionMod
   	# Đoàn Minh Nhựt
   	*/
      public function setAllDisplay($namePermission, $num){
-       $sql = "UPDATE `permission` SET `selected`= $num WHERE `position` = '".$namePermission."'";
+       $sql = "UPDATE `Permission` SET `selected`= $num WHERE `position` = '".$namePermission."'";
        #var_dump($sql);
        $this->connSql->Connect();
        if ($this->connSql->conn->query($sql) === true) {
@@ -168,7 +168,7 @@ class PermissionMod
   	# Đoàn Minh Nhựt
   	*/
     public function setDisplay($namePermission, $num, $power){
-      $sql = "UPDATE `permission` SET `selected`= $num WHERE `position` = '".$namePermission."' AND `power` = '".$power."'";
+      $sql = "UPDATE `Permission` SET `selected`= $num WHERE `position` = '".$namePermission."' AND `power` = '".$power."'";
       #var_dump($sql);
       $this->connSql->Connect();
       if ($this->connSql->conn->query($sql) === true) {

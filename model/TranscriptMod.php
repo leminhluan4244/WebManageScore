@@ -26,8 +26,8 @@ class TranscriptMod {
 		return $result;
 	}
 
-	public function getTranscript($accountId, $transcriptId){
-		$sql = "select * from transcript where Account_idAccount = '$accountId' AND idItem = '{$transcriptId}'";
+	public function getTranscript($accountId, $TranscriptId){
+		$sql = "select * from Transcript where Account_idAccount = '$accountId' AND idItem = '{$TranscriptId}'";
 		$TranscriptObj = new TranscriptObj();
 		$this->connSQL->Connect();
 		$result = $this->connSQL->conn->query($sql);
@@ -39,7 +39,7 @@ class TranscriptMod {
 		return $TranscriptObj;
 	}
     public function getTranscriptAllObj(){ # trả ra tất cả các mục
-        $sql = "select DISTINCT idItem,itemName from transcript;";
+        $sql = "select DISTINCT idItem,itemName from Transcript;";
         $this->connSQL->Connect();
         $result = $this->connSQL->conn->query($sql);
         if ($result->num_rows > 0) {
@@ -96,7 +96,7 @@ class TranscriptMod {
 	 */
 	public function updateTranscriptScore($accountId, $itemId, $score, $col = COL_STUDENT_SCORE){
 		$this->connSQL->Connect();
-		$sql = "select scoresMax from transcript WHERE Account_idAccount = '$accountId' AND idItem = '$itemId'";
+		$sql = "select scoresMax from Transcript WHERE Account_idAccount = '$accountId' AND idItem = '$itemId'";
 		$result = $this->connSQL->conn->query($sql);
 		if (!empty($result)){
 			$row = $result->fetch_assoc();
@@ -104,7 +104,7 @@ class TranscriptMod {
 		} else $maxScore = 0;
 		if ($score > $maxScore)
 			$score = $maxScore;
-		$sql = "update transcript set $col = '$score' 
+		$sql = "update Transcript set $col = '$score' 
 					WHERE Account_idAccount = '$accountId' AND idItem = '$itemId'";
 		$result = $this->connSQL->conn->query($sql);
 		$this->connSQL->Stop();
@@ -112,7 +112,7 @@ class TranscriptMod {
 	}
 
 	public function resetSummaryScore($accountId, $col = COL_STUDENT_SCORE){
-		$sql = "update transcript set $col = '0' WHERE Account_idAccount = '$accountId' AND IDParent = '0'";
+		$sql = "update Transcript set $col = '0' WHERE Account_idAccount = '$accountId' AND IDParent = '0'";
 		$this->connSQL->Connect();
 		$result = $this->connSQL->conn->query($sql);
 		$this->connSQL->Stop();
@@ -128,7 +128,7 @@ class TranscriptMod {
 	 * @return mixed
 	 */
 //	public function summarizeTranscriptScore($accountId, $itemId, $score, $col = COL_STUDENT_SCORE){
-//		$sql = "select $col, scoresMax from transcript
+//		$sql = "select $col, scoresMax from Transcript
 //					WHERE Account_idAccount = '$accountId' and idItem = '$itemId'";
 //		$this->connSQL->Connect();
 //		$result = $this->connSQL->conn->query($sql);
@@ -142,7 +142,7 @@ class TranscriptMod {
 //		$currentScore += $score;
 //		if ($currentScore > $maxScore)
 //			$currentScore = $maxScore;
-//		$sql = "update transcript set $col = '$currentScore'
+//		$sql = "update Transcript set $col = '$currentScore'
 //					WHERE Account_idAccount = '$accountId' AND idItem = '$itemId'";
 //		$result = $this->connSQL->conn->query($sql);
 //		$this->connSQL->Stop();
@@ -150,7 +150,7 @@ class TranscriptMod {
 //	}
 
 	public function getTranscriptName($accountId, $itemId){
-		$sql = "select itemName from transcript where Account_idAccount = '$accountId' AND idItem = '$itemId'";
+		$sql = "select itemName from Transcript where Account_idAccount = '$accountId' AND idItem = '$itemId'";
 		$this->connSQL->Connect();
 		$result = $this->connSQL->conn->query($sql);
 		$this->connSQL->Stop();
@@ -183,7 +183,7 @@ class TranscriptMod {
 	 * @return bool
 	 */
 	public function isTranscriptExist($accoundId, $structLeafs = []){
-		$sql = "select count(*) as total from transcript where Account_idAccount = '$accoundId'";
+		$sql = "select count(*) as total from Transcript where Account_idAccount = '$accoundId'";
 		$this->connSQL->Connect();
 		$result = $this->connSQL->conn->query($sql);
 		$currentRow = 0;
@@ -202,7 +202,7 @@ class TranscriptMod {
 	public function generateTranscript($accountId, $structure = array(), $addScore = array()){
 		$this->connSQL->Connect();
 		foreach ($structure as $id => $item){
-			$sql = "insert ignore into transcript values(
+			$sql = "insert ignore into Transcript values(
 				'$id', '$accountId', '{$item['itemName']}', '0', 
 				'{$item['describe']}', '{$item['IDParent']}', '{$item['scoresDefault']}', 
 				'{$item['scores']}', '0', '0'
@@ -214,15 +214,55 @@ class TranscriptMod {
 	}
 
 	public function getEntireTranscript($accountId) {
+		$sql = "select * from Transcript where Account_idAccount = '$accountId'";
+		$this->connSQL->Connect();
+		$result = $this->connSQL->conn->query($sql);
+		$this->connSQL->Stop();
+
+		$Transcript = array();
+		if (!empty($result))
+			while ($row = $result->fetch_assoc())
+				$Transcript[$row['idItem']] = $row;
+		return $Transcript;
+	}
+
+	public function getEntireTranscript2($accountId) {
 		$sql = "select * from transcript where Account_idAccount = '$accountId'";
 		$this->connSQL->Connect();
 		$result = $this->connSQL->conn->query($sql);
 		$this->connSQL->Stop();
 
-		$transcript = array();
+		$entire = array();
 		if (!empty($result))
-			while ($row = $result->fetch_assoc())
-				$transcript[$row['idItem']] = $row;
-		return $transcript;
+			while ($row = $result->fetch_assoc()){
+				$respone = new TranscriptObj();
+				$respone->setTranscriptObj(
+					$row['idItem'],
+					$row['Account_idAccount'],
+					$row['itemName'],
+					$row['scores'],
+					$row['describe'],
+					$row['IDParent'],
+					$row['scoresDefault'],
+					$row['scoresMax'],
+					$row['scoresStudent'],
+					$row['scoresTeacher']
+				);
+				$entire[] = $respone;
+			}
+		return $entire;
+	}
+
+	public function getTotalScoreOfItem($accountId,$item) {
+		$sql = "SELECT sum(scoresStudent)as total from transcript WHERE idItem LIKE '$item.%' and Account_idAccount = '$accountId'";
+		$this->connSQL->Connect();
+		$result = $this->connSQL->conn->query($sql);
+		$this->connSQL->Stop();
+		if (!empty($result)){
+			while ($row = $result->fetch_assoc()){
+				$respone = array('Total' => (int) $row['total']);
+			}
+		}
+		return $respone;
 	}
 }

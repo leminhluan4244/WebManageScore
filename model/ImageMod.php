@@ -13,7 +13,7 @@ class ImageMod{
 	}
 
 	public function getImages($accountId){
-		$sql = "select i.Image as img, idItem, itemName from image i, transcript t
+		$sql = "select i.Image as img, idItem, itemName from Image i, Transcript t
 				where i.Transcript_idItem = t.idItem 
 				and i.Account_idAccount = t.Account_idAccount
 				and i.Account_idAccount = '$accountId'";
@@ -35,15 +35,15 @@ class ImageMod{
 
 	public function addImage($accountId, $transcriptId, $imgName){
 		$this->connSQL->Connect();
-		$sql = "insert into image values('$imgName', '$accountId', '$transcriptId')";
+		$sql = "insert into Image values('$imgName', '$accountId', '$transcriptId')";
 		$result = $this->connSQL->conn->query($sql);
 		$this->connSQL->Stop();
 		return $result;
 	}
 
 	public function removeImage($accountId, $imgName){
-		$sql = "delete from image where Account_idAccount = '$accountId' 
-					and image.Image = '$imgName'";
+		$sql = "delete from Image where Account_idAccount = '$accountId' 
+					and Image.Image = '$imgName'";
 		$this->connSQL->Connect();
 		$result = $this->connSQL->conn->query($sql);
 		$this->connSQL->Stop();

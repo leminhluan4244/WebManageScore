@@ -16,7 +16,7 @@ class yearsSemesterMod {
 
 
     public function getData(){
-        $sql = "SELECT *  FROM years_semester";
+        $sql = "SELECT *  FROM Years_semester";
         $this->connSQL->Connect();
         $result = $this->connSQL->conn->query($sql);
         $practices = new PractiseScoresObj();
@@ -38,7 +38,7 @@ class yearsSemesterMod {
 	 * @return bool
 	 */
 	public function addData($pcObj){
-		$sql = "insert into year_semester 
+		$sql = "insert into Years_semester
 				values(
 					'{$pcObj->getSemester()}',
 					'{$pcObj->getYears()}'
@@ -55,7 +55,7 @@ class yearsSemesterMod {
 	 * @return bool
 	 */
 	public function deleteData($pcObj){
-		$sql = "delete from year_semester 
+		$sql = "delete from Years_semester
 				where 
 				semester = '{$pcObj->getSemester()}'
 				and years = '{$pcObj->getYears()}'";
@@ -71,7 +71,7 @@ class yearsSemesterMod {
 	 * @return bool
 	 */
 	public function updatePractiseScores($pcObj){
-		$sql = "update year_semester set semester = '{$pcObj->getSemester()}',years = '{$pcObj->getYears()}'
+		$sql = "update Years_semesterset semester = '{$pcObj->getSemester()}',years = '{$pcObj->getYears()}'
 				where
 				1";
 		$this->connSQL->Connect();
