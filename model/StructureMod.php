@@ -135,8 +135,39 @@ class StructureMod {
 		return $children;
 	}
 
+<<<<<<< HEAD
 //	public function isChildOfRoot($StructureObj){
 //		return $StructureObj->getIdParent() === ROOT_Structure;
+=======
+	/**
+	 * Lấy tất cả các idItem có IDParent = '0'
+	 * @return array
+	 */
+	public function getEntireStructureTable2(){
+		$entire = array();
+		$sql = "select * from structure";
+		$this->connSQL->Connect();
+		$result = $this->connSQL->conn->query($sql);
+		if (!empty($result)){
+			while ($row = $result->fetch_assoc()){
+				$respone = new StructureObj();
+				$respone->setStructureObj(
+					$row['idItem'],
+					$row['itemName'],
+					$row['scores'],
+					$row['describe'],
+					$row['IDParent'],
+					$row['scoresDefault']
+				);
+				$entire[] = $respone;
+			}
+		}
+		return $entire;
+	}
+
+//	public function isChildOfRoot($structureObj){
+//		return $structureObj->getIdParent() === ROOT_STRUCTURE;
+>>>>>>> 913552db3873dced4deccf12e0c43d31cd4a32f4
 //	}
 //
 //	public function isLeaf($StructureObj){
