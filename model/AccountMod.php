@@ -17,7 +17,7 @@ class AccountMod {
 
 	#Kiểm đăng nhập
 	public function checkLogin($idAccount, $password) {
-		$sql = "SELECT `idAccount` FROM `account` WHERE `idAccount` = '" . $idAccount . "' AND `password` = '" . md5($password) . "'";
+		$sql = "SELECT `idAccount` FROM `Account` WHERE `idAccount` = '" . $idAccount . "' AND `password` = '" . md5($password) . "'";
 		$this->conn2sql->Connect();
 		$result = $this->conn2sql->conn->query($sql);
 		$this->conn2sql->Stop();
@@ -37,7 +37,7 @@ class AccountMod {
 
      * */
 	public function addAccount($accountObj) {
-		$sql = "INSERT INTO `account`(`idAccount`, `accountName`, `birthday`, `address`, `sex`, `phone`, `email`, `password`, `Permission_position`) VALUES (
+		$sql = "INSERT INTO `Account`(`idAccount`, `accountName`, `birthday`, `address`, `sex`, `phone`, `email`, `password`, `Permission_position`) VALUES (
         '" . $accountObj->getIdAccount() . "',
         '" . $accountObj->getAccountName() . "',
         '" . $accountObj->getBirthday() . "',
@@ -62,7 +62,7 @@ class AccountMod {
         // Tạo ra một mảng lưu trữ tên list, mặc định bang đầu rỗng
         $list = array();
         // Đẩy câu lệnh vào string
-        $sql = "SELECT * FROM account WHERE idAccount='".$id."' and account.Permission_position <> 'Quản lý chi hội' and account.Permission_position <> 'Sinh viên' AND account.Permission_position <> 'Default';";
+        $sql = "SELECT * FROM Account WHERE idAccount='".$id."' and Account.Permission_position <> 'Quản lý chi hội' and Account.Permission_position <> 'Sinh viên' AND Account.Permission_position <> 'Default';";
         $this->conn2sql->Connect();
         $result = $this->conn2sql->conn->query($sql);
         // Kiểm tra số lượng kết quả trả về có lơn hơn 0
@@ -98,7 +98,7 @@ class AccountMod {
         // Tạo ra một mảng lưu trữ tên list, mặc định bang đầu rỗng
         $list = array();
         // Đẩy câu lệnh vào string
-        $sql = "SELECT * FROM account WHERE (idAccount='".$string."' OR accountName='".$string."')  and (account.Permission_position = 'Sinh viên');";
+        $sql = "SELECT * FROM Account WHERE (idAccount='".$string."' OR accountName='".$string."')  and (Account.Permission_position = 'Sinh viên');";
         $this->conn2sql->Connect();
         $result = $this->conn2sql->conn->query($sql);
         // Kiểm tra số lượng kết quả trả về có lơn hơn 0
@@ -142,7 +142,7 @@ class AccountMod {
 	# Đoàn Minh Nhựt
 	*/
 	public function getAccount($idAccount) {
-		$sql = "SELECT * FROM `account` WHERE `idAccount` = '" . $idAccount . "'";
+		$sql = "SELECT * FROM `Account` WHERE `idAccount` = '" . $idAccount . "'";
 		$this->conn2sql->Connect();
 		$result = $this->conn2sql->conn->query($sql);
 		$this->conn2sql->Stop();
@@ -235,7 +235,7 @@ class AccountMod {
 
 	#Một nùi luân =-----------------------------------------------------------
 	public function getClassId($id) {
-		$sql = "SELECT class.idClass FROM account,account_has_class,class WHERE account.idAccount = account_has_class.Account_idAccount AND account_has_class.Class_idClass = class.idClass AND account.idAccount='" . $id . "';";
+		$sql = "SELECT Class.idClass FROM Account,Account_has_Class,Class WHERE Account.idAccount = Account_has_Class.Account_idAccount AND Account_has_Class.Class_idClass = Class.idClass AND Account.idAccount='" . $id . "';";
 		$this->conn2sql->Connect();
 		$result = $this->conn2sql->conn->query($sql);
 		$this->conn2sql->Stop();
@@ -258,7 +258,7 @@ class AccountMod {
           Hoàng Thơ
    * */
 	public function getAcademyId($id) {
-		$sql = "SELECT academy.idAcademy FROM account,account_has_academy,academy WHERE account.idAccount = account_has_academy.Account_idAccount AND account_has_academy.Academy_idAcademy = academy.idAcademy AND account.idAccount='" . $id . "';
+		$sql = "SELECT Academy.idAcademy FROM Account,Account_has_Academy,Academy WHERE Account.idAccount = Account_has_Academy.Account_idAccount AND Account_has_Academy.Academy_idAcademy = Academy.idAcademy AND Account.idAccount='" . $id . "';
 ";
 		$this->conn2sql->Connect();
 		$result = $this->conn2sql->conn->query($sql);
@@ -275,7 +275,7 @@ class AccountMod {
 	}
 
 	public function getBranchId($id) {
-		$sql = "SELECT branch.idBranch FROM account,account_has_branch,branch WHERE account.idAccount = account_has_branch.Account_idAccount AND account_has_branch.Branch_idBranch = branch.idBranch AND account.idAccount='" . $id . "';
+		$sql = "SELECT Branch.idBranch FROM Account,Account_has_Branch,Branch WHERE Account.idAccount = Account_has_Branch.Account_idAccount AND Account_has_Branch.Branch_idBranch = Branch.idBranch AND Account.idAccount='" . $id . "';
 ";
 		$this->conn2sql->Connect();
 		$result = $this->conn2sql->conn->query($sql);
@@ -295,7 +295,7 @@ class AccountMod {
 		return $list;
 	}
     public function getBranchName($id) {
-        $sql = "SELECT branch.branchName FROM account,account_has_branch,branch WHERE account.idAccount = account_has_branch.Account_idAccount AND account_has_branch.Branch_idBranch = branch.idBranch AND account.idAccount='" . $id . "';
+        $sql = "SELECT Branch.branchName FROM Account,Account_has_Branch,Branch WHERE Account.idAccount = Account_has_Branch.Account_idAccount AND Account_has_Branch.Branch_idBranch = Branch.idBranch AND Account.idAccount='" . $id . "';
 ";
         $this->conn2sql->Connect();
         $result = $this->conn2sql->conn->query($sql);
@@ -362,7 +362,7 @@ class AccountMod {
 		// Tạo ra một mảng lưu trữ tên list, mặc định bang đầu rỗng
 		$list = array();
 		// Đẩy câu lệnh vào string
-		$sql = "SELECT * FROM account WHERE account.Permission_position <> 'Quản lý chi hội' AND account.Permission_position <> 'Sinh viên' AND account.Permission_position <> 'Default';";
+		$sql = "SELECT * FROM Account WHERE Account.Permission_position <> 'Quản lý chi hội' AND Account.Permission_position <> 'Sinh viên' AND Account.Permission_position <> 'Default';";
 		$this->conn2sql->Connect();
 		$result = $this->conn2sql->conn->query($sql);
 		// Kiểm tra số lượng kết quả trả về có lơn hơn 0
@@ -403,12 +403,12 @@ class AccountMod {
 		// Tạo ra một mảng lưu trữ tên list, mặc định bang đầu rỗng
 		$list = array();
 		// Đẩy câu lệnh vào string
-		$sql = "SELECT * FROM account, account_has_academy
-                    WHERE account.idAccount = account_has_academy.Account_idAccount AND
-                    account_has_academy.Academy_idAcademy = '" . $id . "' AND
-                    account.Permission_position <> 'Quản lý chi hội' AND
-                    account.Permission_position <> 'Sinh viên' AND
-                    account.Permission_position <> 'Default';";
+		$sql = "SELECT * FROM Account, Account_has_Academy
+                    WHERE Account.idAccount = Account_has_Academy.Account_idAccount AND
+                    Account_has_Academy.Academy_idAcademy = '" . $id . "' AND
+                    Account.Permission_position <> 'Quản lý chi hội' AND
+                    Account.Permission_position <> 'Sinh viên' AND
+                    Account.Permission_position <> 'Default';";
 		$this->conn2sql->Connect();
 		$result = $this->conn2sql->conn->query($sql);
 		// Kiểm tra số lượng kết quả trả về có lơn hơn 0
@@ -451,11 +451,11 @@ class AccountMod {
 		// Tạo ra một mảng lưu trữ tên list, mặc định bang đầu rỗng
 		$list = array();
 		// Đẩy câu lệnh vào string
-		$sql = "SELECT * FROM account, account_has_academy
-                    WHERE account.idAccount = account_has_academy.Account_idAccount AND
-                    account_has_academy.Academy_idAcademy = '".$id."' AND (
-                    account.Permission_position = 'Quản lý chi hội' OR
-                    ACCOUNT.Permission_position = 'Sinh viên');";
+		$sql = "SELECT * FROM Account, Account_has_Academy
+                    WHERE Account.idAccount = Account_has_Academy.Account_idAccount AND
+                    Account_has_Academy.Academy_idAcademy = '".$id."' AND (
+                    Account.Permission_position = 'Quản lý chi hội' OR
+                    Account.Permission_position = 'Sinh viên');";
 		$this->conn2sql->Connect();
 		$result = $this->conn2sql->conn->query($sql);
 		// Kiểm tra số lượng kết quả trả về có lơn hơn 0
@@ -498,9 +498,9 @@ class AccountMod {
 		// Tạo ra một mảng lưu trữ tên list, mặc định bang đầu rỗng
 		$list = array();
 		// Đẩy câu lệnh vào string
-		$sql = "SELECT * FROM Account, Account_Has_Class
-                    WHERE Account.idAccount = Account_Has_Class.Account_idAccount AND
-                    Account_Has_Academy.Class_idClass
+		$sql = "SELECT * FROM Account, Account_has_Class
+                    WHERE Account.idAccount = Account_has_Class.Account_idAccount AND
+                    Account_has_Academy.Class_idClass
                      = '" . $id . "' AND (
                      Account.Permission_position = 'Quản lý chi hội' OR
                     Account.Permission_position = 'Sinh viên');";
@@ -541,9 +541,9 @@ class AccountMod {
 		// Tạo ra một mảng lưu trữ tên list, mặc định bang đầu rỗng
 		$list = array();
 		// Đẩy câu lệnh vào string
-		$sql = "SELECT * FROM account, account_has_branch
-                    WHERE account.idAccount = account_has_branch.Account_idAccount AND
-                    account_has_branch.Branch_idBranch
+		$sql = "SELECT * FROM Account, Account_has_Branch
+                    WHERE Account.idAccount = Account_has_Branch.Account_idAccount AND
+                    Account_has_Branch.Branch_idBranch
                      = '" . $id . "' AND (
                      Account.Permission_position = 'Quản lý chi hội' OR
                     Account.Permission_position = 'Sinh viên');";
@@ -589,7 +589,7 @@ class AccountMod {
 		# Đoàn Minh Nhựt
 		*/
 	public function updateAccount($account) {
-		$sql = "UPDATE `account` SET
+		$sql = "UPDATE `Account` SET
         `accountName`='" . $account->getAccountName() . "',
         `birthday`='" . $account->getBirthday() . "',
         `address`='" . $account->getAddress() . "',
@@ -612,7 +612,7 @@ class AccountMod {
     public function updateStaff($account)
     {
         // Đẩy câu lệnh vào string
-        $sql = "UPDATE `account` SET
+        $sql = "UPDATE `Account` SET
         `accountName`='" . $account->getAccountName() . "',
         `birthday`='" . $account->getBirthday() . "',
         `address`='" . $account->getAddress() . "',
@@ -646,10 +646,10 @@ class AccountMod {
 	 * */
 	public function deleteAccount($account) {
 		$sql =
-			"DELETE FROM `account_has_class` WHERE `Account_idAccount` = '" . $account->getIdAccount() . "';"
-			. "DELETE FROM `account_has_academy` WHERE `Account_idAccount` = '" . $account->getIdAccount() . "';"
-			. "DELETE FROM `account_has_branch` WHERE `Account_idAccount` = '" . $account->getIdAccount() . "';"
-			. "DELETE FROM `account` WHERE `idAccount` = '" . $account->getIdAccount() . "'; ";
+			"DELETE FROM `Account_has_Class` WHERE `Account_idAccount` = '" . $account->getIdAccount() . "';"
+			. "DELETE FROM `Account_has_Academy` WHERE `Account_idAccount` = '" . $account->getIdAccount() . "';"
+			. "DELETE FROM `Account_has_Branch` WHERE `Account_idAccount` = '" . $account->getIdAccount() . "';"
+			. "DELETE FROM `Account` WHERE `idAccount` = '" . $account->getIdAccount() . "'; ";
 		echo $sql;
 		$this->conn2sql->Connect();
 		$result = $this->conn2sql->conn->multi_query($sql);
@@ -663,7 +663,7 @@ class AccountMod {
 
 	#Trả về một mảng chứa tên các lớp
 	public function getAccountOnClass($idAccount) {
-		$sql = "SELECT `Class_idClass` FROM `account_has_class` WHERE `Account_idAccount` = '" . $idAccount . "'";
+		$sql = "SELECT `Class_idClass` FROM `Account_has_Class` WHERE `Account_idAccount` = '" . $idAccount . "'";
 		$this->conn2sql->Connect();
 		$result = $this->conn2sql->conn->query($sql);
 		if (empty($result)) {
@@ -678,7 +678,7 @@ class AccountMod {
 		}
 		$className = array();
 		for ($i = 0; $i < count($arr); $i++) {
-			$sql = "SELECT `className` FROM `class` WHERE `idClass` = '" . $arr[$i] . "'";
+			$sql = "SELECT `className` FROM `Class` WHERE `idClass` = '" . $arr[$i] . "'";
 			#echo $sql.'<br />';
 			$this->conn2sql->Connect();
 			$result = $this->conn2sql->conn->query($sql);
@@ -698,7 +698,7 @@ class AccountMod {
 
    * */
 	public function getClass($id) {
-		$sql = "SELECT class.className FROM account,account_has_class,class WHERE account.idAccount = account_has_class.Account_idAccount AND account_has_class.Class_idClass = class.idClass AND account.idAccount='" . $id . "';";
+		$sql = "SELECT Class.className FROM Account,Account_has_Class,Class WHERE Account.idAccount = Account_has_Class.Account_idAccount AND Account_has_Class.Class_idClass = Class.idClass AND Account.idAccount='" . $id . "';";
 		$this->conn2sql->Connect();
 		$result = $this->conn2sql->conn->query($sql);
 		$this->conn2sql->Stop();
@@ -719,7 +719,7 @@ class AccountMod {
 	# Đoàn Minh Nhựt
 	*/
 	public function getPermission($id) {
-		$sql = "SELECT Permission_position FROM account WHERE  account.idAccount='" . $id . "';";
+		$sql = "SELECT Permission_position FROM Account WHERE  Account.idAccount='" . $id . "';";
 		$this->conn2sql->Connect();
 		$result = $this->conn2sql->conn->query($sql);
 		$this->conn2sql->Stop();
@@ -739,7 +739,7 @@ class AccountMod {
 
        * */
 	public function getAcademy($id) {
-		$sql = "SELECT academy.academyName FROM account,account_has_academy,academy WHERE account.idAccount = account_has_academy.Account_idAccount AND account_has_academy.Academy_idAcademy = academy.idAcademy AND account.idAccount='" . $id . "';
+		$sql = "SELECT Academy.academyName FROM Account,Account_has_Academy,Academy WHERE Account.idAccount = Account_has_Academy.Account_idAccount AND Account_has_Academy.Academy_idAcademy = Academy.idAcademy AND Account.idAccount='" . $id . "';
 ";
 		$this->conn2sql->Connect();
 		$result = $this->conn2sql->conn->query($sql);
@@ -763,7 +763,7 @@ class AccountMod {
 
        * */
 	public function getBranch($id) {
-		$sql = "SELECT branch.branchName FROM account,account_has_branch,branch WHERE account.idAccount = account_has_branch.Account_idAccount AND account_has_branch.Branch_idBranch = branch.idBranch AND account.idAccount='" . $id . "';
+		$sql = "SELECT Branch.branchName FROM Account,Account_has_Branch,Branch WHERE Account.idAccount = Account_has_Branch.Account_idAccount AND Account_has_Branch.Branch_idBranch = Branch.idBranch AND Account.idAccount='" . $id . "';
 ";
 		$this->conn2sql->Connect();
 		$result = $this->conn2sql->conn->query($sql);
@@ -784,7 +784,7 @@ class AccountMod {
 
 	#Trả về một mảng chứa tên các khoa
 	public function getAccountOnAcademy($idAccount) {
-		$sql = "SELECT `Academy_idAcademy` FROM `account_has_academy` WHERE `Account_idAccount` = '" . $idAccount . "'";
+		$sql = "SELECT `Academy_idAcademy` FROM `Account_has_Academy` WHERE `Account_idAccount` = '" . $idAccount . "'";
 		$this->conn2sql->Connect();
 		$result = $this->conn2sql->conn->query($sql);
 		if (empty($result)) {
@@ -799,7 +799,7 @@ class AccountMod {
 		}
 		$academyName = array();
 		for ($i = 0; $i < count($arr); $i++) {
-			$sql = "SELECT `academyName` FROM `academy` WHERE `idAcademy` = '" . $arr[$i] . "'";
+			$sql = "SELECT `academyName` FROM `Academy` WHERE `idAcademy` = '" . $arr[$i] . "'";
 			#echo $sql.'<br />';
 			$this->conn2sql->Connect();
 			$result = $this->conn2sql->conn->query($sql);
@@ -814,7 +814,7 @@ class AccountMod {
 
 	#Trả về một mảng chứa tên các chi hội
 	public function getAccountOnBranch($idAccount) {
-		$sql = "SELECT `Branch_idBranch` FROM `account_has_branch` WHERE `Account_idAccount` = '" . $idAccount . "'";
+		$sql = "SELECT `Branch_idBranch` FROM `Account_has_Branch` WHERE `Account_idAccount` = '" . $idAccount . "'";
 		$this->conn2sql->Connect();
 		$result = $this->conn2sql->conn->query($sql);
 		if (empty($result)) {
@@ -829,7 +829,7 @@ class AccountMod {
 		}
 		$branchName = array();
 		for ($i = 0; $i < count($arr); $i++) {
-			$sql = "SELECT `branchName` FROM `branch` WHERE `idBranch` = '" . $arr[$i] . "'";
+			$sql = "SELECT `branchName` FROM `Branch` WHERE `idBranch` = '" . $arr[$i] . "'";
 			#echo $sql.'<br />';
 			$this->conn2sql->Connect();
 			$result = $this->conn2sql->conn->query($sql);
@@ -844,7 +844,7 @@ class AccountMod {
 
 	#Trả về một mảng chứa tên các điểm cộng trừ
 	public function getAccountOnScoresAdd($idAccount) {
-		$sql = "SELECT `ScoresAdd_idScores` FROM `scoresadd_has_account` WHERE `Account_idAccount` = '" . $idAccount . "'";
+		$sql = "SELECT `ScoresAdd_idScore` FROM `ScoresAdd_has_Account` WHERE `Account_idAccount` = '" . $idAccount . "'";
 		$this->conn2sql->Connect();
 		$result = $this->conn2sql->conn->query($sql);
 		if (empty($result)) {
@@ -859,7 +859,7 @@ class AccountMod {
 		}
 		$scoresaddName = array();
 		for ($i = 0; $i < count($arr); $i++) {
-			$sql = "SELECT `scores` FROM `scoresadd` WHERE `idScores` = '" . $arr[$i] . "'";
+			$sql = "SELECT `scores` FROM `ScoresAdd` WHERE `idScore` = '" . $arr[$i] . "'";
 			#echo $sql.'<br />';
 			$this->conn2sql->Connect();
 			$result = $this->conn2sql->conn->query($sql);
@@ -874,7 +874,7 @@ class AccountMod {
 
 	#Kiểm tra tài khoản có thuộc lớp hay không?, bằng mã số
 	public function checkAccountOnClass($idAccount, $idClass) {
-		$sql = "SELECT `Account_idAccount` FROM `account_has_class` WHERE `Account_idAccount` = '" . $idAccount . "' AND `Class_idClass` = '" . $idClass . "'";
+		$sql = "SELECT `Account_idAccount` FROM `Account_has_Class` WHERE `Account_idAccount` = '" . $idAccount . "' AND `Class_idClass` = '" . $idClass . "'";
 		$this->conn2sql->Connect();
 		$result = $this->conn2sql->conn->query($sql);
 		$this->conn2sql->Stop();
@@ -890,7 +890,7 @@ class AccountMod {
 
 	#Kiểm tra tài khoản có thuộc khoa hay không?, bằng mã số
 	public function checkAccountOnAcademy($idAccount, $idAcademy) {
-		$sql = "SELECT `Account_idAccount` FROM `account_has_academy` WHERE `Account_idAccount` = '" . $idAccount . "' AND `Academy_idAcademy` = '" . $idAcademy . "'";
+		$sql = "SELECT `Account_idAccount` FROM `Account_has_Academy` WHERE `Account_idAccount` = '" . $idAccount . "' AND `Academy_idAcademy` = '" . $idAcademy . "'";
 		$this->conn2sql->Connect();
 		$result = $this->conn2sql->conn->query($sql);
 		$this->conn2sql->Stop();
@@ -906,7 +906,7 @@ class AccountMod {
 
 	#Kiểm tra tài khoản có thuộc khoa hay không?, bằng mã số
 	public function checkAccountOnBranch($idAccount, $idBranch) {
-		$sql = "SELECT `Account_idAccount` FROM `account_has_branch` WHERE `Account_idAccount` = '" . $idAccount . "' AND `Branch_idBranch` = '" . $idBranch . "'";
+		$sql = "SELECT `Account_idAccount` FROM `Account_has_Branch` WHERE `Account_idAccount` = '" . $idAccount . "' AND `Branch_idBranch` = '" . $idBranch . "'";
 		$this->conn2sql->Connect();
 		$result = $this->conn2sql->conn->query($sql);
 		$this->conn2sql->Stop();
@@ -922,7 +922,7 @@ class AccountMod {
 
 	#Kiểm tra tài khoản có cộng hoặc trừ điểm hay không?, bằng mã số
 	public function checkAccountOnScoresAdd($idAccount, $idScoresAdd) {
-		$sql = "SELECT `Account_idAccount` FROM `scoresadd_has_account` WHERE `Account_idAccount` = '" . $idAccount . "' AND `ScoresAdd_idScores` = '" . $idScoresAdd . "'";
+		$sql = "SELECT `Account_idAccount` FROM `ScoresAdd_has_Account` WHERE `Account_idAccount` = '" . $idAccount . "' AND `ScoresAdd_idScores` = '" . $idScoresAdd . "'";
 		#echo $sql.'<br />';
 		$this->conn2sql->Connect();
 		$result = $this->conn2sql->conn->query($sql);
@@ -943,7 +943,7 @@ class AccountMod {
 	#Tìm kiếm tài khoản theo tên,
 	#trả về mảng chứa thông tin tài khoản với các khóa là thuộc tính của tài khoản
 	public function findAccountByName($accountName) {
-		$sql = "SELECT * FROM `account` WHERE `accountName` = '" . $accountName . "'";
+		$sql = "SELECT * FROM `Account` WHERE `accountName` = '" . $accountName . "'";
 		$this->conn2sql->Connect();
 		$result = $this->conn2sql->conn->query($sql);
 		$this->conn2sql->Stop();
@@ -975,7 +975,7 @@ class AccountMod {
  	*/
 	public function findAccountByID($idAccount) {
 		$this->conn2sql->Connect();
-		$sql = "SELECT * FROM `account` WHERE `idAccount` = '" . $idAccount . "'";
+		$sql = "SELECT * FROM `Account` WHERE `idAccount` = '" . $idAccount . "'";
 		$result = $this->conn2sql->conn->query($sql);
 		$this->conn2sql->Stop();
 		$row = $result->fetch_row();
@@ -1074,14 +1074,14 @@ class AccountMod {
 								,c.className
 								,acm.academyName
 								,c.schoolYear 
-				from account ac, academy acm , account_has_class ahc, class c 
+				from Account ac, Academy acm , Account_has_Class ahc, Class c 
 				where ac.idAccount= '" . $idAccount . "' and 
 						ahc.Account_idAccount = '" . $idAccount . "' and
 						c.idClass = (SELECT Class_idClass 
-										from account_has_class 
+										from Account_has_Class 
 										WHERE Account_idAccount = '" . $idAccount . "') and 
 						acm.idAcademy = (SELECT Academy_idAcademy 
-											from account_has_academy 
+											from Account_has_Academy 
 											WHERE Account_idAccount = '" . $idAccount . "')";
 		$result = $this->conn2sql->conn->query($sql);
 		$this->conn2sql->Stop();
