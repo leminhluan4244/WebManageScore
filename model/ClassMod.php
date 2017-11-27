@@ -51,7 +51,7 @@ class ClassMod {
 
 		$sql1 = "DELETE FROM Account_has_Class 
 						WHERE Class_idClass='" . $class->getIdClass() . "';";
-		$sql2 = "DELETE FROM class 
+		$sql2 = "DELETE FROM Class 
 						WHERE idClass='" . $class->getIdClass() . "';";
 		// Thực thi câu lệnh
 		// Thực hiện câu truy vấn
@@ -233,7 +233,7 @@ class ClassMod {
 				$class->setClassName($row["className"]);
 				$class->setSchoolYear($row["schoolYear"]);
 				$class->setAcademy_idAcademy($row["Academy_idAcademy"]);
-				$list[k] = $class;
+				$list[$k] = $class;
 				$k++;
 			}
 		} else {
@@ -245,11 +245,11 @@ class ClassMod {
 	}
 
 	public function getListStudentInClass($classId) {
-		$sql = "select * from account inner JOIN account_has_class 
-                  on account.idAccount = account_has_class.Account_idAccount
-	              where account_has_class.Class_idClass = '{$classId}' 
-	                    and (account.Permission_position = 'Sinh viên' 
-	                          or account.Permission_position = 'Quản lý chi hội')";
+		$sql = "select * from Account inner JOIN Account_has_Class 
+                  on Account.idAccount = Account_has_Class.Account_idAccount
+	              where Account_has_Class.Class_idClass = '{$classId}' 
+	                    and (Account.Permission_position = 'Sinh viên' 
+	                          or Account.Permission_position = 'Quản lý chi hội')";
 		$this->connSql->Connect();
 		$result = $this->connSql->conn->query($sql);
 		$this->connSql->Stop();
@@ -272,7 +272,7 @@ class ClassMod {
 
 	# có thể không dùng
 	public function getListClassIdOfAdviser($adviserId){
-		$sql = "select Class_idClass as classId from account_has_class
+		$sql = "select Class_idClass as classId from Account_has_Class
 				WHERE Account_idAccount = '$adviserId'";
 		$this->connSql->Connect();
 		$result = $this->connSql->conn->query($sql);
@@ -296,7 +296,7 @@ class ClassMod {
 	}
 
 	public function getListClassOfAdviser($adviserId){
-		$sql = "select idClass, className, schoolYear from account_has_class ac inner join class c 
+		$sql = "select idClass, className, schoolYear from Account_has_Class ac inner join Class c 
 				on ac.Class_idClass = c.idClass
 				where ac.Account_idAccount = '$adviserId';";
 		$this->connSql->Connect();

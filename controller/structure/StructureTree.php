@@ -215,7 +215,7 @@ class StructureTree {
 
 	function getLeafHTMLEditMode($nodeId) {
 		$htmlText = "";
-		$htmlText .= "<td><span class='spacing'></span>" . str_replace("-", "", $this->data[$nodeId]["itemName"]) . "</td>";
+		$htmlText .= "<td><span class='spacing'></span>" . str_replace("-", "&nbsp;&nbsp;&boxh;", $this->data[$nodeId]["itemName"]) . "</td>";
 		$htmlText .= "<td>{$this->data[$nodeId]["scores"]}</td>";
 		$htmlText .=
 			"<td>

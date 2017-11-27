@@ -32,7 +32,7 @@ class BranchMod
                 return $row["count(*)"];
             }
         } else {
-            //  echo "error count account in branch";
+            //  echo "error count account in Branch";
             return 0;
         }
 
@@ -55,7 +55,7 @@ class BranchMod
                 return $row["count(*)"];
             }
         } else {
-            //  echo "error count account in branch";
+            //  echo "error count account in Branch";
             return 0;
         }
 
@@ -113,7 +113,7 @@ class BranchMod
     * */
     public function findBranchByID($branchS)
     {
-        $sql = "SELECT * FROM branch WHERE idBranch='" . $branchS . "';";
+        $sql = "SELECT * FROM Branch WHERE idBranch='" . $branchS . "';";
         // Thực thi truy vấn
         $this->conn->Connect();
         $result = $this->conn->conn->query($sql);
@@ -143,7 +143,7 @@ class BranchMod
     * */
     public function findBranchByCity($branchC)
     {
-        $sql = "SELECT * FROM branch WHERE city='" . $branchC . "';";
+        $sql = "SELECT * FROM Branch WHERE city='" . $branchC . "';";
         // Thực thi truy vấn
         $this->conn->Connect();
         $result = $this->conn->conn->query($sql);
@@ -174,7 +174,7 @@ class BranchMod
     //Hàm tìm kiếm một chi hội theo tên
     public function findBranchByName($branch)
     {
-        $sql = "SELECT * FROM branch WHERE branchName=N'" . $branch->getBranchName() . "';";
+        $sql = "SELECT * FROM Branch WHERE branchName=N'" . $branch->getBranchName() . "';";
         // Thực thi truy vấn
         $this->conn->Connect();
         $result = $this->conn->conn->query($sql);
@@ -217,7 +217,7 @@ class BranchMod
                 return $row["count(*)"];
             }
         } else {
-            // echo "error count student in branch";
+            // echo "error count student in Branch";
             return -1;
         }
 
@@ -230,7 +230,7 @@ class BranchMod
     Hoàng Thơ
     * */
     public function getBranchId($i){
-        $sql = "SELECT * FROM `branch` WHERE `idBranch` = '".$i."'";
+        $sql = "SELECT * FROM `Branch` WHERE `idBranch` = '".$i."'";
         $this->conn->Connect();
         $result = $this->conn->conn->query($sql);
         $this->conn->Stop();
@@ -246,7 +246,7 @@ class BranchMod
         // Tạo ra một mảng lưu trữ tên list, mặc định bang đầu rỗng
         $list = array();
         // Đẩy câu lệnh vào string
-        $sql = "SELECT * FROM branch";
+        $sql = "SELECT * FROM Branch";
         $this->conn->Connect();
         $result = $this->conn->conn->query($sql);
         // Kiểm tra số lượng kết quả trả về có lơn hơn 0
@@ -279,7 +279,7 @@ class BranchMod
         // Tạo ra một mảng lưu trữ tên list, mặc định bang đầu rỗng
         $list = array();
         // Đẩy câu lệnh vào string
-        $sql = "SELECT * FROM branch LIMIT ".$start.",".$limit;
+        $sql = "SELECT * FROM Branch LIMIT ".$start.",".$limit;
         $this->conn->Connect();
         $result = $this->conn->conn->query($sql);
         // Kiểm tra số lượng kết quả trả về có lơn hơn 0
@@ -315,7 +315,7 @@ class BranchMod
     public function addBranch($branch)
     {
         // Đẩy câu lệnh vào string
-        $sql = "INSERT INTO branch(idBranch, branchName,city) VALUES('". $branch->getIdBranch() ."','".$branch->getBranchName() ."','".$branch->getCity()."');";
+        $sql = "INSERT INTO Branch(idBranch, branchName,city) VALUES('". $branch->getIdBranch() ."','".$branch->getBranchName() ."','".$branch->getCity()."');";
         // Thực thi câu lệnh
         $this->conn->Connect();
         if ($this->conn->conn->multi_query($sql) === true) {
@@ -342,7 +342,7 @@ class BranchMod
 
         $sql1 = "DELETE FROM Account_has_Branch 
 						WHERE Branch_idBranch='" . $branch->getIdBranch() . "';";
-        $sql2 = "DELETE FROM branch 
+        $sql2 = "DELETE FROM Branch 
 						WHERE idBranch='" . $branch->getIdBranch() . "';";
         // Thực thi câu lệnh
         // Thực hiện câu truy vấn
