@@ -13,56 +13,56 @@ class StructureMod {
 		$this->connSQL = new ConnectToSQL();
 	}
 
-	public function addStructure($StructureObj){
-		$sql = "insert into Structure(`idItem`, `itemName`, `scores`, `describe`, `IDParent`, `scoresDefault`) 
+	public function addStructure($structureObj){
+		$sql = "insert into structure(`idItem`, `itemName`, `scores`, `describe`, `IDParent`, `scoresDefault`) 
 				values(
-					'{$StructureObj->getIdItem()}',
-					'{$StructureObj->getItemName()}',
-					'{$StructureObj->getScores()}',
-					'{$StructureObj->getDescribe()}',
-					'{$StructureObj->getIdParent()}', 
-					'{$StructureObj->getScoreDefault()}');";
+					'{$structureObj->getIdItem()}',
+					'{$structureObj->getItemName()}',
+					'{$structureObj->getScores()}',
+					'{$structureObj->getDescribe()}',
+					'{$structureObj->getIdParent()}', 
+					'{$structureObj->getScoreDefault()}');";
 		$this->connSQL->Connect();
 		$result = $this->connSQL->conn->query($sql);
 		$this->connSQL->Stop();
 		return $result;
 	}
 
-	public function getStructure($StructureId){
-		$sql = "select * from Structure where idItem = '{$StructureId}'";
-		$StructureObj = new StructureObj();
+	public function getStructure($structureId){
+		$sql = "select * from structure where idItem = '{$structureId}'";
+		$structureObj = new StructureObj();
 		$this->connSQL->Connect();
 		$result = $this->connSQL->conn->query($sql);
 		if ($result->num_rows > 0){
-			$StructureRow = $result->fetch_assoc();
-			$StructureObj->setStructureObj(
-				$StructureRow['idItem'],
-				$StructureRow['itemName'],
-				$StructureRow['scores'],
-				$StructureRow['describe'],
-				$StructureRow['IDParent'],
-				$StructureRow['scoresDefault']);
+			$structureRow = $result->fetch_assoc();
+			$structureObj->setStructureObj(
+				$structureRow['idItem'],
+				$structureRow['itemName'],
+				$structureRow['scores'],
+				$structureRow['describe'],
+				$structureRow['IDParent'],
+				$structureRow['scoresDefault']);
 		}
 		$this->connSQL->Stop();
-		return $StructureObj;
+		return $structureObj;
 	}
 
-	public function deleteStructure($StructureId){
-		$sql = "delete from Structure where idItem = '{$StructureId}'";
+	public function deleteStructure($structureId){
+		$sql = "delete from structure where idItem = '{$structureId}'";
 		$this->connSQL->Connect();
 		$result = $this->connSQL->conn->query($sql);
 		$this->connSQL->Stop();
 		return $result;
 	}
 
-	public function updateStructure($StructureObj){
-		$sql = "update Structure set
- 				`itemName` = '{$StructureObj->getItemName()}',
- 				`scores` = '{$StructureObj->getScores()}',
- 				`describe` = '{$StructureObj->getDescribe()}',
- 				`IDParent` = '{$StructureObj->getIdParent()}',
- 				`scoresDefault` = '{$StructureObj->getScoreDefault()}' 
-				where `idItem` = '{$StructureObj->getIdItem()}'";
+	public function updateStructure($structureObj){
+		$sql = "update structure set
+ 				`itemName` = '{$structureObj->getItemName()}',
+ 				`scores` = '{$structureObj->getScores()}',
+ 				`describe` = '{$structureObj->getDescribe()}',
+ 				`IDParent` = '{$structureObj->getIdParent()}',
+ 				`scoresDefault` = '{$structureObj->getScoreDefault()}' 
+				where `idItem` = '{$structureObj->getIdItem()}'";
 		$this->connSQL->Connect();
 		$result = $this->connSQL->conn->query($sql);
 		$this->connSQL->Stop();
@@ -74,7 +74,7 @@ class StructureMod {
 	 * @return array
 	 */
 	public function getStructureAll(){
-		$sql = "select idItem from Structure";
+		$sql = "select idItem from structure";
 		$this->connSQL->Connect();
 		$result = $this->connSQL->conn->query($sql);
 		$listRow = array();
@@ -87,7 +87,7 @@ class StructureMod {
 	}
 
 	public function getEntireStructureTable(){
-		$sql = "select * from Structure";
+		$sql = "select * from structure";
 		$this->connSQL->Connect();
 		$result = $this->connSQL->conn->query($sql);
 		$this->connSQL->Stop();
@@ -100,7 +100,7 @@ class StructureMod {
 	}
 
 	public function deleteStructureHasParent($idParent){
-		$sql = "delete from Structure where IDParent = '{$idParent}'";
+		$sql = "delete from structure where IDParent = '{$idParent}'";
 		$this->connSQL->Connect();
 		$result = $this->connSQL->conn->query($sql);
 		$this->connSQL->Stop();
@@ -109,13 +109,13 @@ class StructureMod {
 
 	/**
 	 * Lấy tất cả các con trực tiếp của item đó
-	 * @param $StructureObj
+	 * @param $structureObj
 	 * @return array
 	 */
-	public function getAllDirectChildOfStructure($StructureObj){
+	public function getAllDirectChildOfStructure($structureObj){
 		$children = array();
-		$id = $StructureObj->getIdItem();
-		$sql = "select * from Structure where IDParent = '$id'";
+		$id = $structureObj->getIdItem();
+		$sql = "select * from structure where IDParent = '$id'";
 		$this->connSQL->Connect();
 		$result = $this->connSQL->conn->query($sql);
 		if (!empty($result)){
@@ -135,43 +135,12 @@ class StructureMod {
 		return $children;
 	}
 
-<<<<<<< HEAD
-//	public function isChildOfRoot($StructureObj){
-//		return $StructureObj->getIdParent() === ROOT_Structure;
-=======
-	/**
-	 * Lấy tất cả các idItem có IDParent = '0'
-	 * @return array
-	 */
-	public function getEntireStructureTable2(){
-		$entire = array();
-		$sql = "select * from structure";
-		$this->connSQL->Connect();
-		$result = $this->connSQL->conn->query($sql);
-		if (!empty($result)){
-			while ($row = $result->fetch_assoc()){
-				$respone = new StructureObj();
-				$respone->setStructureObj(
-					$row['idItem'],
-					$row['itemName'],
-					$row['scores'],
-					$row['describe'],
-					$row['IDParent'],
-					$row['scoresDefault']
-				);
-				$entire[] = $respone;
-			}
-		}
-		return $entire;
-	}
-
 //	public function isChildOfRoot($structureObj){
 //		return $structureObj->getIdParent() === ROOT_STRUCTURE;
->>>>>>> 913552db3873dced4deccf12e0c43d31cd4a32f4
 //	}
 //
-//	public function isLeaf($StructureObj){
-////		return $StructureObj->getScores() > 0;
-//		return empty($this->getAllDirectChildOfStructure($StructureObj));
+//	public function isLeaf($structureObj){
+////		return $structureObj->getScores() > 0;
+//		return empty($this->getAllDirectChildOfStructure($structureObj));
 //	}
 }
