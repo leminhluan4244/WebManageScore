@@ -59,12 +59,11 @@ $accountO = new AccountObj();
 if($number1){
     $tempid1 = $accountM->getAcademyId($idLogin);
     $temp1 = $accountM->getAccountStudentByAcademy($tempid1);
-
 }else $temp1=false;
 #la quan ly chi hoi cho xem danh sach chi hoi va khong co nut loc theo lop
 if($number2){
     $tempid2 = $accountM->getCLassId($idLogin);
-    if($tempid2!=0){
+    if($tempid2){
         for($i=0; $i<count($tempid2);$i++){
             $temp2 = $accountM->getAccountStudentByClass($tempid2);
         }

@@ -500,7 +500,7 @@ class AccountMod {
 		// Đẩy câu lệnh vào string
 		$sql = "SELECT * FROM Account, Account_has_Class
                     WHERE Account.idAccount = Account_has_Class.Account_idAccount AND
-                    Account_has_Academy.Class_idClass
+                    Account_has_Class.Class_idClass
                      = '" . $id . "' AND (
                      Account.Permission_position = 'Quản lý chi hội' OR
                     Account.Permission_position = 'Sinh viên');";
