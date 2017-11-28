@@ -9,7 +9,6 @@
         var footer = $('footer');
         if ($(footer).position().top + $(footer).height() < $(window).height() - 45){
             $(footer).css({
-                "position": "fixed",
                 "bottom": "0"
             });
         }
