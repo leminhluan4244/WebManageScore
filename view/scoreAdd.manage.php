@@ -64,8 +64,9 @@ if($number1){
 if($number2){
     $tempid2 = $accountM->getCLassId($idLogin);
     if($tempid2){
+        $temp2= array();
         for($i=0; $i<count($tempid2);$i++){
-            $temp2 = $accountM->getAccountStudentByClass($tempid2);
+            $temp2 =  array_merge($temp2,$accountM->getAccountStudentByClass($tempid2[$i]));
         }
     }
 
