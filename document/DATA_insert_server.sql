@@ -463,3 +463,9 @@ INSERT INTO `Transcript` (`idItem`, `Account_idAccount`, `itemName`, `scores`, `
 ('V.d.1', 'AAAA', '- Được kết nạp Đảng, hoặc được công nhận Đoàn viên ưu tú.', 0, '', 'V.d', 0, 6, 0, 0),
 ('V.d.2', 'AAAA', '- Đạt danh hiệu sinh viên 5 tốt cấp trường trở lên.', 0, '', 'V.d', 0, 6, 0, 0),
 ('V.d.3', 'AAAA', '- Phân loại Đảng viên được xếp loại mức 2', 0, '', 'V.d', 0, 5, 0, 0);
+
+INSERT INTO `CalendarScoring` (`openDate`, `closeDate`, `Permission_position`) VALUES
+('2017-11-24', '2018-01-31', 'Cố vấn học tập'),
+('2017-11-24', '2017-12-30', 'Quản lý chi hội'),
+('2017-11-24', '2018-02-28', 'Quản lý khoa'),
+('2017-11-24', '2017-12-31', 'Sinh viên');
