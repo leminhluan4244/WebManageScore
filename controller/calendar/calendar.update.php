@@ -22,7 +22,7 @@ switch ($_POST['btn-submit']) {
     $newDate = new CalendarScoringObj(date("Y-m-d", strtotime($_POST['txt-date-open'])), date("Y-m-d", strtotime($_POST['txt-date-close'])), $_POST['select']);
     $newCalendar = new CalendarScoringMod();
     $newCalendar->updateCalendar($newDate);
-    //require_once("../../android/RequestMessage.php");
+    require_once("../../android/RequestMessage.php");
     break;
   default:
     break;
