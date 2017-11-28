@@ -18,7 +18,7 @@ foreach ($power as $key => $value){
     if($value->getPower()=='Thêm bảng điểm cộng trừ cho khoa' && $value->getSelected()==1) {
         $number1 =true;
     }
-    if($value->getPower()=='Thêm bảng điểm cộng trừ cho lớp' && $value->getSelected()==1) {
+    if($value->getPower()=='Thêm bảng điểm cộng trừ cho lớp' && $value->getSelected()==1) {
         $number2 =true;
     }
     if($value->getPower()=='Thêm bảng điểm cộng trừ cho sinh viên theo chi hội' && $value->getSelected()==1) {
@@ -26,6 +26,7 @@ foreach ($power as $key => $value){
     }
 }
 if($number1!=true and $number2!=true and $number3!=true){
+//    echo "<script>alert('K có phân quyền')</script>";
     echo '<script>window.location.assign("../controller/account/account.login.php")</script>';
 }
 ?>
