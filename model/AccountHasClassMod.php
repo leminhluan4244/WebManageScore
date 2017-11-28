@@ -49,7 +49,7 @@ class AccountHasClassMod
     public function deleteAccountHasClass($account)
     {
         // Đẩy câu lệnh vào string
-        $sql = "DELETE FROM Account_Has_Class 
+        $sql = "DELETE FROM Account_has_Class 
 						WHERE Account_idAccount='" . $account. "';";
         // Thực thi câu lệnh
         // Thực hiện câu truy vấn
@@ -70,7 +70,7 @@ class AccountHasClassMod
     public function changeTeacher($accountNew,$accountOld, $Class)
     {
         // Đẩy câu lệnh vào string
-        $sql = "DELETE FROM Account_Has_Class 
+        $sql = "DELETE FROM Account_has_Class 
 						WHERE Class_idClass='" . $Class. "' AND Account_idAccount='".$accountOld."';".
                 "INSERT INTO `Account_has_Class` (`Account_idAccount`, `Class_idClass`) 
 						VALUES('" . $accountNew . "','" . $Class . "');";
@@ -94,8 +94,8 @@ class AccountHasClassMod
     public function getTeacher($Class)
     {
         // Đẩy câu lệnh vào string
-        $sql = "SELECT * FROM Account_Has_Class,Account
-						WHERE Account_Has_Class.Class_idClass='" . $Class. "' AND Account_Has_Class.Account_idAccount=Account.idAccount AND Account.Permission_position='Cố vấn học tập';";
+        $sql = "SELECT * FROM Account_has_Class,Account
+						WHERE Account_Has_Class.Class_idClass='" . $Class. "' AND Account_has_Class.Account_idAccount=Account.idAccount AND Account.Permission_position='Cố vấn học tập';";
         // Thực thi câu lệnh
         $this->conn->Connect();
         $result = $this->conn->conn->query($sql);
