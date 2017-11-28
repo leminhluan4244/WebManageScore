@@ -19,7 +19,7 @@ class BranchMod
     // Hàm đếm số sinh viên trong một chi hội có bao nhiêu sinh viên
     public function countAccount($branch)
     {
-        $sql = "SELECT count(*) FROM Account_Has_Branch WHERE Branch_idBranch='" . $branch->getBranch_idBranch() . "' ";
+        $sql = "SELECT count(*) FROM Account_has_Branch WHERE Branch_idBranch='" . $branch->getBranch_idBranch() . "' ";
         // Thực thi truy vấn
         $this->conn->Connect();
         $result = $this->conn->conn->query($sql);
@@ -70,8 +70,8 @@ class BranchMod
         $list = array();
         // Đẩy câu lệnh vào string
         $sql = "SELECT idAccount,accountName,birthday,address,sex,phone,email,Permission_position
-                FROM Account,Account_Has_Branch
-                WHERE Branch_idBranch='" . $branch . "' and  idAccount = Account_idAccount;";
+                FROM Account,Account_has_Branch
+                WHERE Branch_idBranch='" . $branch . "' and  Account.idAccount = Account_has_Branch.Account_idAccount;";
         $this->conn->Connect();
         $result = $this->conn->conn->query($sql);
 

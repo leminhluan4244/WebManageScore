@@ -60,6 +60,27 @@ class AccountHasBranchMod
             return false;
         }
     }
+    public function checkAccountHasBranch($account, $branch)
+    {
+        // Đẩy câu lệnh vào string
+        $sql = "SELECT * FROM `Account_has_Branch`
+						WHERE Account_idAccount='" . $account . "' 
+						AND Branch_idBranch='" . $branch . "';";
+        // Thực thi câu lệnh
+        $this->conn->Connect();
+        if ($this->conn->conn->query($sql) === true) {
+            // echo "Thêm thành công";
+            //Ngắt kết nối
+            $this->conn->Stop();
+            return true;
+        } else {
+            // echo "Lỗi add Account to Branch";
+            //Ngắt kết nối
+            $this->conn->Stop();
+            return false;
+        }
+
+    }
 }
 
 //$objAccount = new AccountObj();
