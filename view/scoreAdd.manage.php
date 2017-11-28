@@ -83,6 +83,7 @@ if($temp1)
         $temp[$k]=$value;
         $k++;
     }
+$temp2 = [];
 if($temp2)
     foreach ($temp2 as $key =>$value){
         $temp[$k]=$value;

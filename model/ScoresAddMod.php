@@ -162,29 +162,21 @@ class ScoresAddMod {
 		$sql = "SELECT * FROM ScoresAdd,ScoresAdd_has_Account WHERE ScoresAdd.idScore=ScoresAdd_has_Account.ScoresAdd_idScore AND ScoresAdd_has_Account.Account_idAccount='" . $id . "'";
 		$this->connSql->Connect();
 		$result = $this->connSql->conn->query($sql);
-        $obj = new ScoresAddObj();
-		if ($result->num_rows > 0) {
-			$k = 0;
+		$scores = [];
+		if (!empty($result)) {
 			while ($row = $result->fetch_assoc()) {
-
+				$obj = new ScoresAddObj();
 				$obj->setScoreName($row["scoreName"]);
 				$obj->setIdScore($row["idScore"]);
 				$obj->setScores($row["scores"]);
 				$obj->setDescribe($row["describe"]);
 				$obj->setTranscript_idItem($row["Transcript_idItem"]);
 				$obj->setIdAccountManage($row["idAccountManage"]);
-
-
+				$scores[] = $obj;
 			}
-
-		} else {
-			// echo "The result of information processing is data false";
-			$this->connSql->Stop();
-			return 0;
 		}
-
 		$this->connSql->Stop();
-		return $obj;
+		return $scores;
 	}
 
 	public function getListScoreOfStudent($studentId) {
