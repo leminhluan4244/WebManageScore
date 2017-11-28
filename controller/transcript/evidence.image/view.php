@@ -13,7 +13,7 @@ if (isSubmit('remove-image')){
     $img = getPOSTValue('img-value');
     $accountId = getLoggedAccountId();
     if ($imgMod->removeImage($accountId, $img)){
-        $path = "../upload/$img.jpg";
+        $path = "../upload/$img";
         if (file_exists($path))
 			unlink($path);
 		showMessage("Xóa thành công");
@@ -53,9 +53,9 @@ if (!empty($studentId))
                     <td class="text-left"><?php echo $image['transcriptName']; ?></td>
                     <td>
                         <form method="post">
-                            <a target="_blank" href="../hinh-anh/<?php echo $image['img']; ?>.jpg"
+                            <a target="_blank" href="../upload/<?php echo $image['img']; ?>"
                                class="btn btn-sm btn-primary">
-                                Xem ảnh
+                                Xem
                             </a>
                             <?php if ($privilege === STUDENT) { ?>
                                 <input type="hidden" value="remove-image" name="requestName">

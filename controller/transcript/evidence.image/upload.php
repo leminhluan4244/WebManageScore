@@ -25,26 +25,48 @@ if (isSubmit("upload-img")){
 	}
 
 	$fileName = $_FILES['image-evidence']['name'];
+	$ext = strtolower(pathinfo($fileName, PATHINFO_EXTENSION));
 
-	if (empty($error) && (!preg_match('/(jpg|png|PNG|JPG)/', $fileName, $matches) || empty($matches[1]))) {
+	if (empty($error) && !preg_match('/(jpg|png|pdf|xlsx|xls)/', $ext)) {
 		$error = true;
-		showMessage("Chỉ chấp nhận tập tin hình ảnh PNG hoặc JPEG");
+		showMessage("Chỉ chấp nhận tập tin hình ảnh PNG, JPEG, Excel và PDF");
 	}
 
 	$transId = getPOSTValue('evidence-provision');
 
 	if (empty($error)){
-		$img = resize_image($_FILES['image-evidence']['tmp_name'], $matches[1]);
-		$fileName = md5($fileName . random_int(1, 10000));
-		$location = '../upload';
-		if ($imgMod->addImage(getLoggedAccountId(), $transId, $fileName)){
-		    if (!file_exists($location))
-		        mkdir($location);
-		    saveImage($img, "$location/$fileName.jpg");
-			showMessage("Thêm ảnh thành công!!!");
-		} else {
-		    showMessage("Thêm ảnh thất bại, hãy thử lại sau!!!");
-        }
+		if (preg_match('/(png|jpg)/', $ext))
+		    saveImageExt($_FILES['image-evidence']['tmp_name'], $ext, $transId, $fileName, $imgMod);
+		else saveOtherExt($_FILES['image-evidence']['tmp_name'], $ext, $transId, $fileName, $imgMod);
+	}
+}
+
+function saveImageExt($imgData, $ext, $transId, $originalName, $imgMod){
+	$img = resize_image($imgData, $ext);
+	$fileName = md5($originalName . random_int(1, 10000));
+	$fileName = "$fileName.$ext";
+	$location = '../upload';
+	if ($imgMod->addImage(getLoggedAccountId(), $transId, $fileName)){
+		if (!file_exists($location))
+			mkdir($location);
+		saveImage($img, "$location/$fileName");
+		showMessage("Thêm ảnh thành công!!!");
+	} else {
+		showMessage("Thêm ảnh thất bại, hãy thử lại sau!!!");
+	}
+}
+
+function saveOtherExt($fileData, $ext, $transId, $originalName, $imgMod){
+	$fileName = md5($originalName . random_int(1, 10000));
+	$fileName = "$fileName.$ext";
+	$location = '../upload';
+	if ($imgMod->addImage(getLoggedAccountId(), $transId, $fileName)){
+		if (!file_exists($location))
+			mkdir($location);
+		move_uploaded_file($fileData, "$location/$fileName");
+		showMessage("Thêm file thành công!!!");
+	} else {
+		showMessage("Thêm file thất bại, hãy thử lại sau!!!");
 	}
 }
 
@@ -58,7 +80,7 @@ if (isSubmit("upload-img")){
 			<div class="form-group">
 				<label>Chọn hình ảnh</label>
                 <span class="help-block"><i>(Hình ảnh dung lượng dưới 2 Megabytes)</i></span>
-				<input type="file" required name="image-evidence" accept="image/png,image/jpeg"
+				<input type="file" required name="image-evidence" accept="image/png,image/jpeg,application/pdf"
 					class="form-control">
 			</div>
 			<div class="form-group">
