@@ -5,10 +5,23 @@ require_once "../helper/common.helper.php";
 require_once "../helper/form.helper.php";
 ?>
 <?php
-    if(isset($_GET['idScore']))
+if(isset($_POST['luu'])) {
+    $ScoreId=$_GET['idScore'];
+    $scoresdeleteMT = new ScoresAddHasAccountMod();
+    $scoresdeleteMT->deleteAll($ScoreId);
+    foreach ($_POST['luu'] as $key=> $value) {
+        $scoresdeleteMT->addTable($ScoreId,$value);
+    }
+    echo'<META http-equiv="refresh" content="0;URL=scoreAdd.php">';
+}
+?>
+<?php
+    if(isset($_GET['idScore'])){
         $ScoreId =  $_GET['idScore'];
-    else echo '<script>window.location.assign("scoreAdd.php")</script>';
-
+    }
+    else {
+        echo '<script>window.location.assign("scoreAdd.php")</script>';
+    }
 ?>
 <?php
 
@@ -81,19 +94,17 @@ if($temp3)
         $k++;
     }
 ?>
-<form action="scoreAdd.manage.php" method="post" id="manageForm">
+<form action="scoreAdd.manage.php?idScore=<?php echo $ScoreId;?>" method="post" id="manageForm">
 <div class="container-fluid">
     <!--Start content manage student-->
     <div class="container main-academy-container">
         <div class="academy-action-list">
-
             <h4>Danh sách sinh viên chịu tác động bởi bảng điểm
                 <?php $sc= new ScoresAddHasAccountMod();
                     echo $sc->getNameTable($ScoreId);
                 ?></h4>
             <div class="">
                 <div id="student-manage-wrapper">
-                    <form action="scoreAdd.manage.php" method="post" id="manageForm">
                         <table class="table table-bordered table-condensed" id="table-manage-student">
                             <thead>
                             <tr>
@@ -149,9 +160,7 @@ if($temp3)
                             <?php } ?>
                             </tbody>
                         </table>
-                    </form>
                 </div>
-
             </div>
         </div>
     </div>
@@ -177,16 +186,6 @@ if($temp3)
     </div>
 </div>
 
-<?php
-if(isset($_POST['luu'])) {
-    $scoresdeleteMT = new ScoresAddHasAccountMod();
-    $scoresdeleteMT->deleteAll($ScoreId);
-    foreach ($_POST['luu'] as $key=> $value) {
-       $scoresdeleteMT->addTable($ScoreId,$value);
-    }
-   // echo'<META http-equiv="refresh" content="0;URL=scoreAdd.php">';
-}
-?>
 <!--Start save Class-->
 <div id="deleteScore" class="modal fade " tabindex="-1" role="dialog" aria-labelledby aria-hidden="true">
     <div class="modal-dialog">
@@ -196,11 +195,11 @@ if(isset($_POST['luu'])) {
                 <h4 class="modal-title" id="">Lưu lại danh sách sinh viên cho bảng điểm này</h4>
             </div>
             <div class="modal-body">
-                <h4>Hành động này cần xác nhận: Không thể hoàn tác!</h4>
+                <h4>Bạn muốn thay đổi trạng thái sinh viên chịu tác động bởi bảng điểm!</h4>
                 <p>Vui lòng kiểm tra cẩn thận!</p>
                 <div class="modal-footer">
                     <input type="hidden" name="deleteClass" id="deleteClass">
-                    <button type="submit" name="deleteYes" onclick="submitform();" class="btn btn-primary">Đồng ý</button>
+                    <button type="submit" name="deleteYes" id="deleteYes" onclick="submitform();" class="btn btn-primary">Đồng ý</button>
                     <button type="button" class="btn btn-default" data-dismiss="modal">Không</button>
                 </div>
             </div>
