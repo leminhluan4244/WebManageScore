@@ -469,3 +469,4 @@ INSERT INTO `CalendarScoring` (`openDate`, `closeDate`, `Permission_position`) V
 ('2017-11-24', '2017-12-30', 'Quản lý chi hội'),
 ('2017-11-24', '2018-02-28', 'Quản lý khoa'),
 ('2017-11-24', '2017-12-31', 'Sinh viên');
+
