@@ -65,9 +65,7 @@ class yearsSemesterMod {
 		return $result;
 	}
     public function deleteDataAll(){
-        $sql = "delete from Years_semester
-				where 
-				1";
+        $sql = "delete from Years_semester where 1";
         $this->connSQL->Connect();
         $result = $this->connSQL->conn->query($sql);
         $this->connSQL->Stop();
