@@ -240,7 +240,10 @@ class TranscriptTree {
 		}
 
 		$htmlText = "";
-		$htmlText .= "<td>&nbsp;&nbsp;&nbsp;&nbsp;&blacksquare;" . str_replace("-", "", $itemName) . "</td>";
+		if ($this->isChildOfRoot($nodeId))
+			$htmlText .= "<td>" . str_replace("-", " ", $itemName) . "</td>";
+		else
+			$htmlText .= "<td>&nbsp;&nbsp;&nbsp;&nbsp;&blacksquare; " . str_replace("-", " ", $itemName) . "</td>";
 		$htmlText .= "<td>$max</td>";
 		$htmlText .= "<td>$hintScore</td>";
 

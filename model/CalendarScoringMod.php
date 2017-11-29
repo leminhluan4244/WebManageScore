@@ -122,6 +122,20 @@
          return false;
       }
     }
+
+    public function getCriticalDate(){
+      $sql = "SELECT min(openDate) as min, max(closeDate) as max FROM `CalendarScoring`";
+      $this->conn2sql->Connect();
+      $result = $this->conn2sql->conn->query($sql);
+      $this->conn2sql->Stop();
+      $criticalDate = [];
+      if (!empty($result) && $result->num_rows > 0){
+        $row = $result->fetch_assoc();
+        $criticalDate['min'] = $row['min'];
+        $criticalDate['max'] = $row['max'];
+      }
+      return $criticalDate;
+    }
   }
   #$newCalendar = new CalendarScoringMod();
   #$newDate = new CalendarScoringObj('2017-08-30', '2017-09-04', 'Student');

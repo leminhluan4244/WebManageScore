@@ -19,6 +19,7 @@ class StructureTree {
 	public function __construct($data) {
 		$this->data = $data;
 		$this->htmlText = "";
+		$this->moveLastChildOfRootToTheEnd();
 	}
 
 	/**
@@ -54,14 +55,32 @@ class StructureTree {
 		return EDIT;
 	}
 
+	public function moveLastChildOfRootToTheEnd(){
+		$children = $this->getAllDirectChildOf(ST_ROOT);
+		$lastChild = '';
+		foreach ($children as $child) {
+			if ($this->isLastChildOfRoot($child['idItem'])){
+				$lastChild = $child;
+				break;
+			}
+		}
+		unset($this->data[$lastChild['idItem']]);
+		$this->data[$lastChild['idItem']] = $lastChild;
+	}
+
 	public function isLeaf($nodeId) {
 		return count($this->getAllDirectChildOf($nodeId)) == 0;
 	}
 
 	public function isLastChildOfRoot($nodeId){
 		$children = $this->getAllDirectChildOf(ST_ROOT);
-		$len = count($children);
-		return strtolower($children[$len-1]['idItem']) == strtolower($nodeId);
+		$max = 0;
+		foreach ($children as $child) {
+			$scores = empty($child['scores']) ? 0 : (int)$child['scores'];
+			if ($scores > $max)
+				$max = $scores;
+		}
+		return !empty($children[$nodeId]['scores']) && $children[$nodeId]['scores'] == $max;
 	}
 
 	public function isChildOfRoot($nodeId){
@@ -82,7 +101,7 @@ class StructureTree {
 		$children = [];
 		foreach ($this->data as $child) {
 			if ($child['IDParent'] === $nodeId)
-				$children[] = $child;
+				$children[$child['idItem']] = $child;
 		}
 		return $children;
 	}
@@ -91,7 +110,9 @@ class StructureTree {
 		$children = $this->getAllDirectChildOf($nodeId);
 		if (empty($children))
 			return null;
-		return $children[0];
+		foreach ($children as $child) {
+			return $child;
+		}
 	}
 
 	public function getNextSiblingOf($nodeId) {
@@ -130,7 +151,6 @@ class StructureTree {
 
 	/**
 	 * Lấy tất cả các mục có điểm số
-	 * @param string $separateChar
 	 * @return array
 	 */
 	public function getAllNodeStoreScore(){
@@ -144,7 +164,6 @@ class StructureTree {
 
 	/**
 	 * Lấy tất cả các mục có điểm số
-	 * @param string $separateChar
 	 * @return array
 	 */
 	public function getAllNodeNonLeaf(){
@@ -215,7 +234,14 @@ class StructureTree {
 
 	function getLeafHTMLEditMode($nodeId) {
 		$htmlText = "";
-		$htmlText .= "<td><span class='spacing'></span>" . str_replace("-", "&nbsp;&nbsp;&boxh;", $this->data[$nodeId]["itemName"]) . "</td>";
+		$content = $this->data[$nodeId]["itemName"];
+		if (strpos($content, '-') === false)
+			if (!$this->isLastChildOfRoot($nodeId) && !$this->isChildOfRoot($nodeId))
+				$content = "- $content";
+		$htmlText .=
+			"<td><span class='spacing'></span>" .
+				str_replace("-", "&nbsp;&nbsp;&boxh;", $content) .
+			"</td>";
 		$htmlText .= "<td>{$this->data[$nodeId]["scores"]}</td>";
 		$htmlText .=
 			"<td>
