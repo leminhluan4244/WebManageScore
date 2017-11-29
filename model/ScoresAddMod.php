@@ -68,6 +68,17 @@ class ScoresAddMod {
 		}
 		$this->connSql->Stop();
 	}
+    public function deleteScoresAddAll() {
+
+        $sql = "DELETE FROM ScoresAdd WHERE 1";
+        $this->connSql->Connect();
+        if ($this->connSql->conn->query($sql) === TRUE) {
+            // echo "Deletion is successful! ";
+        } else {
+            //  echo "Deletion is not successful! " . $this->connSql->error;
+        }
+        $this->connSql->Stop();
+    }
 
 	//4. Hàm trả về danh sách các điểm cộng trừ
 	public function getScoresAdd() {

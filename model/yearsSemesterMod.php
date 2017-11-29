@@ -64,6 +64,15 @@ class yearsSemesterMod {
 		$this->connSQL->Stop();
 		return $result;
 	}
+    public function deleteDataAll(){
+        $sql = "delete from Years_semester
+				where 
+				1";
+        $this->connSQL->Connect();
+        $result = $this->connSQL->conn->query($sql);
+        $this->connSQL->Stop();
+        return $result;
+    }
 
 	/**
 	 * Cập nhật lại điểm cho tài khoản vào năm học học kỳ chỉ định

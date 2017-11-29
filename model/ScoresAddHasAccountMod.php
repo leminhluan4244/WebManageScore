@@ -97,6 +97,25 @@ class ScoresAddHasAccountMod
             return false;
         }
     }
+    public function deleteTableAll()
+    {
+        // Đẩy câu lệnh vào string
+        $sql = "DELETE FROM ScoresAdd_has_Account WHERE 1";
+        // Thực thi câu lệnh
+        // Thực hiện câu truy vấn
+        $this->conn->Connect();
+        if ($this->conn->conn->query($sql) === true) {
+            // echo "Xóa thành công";
+            //Ngắt kết nối
+            $this->conn->Stop();
+            return true;
+        } else {
+            // echo "Lỗi deleteAcademy";
+            //Ngắt kết nối
+            $this->conn->Stop();
+            return false;
+        }
+    }
     public function deleteAll($scores)
     {
         // Đẩy câu lệnh vào string
