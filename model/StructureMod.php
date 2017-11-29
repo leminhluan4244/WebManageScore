@@ -135,6 +135,17 @@ class StructureMod {
 		return $children;
 	}
 
+	public function getMaxScore(){
+		$sql = "select max(scores) as max from structure where IDParent = 0;";
+		$this->connSQL->Connect();
+		$result = $this->connSQL->conn->query($sql);
+		$this->connSQL->Stop();
+		$output = 100;
+		if (!empty($result) && $result->num_rows > 0)
+			$output = $result->fetch_assoc()['max'];
+		return $output;
+	}
+
 //	public function isChildOfRoot($StructureObj){
 //		return $StructureObj->getIdParent() === ROOT_Structure;
 //	}
