@@ -246,23 +246,115 @@ class TranscriptMod {
 					$row['scoresDefault'],
 					$row['scoresMax'],
 					$row['scoresStudent'],
-					$row['scoresTeacher']
+					$row['scoresTeacher'] 
 				);
 				$entire[] = $respone;
 			}
 		return $entire;
 	}
 
-	public function getTotalScoreOfItem($accountId,$item) {
-		$sql = "SELECT sum(scoresStudent)as total from transcript WHERE idItem LIKE '$item.%' and Account_idAccount = '$accountId'";
+	/**
+	 * Lấy tất cả các con trực tiếp của item đó
+	 * @param $StructureObj
+	 * @return array
+	 */
+	public function getAllDirectChildOfTranscripte($itemChild){
+		$children = array();
+		$sql = "SELECT * from transcript WHERE IDParent like '$itemChild%'";
+		$this->connSQL->Connect();
+		$result = $this->connSQL->conn->query($sql);
+		if (!empty($result)){
+			while ($row = $result->fetch_assoc()){
+				$respone = new TranscriptObj();
+				$respone->setTranscriptObj(
+					$row['idItem'],
+					$row['Account_idAccount'],
+					$row['itemName'],
+					$row['scores'],
+					$row['describe'],
+					$row['IDParent'],
+					$row['scoresDefault'],
+					$row['scoresMax'],
+					$row['scoresStudent'],
+					$row['scoresTeacher'] 
+				);
+				$children[] = $respone;
+			}
+		}
+		return $children;
+	}
+
+	/**
+	 * Thêm điểm or thay thế điểm tại một mục
+	 */
+
+	public function addTranscript2($TranscriptObj){						
+		$sql = "INSERT INTO Transcript(`idItem`,`Account_idAccount`,`itemName`,`scores`,`describe`
+		,`IDParent`,`scoresDefault`,`scoresMax`,`scoresStudent`,`scoresTeacher`) VALUES('{$TranscriptObj->getIdItem()}',
+    																					'{$TranscriptObj->getAccountIdAccount()}'
+    																					,'{$TranscriptObj->getItemName()}'
+    																					,'{$TranscriptObj->getFinalScores()}'
+    																					,'{$TranscriptObj->getDescribe()}'
+    																					,'{$TranscriptObj->getIdParent()}'
+    																					,'{$TranscriptObj->getScoresDefault()}'
+    																					,'{$TranscriptObj->getScoresMax()}'
+    																					,'{$TranscriptObj->getScoresStudent()}'
+    																					,'{$TranscriptObj->getScoresTeacher()}')
+				ON DUPLICATE KEY
+				UPDATE
+					    `idItem` = '{$TranscriptObj->getIdItem()}'
+					    ,`Account_idAccount` = '{$TranscriptObj->getAccountIdAccount()}'
+					    ,`itemName` = '{$TranscriptObj->getItemName()}'
+					    ,`scores` = '{$TranscriptObj->getFinalScores()}'
+					    ,`describe` = '{$TranscriptObj->getDescribe()}'
+					    ,`IDParent` = '{$TranscriptObj->getIdParent()}'
+					    ,`scoresDefault` = '{$TranscriptObj->getScoresDefault()}'
+					    ,`scoresMax` = '{$TranscriptObj->getScoresMax()}'
+					    ,`scoresStudent` = '{$TranscriptObj->getScoresStudent()}'
+					    ,`scoresTeacher` = '{$TranscriptObj->getScoresTeacher()}';";
 		$this->connSQL->Connect();
 		$result = $this->connSQL->conn->query($sql);
 		$this->connSQL->Stop();
-		if (!empty($result)){
-			while ($row = $result->fetch_assoc()){
-				$respone = array('Total' => (int) $row['total']);
-			}
-		}
-		return $respone;
+		return $result;
 	}
+
+	/**
+	 * Xóa tất cả điểm sinh viên đã chấm, nhưng giữ lại điểm giáo viên
+	 * @param idAccount
+	 */
+	public function updateTranscript2($idAccount){
+		$sql = "UPDATE `transcript` SET `scoresStudent`= 0 where Account_idAccount = '$idAccount';";
+		$this->connSQL->Connect();
+		$result = $this->connSQL->conn->query($sql);
+		$this->connSQL->Stop();
+		return $result;
+	}
+
+	// /**
+	//  * Lấy tất cả các con trực tiếp của item đó để tính điểm giáo viên chấm
+	//  * @param $StructureObj
+	//  * @return array
+	//  */
+	// public function getAllScoresTeacherFromItem($IDParent,$idAccount){
+	// 	$sql = "SELECT sum(scoresTeacher) from transcript WHERE IDParent like '$IDParent.%' and Account_idAccount = '$idAccount';";
+	// 	$this->connSQL->Connect();
+	// 	$result = $this->connSQL->conn->query($sql);
+	// 	$row = $result->fetch_assoc();
+	// 	$array = array("message" => (int) $row['sum(scoresTeacher)']);
+	// 	return $array;
+	// }
+
+	// public function getTotalScoreOfItem($accountId,$item) {
+	// 	echo $item.'hshshsdf sdf sdfsd';
+	// 	// $sql = "SELECT sum(scoresStudent)as total from transcript WHERE idItem LIKE '$item.%' and Account_idAccount = '$accountId'";
+	// 	// $this->connSQL->Connect();
+	// 	// $result = $this->connSQL->conn->query($sql);
+	// 	// $this->connSQL->Stop();
+	// 	// if (!empty($result)){
+	// 	// 	while ($row = $result->fetch_assoc()){
+	// 	// 		$respone = $row['total'];
+	// 	// 	}
+	// 	// }
+	// 	return 0;
+	// }
 }
