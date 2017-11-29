@@ -6,7 +6,7 @@
  * Cập nhật: 21/08/2017
  * Trạng thái: đã test thành công
  */
-  class CalendarScoringObj{
+  class CalendarScoringObj implements \JsonSerializable{
     private $openDate;
     private $closeDate;
     private $Permission_position;
@@ -43,6 +43,9 @@
     }
     public function setPermission_position($Permission_position){
       $this->Permission_position = $Permission_position;
+    }
+    public function jsonSerialize() {
+        return get_object_vars($this);
     }
   }
   #$newCalendar = new CalendarScoringObj();

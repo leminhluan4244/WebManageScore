@@ -16,10 +16,16 @@ if (isset($_FILES["file"]))
   }elseif ($fileType  == "jpg" or $fileType == "png" or $fileType  == "jpeg") {
     //Kiểm tra dung lượng file nếu lớn hơn 5Mb thì không cho upload
     if ($_FILES["file"]["size"] < 5242880){
-      $fileClient = resize_image($_FILES["file"]["tmp_name"], "jpg");
-      saveImage($fileClient, $target_file_name);
-      $success = true;
-      $message = "Upload thành công!";
+      if($fileType == "png"){
+        move_uploaded_file( $_FILES['file']['tmp_name'], $target_file_name);
+        $success = true;
+        $message = "Upload thành công!";
+      }else{
+        $fileClient = resize_image($_FILES["file"]["tmp_name"], "jpg");
+        saveImage($fileClient, $target_file_name);
+        $success = true;
+        $message = "Upload thành công!";
+      }
     } else{
       $success = false;
       $message = "Upload thất bại! Dung lượng file lớn hơn 5Mb";

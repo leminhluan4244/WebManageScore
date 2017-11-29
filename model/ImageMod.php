@@ -5,7 +5,7 @@
  * Date: 05/08/2017
  * Cập nhật: 21/08/2017
  */
-class ImageMod{
+class ImageMod {
 	private $connSQL;
 
 	public function __construct() {

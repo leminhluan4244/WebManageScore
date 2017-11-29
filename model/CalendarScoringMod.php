@@ -122,6 +122,27 @@
          return false;
       }
     }
+
+    /**
+    # Phạm Hoài An
+    */
+    public function getAllCalendar(){
+      $Calendar = array();
+      $sql = "SELECT * FROM `CalendarScoring`";
+      $this->conn2sql->Connect();
+      $result = $this->conn2sql->conn->query($sql);
+      if (!empty($result)){
+        while ($row = $result->fetch_assoc()){
+          $respone = new CalendarScoringObj();
+          $respone->setCalendarScoringObj(
+            $row['openDate'],
+            $row['closeDate'],
+            $row['Permission_position']);
+          $Calendar[] = $respone;
+        }
+      }
+      return $Calendar;
+    }
   }
   #$newCalendar = new CalendarScoringMod();
   #$newDate = new CalendarScoringObj('2017-08-30', '2017-09-04', 'Student');

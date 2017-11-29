@@ -210,6 +210,30 @@ class ScoresAddMod {
 		}
 		return $listScore;
 	}
+
+	/**
+    * Phạm Hoài An
+    */
+    public function getScoresAddNoti($id) {
+		$sql = "SELECT `scoreName`, `scores`,sa.describe,`Transcript_idItem`, a.accountName, a.Permission_position FROM ScoresAdd sa, ScoresAdd_has_Account SHA, Account a WHERE SHA.Account_idAccount = '$id' AND SHA.ScoresAdd_idScore = sa.idScore and sa.idAccountManage = a.idAccount;";
+		$this->connSql->Connect();
+		$result = $this->connSql->conn->query($sql);
+		$scores = array();
+		if (!empty($result)) {
+			while ($row = $result->fetch_assoc()) {
+				$obj = new ScoresAddObj();
+				$obj->setScoresAddObj(
+					$row["accountName"]
+					,$row["scoreName"]
+					,$row["scores"]
+					,$row["describe"]
+					,$row["Transcript_idItem"]
+					,$row["Permission_position"]);
+				$scores[] = $obj;
+			}
+		}
+		return $scores;
+	}
 }
 
 ?>
