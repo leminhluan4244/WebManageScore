@@ -81,7 +81,7 @@ $month=(int)$now["mon"];
                                         }
                                         ?>
                                         <p class="text-left"><b>Học kỳ</b></p>
-                                        <select id="selectHK" class="form-control" name="selectHK">
+                                        <select id="HK" class="form-control" name="HK">
                                             <?php func_HK($month);?>
                                         </select>
                                     </fieldset>
@@ -89,7 +89,7 @@ $month=(int)$now["mon"];
                                 <div class="col-sm-4">
                                     <fieldset class="form-group col-6">
                                         <p class="text-left"><b>Năm học</b></p>
-                                        <select id="selectNH" class="form-control" name="selectNH">
+                                        <select id="NH" class="form-control" name="NH">
                                             <?php
                                             $i=0;
                                             while ($i<=11){
