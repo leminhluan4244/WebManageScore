@@ -3,7 +3,7 @@ if(isset($_POST['btnAdd'])) {
 
     $studentO = new AccountObj();
     $studentM = new AccountMod();
-    $studentO->setAccountObj($_POST['addIdAccount'], $_POST['addAccountName'], $_POST['addBirthday'], $_POST['addAddress'], $_POST['addSex'], $_POST['addPhone'], $_POST['addEmail'],$_POST['addPhone']."@".$_POST['addIdAccount'], $_POST['addPermission_position']);
+    $studentO->setAccountObj($_POST['addIdAccount'], $_POST['addAccountName'], $_POST['addBirthday'], $_POST['addAddress'], $_POST['addSex'], $_POST['addPhone'], $_POST['addEmail'],'1234', $_POST['addPermission_position']);
     $studentM->addAccount($studentO);
     $academyTemp = new AccountHasAcademyMod(); $academyTemp->addAccountHasAcademy($_POST['addIdAccount'],$_POST['addAcademyName']);
     $classTemp = new AccountHasClassMod(); $classTemp->addAccountHasClass($_POST['addIdAccount'],$_POST['addClassName']);

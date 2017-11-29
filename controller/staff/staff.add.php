@@ -3,7 +3,7 @@ if(isset($_POST['btnAdd_staff'])) {
 
     $stO = new AccountObj();
     $stM = new AccountMod();
-    $stO->setAccountObj($_POST['addIdAccount'], $_POST['addAccountName'], $_POST['addBirthday'], $_POST['addAddress'], $_POST['addSex'], $_POST['addPhone'], $_POST['addEmail'],$_POST['addPhone']."@".$_POST['addIdAccount'], $_POST['addPermission_position']);
+    $stO->setAccountObj($_POST['addIdAccount'], $_POST['addAccountName'], $_POST['addBirthday'], $_POST['addAddress'], $_POST['addSex'], $_POST['addPhone'], $_POST['addEmail'],'1234', $_POST['addPermission_position']);
     $stM->addAccount($stO);
 
     $objAcademy = new AcademyObj();
