@@ -3,7 +3,6 @@
 if(isset($_POST['btnUpdate'])) {
     $studentO = new AccountObj();
     $studentM = new AccountMod();
-    var_dump($_POST);
     $studentO->setAccountObj($_POST['updateIdAccount'], $_POST['updateAccountName'], $_POST['updateBirthday'], $_POST['updateAddress'], $_POST['updateSex'], $_POST['updatePhone'], $_POST['updateEmail'],'notpass', $_POST['updatePermission_position']);
     $studentM->updateAccount($studentO);
     $academyTemp = new AccountHasAcademyMod();

@@ -654,7 +654,6 @@ class AccountMod {
             . "DELETE FROM `Transcript` WHERE `Account_idAccount` = '" . $account->getIdAccount() . "';"
             . "DELETE FROM `PractiseScores` WHERE `Account_idAccount` = '" . $account->getIdAccount() . "';"
 			. "DELETE FROM `Account` WHERE `idAccount` = '" . $account->getIdAccount() . "'; ";
-		echo $sql;
 		$this->conn2sql->Connect();
 		$result = $this->conn2sql->conn->multi_query($sql);
 		$this->conn2sql->Stop();
