@@ -649,8 +649,11 @@ class AccountMod {
 			"DELETE FROM `Account_has_Class` WHERE `Account_idAccount` = '" . $account->getIdAccount() . "';"
 			. "DELETE FROM `Account_has_Academy` WHERE `Account_idAccount` = '" . $account->getIdAccount() . "';"
 			. "DELETE FROM `Account_has_Branch` WHERE `Account_idAccount` = '" . $account->getIdAccount() . "';"
+            . "DELETE FROM `Image` WHERE `Account_idAccount` = '" . $account->getIdAccount() . "';"
+            . "DELETE FROM `ScoresAdd_has_Account` WHERE `Account_idAccount` = '" . $account->getIdAccount() . "';"
+            . "DELETE FROM `Transcript` WHERE `Account_idAccount` = '" . $account->getIdAccount() . "';"
+            . "DELETE FROM `PractiseScores` WHERE `Account_idAccount` = '" . $account->getIdAccount() . "';"
 			. "DELETE FROM `Account` WHERE `idAccount` = '" . $account->getIdAccount() . "'; ";
-		echo $sql;
 		$this->conn2sql->Connect();
 		$result = $this->conn2sql->conn->multi_query($sql);
 		$this->conn2sql->Stop();

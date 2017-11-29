@@ -7,10 +7,16 @@ require_once("../../model/PermissionMod.php");
 require_once("../../model/CalendarScoringMod.php");
 switch ($_POST['btn-submit']) {
   case 'add':
-    $newPermissionObj = new PermissionObj();
-    $newPermissionMod = new PermissionMod();
-    $newPermissionObj->setPermissionObj($_POST['txt-namePermission'], 'EMPTY', 0);
-    $newPermissionMod->addPermission($newPermissionObj);
+    define("PATTERN_NAME", "/^[a-zA-Z 0-9àảãáạằẳẵắặầẩẫấậèẻẽéẹềểễếệìỉĩíịòỏõóọồổỗốộờởỡớợùủũúụừửữứựỳỷỹýỵoôơđưăâê]+$/i");
+    define("SQL_STR", "/(select|insert|update|delete|from|where|into|and|or|values|order by)/i");
+    if(preg_match(PATTERN_NAME, $_POST['txt-namePermission']) && !preg_match(SQL_STR, $_POST['txt-namePermission'])){
+      $newPermissionObj = new PermissionObj();
+      $newPermissionMod = new PermissionMod();
+      $newPermissionObj->setPermissionObj($_POST['txt-namePermission'], 'EMPTY', 0);
+      $newPermissionMod->addPermission($newPermissionObj);
+    } else {
+      echo "<script>alert('Lỗi tên phân quyền không hợp lệ')</script>";
+    }
     break;
   case 'delete':
   if(!empty($_POST['checkbox'])){

@@ -67,6 +67,13 @@ class TranscriptMod {
 		$this->connSQL->Stop();
 		return $result;
 	}
+    public function deleteTranscriptAll(){
+        $sql = "delete from Transcript where 1";
+        $this->connSQL->Connect();
+        $result = $this->connSQL->conn->query($sql);
+        $this->connSQL->Stop();
+        return $result;
+    }
 
 	public function updateTranscript($TranscriptObj){
 		$sql = "update Transcript set 

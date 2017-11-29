@@ -49,4 +49,11 @@ class ImageMod{
 		$this->connSQL->Stop();
 		return $result;
 	}
+    public function deleteImageAll(){
+        $sql = "delete from Image where 1";
+        $this->connSQL->Connect();
+        $result = $this->connSQL->conn->query($sql);
+        $this->connSQL->Stop();
+        return $result;
+    }
 }
