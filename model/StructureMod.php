@@ -134,6 +134,60 @@ class StructureMod {
 		}
 		return $children;
 	}
+	/**
+	 * Lấy tất cả các idItem có IDParent = '0'
+	 * Android
+	 * @return array
+	 */
+	public function getEntireStructureTable2(){
+		$entire = array();
+		$sql = "select * from structure";
+		$this->connSQL->Connect();
+		$result = $this->connSQL->conn->query($sql);
+		if (!empty($result)){
+			while ($row = $result->fetch_assoc()){
+				$respone = new StructureObj();
+				$respone->setStructureObj(
+					$row['idItem'],
+					$row['itemName'],
+					$row['scores'],
+					$row['describe'],
+					$row['IDParent'],
+					$row['scoresDefault']
+				);
+				$entire[] = $respone;
+			}
+		}
+		return $entire;
+	}
+
+	/**
+	 * Lấy tất cả các con trực tiếp của item đó
+	 * và có scoresDefaul khác null
+	 * @param $StructureObj
+	 * @return array
+	 */
+	public function getAllDirectChildOfStructure2($itemParent, $itemChild){
+		$children = array();
+		$sql = "SELECT * from structure WHERE idItem like '$itemChild%' and scores > 0";
+		$this->connSQL->Connect();
+		$result = $this->connSQL->conn->query($sql);
+		if (!empty($result)){
+			while ($row = $result->fetch_assoc()){
+				$child = new StructureObj();
+				$child->setStructureObj(
+					$row['idItem'],
+					$row['itemName'],
+					$row['scores'],
+					$row['describe'],
+					$row['IDParent'],
+					$row['scoresDefault']
+				);
+				$children[] = $child;
+			}
+		}
+		return $children;
+	}
 
 	public function getMaxScore(){
 		$sql = "select max(scores) as max from structure where IDParent = 0;";
