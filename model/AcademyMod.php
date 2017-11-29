@@ -31,7 +31,7 @@ class AcademyMod {
 				return $row["count(*)"];
 			}
 		} else {
-			// echo 'error count class in academy';
+			echo"<script>alert('Thao tác thất bại')</script>";
 			return 0;
 		}
 

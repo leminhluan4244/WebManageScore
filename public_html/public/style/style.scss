@@ -1,0 +1,212 @@
+//$main_color: #1066A2;
+//$main_dark: #10508C;
+//$main_darker: #094E7E;
+//$text_color: #ffffff;
+//$dark_color: gray;
+$main_color: #1066A2;
+$main_dark: #10508C;
+$main_darker: #094E7E;
+$text_color: #ffffff;
+$dark_color: gray;
+
+.banner{
+  //position: relative;
+  color: $text_color;
+  background-color: $main_color;
+  padding: 10px;
+  .logo{
+    width: 100px;
+  }
+
+  .banner-title{
+    //padding-top: 5px;
+    width: 300px;
+    //border: 1px solid #fff;
+  }
+
+  .banner-action{
+    width: 450px;
+    padding-top: 10px;
+    //border: 1px solid #fff;
+    float: right;
+    .btn-sm{
+      padding: 3px 8px;
+    }
+  }
+
+  #accountInfo{
+    //position: absolute;
+    //top: 10px;
+    //right: 10px;
+    font-size: 13px;
+    padding: 5px 0 0 0 ;
+    margin: 5px 0 0 0 ;
+    font-weight: bold;
+  }
+
+  @media only screen and (max-width: 768px){
+    .logo{
+      width: 100%;
+      text-align: center;
+    }
+
+    .banner-title{
+      text-align: center;
+      width: 100%;
+    }
+
+    .banner-action{
+      width: 100%;
+      padding: 0;
+    }
+  }
+}
+
+.container{
+  //min-height: 400px;
+}
+
+footer{
+  padding: 20px;
+  background-color: $main_darker;
+  color: #fff;
+  width: 100%;
+}
+
+.div-login{
+  .panel{
+    -webkit-box-shadow:  3px 3px 5px $dark_color;
+    -moz-box-shadow:  3px 3px 5px $dark_color;
+    box-shadow:  3px 3px 5px $dark_color;
+  }
+  .panel-heading, .btn-primary{
+    //background: linear-gradient($main_color, $main_dark, $main_color);
+  }
+
+
+  .form-control, .input-group-addon{
+    border-radius: 0;
+    box-shadow: none;
+    background-color: transparent;
+    border: none;
+  }
+
+  .form-control{
+    border-bottom: 1px solid lightgray;
+  }
+
+  .form-control:focus{
+    border-bottom: 1px solid $main_darker;
+    transition: all 1s;
+  }
+
+  @media only screen and (max-width: 768px) {
+    #captcha-img{
+      margin-top: 5px;
+      text-align: center;
+    }
+  }
+}
+
+.div-news{
+  .news-header{
+    padding: 10px;
+    color: $main_darker;
+    border-bottom: 2px solid $main_color;
+    margin-bottom: 10px;
+  }
+}
+
+.div-action{
+  h5{
+    padding-bottom: 12px;
+    border-bottom: 2px solid lightgray;
+  }
+  .thumbnail a{
+    color: $dark_color;
+    text-decoration: none;
+  }
+
+  .thumbnail{
+    @media (max-width: 768px){
+      //margin: 20px;
+      width: 250px;
+      float: left;
+      transition: all 0.25s;
+    }
+    border-radius: 0;
+    border: none;
+    box-shadow: none;
+  }
+  .thumbnail:hover{
+    font-weight: bold;
+  }
+}
+
+.main-academy-container{
+  h4{
+    color: $main_darker;
+  }
+  hr{
+    margin-top: 0;
+  }
+
+  .delete-academy-container{
+    .checkbox{
+      margin: 0;
+      //padding: 0;
+    }
+  }
+}
+
+.academy-action-list, .table-view{
+  .table {
+
+    font-size: 14px !important;
+    thead{
+      background-color: $main_color;
+      color: $text_color;
+      th{
+
+        text-align: center !important;
+      }
+    }
+    tbody{
+      tr td:first-child, tr td:last-child{
+        text-align: center;
+        //vertical-align: middle;
+      }
+    }
+
+    .btn-sm{
+      padding: 3px 7px;
+      margin: 0;
+    }
+    tr td {
+      vertical-align: middle;
+    }
+  }
+}
+
+.div-btn-grading{
+  margin-right: 10px;
+}
+
+.navigator{
+  position: fixed;
+  z-index: 1;
+  bottom: 10px;
+  right: 10px;
+}
+
+.navigator:after{
+  content: '';
+
+}
+
+#table-manage-evidence-img{
+  form{
+    margin: 0;
+    padding: 0;
+  }
+}
