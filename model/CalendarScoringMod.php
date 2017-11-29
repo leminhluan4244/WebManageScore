@@ -122,7 +122,7 @@
          return false;
       }
     }
-
+    
     /**
     # Phạm Hoài An
     */
@@ -142,8 +142,9 @@
         }
       }
       return $Calendar;
-    }
   }
+
+
   #$newCalendar = new CalendarScoringMod();
   #$newDate = new CalendarScoringObj('2017-08-30', '2017-09-04', 'Student');
   #$newPerson = new AccountObj();

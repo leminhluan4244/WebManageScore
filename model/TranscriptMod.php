@@ -26,6 +26,17 @@ class TranscriptMod {
 		return $result;
 	}
 
+	public function transcriptTableEmpty(){
+		$sql = "select count(*) as total from Transcript";
+		$this->connSQL->Connect();
+		$result = $this->connSQL->conn->query($sql);
+		$this->connSQL->Stop();
+		$total = 0;
+		if (!empty($result) && $result->num_rows > 0)
+			$total = $result->fetch_assoc()["total"];
+		return $total == 0;
+	}
+
 	public function getTranscript($accountId, $TranscriptId){
 		$sql = "select * from Transcript where Account_idAccount = '$accountId' AND idItem = '{$TranscriptId}'";
 		$TranscriptObj = new TranscriptObj();

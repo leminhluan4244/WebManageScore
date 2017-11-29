@@ -16,6 +16,11 @@ $model = new StructureMod();
 $tree = new StructureTree($model->getEntireStructureTable());
 if (isSubmit("delete")){
 	$id = getPOSTValue('id');
+	if ($tree->isLastChildOfRoot($id)){
+		showMessage("Mục điểm này chỉ có thể Chỉnh sửa");
+		softRedirect("../view/structure.editor.php");
+		die();
+	}
 	$listId = [];
 	$tree->PreOrderTreeToGetAllChildIdOf($id, $listId);
 	$result = true;
