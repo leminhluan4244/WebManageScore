@@ -10,7 +10,7 @@ if (!defined("IN_STR"))
 
 $id = getGETValue("id");
 if (!empty($id)) {
-	if (!preg_match("/^[a-zA-Z0-9.]+$/", $id))
+	if (!preg_match("/^[A-Za-z][a-zA-Z0-9.]*$/", $id))
 		redirect("structure.editor.php");
 	$struct = $model->getStructure($id);
 	if (empty($struct))
@@ -25,6 +25,7 @@ if (isSubmit('save')) {
 	$score = (int)getPOSTValue('score');
 	$idParent = getPOSTValue('idParent');
 	$scoreDefault = (int)getPOSTValue('scoreDefault');
+
 	$structObj = new StructureObj();
 	$structObj->setStructureObj($idItem, $itemName, $score, "", $idParent, $scoreDefault);
 	if (trim($idItem, " ") == "" || empty(trim($itemName, " ")) || trim($idParent, " ") == ""){
@@ -44,7 +45,7 @@ if (isSubmit('save')) {
 		$parentNode = $structures[$idParent];
 		$maxScoreAllowed = $structures[$tree->getHighestAncestor($parentNode)]["scores"];
 	} else {
-		$maxScoreAllowed = 100;
+		$maxScoreAllowed = $model->getMaxScore() - 1;
 	}
 
 	if ($score > $maxScoreAllowed){

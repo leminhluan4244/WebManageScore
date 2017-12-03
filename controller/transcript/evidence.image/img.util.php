@@ -43,3 +43,7 @@ function resize_image($file, $ext, $w = IMG_SIZE_MAX, $h = IMG_SIZE_MAX, $crop =
 function saveImage($img, $path){
 	imagejpeg($img, $path);
 }
+
+function savePdf($pdf, $path){
+	file_put_contents( $path, $pdf);
+}

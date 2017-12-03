@@ -74,8 +74,8 @@
 			 foreach ($permissionArr as $key => $value) {
 				 $arr = (new CalendarScoringMod())->getCalendarWithPermissionPosition($value->getPosition());
          if(!empty($arr)){
-					#Cố vấn học tập, Quản lý chi hội, Quản lý khoa, Sinh viên
-					if(strcmp($arr['Permission_position'], "Cố vấn học tập") != 0 && strcmp($arr['Permission_position'], "Quản lý chi hội") != 0 && strcmp($arr['Permission_position'], "Quản lý khoa") != 0 && strcmp($arr['Permission_position'], "Sinh viên") != 0){
+					#Cố vấn học tập, Quản lý chi hội, Quản lý khoa, Sinh viên và phân quyền mới (nếu có)
+					if(strcmp($arr['Permission_position'], "Admin") == 0 && strcmp($arr['Permission_position'], "Default") == 0){
 						continue;
 				  }
 					$open = date("d/m/Y", strtotime($arr['openDate']));

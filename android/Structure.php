@@ -17,4 +17,11 @@
 			echo json_encode($response); 
 		}
 	}
+	if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+			$itemParent = $_POST["itemParent"];
+			$itemChild = $_POST["itemChild"];
+			//GET LIST CHILD FROM PARENT
+			$response =  $structureMod->getAllDirectChildOfStructure2($itemParent, $itemChild);
+			echo json_encode($response); 
+	}
 ?>

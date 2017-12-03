@@ -5,7 +5,7 @@
  * Coder; Lê Minh Luân
  * Date; 21/08/2017
  */
-class ImageObj
+class ImageObj implements \JsonSerializable
 {
     private $Image;
     private $Account_idAccount;
@@ -67,6 +67,9 @@ class ImageObj
     public function getImageObj()
     {
         return $this;
+    }
+    public function jsonSerialize() {
+        return get_object_vars($this);
     }
 
 }

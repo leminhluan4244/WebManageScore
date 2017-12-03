@@ -19,6 +19,8 @@ if ($privilege !== "Admin"){
 
 $a = empty($_GET['a']) ? 'editor.view': $_GET['a'];
 
+$canModify = true;
+
 $path = "../controller/structure/structure.$a.php";
 ?>
 
@@ -28,8 +30,15 @@ $path = "../controller/structure/structure.$a.php";
 <?php
 if (file_exists($path)){
 	require_once '../model/Link.php';
+	require_once '../controller/structure/modify.check.php';
 	require_once '../helper/form.helper.php';
+	require_once '../helper/common.helper.php';
 	require_once '../controller/structure/StructureTree.php';
+	if (!$canModify && $a !== "editor.view"){
+		showMessage($reasonMsg);
+		softRedirect('structure.editor.php');
+		die();
+	}
 	$model = new StructureMod();
 	$tree = new StructureTree($model->getEntireStructureTable());
 	$root = $tree->getRoot();

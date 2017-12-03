@@ -122,7 +122,44 @@
          return false;
       }
     }
+
+    /**
+    # Phạm Hoài An
+    */
+    public function getAllCalendar(){
+      $Calendar = array();
+      $sql = "SELECT * FROM `CalendarScoring`";
+      $this->conn2sql->Connect();
+      $result = $this->conn2sql->conn->query($sql);
+      if (!empty($result)){
+        while ($row = $result->fetch_assoc()){
+          $respone = new CalendarScoringObj();
+          $respone->setCalendarScoringObj(
+            $row['openDate'],
+            $row['closeDate'],
+            $row['Permission_position']);
+          $Calendar[] = $respone;
+        }
+      }
+      return $Calendar;
   }
+
+  public function getCriticalDate(){
+      $sql = "SELECT min(openDate) as min, max(closeDate) as max FROM `CalendarScoring`";
+      $this->conn2sql->Connect();
+      $result = $this->conn2sql->conn->query($sql);
+      $this->conn2sql->Stop();
+      $criticalDate = [];
+      if (!empty($result) && $result->num_rows > 0){
+        $row = $result->fetch_assoc();
+        $criticalDate['min'] = $row['min'];
+        $criticalDate['max'] = $row['max'];
+      }
+      return $criticalDate;
+
+  }
+
+
   #$newCalendar = new CalendarScoringMod();
   #$newDate = new CalendarScoringObj('2017-08-30', '2017-09-04', 'Student');
   #$newPerson = new AccountObj();

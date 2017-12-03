@@ -7,6 +7,15 @@
  */
 if (!defined("IN_STR"))
     die("Bad request!!!");
+
+$maxScoreAllowed = $model->getMaxScore() - 1;
+
+$idItem = '';
+$itemName = '';
+$score = 0;
+$idParent = '';
+$scoreDefault = 0;
+
 $structures = $tree->getData();
 if (isSubmit('save')){
     $error = false;
@@ -15,7 +24,7 @@ if (isSubmit('save')){
 	$score = (int)getPOSTValue('score');
 	$idParent = getPOSTValue('idParent');
 	$scoreDefault = (int)getPOSTValue('scoreDefault');
-	if (!preg_match('/[A-Za-z0-9._]+/', $idItem)){
+	if (!preg_match('/^[A-Za-z][A-Za-z0-9.]*$/', $idItem)){
 	    $error = true;
 	    showMessage("Mã mục điểm không hợp lệ!");
     }
@@ -33,9 +42,8 @@ if (isSubmit('save')){
     if ($idParent != ST_ROOT){
 		$parentNode = $structures[$idParent];
 		$maxScoreAllowed = $structures[$tree->getHighestAncestor($parentNode)]["scores"];
-    } else {
-        $maxScoreAllowed = 100;
     }
+
 	if ($score > $maxScoreAllowed){
 		$error = true;
 		showMessage("Điểm số của mục này không được lớn hơn quy định là $maxScoreAllowed");
@@ -58,29 +66,39 @@ if (isSubmit('save')){
 		<form method="post">
 			<div class="form-group">
 				<label>Mã mục điểm </label>
-                <span class="help-block">(Chỉ chấp nhận ký tự số, chữ, đấu chấm (.) và gạch dưới (_))</span>
-				<input class="form-control" required name="idItem" pattern="[a-zA-Z0-9._]+">
+                <span class="help-block" style="font-weight: bold; font-size: 12px; color: green">
+                    (Bắt đầu bằng ký tự; chỉ chứa số, ký tự đấu chấm (.). Ví dụ: I.1)
+                </span>
+				<input class="form-control" required name="idItem" pattern="[A-Za-z][a-zA-Z0-9.]*"
+                    value="<?php echo $idItem; ?>">
 			</div>
 			<div class="form-group">
 				<label>Tên mục điểm</label>
-				<textarea class="form-control" required rows="5" name="itemName"></textarea>
+				<textarea class="form-control" required rows="5" name="itemName"><?php
+                    echo $itemName;
+                ?></textarea>
 			</div>
 			<div class="form-group">
 				<label>Mục cha của mục điểm này</label>
 				<select name="idParent" required class="form-control">
 					<option value="0">Không có</option>
 					<?php foreach ($structures as $structure) { ?>
-						<option value="<?php echo $structure['idItem']; ?>"><?php echo $structure['itemName']; ?></option>
+						<option value="<?php echo $structure['idItem']; ?>"
+                            <?php echo ($structure['idItem'] == $idParent) ? "selected": "" ?>>
+                            <?php echo $structure['itemName']; ?>
+                        </option>
 					<?php } ?>
 				</select>
 			</div>
 			<div class="form-group">
 				<label>Mức điểm</label>
-				<input type="number" name="score" required class="form-control" min="0" max="100" value="0">
+				<input type="number" name="score" required class="form-control" min="0" max="<?php echo $maxScoreAllowed; ?>"
+                       value="<?php echo $score; ?>">
 			</div>
             <div class="form-group">
                 <label>Điểm mặc định</label>
-                <input type="number" name="scoreDefault" required class="form-control" min="0" max="100" value="0">
+                <input type="number" name="scoreDefault" required class="form-control" min="0" max="<?php echo $maxScoreAllowed; ?>"
+                       value="<?php echo $scoreDefault; ?>">
             </div>
 			<div class="form-group text-right">
 				<input type="hidden" name="requestName" value="save">

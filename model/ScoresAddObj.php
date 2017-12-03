@@ -6,7 +6,7 @@
  * Time: 8:46 SA
  */
 
-class ScoresAddObj
+class ScoresAddObj implements \JsonSerializable
 {
     private $idScore;
     private $scoreName;
@@ -66,6 +66,9 @@ class ScoresAddObj
     }
     public function getScoresAddObj(){
         return $this;
+    }
+    public function jsonSerialize() {
+        return get_object_vars($this);
     }
 
 }
