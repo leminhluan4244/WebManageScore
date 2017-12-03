@@ -43,13 +43,12 @@ class AccountHasBranchMod
     {
         // Đẩy câu lệnh vào string
         $sql = "DELETE FROM Account_has_Branch 
-						WHERE Account_idAccount='" . $account->getIdAccount() . "' 
-						and Branch_idBranch='" . $branch->getIdBranch() . "';";
+						WHERE Account_idAccount='" . $account . "' 
+						and Branch_idBranch='" . $branch . "';";
         // Thực thi câu lệnh
         // Thực hiện câu truy vấn
         $this->conn->Connect();
         if ($this->conn->conn->query($sql) === true) {
-            echo "Xóa thành công";
             //Ngắt kết nối
             $this->conn->Stop();
             return true;

@@ -2,8 +2,8 @@
 if(isset($_POST['xoa'])) {
     $branchMD = new AccountHasBranchMod();
     foreach ($_POST['xoa'] as $key=> $value){
-        $branchMD->deleteClass($branchOD);
-       echo'<META http-equiv="refresh" content="0;URL=member.branch.php">';
+        $branchMD->deleteAccountHasBranch($value,$idBranch[0]);
+       //echo'<META http-equiv="refresh" content="0;URL=member.branch.php">';
     }
 
 }

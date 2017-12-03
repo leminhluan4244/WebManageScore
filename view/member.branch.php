@@ -29,6 +29,7 @@ if(getSession("userToken")['permission'] != 'Quản lý chi hội'){
             <!--Begin table-->
             <?php
             require_once "../controller/member.branch/member.content.php";
+            require_once "../controller/member.branch/member.delete.php";
             ?>
             <!--End table-->
 

@@ -57,7 +57,7 @@ else {
                         ' . $value->getCity() . '
                     </td>
                     <td>
-                        <a href="?idScore='.$value->getIdBranch().'" class="btn btn-primary btn-sm"><span class="glyphicon glyphicon-pencil"></span></a>
+                        <a href="?idBranch='.$value->getIdBranch().'" class="btn btn-primary btn-sm"><span class="glyphicon glyphicon-pencil"></span></a>
                     </td>
                     <td>
                         <input type="checkbox" name="xoa[]" id="'.$value->getIdBranch().'" value="'.$value->getIdBranch().'"/>

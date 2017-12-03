@@ -6,6 +6,8 @@ if(isset($_POST['save'])) {
 
     $branchO->setBranchObj($_POST['idBranch'], $_POST['branchName'], $_POST['city']);
     $branchM->updateBranch($branchO);
+    $bangtamO= new AccountHasBranchMod();
+    $bangtamO->addAccountHasBranch($_POST['tch'],$_POST['idBranch']);
     echo'<META http-equiv="refresh" content="0;URL=branch.manage.php">';
 }
 $branchM = new BranchMod();
@@ -48,6 +50,23 @@ if (!empty($branchO)) {
                         <p class="text-left"><b>Tên Chi Hội</b></p>
                         <input type="text" class="form-control" name="branchName" id="branchName"
                                value="' . $branchO->getBranchName() . '" required autofocus>
+                    </fieldset>
+                    
+                    <fieldset class="form-group">
+                        <p class="text-left"><b>Trưởng chi hội</b></p>
+                        <select class="form-control" name="tch" id="tch">';
+                        $TCH = new AccountObj();
+                        $TCHM = new AccountMod();
+                        $listTCH = $TCHM->getTruongChiHoi();
+                        if(gettype($list)!=gettype(0)){
+                            foreach($listTCH as $key => $value){
+                                echo '
+                            <option  value="'.$value->getIdAccount().'">'.$value->getAccountName().'</option> ';
+                            }
+                        }
+
+    echo '
+                        </select>
                     </fieldset>
 
                     <fieldset class="form-group">
