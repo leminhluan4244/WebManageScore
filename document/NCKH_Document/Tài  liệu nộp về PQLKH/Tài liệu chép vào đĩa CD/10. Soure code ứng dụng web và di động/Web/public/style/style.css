@@ -1,0 +1,118 @@
+.banner {
+  color: #ffffff;
+  background-color: #1066A2;
+  padding: 10px; }
+  .banner .logo {
+    width: 100px; }
+  .banner .banner-title {
+    width: 300px; }
+  .banner .banner-action {
+    width: 450px;
+    padding-top: 10px;
+    float: right; }
+    .banner .banner-action .btn-sm {
+      padding: 3px 8px; }
+  .banner #accountInfo {
+    font-size: 13px;
+    padding: 5px 0 0 0;
+    margin: 5px 0 0 0;
+    font-weight: bold; }
+  @media only screen and (max-width: 768px) {
+    .banner .logo {
+      width: 100%;
+      text-align: center; }
+    .banner .banner-title {
+      text-align: center;
+      width: 100%; }
+    .banner .banner-action {
+      width: 100%;
+      padding: 0; } }
+
+footer {
+  padding: 20px;
+  background-color: #094E7E;
+  color: #fff;
+  width: 100%; }
+
+.div-login .panel {
+  -webkit-box-shadow: 3px 3px 5px gray;
+  -moz-box-shadow: 3px 3px 5px gray;
+  box-shadow: 3px 3px 5px gray; }
+.div-login .form-control, .div-login .input-group-addon {
+  border-radius: 0;
+  box-shadow: none;
+  background-color: transparent;
+  border: none; }
+.div-login .form-control {
+  border-bottom: 1px solid lightgray; }
+.div-login .form-control:focus {
+  border-bottom: 1px solid #094E7E;
+  transition: all 1s; }
+@media only screen and (max-width: 768px) {
+  .div-login #captcha-img {
+    margin-top: 5px;
+    text-align: center; } }
+
+.div-news .news-header {
+  padding: 10px;
+  color: #094E7E;
+  border-bottom: 2px solid #1066A2;
+  margin-bottom: 10px; }
+
+.div-action h5 {
+  padding-bottom: 12px;
+  border-bottom: 2px solid lightgray; }
+.div-action .thumbnail a {
+  color: gray;
+  text-decoration: none; }
+.div-action .thumbnail {
+  border-radius: 0;
+  border: none;
+  box-shadow: none; }
+  @media (max-width: 768px) {
+    .div-action .thumbnail {
+      width: 250px;
+      float: left;
+      transition: all 0.25s; } }
+.div-action .thumbnail:hover {
+  font-weight: bold; }
+
+.main-academy-container h4 {
+  color: #094E7E; }
+.main-academy-container hr {
+  margin-top: 0; }
+.main-academy-container .delete-academy-container .checkbox {
+  margin: 0; }
+
+.academy-action-list .table, .table-view .table {
+  font-size: 14px !important; }
+  .academy-action-list .table thead, .table-view .table thead {
+    background-color: #1066A2;
+    color: #ffffff; }
+    .academy-action-list .table thead th, .table-view .table thead th {
+      text-align: center !important; }
+  .academy-action-list .table tbody tr td:first-child, .academy-action-list .table tbody tr td:last-child, .table-view .table tbody tr td:first-child, .table-view .table tbody tr td:last-child {
+    text-align: center; }
+  .academy-action-list .table .btn-sm, .table-view .table .btn-sm {
+    padding: 3px 7px;
+    margin: 0; }
+  .academy-action-list .table tr td, .table-view .table tr td {
+    vertical-align: middle; }
+
+.div-btn-grading {
+  margin-right: 10px; }
+
+.navigator {
+  position: fixed;
+  z-index: 1;
+  bottom: 10px;
+  right: 10px; }
+
+.navigator:after {
+  content: ''; }
+
+#table-manage-evidence-img form {
+  margin: 0;
+  padding: 0; }
+
+/*# sourceMappingURL=style.css.map */
