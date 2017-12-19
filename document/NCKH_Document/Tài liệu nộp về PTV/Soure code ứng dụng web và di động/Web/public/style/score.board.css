@@ -1,0 +1,83 @@
+.main-panel {
+  box-shadow: 0 0 10px grey; }
+  .main-panel table thead tr {
+    background-color: #337ab7;
+    color: #fff; }
+    .main-panel table thead tr th {
+      text-align: center;
+      vertical-align: middle; }
+  .main-panel table tbody .section {
+    background-color: #b9dcff; }
+  .main-panel table tbody input {
+    min-width: 50px; }
+  @media only screen and (min-width: 481px) and (max-width: 768px) {
+    .main-panel table tbody tr td:first-child {
+      max-width: 300px !important;
+      white-space: normal; } }
+  @media only screen and (max-width: 480px) {
+    .main-panel table tbody tr td:first-child {
+      max-width: 200px !important;
+      white-space: normal; } }
+
+.alert {
+  box-shadow: 0 0 5px lightgray; }
+
+@media (max-width: 768px) {
+  .collapsing {
+    -webkit-transition: none;
+    transition: none 0s;
+    display: none;
+    animation-duration: 0s;
+    -webkit-animation-fill-mode: none;
+    animation-fill-mode: none; } }
+footer {
+  padding: 30px; }
+
+#table-score thead tr {
+  background-color: #337ab7;
+  color: #fff; }
+  #table-score thead tr th {
+    font-size: 14px !important;
+    text-align: center;
+    vertical-align: middle; }
+  #table-score thead tr th:last-child {
+    min-width: 100px; }
+#table-score tbody {
+  font-size: 13px; }
+  #table-score tbody .section-1 {
+    background-color: #b9dcff;
+    color: orangered; }
+  #table-score tbody .section-1 td:first-child {
+    color: #000; }
+  #table-score tbody .section-1 td:first-child {
+    width: 70%; }
+  #table-score tbody .section-1, #table-score tbody .section-2 {
+    font-weight: bold; }
+  #table-score tbody .section-2 {
+    font-style: italic; }
+  #table-score tbody .section-4 td:first-child:before {
+    padding: 0 0 0 20px; }
+  #table-score tbody .input-number, #table-score tbody .select-score {
+    width: 60px;
+    border: 1px solid lightgray;
+    border-radius: 3px;
+    padding: 2px;
+    margin: 0; }
+  @media only screen and (min-width: 481px) and (max-width: 768px) {
+    #table-score tbody tr td:first-child {
+      max-width: 300px !important;
+      white-space: normal; } }
+  @media only screen and (max-width: 480px) {
+    #table-score tbody tr td:first-child {
+      max-width: 200px !important;
+      white-space: normal; } }
+
+.table-score-editor tr td:last-child, .table-score-editor tr td:nth-child(2) {
+  text-align: center; }
+.table-score-editor .btn-sm {
+  padding: 2px 5px; }
+
+.table-grading tr td:first-child {
+  text-align: left; }
+
+/*# sourceMappingURL=score.board.css.map */

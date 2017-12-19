@@ -1,0 +1,14 @@
+Options +FollowSymlinks
+#Options All -Indexes
+<Files .htaccess>
+	Order Allow,Deny
+	Deny from all
+</Files>
+RewriteEngine on
+RewriteRule ^trang-chu/nguoi-dung/dang-nhap$ controller/account/account.login.php
+RewriteRule ^trang-chu/$ view/main.php
+RewriteRule ^quan-li/cham-diem$ view/grading.php
+RewriteRule ^hinh-anh/([a-zA-Z0-9]+).jpg$ upload/$1.jpg
+#RewriteRule ^view/([a-zA-Z]+)-([a-zA-Z]+)$ view/$1.$2.php
+#RewriteRule ^([a-zA-Z]+)-([a-zA-Z]+)$ view/$1.$2.php
+#ErrorDocument 404
